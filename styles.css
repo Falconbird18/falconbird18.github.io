@@ -1,0 +1,208 @@
+
+        :root {
+            --pale-blue-light: #c9d7f0;
+            --pale-blue-dark: #9fb8e5;
+            --blue: #6186ff;
+            --text-blue: rgb(25, 26, 31);
+            --pale-purple-light: #ddc9f0;
+            --purple: #b061ff;
+            --pale-purple-dark: #c29ee6;
+            --green: #61ffa5;
+            --pale-green-light: #d6ffe8;
+            --pale-green-dark: #c1e6d1;
+            --scale: 1.25;
+            --time: 0.5s;
+            --radius: 30px;
+            --hover-brightness: 0.9;
+            --pale-yellow-light: #fffad6;
+            --pale-yellow-dark: #e6e1c1;
+            --yellow: #FFEA61;
+        }
+
+        body {
+            font-family: "Arial", sans-serif;
+            text-align: center;
+        }
+
+        .intro {
+            color: white;
+            padding-top: 10%;
+            padding-bottom: 20%;
+            background-image: url(Images/painting.jpg);
+            background-attachment: fixed;
+            background-size: 100%;
+        }
+
+        .yellow {
+            background-color: var(--pale-yellow-light);
+        }
+
+        h1 {
+            font-weight: normal;
+            font-size: 45px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin: 0px;
+        }
+
+        h2 {
+            font-weight: normal;
+            font-size: 25px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin: 0px;
+            text-transform: uppercase;
+        }
+
+        .rounded-header {
+            border-radius: var(--radius) var(--radius) var(--radius) var(--radius);
+            transform: translate(0px, -40px)
+        }
+
+        p {
+            text-align: center;
+            font-size: 15px;
+            width: 50%;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
+
+        .about {
+            position: relative;
+            background-color: var(--pale-blue-light);
+            color: var(--text-blue);
+        }
+
+        .education {
+            background-color: var(--pale-purple-light);
+            padding-bottom: 50px;
+        }
+
+        .svg {
+            background-color: var(--pale-blue-light);
+            margin: 0;
+            padding: 0%;
+            transform: translateY(-20px);
+        }
+
+        .progress-container {
+            background-color: var(--pale-purple-dark);
+            /* Set a background color for the container */
+            text-align: center;
+            margin: 0 auto;
+            margin-top: 50px;
+            /* Add some padding for spacing */
+            margin-bottom: 50px;
+            padding: 15px;
+            width: 50%;
+            border-radius: var(--radius);
+        }
+
+        .image-container {
+            width: 25%;
+            height: auto;
+            text-align: center;
+            padding: 30px;
+            border-radius: var(--radius);
+            background-color: var(--pale-blue-dark);
+            margin: 0 auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        .image {
+            width: 100%;
+            height: auto;
+            text-align: center;
+            border-radius: var(--radius);
+        }
+
+        .projects {
+            background-color: var(--pale-green-light);
+        }
+
+        .green {
+            background-color: var(--pale-green-light);
+            padding-top: 20px;
+            padding-bottom: 50px;
+        }
+        .header {
+            background-color: var(--pale-blue-light);
+            padding: 30px;
+            padding-left: 0px;
+            padding-right: 0px;
+            border-radius: 0px 0px var(--radius) var(--radius);
+            position: absolute;
+            top: 0px;
+            width: 100%;
+            margin: 0px;
+          }
+          .header-text {
+            display: inline-block;
+            color: var(--blue);
+            font-size: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 0px;
+            padding-bottom: 0px;
+            transition: all var(--time) ease;
+            transform: scale(1);
+            text-decoration: none;
+          }
+          .header-text:hover {
+            cursor: pointer;
+            transform: scale(var(--scale));
+            margin-left: 20px;
+            margin-right: 20px;
+            filter: brightness(var(--hover-brightness));
+          }
+          .header-button {
+            display: inline-block;
+            color: white;
+            background-color: var(--blue);
+            border-radius: var(--radius);
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            transition: all var(--time) ease;
+            text-decoration: none;
+          }
+          .header-button:hover {
+            cursor: pointer;
+            transform: scale(var(--scale));
+            margin-left: 20px;
+            margin-right: 20px;
+            filter: brightness(var(--hover-brightness));
+          }
+          .button{
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            padding: 15px;
+            border-radius: var(--radius);
+            margin-top: 30px;
+            margin-bottom: 30px;
+            transition: all var(--time) ease;
+            text-transform: uppercase;
+          }
+          .button:hover {
+            cursor: pointer;
+            transform: scale(var(--scale));
+            margin-left: 20px;
+            margin-right: 20px;
+            filter: brightness(var(--hover-brightness));
+          }
+        @media only screen and (max-width: 768px) {
+            p {
+                width: 75%;
+            }
+
+            .progress-container {
+                width: 75%;
+            }
+
+            .image-container {
+                width: 50%;
+            }
+        }

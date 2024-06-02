@@ -8,149 +8,8 @@
     <title>Austin Tallent's Porfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link rel="stylesheet" href="styles.css" />
     <style>
-        :root {
-            --pale-blue-light: #c9d7f0;
-            --pale-blue-dark: #9fb8e5;
-            --blue: #6186ff;
-            --text-blue: rgb(25, 26, 31);
-            --pale-purple-light: #ddc9f0;
-            --purple: #b061ff;
-            --pale-purple-dark: #c29ee6;
-            --green: #61ffa5;
-            --pale-green-light: #d6ffe8;
-            --pale-green-dark: #c1e6d1;
-            --scale: 1.25;
-            --time: 0.5s;
-            --radius: 30px;
-            --hover-brightness: 0.9;
-            --pale-yellow-light: #fffad6;
-            --pale-yellow-dark: #e6e1c1;
-            --yellow: #FFEA61;
-        }
-
-        body {
-            font-family: "Arial", sans-serif;
-            text-align: center;
-        }
-
-        .intro {
-            color: white;
-            padding-top: 10%;
-            padding-bottom: 20%;
-            background-image: url(/Images/painting.jpg);
-            background-attachment: fixed;
-            background-size: 100%;
-        }
-
-        .yellow {
-            background-color: var(--pale-yellow-light);
-        }
-
-        h1 {
-            font-weight: normal;
-            font-size: 45px;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            margin: 0px;
-        }
-
-        h2 {
-            font-weight: normal;
-            font-size: 25px;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            margin: 0px;
-            text-transform: uppercase;
-        }
-
-        .rounded-header {
-            border-radius: var(--radius) var(--radius) var(--radius) var(--radius);
-            transform: translate(0px, -40px)
-        }
-
-        p {
-            text-align: center;
-            font-size: 15px;
-            width: 50%;
-            margin: 0 auto;
-            margin-top: 50px;
-        }
-
-        .about {
-            position: relative;
-            background-color: var(--pale-blue-light);
-            color: var(--text-blue);
-        }
-
-        .education {
-            background-color: var(--pale-purple-light);
-            padding-bottom: 50px;
-        }
-
-        .svg {
-            background-color: var(--pale-blue-light);
-            margin: 0;
-            padding: 0%;
-            transform: translateY(-20px);
-        }
-
-        .progress-container {
-            background-color: var(--pale-purple-dark);
-            /* Set a background color for the container */
-            text-align: center;
-            margin: 0 auto;
-            margin-top: 50px;
-            /* Add some padding for spacing */
-            margin-bottom: 50px;
-            padding: 15px;
-            width: 50%;
-            border-radius: var(--radius);
-        }
-
-        .image-container {
-            width: 25%;
-            height: auto;
-            text-align: center;
-            padding: 30px;
-            border-radius: var(--radius);
-            background-color: var(--pale-blue-dark);
-            margin: 0 auto;
-            margin-top: 50px;
-            margin-bottom: 50px;
-        }
-
-        .image {
-            width: 100%;
-            height: auto;
-            text-align: center;
-            border-radius: var(--radius);
-        }
-
-        .projects {
-            background-color: var(--pale-green-light);
-        }
-
-        .green {
-            background-color: var(--pale-green-light);
-            padding-top: 20px;
-            padding-bottom: 50px;
-        }
-
-        @media only screen and (max-width: 768px) {
-            p {
-                width: 75%;
-            }
-
-            .progress-container {
-                width: 75%;
-            }
-
-            .image-container {
-                width: 50%;
-            }
-        }
     </style>
 </head>
 
@@ -158,10 +17,19 @@
 <body style="background-color: rgba(255, 255, 255, 0); margin: 0px;">
     <div id="overlay">
         <div class="intro">
-            <Header />
+
+            <header class="header">
+                <a href="/" class="header-text">HOME</a>
+                <a href="/about" class="header-text">ABOUT</a>
+                <a href="/skills" class="header-text">SKILLS</a>
+                <a href="/portfolio" class="header-text">PORTFOLIO</a>
+                <a href="/contact" class="header-button">CONTACT</a>
+            </header>
+
             <h1>Hi, I'm Austin Tallent</h1>
             <h2>Artist, CG Geek, and UI Designer</h2>
-            <Button link="https://calvintallent.me" buttonText="download resume" buttonColor="--blue" />
+            <!--<Button link="https://calvintallent.me" buttonText="download resume" buttonColor="--blue" />-->
+            <a class="button" href="download" style="background-color: var(--blue);">download resume</a>
         </div>
         <div class="about">
             <h2 class="rounded-header" style="background-color: var(--pale-blue-dark);">About Me</h2>
@@ -169,10 +37,11 @@
                 I love painting, Blender, and other types of art (except modern art!)
             </p>
             <div class="image-container">
-                <img src="/Images/painting.jpg" alt="Austin" class="image" />
+                <img src="Images/painting.jpg" alt="Austin" class="image" />
             </div>
             <br />
-            <Button link="/about" buttonText="tell me more" buttonColor="--blue" />
+            <!--<Button link="/about" buttonText="tell me more" buttonColor="--blue" />-->
+            <a class="button" href="download" style="background-color: var(--blue);">tell me more</a>
         </div>
 
         <div class="education">
@@ -217,10 +86,11 @@
 
                 <Skills width="55%" buttonText="kdenlive: 55%" closeButtonText="Close" popupText="Popup" />
             </div>
-            <Button link="/skills" buttonText="more info" buttonColor="--purple" />
+            <!--<Button link="/skills" buttonText="more info" buttonColor="--purple" />-->
+            <a class="button" href="download" style="background-color: var(--purple);">more info</a>
         </div>
         <div class="projects">
-            <h2 class="rounded-header" style="background-color: var(--pale-green-dark;">projects</h2>
+            <h2 class="rounded-header" style="background-color: var(--pale-green-dark);">projects</h2>
             <div class="green">
                 <p>Some of the projects that I have worked on are:</p>
                 <Projects projectTitle="supper froggy"
@@ -232,10 +102,11 @@
                 <Projects projectTitle="737 max project"
                     projectDescription="I have just started working on a 737 MAX for FlightGear"
                     imageSource="/Images/supper_froggy.png" alt="737 MAX cockpit" />
-                <Button link="/skills" buttonText="view all projects" buttonColor="--green" />
+                <!--<Button link="/skills" buttonText="view all projects" buttonColor="--green" />-->
+                <a class="button" href="download" style="background-color: var(--green);">view all projects</a>
             </div>
             <div class="yellow">
-                <h2 class="rounded-header" style="background-color: var(--pale-yellow-dark;">software</h2>
+                <h2 class="rounded-header" style="background-color: var(--pale-yellow-dark);">software</h2>
                 <p>The links to the software I use are listed below.</p>
                 <a href="">Blender</a>
                 <a href="">Inkscape</a>
@@ -248,11 +119,3 @@
         </div>
     </div>
 </body>
-
-<script>
-    import Skills from "$lib/Skills.svelte";
-    import Projects from "$lib/Projects.svelte";
-    import Button from "$lib/Button.svelte";
-    import Header from "$lib/Header.svelte";
-    import Footer from "$lib/Footer.svelte";
-</script>
