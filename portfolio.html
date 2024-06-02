@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Austin Tallent's Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+
+<script>
+    import ImageGallery from "$lib/Image_Gallery.svelte";
+    let currentTab = "Paintings";
+
+    function switchTab(tab) {
+        currentTab = tab;
+    }
+</script>
+<body style="margin: 0px;">
+    <div id="overlay">
+        <!--<Header />-->
+
+        <header class="header">
+            <a href="index.html" class="header-text">HOME</a>
+            <a href="about.html" class="header-text">ABOUT</a>
+            <a href="skills.html" class="header-text">SKILLS</a>
+            <a href="portfolio.html" class="header-text">PORTFOLIO</a>
+            <a href="contact.html" class="header-button">CONTACT</a>
+        </header>
+        <div class="intro">
+            <h1>GALLERY</h1>
+            <!--Use cat picture from the nine for the header background image.-->
+        </div>
+        <div class="about">
+            <h2 class="rounded-header" style="background-color: var(--pale-blue-dark);">
+                GALLERY
+            </h2>
+            <!--<Gallery />-->
+            <div class="tabs">
+                <button class="tab-button" on:click={() => switchTab("Paintings")}>
+                    Paintings
+                </button>
+                <button class="tab-button" on:click={() => switchTab("Blender")}>
+                    Blender
+                </button>
+                <button class="tab-button" on:click={() => switchTab("Inkscape")}>
+                    Inkscape
+                </button>
+                <button class="tab-button" on:click={() => switchTab("Ui")}>
+                    Web design
+                </button>
+                <button class="tab-button" on:click={() => switchTab("Projects")}>
+                    Projects
+                </button>
+            </div>
+            
+            <div class="tab-content">
+                {#if currentTab === "Paintings"}
+                    <h3>Paintings</h3>
+                    <div class="image-container">
+                        <div class="image-column">
+                            <img src="Images/arch.png" alt="Grapes" class="images" />
+                            <img src="Images/grapes.jpg" alt="Grapes" class="images" />
+                        </div>
+                        <div class="image-column">
+                            <img src="Images/arch.png" alt="Grapes" class="images" />
+                            <img src="Images/grapes.jpg" alt="Grapes" class="images" />
+                        </div>
+                        <div class="image-column">
+                            <img src="Images/painting.jpg" alt="Grapes" class="images" />
+                        </div>
+                        <div class="image-column">
+                            <img src="Images/grapes.jpg" alt="Grapes" class="images" />
+                        </div>
+                    </div>
+                {:else if currentTab === "Blender"}
+                    <div class="image-container">
+                        <div class="image-column">
+                        <div class="sketchfab-embed-wrapper" style="width: 50%;">
+                            <iframe title="Rabbit" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share src="https://sketchfab.com/models/4cf175ddd8d94c7f8705d0d3b9586e6e/embed">
+                            </iframe>
+                        </div>
+                        </div>
+                        <div class="image-column">
+                            <img src="Images/arch.png" alt="Grapes" class="images" />
+                            <img src="Images/grapes.jpg" alt="Grapes" class="images" />
+                        </div>
+                        <div class="image-column">
+                            <img src="Images/painting.jpg" alt="Grapes" class="images" />
+                        </div>
+                        <div class="image-column">
+                            <img src="Images/grapes.jpg" alt="Grapes" class="images" />
+                        </div>
+                    </div>
+                {:else if currentTab === "Inkscape"}
+                    <div class="image-container">
+                        <div class="image-column">
+                            <img src="Images/grapes.jpg" alt="Grapes" class="images" />
+                            <ImageGallery />
+                        </div>
+                        <div class="image-column">
+                            <img src="Images/arch.png" alt="Grapes" class="images" />
+                            <img src="Images/grapes.jpg" alt="Grapes" class="images" />
+                        </div>
+                        <div class="image-column">
+                            <img src="Images/painting.jpg" alt="Grapes" class="images" />
+                        </div>
+                        <div class="image-column">
+                            <img src="Images/grapes.jpg" alt="Grapes" class="images" />
+                        </div>
+                    </div>
+                {:else if currentTab === "Ui"}
+                    <div class="image-container">
+                        <div class="image-column">
+                            <img src="https://blog.hubspot.com/hs-fs/hubfs/telerik-homepage-update.png?t=1502725308401&width=1347&name=telerik-homepage-update.png" alt="Grapes" class="images" />
+                        </div>
+                        <div class="image-column">
+                            <img src="https://webneel.com/daily/sites/default/files/images/daily/02-2014/10-beautiful-websites.jpg" alt="Grapes" class="images" />
+                            <img src="https://agentestudio.com/uploads/ckeditor/pictures/1731/18.jpg" alt="Grapes" class="images" />
+                        </div>
+                        <div class="image-column">
+                            <img src="https://www.founderjar.com/wp-content/uploads/2021/03/Best-Website-Designs.jpg" alt="Grapes" class="images" />
+                        </div>
+                        <div class="image-column">
+                            <img src="https://th.bing.com/th/id/OIP.Xj9koV7MUUqya0yqIJWkPgHaFk?rs=1&pid=ImgDetMain" alt="Grapes" class="images" />
+                        </div>
+                    </div>
+                {:else if currentTab === "Projects"}
+                    <div class="image-container">
+                        <div class="image-column">
+                            <img src="Images/grapes.jpg" alt="Grapes" class="images" />
+                        </div>
+                        <div class="image-column">
+                            <img src="Images/arch.png" alt="Grapes" class="images" />
+                            <img src="Images/grapes.jpg" alt="Grapes" class="images" />
+                        </div>
+                        <div class="image-column">
+                            <img src="Images/painting.jpg" alt="Grapes" class="images" />
+                        </div>
+                        <div class="image-column">
+                            <img src="Images/grapes.jpg" alt="Grapes" class="images" />
+                        </div>
+                    </div>
+                {/if}
+            </div>
+            
+            <!--<Footer />-->
+            <footer class="footer">
+                <span class="copyright">&copy 2024 Austin Tallent All Rights Reserved</span>
+                <br />
+                <div class="footer-text">
+                    <i class="fa-brands fa-artstation" href="https://www.artstation.com/austin_tallent"></i>
+                </div>
+                <div class="footer-text">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+            </footer>
+        </div>
+</body>
+
+</html>

@@ -16,14 +16,14 @@
 
 <body style="background-color: rgba(255, 255, 255, 0); margin: 0px;">
     <div id="overlay">
-        <div class="intro">
+        <div class="intro-home">
 
             <header class="header">
-                <a href="/" class="header-text">HOME</a>
-                <a href="/about" class="header-text">ABOUT</a>
-                <a href="/skills" class="header-text">SKILLS</a>
-                <a href="/portfolio" class="header-text">PORTFOLIO</a>
-                <a href="/contact" class="header-button">CONTACT</a>
+                <a href="index.html" class="header-text">HOME</a>
+                <a href="about.html" class="header-text">ABOUT</a>
+                <a href="skills.html" class="header-text">SKILLS</a>
+                <a href="portfolio.html" class="header-text">PORTFOLIO</a>
+                <a href="contact.html" class="header-button">CONTACT</a>
             </header>
 
             <h1>Hi, I'm Austin Tallent</h1>
@@ -36,7 +36,7 @@
             <p>
                 I love painting, Blender, and other types of art (except modern art!)
             </p>
-            <div class="image-container">
+            <div class="image-container-home">
                 <img src="Images/painting.jpg" alt="Austin" class="image" />
             </div>
             <br />
@@ -90,8 +90,8 @@
             <a class="button" href="download" style="background-color: var(--purple);">more info</a>
         </div>
         <div class="projects">
-            <h2 class="rounded-header" style="background-color: var(--pale-green-dark);">projects</h2>
-            <div class="green">
+            <h2 class="rounded-header" style="background-color: var(--pale-yellow-dark);">projects</h2>
+            <div class="yellow">
                 <p>Some of the projects that I have worked on are:</p>
                 <Projects projectTitle="supper froggy"
                     projectDescription="Supper Froggy is a full length movie in development. Currently, I have completed about a minute and a half of footage, created in Blender."
@@ -103,19 +103,34 @@
                     projectDescription="I have just started working on a 737 MAX for FlightGear"
                     imageSource="/Images/supper_froggy.png" alt="737 MAX cockpit" />
                 <!--<Button link="/skills" buttonText="view all projects" buttonColor="--green" />-->
-                <a class="button" href="download" style="background-color: var(--green);">view all projects</a>
+                <a class="button" href="download" style="background-color: var(--yellow);">view all projects</a>
             </div>
-            <div class="yellow">
-                <h2 class="rounded-header" style="background-color: var(--pale-yellow-dark);">software</h2>
-                <p>The links to the software I use are listed below.</p>
-                <a href="">Blender</a>
-                <a href="">Inkscape</a>
-                <a href="">GIMP</a>
-                <a href="">Krita</a>
-                <a href="">Kdenlive</a>
-                <a href="">Natron</a>
+            <div class="green">
+                <h2 class="rounded-header" style="background-color: var(--pale-green-dark);">software</h2>
+                <p>The links to the software I use are listed below. Thanks to all the volunteers who make these amazing projects possible!</p>
+                <a class="button" href="https://www.blender.org/" style="background-color: var(--green);">Blender</a>
+                <br>
+                <a class="button" href="https://inkscape.org/" style="background-color: var(--green);">Inkscape</a>
+                <br>
+                <a class="button" href="https://www.gimp.org/" style="background-color: var(--green);">GIMP</a>
+                <br>
+                <a class="button" href="https://krita.org/en/" style="background-color: var(--green);">Krita</a>
+                <br>
+                <a class="button" href="https://kdenlive.org/en/" style="background-color: var(--green);">Kdenlive</a>
+                <br>
+                <a class="button" href="https://natrongithub.github.io/" style="background-color: var(--green);">Natron</a>
             </div>
-            <Footer />
+            <!--<Footer />-->
+            <footer class="footer">
+                <span class="copyright">&copy 2024 Austin Tallent All Rights Reserved</span>
+                <br />
+                <div class="footer-text">
+                    <i class="fa-brands fa-artstation" href="https://www.artstation.com/austin_tallent"></i>
+                </div>
+                <div class="footer-text">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+            </footer>
         </div>
     </div>
 </body>
