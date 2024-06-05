@@ -190,7 +190,9 @@ p {
     transform: scale(1);
     text-decoration: none;
 }
-
+.hide{
+    display: none;
+}
 .header-text:hover {
     cursor: pointer;
     transform: scale(var(--scale));
@@ -326,7 +328,10 @@ p {
     margin: 0 auto;
     margin-bottom: 10%;
 }
-
+.images:hover +.hide{
+    display: block;
+    color: var(--blue);
+}
 .tab-content {
     border: 1px solid #ccc;
     padding: 16px;
