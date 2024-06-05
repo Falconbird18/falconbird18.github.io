@@ -30,7 +30,7 @@
             <a href="portfolio.html" class="header-text">PORTFOLIO</a>
             <a href="contact.html" class="header-button">CONTACT</a>
         </header>
-        <div class="intro">
+        <div class="intro-gallery">
             <h1>GALLERY</h1>
             <!--Use cat picture from the nine for the header background image.-->
         </div>
@@ -161,17 +161,17 @@
                 </div>
                 {/if}-->
 
-        <!--<Footer />-->
-        <footer class="footer">
-            <span class="copyright">&copy 2024 Austin Tallent All Rights Reserved</span>
-            <br />
-            <div class="footer-text">
-                <i class="fa-brands fa-artstation" href="https://www.artstation.com/austin_tallent"></i>
-            </div>
-            <div class="footer-text">
-                <i class="fa-solid fa-envelope"></i>
-            </div>
-        </footer>
+            <!--<Footer />-->
+            <footer class="footer">
+                <span class="copyright">&copy 2024 Austin Tallent All Rights Reserved</span>
+                <br />
+                <div class="footer-text">
+                    <i class="fa-brands fa-artstation" href="https://www.artstation.com/austin_tallent"></i>
+                </div>
+                <div class="footer-text">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+            </footer>
         </div>
     </div>
 </body>
@@ -192,78 +192,161 @@
         if (currentTab === "Paintings") {
             // generate content for Paintings tab
             const html = `
-            <h2>PAINTINGS</h2>
+            <h2 style="transform: translateY(100px);">PAINTINGS</h2>
             <div class="image-container">
                 <div class="image-column">
                     <!-- image galleries and images for Paintings tab -->
-                    <img src="Images/arch.png" alt="Grapes" class="images" />
-                    <img src="Images/grapes.jpg" alt="Grapes" class="images" />
+                    <img src="Images/grapes.jpg" alt="Vineyard with Grapes" class="images" />
+                    <img src="Images/lake.jpg" alt="View of Spirit Lake" class="images" />
+                    <img src="Images/house_past.jpg" alt="Past House" class="images" />
                 </div>
                 <div class="image-column">
                     <!-- image galleries and images for Paintings tab -->
-                    <img src="Images/arch.png" alt="Grapes" class="images" />
-                    <img src="Images/grapes.jpg" alt="Grapes" class="images" />
+                    <img src="Images/squash.jpg" alt="Still life with Squash" class="images" />
+                    <img src="Images/painting.jpg" alt="Black Eyes" class="images" />
+                    <img src="Images/tree_fallen.jpg" alt="Fallen Tree" class="images" />
                 </div>
                 <div class="image-column">
                     <!-- image galleries and images for Paintings tab -->
-                    <img src="Images/arch.png" alt="Grapes" class="images" />
-                    <img src="Images/grapes.jpg" alt="Grapes" class="images" />
+                    <img src="Images/cat.jpg" alt="Black Eyes" class="images" />
+                    <img src="Images/house_futer.jpg" alt="House" class="images" />
+                    <img src="Images/tree.jpg" alt="Tree" class="images" />
                 </div>
                 <div class="image-column">
                     <!-- image galleries and images for Paintings tab -->
-                    <img src="Images/arch.png" alt="Grapes" class="images" />
-                    <img src="Images/grapes.jpg" alt="Grapes" class="images" />
+                    <img src="Images/house_current.jpg" alt="Black Eyes" class="images" />
+                    <img src="Images/dogs.jpg" alt="Dogs" class="images" />
                 </div>
-                <!-- more image columns for Paintings tab -->
             </div>
+            <img src="Images/signature4.svg" alt="Austin Tallent's Signature" class="signature">
         `;
             tabContent.innerHTML = html;
         } else if (currentTab === "Blender") {
             // generate content for Blender tab
             const html = `
-            <h2>blender</h2>
+            <h2 style="transform: translateY(100px);">BLENDER</h2>
             <div class="image-container">
                 <div class="image-column">
-                    <!-- iframe and images for Blender tab -->
+                    <!-- image galleries and images for Paintings tab -->
+                    <img src="Images/arch.png" alt="Interior with plants" class="images" />
+                    <img src="Images/lake.jpg" alt="View of Spirit Lake" class="images" />
+                    <img src="Images/house_past.jpg" alt="Past House" class="images" />
                 </div>
-                <!-- more image columns for Blender tab -->
+                <div class="image-column">
+                    <!-- image galleries and images for Paintings tab -->
+                    <img src="Images/Object.png" alt="Still Life with Grapes" class="images" />
+                    <img src="Images/painting.jpg" alt="Black Eyes" class="images" />
+                    <img src="Images/tree_fallen.jpg" alt="Fallen Tree" class="images" />
+                </div>
+                <div class="image-column">
+                    <!-- image galleries and images for Paintings tab -->
+                    <img src="Images/cat.jpg" alt="Black Eyes" class="images" />
+                    <img src="Images/house_futer.jpg" alt="House" class="images" />
+                    <img src="Images/tree.jpg" alt="Tree" class="images" />
+                </div>
+                <div class="image-column">
+                    <!-- image galleries and images for Paintings tab -->
+                    <img src="Images/house_current.jpg" alt="Black Eyes" class="images" />
+                    <img src="Images/dogs.jpg" alt="Dogs" class="images" />
+                </div>
             </div>
+            <img src="Images/signature4.svg" alt="Austin Tallent's Signature" class="signature">
         `;
             tabContent.innerHTML = html;
         } else if (currentTab === "Inkscape") {
             // generate content for Inkscape tab
             const html = `
-            <h2>inkscape</h2>
+            <h2 style="transform: translateY(100px);">INKSCAPE</h2>
             <div class="image-container">
                 <div class="image-column">
-                    <!-- images for Inkscape tab -->
+                    <!-- image galleries and images for Paintings tab -->
+                    <img src="Images/arch.png" alt="Interior with plants" class="images" />
+                    <img src="Images/lake.jpg" alt="View of Spirit Lake" class="images" />
+                    <img src="Images/house_past.jpg" alt="Past House" class="images" />
                 </div>
-                <!-- more image columns for Inkscape tab -->
+                <div class="image-column">
+                    <!-- image galleries and images for Paintings tab -->
+                    <img src="Images/Object.png" alt="Still Life with Grapes" class="images" />
+                    <img src="Images/painting.jpg" alt="Black Eyes" class="images" />
+                    <img src="Images/tree_fallen.jpg" alt="Fallen Tree" class="images" />
+                </div>
+                <div class="image-column">
+                    <!-- image galleries and images for Paintings tab -->
+                    <img src="Images/cat.jpg" alt="Black Eyes" class="images" />
+                    <img src="Images/house_futer.jpg" alt="House" class="images" />
+                    <img src="Images/tree.jpg" alt="Tree" class="images" />
+                </div>
+                <div class="image-column">
+                    <!-- image galleries and images for Paintings tab -->
+                    <img src="Images/house_current.jpg" alt="Black Eyes" class="images" />
+                    <img src="Images/dogs.jpg" alt="Dogs" class="images" />
+                </div>
             </div>
+            <img src="Images/signature4.svg" alt="Austin Tallent's Signature" class="signature">
         `;
             tabContent.innerHTML = html;
         } else if (currentTab === "Ui") {
             // generate content for Ui tab
             const html = `
-            <h2>web design</h2>
+            <h2 style="transform: translateY(100px);">WEB DESIGN</h2>
             <div class="image-container">
                 <div class="image-column">
-                    <!-- images for Ui tab -->
+                    <!-- image galleries and images for Paintings tab -->
+                    <img src="Images/arch.png" alt="Interior with plants" class="images" />
+                    <img src="Images/lake.jpg" alt="View of Spirit Lake" class="images" />
+                    <img src="Images/house_past.jpg" alt="Past House" class="images" />
                 </div>
-                <!-- more image columns for Ui tab -->
+                <div class="image-column">
+                    <!-- image galleries and images for Paintings tab -->
+                    <img src="Images/Object.png" alt="Still Life with Grapes" class="images" />
+                    <img src="Images/painting.jpg" alt="Black Eyes" class="images" />
+                    <img src="Images/tree_fallen.jpg" alt="Fallen Tree" class="images" />
+                </div>
+                <div class="image-column">
+                    <!-- image galleries and images for Paintings tab -->
+                    <img src="Images/cat.jpg" alt="Black Eyes" class="images" />
+                    <img src="Images/house_futer.jpg" alt="House" class="images" />
+                    <img src="Images/tree.jpg" alt="Tree" class="images" />
+                </div>
+                <div class="image-column">
+                    <!-- image galleries and images for Paintings tab -->
+                    <img src="Images/house_current.jpg" alt="Black Eyes" class="images" />
+                    <img src="Images/dogs.jpg" alt="Dogs" class="images" />
+                </div>
             </div>
+            <img src="Images/signature4.svg" alt="Austin Tallent's Signature" class="signature">
         `;
             tabContent.innerHTML = html;
         } else if (currentTab === "Projects") {
             // generate content for Projects tab
             const html = `
-            <h2>projects</h2>
+            <h2 style="transform: translateY(100px);">PROJECTS</h2>
             <div class="image-container">
                 <div class="image-column">
-                    <!-- images for Projects tab -->
+                    <!-- image galleries and images for Paintings tab -->
+                    <img src="Images/arch.png" alt="Interior with plants" class="images" />
+                    <img src="Images/lake.jpg" alt="View of Spirit Lake" class="images" />
+                    <img src="Images/house_past.jpg" alt="Past House" class="images" />
                 </div>
-                <!-- more image columns for Projects tab -->
+                <div class="image-column">
+                    <!-- image galleries and images for Paintings tab -->
+                    <img src="Images/Object.png" alt="Still Life with Grapes" class="images" />
+                    <img src="Images/painting.jpg" alt="Black Eyes" class="images" />
+                    <img src="Images/tree_fallen.jpg" alt="Fallen Tree" class="images" />
+                </div>
+                <div class="image-column">
+                    <!-- image galleries and images for Paintings tab -->
+                    <img src="Images/cat.jpg" alt="Black Eyes" class="images" />
+                    <img src="Images/house_futer.jpg" alt="House" class="images" />
+                    <img src="Images/tree.jpg" alt="Tree" class="images" />
+                </div>
+                <div class="image-column">
+                    <!-- image galleries and images for Paintings tab -->
+                    <img src="Images/house_current.jpg" alt="Black Eyes" class="images" />
+                    <img src="Images/dogs.jpg" alt="Dogs" class="images" />
+                </div>
             </div>
+            <img src="Images/signature4.svg" alt="Austin Tallent's Signature" class="signature">
         `;
             tabContent.innerHTML = html;
         }
