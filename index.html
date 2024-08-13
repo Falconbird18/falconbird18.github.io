@@ -1,195 +1,432 @@
 <!DOCTYPE html>
-
-
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Austin Tallent's Gallery</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-    <link rel="icon" href="Images/favicon.svg">
+    <title>Thank you!</title>
+    <link rel="icon" type="image/x-icon" href="logo.jpg">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        .glass {
+            /* remove background-image property */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: inset 0 1px 1px 0 hsla(0, 0%, 100%, .15);
+            text-align: center;
+            width: 80%;
+            height: 90%;
+            margin: 0 auto;
+            z-index: 1;
+            position: relative;
+            overflow: hidden;
+            margin-top: 5vh;
+        }
+
+        .glass-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(https://images.squarespace-cdn.com/content/v1/57472a58859fd08a23a38db7/1607368261278-XOXG6P7AHL2T7KFMIZTI/Summer-Season_Header_8VA.jpg);
+            background-size: cover;
+            filter: blur(40px);
+            z-index: -1;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #345dff, #ff2424, #ffc209, #ff8717);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 80px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            animation: rotate 5s infinite;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(1.5deg);
+            }
+
+            75% {
+                transform: rotate(-1.5deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+
+        .gradient-text-2 {
+            background: linear-gradient(45deg, #b9b9b9, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 35px;
+            margin-bottom: 20px;
+            text-shadow: 5px black;
+            position: absolute;
+            top: 17%;
+            left: 28%;
+        }
+
+        .gradient-text-3 {
+            background: linear-gradient(#ff6b6b, #f06595, #fcc419, #845ef7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 90px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            position: absolute;
+            top: 15%;
+            left: 55%;
+            animation: pulse 5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.01);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .gradient-text-4 {
+            background: linear-gradient(-45deg, #a1a1a1, #a8a8a8, #979696);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 150px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            top: 78%;
+            left: 12%;
+            position: absolute;
+            text-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .gradient-text-5 {
+            background: linear-gradient(45deg, #ff6b6b, #f06595, #fcc419, #845ef7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 150px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            top: 80%;
+            left: 60%;
+            position: absolute;
+            animation: blur 5s infinite;
+        }
+
+        @keyframes blur {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .content img {
+            width: 33%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 1.3em;
+            color: white;
+            text-align: justify;
+            width: 40%;
+            left: 55%;
+            top: 30%;
+            position: absolute;
+            text-indent: 1em;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        /* Slideshow container */
+        .slideshow-container {
+            max-width: 1000px;
+            position: absolute;
+            margin: auto;
+            width: 40%;
+            left: 7%;
+            top: 30%;
+        }
+
+        /* Hide the images by default */
+        .mySlides {
+            display: none;
+        }
+
+        /* Next & previous buttons */
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            margin-top: -22px;
+            padding: 16px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 25px 25px 0;
+            user-select: none;
+            left: 0;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            border-radius: 25px 0 0 25px;
+            transform: translateX(29vw);
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover,
+        .next:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+        }
+
+        /* Caption text */
+        .text {
+            color: #f2f2f2;
+            font-size: 15px;
+            padding: 8px 12px;
+            position: absolute;
+            bottom: 8px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        /* The dots/bullets/indicators */
+        .dot {
+            cursor: pointer;
+            height: 15px;
+            width: 15px;
+            margin: 0 2px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+            transform: translateY(15px);
+        }
+
+        .active,
+        .dot:hover {
+            background-color: #717171;
+        }
+
+        /* Fading animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {
+                opacity: .4
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        .img {
+            box-shadow: inset 0 1px 1px 0 hsla(0, 0%, 100%, .15);
+        }
+
+        .bg {
+            width: 100%;
+            height: 100vh;
+            background-size: 300% 300%;
+            background-image: linear-gradient(45deg, #30435a 0%, #30435a 25%, #30435a 51%, #332824 100%);
+            -webkit-animation: AnimateBG 20s ease infinite;
+            animation: AnimateBG 20s ease infinite;
+            display: flex;
+        }
+
+        @-webkit-keyframes AnimateBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes AnimateBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        ul {
+            font-size: 1.3em;
+            color: white;
+            text-align: justify;
+            width: 40%;
+            left: 55%;
+            top: 50%;
+            position: absolute;
+        }
+        h3{
+            font-size: 1.5em;
+            left: 55%;
+            top: 45%;
+            position: absolute;
+        }
+    </style>
 </head>
 
+<body>
+    <div class="bg">
 
-<body style="background-color: rgba(255, 255, 255, 0); margin: 0px;">
-    <div id="overlay">
-        <div class="intro-home">
 
-            <header class="header">
-                <a href="index.html" class="header-text">HOME</a>
-                <a href="about.html" class="header-text">ABOUT</a>
-                <a href="portfolio.html" class="header-text">PORTFOLIO</a>
-                <a href="contact.html" class="header-button">CONTACT</a>
-            </header>
+        <div class="glass">
+            <div class="glass-bg"></div>
+            <div class="gradient-text">thank you</div>
+            <div class="gradient-text-2">for sending me to</div>
+            <div class="gradient-text-3">Sun Valley</div>
+            <div class="content">
 
-            <h1>Hi, I'm Austin Tallent</h1>
-            <h2>Artist, CG Geek, and UI Designer</h2>
-            <!--<Button link="https://calvintallent.me" buttonText="download resume" buttonColor="--blue" />-->
-            <!--<a class="button" href="Resume.pdf" style="background-color: var(--blue);">view resume</a>-->
-        </div>
-        <div class="about">
-            <h2 class="rounded-header" style="background-color: var(--pale-blue-dark);">About Me</h2>
-            <p>
-                I'm Austin Tallent, an artist who navigates the digital
-                landscape with a keen eye for detail and has a  deep appreciation for
-                the tactile sensations of traditional art. My creations are a
-                symphony of bold colors and sharp designs and composition, each piece a
-                harmonious blend of vision and precision.
+                <!-- Slideshow container -->
+                <div class="slideshow-container">
 
-                For me, art is more than a pursuit—it's a journey. Whether I'm
-                wielding a stylus or a paintbrush, I'm committed to honing my
-                skills and pushing the boundaries of what's possible. I embrace
-                each challenge as an opportunity to grow and innovate.
-            </p>
-            <!--
-            <div class="image-container-home">
-                <img src="Images/painting.jpg" alt="Austin" class="image" />
-            </div>-->
-            <br />
-            <!--<Button link="/about" buttonText="tell me more" buttonColor="--blue" />-->
-            <a class="button" href="about.html" style="background-color: var(--blue);">tell me more</a>
-        </div>
+                    <!-- Full-width images with number and caption text -->
+                    <div class="mySlides fade">
+                        <div class="numbertext">1 / 3</div>
+                        <img src="https://images.squarespace-cdn.com/content/v1/57472a58859fd08a23a38db7/1607368261278-XOXG6P7AHL2T7KFMIZTI/Summer-Season_Header_8VA.jpg"
+                            style="width:100%; ">
+                        <div class="text">The Sun Valley Symphony</div>
+                    </div>
 
-        <div class="education">
-            <!--<svg viewBox='0 0 1200  134' fill='none' xmlns='http://www.w3.org/2000/svg' class="svg">
-        <path d='M0 22L33 19C82 13 133 14 20 29C267 44 333 67 400 70C467 74 533 59 600 40C667 22 733 0 800 0C867 0 933 22 1000 29C1067 37 1133 29 1167 26L1200 22V134H1167C1133 134 1067 134 1000 134C933 134 867 134 800 134C733 134 667 134 600 134C533 134 467 134 400 134C333 134 267 134 200 134C133 134 67 134 33 134H0V22.332Z' fill='#ddc9f0'/>
-      </svg>-->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" fill="none" class="svg">
-                <path fill="#ddc9f0" fill-opacity="1"
-                    d="M0,64L48,90.7C96,117,192,171,288,181.3C384,192,480,160,576,176C672,192,768,256,864,272C960,288,1056,256,1152,250.7C1248,245,1344,267,1392,277.3L1440,288L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-                </path>
-            </svg>
-            <h2 style="background-color: var(--pale-purple-light);">SKILLS</h2>
+                    <div class="mySlides fade">
+                        <div class="numbertext">2 / 3</div>
+                        <img src="piano.jpg" style="width:100%">
+                        <div class="text">All the piano students</div>
+                    </div>
 
-            <p>
-                I am skilled in many areas and different software. Some of them are
-                listed below.
-            </p>
-            <div class="progress-container">
-                <div class="button-container">
-                    <span style="width: 95%;" class="skill-button">3D ART 95%</span>
+                    <div class="mySlides fade">
+                        <div class="numbertext">3 / 3</div>
+                        <img src="mozart.jpg" style="width:100%">
+                        <div class="text">My chamber music group</div>
+                    </div>
+
+                    <!-- Next and previous buttons -->
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                    <!-- The dots/circles -->
+                    <div style="text-align:center">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                    </div>
                 </div>
-                <div class="button-container">
-                    <span style="width: 75%;" class="skill-button">PAINTING 75%</span>
-                </div>
-                <div class="button-container">
-                    <span style="width: 90%;" class="skill-button">DRAWING 90%</span>
-                </div>
-                <div class="button-container">
-                    <span style="width: 70%;" class="skill-button">VECTOR ART 70%</span>
-                </div>
-                <div class="button-container">
-                    <span style="width: 75%;" class="skill-button">DIGITAL ART 75%</span>
-                </div>
-                <!--
-                <Skills buttonText="3D ART 95%" closeButtonText="close"
-                    popupText="I have more than five years of experience with 3D, and have worked on several big projects."
-                    width="95%" />
+                <div class="gradient-text-4">Love</div>
+                <div class="gradient-text-5">Austin</div>
+                <p>My favorite parts of being at Sun Valley were working on
+                    chamber music, piano ensembles, going to the Sun Valley Symphony
+                    concerts, and talking with friends from last year. I also liked
+                    getting to know the new people this year.
+                </p>
+                <h3>I performed the following:</h3>
+                <ul>
+                    <li>Mozart Piano quartet in G minor</li>
+                    <li>Carmen Overture</li>
+                    <li>Luconia Malagonia</li>
+                    <li>Stars and Stripes Forever</li>
+                </ul>
 
-                <Skills buttonText="PAINTING 75%" closeButtonText="close"
-                    popupText="I paint with oils, and am inspired by the old masters, such as the hudson river school, and Rembrandt."
-                    width="75%" />
-
-                <Skills width="90%" buttonText="Drawing: 90%" closeButtonText="Close" popupText="I like drawing, " />
-                <Skills width="70%" buttonText="vector art: 70%" closeButtonText="Close"
-                    popupText="Unlike some vector art, my vector art is shaded, and I try to create depth and imersion." />
-                <Skills width="75%" buttonText="Digital art: 75%" closeButtonText="Close"
-                    popupText="I like drawing digitally " />-->
+                </li>
             </div>
-            <p>I have learned many different software. Some of them are listed below.</p>
-            <div class="progress-container">
-                <div class="button-container">
-                    <span style="width: 95%;" class="skill-button">blender 95%</span>
-                </div>
-                <div class="button-container">
-                    <span style="width: 85%;" class="skill-button">krita 85%</span>
-                </div>
-                <div class="button-container">
-                    <span style="width: 80%;" class="skill-button">inkscape 80%</span>
-                </div>
-                <div class="button-container">
-                    <span style="width: 60%;" class="skill-button">gimp 60%</span>
-                </div>
-                <div class="button-container">
-                    <span style="width: 50%;" class="skill-button">natron 50%</span>
-                </div>
-                <div class="button-container">
-                    <span style="width: 55%;" class="skill-button">kdenlive 55%</span>
-                </div>
-                <!--
-                <Skills width="95%" buttonText="blender: 95%" closeButtonText="Close"
-                    popupText="I have used Blender for more than 5 years, and can do almost anything in the program. My skills include modeling, texturing, lighting, architectuarl visulization, and more!" />
-                <Skills width="85%" buttonText="krita: 85%" closeButtonText="Close" popupText="Popup" />
-                <Skills width="80%" buttonText="inkscape: 80%" closeButtonText="Close" popupText="Popup" />
-                <Skills width="60%" buttonText="gimp: 60%" closeButtonText="Close" popupText="Popup" />
-                <Skills width="50%" buttonText="natron: 50%" closeButtonText="Close"
-                    popupText="I use Natron (Similar to Nuke or After Effects) for my compositing, and enjoy the node-based workflow. I also do some compositing in Blender." />
-
-                <Skills width="55%" buttonText="kdenlive: 55%" closeButtonText="Close" popupText="Popup" />-->
-            </div>
-            <!--<Button link="/skills" buttonText="more info" buttonColor="--purple" />-->
-            <a class="button" href="portfolio.html" style="background-color: var(--purple);">view portfolio</a>
-        </div>
-        <div class="yellow">
-            <h2 class="rounded-header" style="background-color: var(--pale-blue-dark);">projects</h2>
-            <div class="yellow">
-                <p>Some of the projects that I have worked on are:</p>
-                <div class="project-containers">
-                    <h2>supper froggy</h2>
-                    <p style="width: 100%;">Supper Froggy is a full length movie in development. Currently, I have
-                        completed about a minute and a half of footage, created in Blender.</p>
-                    <img class="image" src="Images/supper_froggy.png" alt="Scene from Supper Froggy" />
-                </div>
-                <div class="project-containers">
-                    <h2>737 MAX project</h2>
-                    <p style="width: 100%;">I am working on a 737 MAX for FlightGear. I have completed some of the
-                        modeling. It is still very much work in progress.</p>
-                    <img class="image" src="Images/efis_pannel.png" alt="Boeing 737 MAX EFIS pannel" />
-                </div>
-
-
-
-
-                <!--
-                <Projects projectTitle="supper froggy"
-                    projectDescription="Supper Froggy is a full length movie in development. Currently, I have completed about a minute and a half of footage, created in Blender."
-                    imageSource="/Images/supper_froggy.png" alt="Supper Froggy" />
-                <Projects projectTitle="my house"
-                    projectDescription="I have been working on a 3D version of my house. It is about fifty percent complete."
-                    imageSource="/Images/supper_froggy.png" alt="My house" />
-                <Projects projectTitle="737 max project"
-                    projectDescription="I have just started working on a 737 MAX for FlightGear"
-                    imageSource="/Images/supper_froggy.png" alt="737 MAX cockpit" />
-                <Button link="/skills" buttonText="view all projects" buttonColor="--green" />-->
-                <a class="button" href="portfolio.html" style="background-color: var(--blue); margin-bottom: 150px;">view all projects</a>
-            </div>
-        </div>
-        <div class="green">
-            <h2 class="rounded-header" style="background-color: var(--pale-green-dark);">software</h2>
-            <p>The links to the software I use are listed below. I am grateful
-            for the open-source community, whose tools empower me to create
-            without limits. To all the volunteers behind these amazing projects,
-            you have my deepest thanks.</p>
-            <a class="button" href="https://www.blender.org/" style="background-color: var(--green);">Blender</a>
-            <a class="button" href="https://inkscape.org/" style="background-color: var(--green);">Inkscape</a>
-            <a class="button" href="https://www.gimp.org/" style="background-color: var(--green);">GIMP</a>
-            <br>
-            <a class="button" href="https://krita.org/en/" style="background-color: var(--green);">Krita</a>
-            <a class="button" href="https://kdenlive.org/en/" style="background-color: var(--green);">Kdenlive</a>
-            <a class="button" href="https://natrongithub.github.io/" style="background-color: var(--green);">Natron</a>
-            <!--<Footer />-->
-            <footer class="footer">
-                <span class="copyright">&copy 2024 Austin Tallent All Rights Reserved</span>
-                <br />
-                <div class="footer-text">
-                    <i class="fa-brands fa-artstation" href="https://www.artstation.com/austin_tallent"></i>
-                </div>
-                <div class="footer-text">
-                    <i class="fa-solid fa-envelope"></i>
-                </div>
-            </footer>
         </div>
     </div>
 </body>
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
+</script>
+
+</html>
