@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Austin Tallent's Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="logo.jpg">
+    <link rel="icon" type="image/x-icon" href="logo.svg">
     <style>
         body {
             --background: #2C2621;
@@ -35,7 +35,7 @@
             --paragraph_weight: 300;
             --subtext_weight: 100;
             --h1_size: 58px;
-            --h2_size: 18px;
+            --h2_size: 30px;
             --h3_size: 16px;
             --paragraph_size: 28px;
             --subtext_size: 11px;
@@ -192,40 +192,48 @@
         }
 
         .image-slides {
-            width: 60vw;
+            width: 50vw;
             height: auto;
             position: relative;
             overflow: hidden;
         }
 
         .progress-bars {
-            width: 8px;
+            width: 30vw;
+            /* Adjusted width to accommodate text */
             height: 100%;
             display: flex;
             flex-direction: column;
             gap: 20px;
-            /* Space between progress bars */
+            /* Space between progress groups */
             margin: 0 20px;
             /* Space between image and progress bars */
             background-color: var(--background);
-            /* Background color for progress bars */
+        }
+
+        .progress-group {
+            display: flex;
+            align-items: center;
+            /* Align progress bar and header vertically */
+            gap: 20px;
+            /* Space between progress bar and header */
         }
 
         .progress-bar {
-            width: 100%;
-            height: 50px;
-            /* Default height for inactive progress bars */
+            width: 8px;
+            /* Width of the progress bar */
+            height: 100px;
+            /* Height of the progress bar */
             background-color: var(--background-3);
             position: relative;
             overflow: hidden;
             border-radius: 30px;
             transition: height 0.3s ease;
-            /* Smooth transition for height changes */
         }
 
         .progress-bar.active {
-            height: 100px;
-            /* Height for the active progress bar */
+            height: 150px;
+            /* Adjusted height for active progress bar */
         }
 
         .progress {
@@ -236,6 +244,30 @@
             top: 0;
             transition: height 5s linear;
             border-radius: 30px;
+        }
+
+        .header-slide {
+            flex: 1;
+            /* Allow the header to take up remaining space */
+        }
+
+        .text-slide {
+            display: none;
+            /* Hide all text slides by default */
+            font-family: var(--paragraph_font);
+            font-size: var(--paragraph_size);
+            font-weight: var(--paragraph_weight);
+            color: var(--text);
+        }
+
+        .text-slide.active {
+            display: block;
+            /* Show active text slide */
+        }
+
+        .progress-bar.active {
+            height: 200px;
+            /* Height for the active progress bar */
         }
 
         .text-content {
@@ -257,11 +289,6 @@
         .header-slide {
             margin-bottom: 20px;
             /* Add margin between header slides */
-        }
-
-        .text-slide {
-            display: none;
-            /* Hide all text slides by default */
         }
 
         .text-slide.active {
@@ -291,13 +318,18 @@
             object-fit: cover;
             border-radius: 30px;
         }
+        .collaborate{
+            text-align: center;
+            margin-top: 100px;
+            margin-bottom: 50px;
+        }
     </style>
 </head>
 
 <body>
     <div class="header">
         <div class="logo-container">
-            <img class="logo" src="logo.jpg" alt="Logo">
+            <img class="logo" src="logo.svg" alt="Logo">
         </div>
         <div class="nav">
             <a>Home</a>
@@ -321,58 +353,61 @@
             <img class="images" src="New_york.png" alt="Image 1">
         </div>
     </div>
-    <div class="slideshow">
-        <h1 style="text-align: center;">Let's collaborate!</h1>
-        <div class="slideshow-container">
-            <!-- Left Side: Image Slideshow -->
-            <div class="image-slides">
-                <div class="slide">
-                    <img src="mozart.jpg" alt="Slide 1">
+    <div class="collaborate">
+        <h1>Lets collaborate!</h1>
+        <p>Ready to bring your ideas to life? I'm excited to work with you!</p>
+    </div>
+    <div class="slideshow-container">
+        <!-- Left Side: Image Slideshow -->
+        <div class="image-slides">
+            <div class="slide">
+                <img src="mozart.jpg" alt="Slide 1">
+            </div>
+            <div class="slide">
+                <img src="piano.jpg" alt="Slide 2">
+            </div>
+            <div class="slide">
+                <img src="New_york.png" alt="Slide 3">
+            </div>
+        </div>
+
+        <!-- Progress Bars and Headers -->
+        <div class="progress-bars">
+            <!-- Group 1: Progress Bar and Header -->
+            <div class="progress-group">
+                <div class="progress-bar">
+                    <div class="progress"></div>
                 </div>
-                <div class="slide">
-                    <img src="piano.jpg" alt="Slide 2">
-                </div>
-                <div class="slide">
-                    <img src="New_york.png" alt="Slide 3">
+                <div class="header-slide">
+                    <h2>Header 1</h2>
+                    <div class="text-slide">
+                        <p>This is the text for Slide 1. It will only show when Slide 1 is active.</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Progress Bars -->
-            <div class="progress-bars">
+            <!-- Group 2: Progress Bar and Header -->
+            <div class="progress-group">
                 <div class="progress-bar">
                     <div class="progress"></div>
-                    <!-- <h2>Header 1</h2> -->
                 </div>
-                <div class="progress-bar">
-                    <div class="progress"></div>
-                    <!-- <h2>Header 2</h2> -->
-                </div>
-                <div class="progress-bar">
-                    <div class="progress"></div>
-                    <!-- <h2>Header 3</h2> -->
+                <div class="header-slide">
+                    <h2>Header 2</h2>
+                    <div class="text-slide">
+                        <p>This is the text for Slide 2. It will only show when Slide 2 is active.</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Right Side: Text Content -->
-            <div class="text-content">
-                <div class="headers">
-                    <div class="header-slide">
-                        <h2>Header 1</h2>
-                        <div class="text-slide">
-                            <p>This is the text for Slide 1. It will only show when Slide 1 is active.</p>
-                        </div>
-                    </div>
-                    <div class="header-slide">
-                        <h2>Header 2</h2>
-                        <div class="text-slide">
-                            <p>This is the text for Slide 2. It will only show when Slide 2 is active.</p>
-                        </div>
-                    </div>
-                    <div class="header-slide">
-                        <h2>Header 3</h2>
-                        <div class="text-slide">
-                            <p>This is the text for Slide 3. It will only show when Slide 3 is active.</p>
-                        </div>
+            <!-- Group 3: Progress Bar and Header -->
+            <div class="progress-group">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                <div class="header-slide">
+                    <h2>Header 3</h2>
+                    <div class="text-slide">
+                        <p>This is the text for Slide 3. It will only show when Slide 3 is active.</p>
                     </div>
                 </div>
             </div>
