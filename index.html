@@ -4,429 +4,430 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank you!</title>
+    <title>Austin Tallent's Portfolio</title>
     <link rel="icon" type="image/x-icon" href="logo.jpg">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            color: #ffffff;
-            margin: 0;
+            --background: #2C2621;
+            /* background: hsl(27, 15%, 15%)*/
+            --background-2: #202020;
+            /* background-2: hsl(0, 0%, 13%)*/
+            --background-3: #493F36;
+            /* background-3: hsl(0, 0%, 25%)*/
+            --primary: #E06F12;
+            /* primary: hsl(27, 85%, 47%)*/
+            --secondary: #12DE52;
+            /* secondary: hsl(139, 85%, 47%)*/
+            --text: #F5DECC;
+            /* text: hsl(27, 68%, 88%)*/
+            --subtext: #BFAEA1;
+            /* subtext: hsl(27, 19%, 69%)*/
+
+            /*Fonts*/
+            --h1_font: 'Monaspace Radon';
+            --h2_font: 'Monaspace Radon';
+            --h3_font: 'Monaspace Xenon';
+            --paragraph_font: 'Monaspace Xenon';
+            --subtext_font: 'Monaspace Xenon';
+            --h1_weight: normal;
+            --h2_weight: normal;
+            --h3_weight: bold;
+            --paragraph_weight: 300;
+            --subtext_weight: 100;
+            --h1_size: 58px;
+            --h2_size: 18px;
+            --h3_size: 16px;
+            --paragraph_size: 28px;
+            --subtext_size: 11px;
+
+            --transition: 0.2s cubic-bezier(0.85, 0, 0.15, 1);
+            --radius: 30px;
+            --text-shadow: 2px 2px 0 var(--background-2),
+                2px -2px 0 var(--background-2), -2px 2px 0 var(--background-2), -2px -2px 0 var(--background-2), 2px 0px 0 var(--background-2), 0px 2px 0 var(--background-2), -2px 0px 0 var(--background-2), 0px -2px 0 var(--background-2);
+
+
+            background-color: var(--background);
+            margin: 0 5vw;
         }
 
-        .glass {
-            /* remove background-image property */
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: inset 0 1px 1px 0 hsla(0, 0%, 100%, .15);
-            text-align: center;
-            width: 80%;
-            height: 90%;
-            margin: 0 auto;
-            z-index: 1;
-            position: relative;
-            overflow: hidden;
-            margin-top: 5vh;
+        h1 {
+            font-family: var(--h1_font);
+            font-size: var(--h1_size);
+            font-weight: var(--h1_weight);
+            color: var(--text);
         }
 
-        .glass-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
+        h2 {
+            font-family: var(--h2_font);
+            font-size: var(--h2_size);
+            font-weight: var(--h2_weight);
+            color: var(--text);
+        }
+
+        p {
+            font-family: var(--paragraph_font);
+            font-size: var(--paragraph_size);
+            font-weight: var(--paragraph_size);
+            color: var(--text);
+        }
+
+        .header {
             width: 100%;
-            height: 100%;
-            background-image: url(https://images.squarespace-cdn.com/content/v1/57472a58859fd08a23a38db7/1607368261278-XOXG6P7AHL2T7KFMIZTI/Summer-Season_Header_8VA.jpg);
-            background-size: cover;
-            filter: blur(40px);
-            z-index: -1;
-        }
-
-        .gradient-text {
-            background: linear-gradient(90deg, #345dff, #ff2424, #ffc209, #ff8717);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 80px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            font-weight: bold;
-            position: absolute;
-            top: 5%;
-            left: 5%;
-            animation: rotate 5s infinite;
-        }
-
-        @keyframes rotate {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            25% {
-                transform: rotate(1.5deg);
-            }
-
-            75% {
-                transform: rotate(-1.5deg);
-            }
-
-            100% {
-                transform: rotate(0deg);
-            }
-        }
-
-        .gradient-text-2 {
-            background: linear-gradient(45deg, #b9b9b9, #ffffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 35px;
-            margin-bottom: 20px;
-            text-shadow: 5px black;
-            position: absolute;
-            top: 17%;
-            left: 28%;
-        }
-
-        .gradient-text-3 {
-            background: linear-gradient(#ff6b6b, #f06595, #fcc419, #845ef7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 90px;
-            margin-bottom: 20px;
-            font-weight: bold;
-            position: absolute;
-            top: 15%;
-            left: 55%;
-            animation: pulse 5s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.01);
-            }
-
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .gradient-text-4 {
-            background: linear-gradient(-45deg, #a1a1a1, #a8a8a8, #979696);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 150px;
-            margin-bottom: 20px;
-            font-weight: bold;
-            top: 78%;
-            left: 12%;
-            position: absolute;
-            text-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
-        }
-
-        .gradient-text-5 {
-            background: linear-gradient(45deg, #ff6b6b, #f06595, #fcc419, #845ef7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 150px;
-            margin-bottom: 20px;
-            font-weight: bold;
-            top: 80%;
-            left: 60%;
-            position: absolute;
-            animation: blur 5s infinite;
-        }
-
-        @keyframes blur {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .content img {
-            width: 33%;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        .content p {
-            font-size: 1.3em;
-            color: white;
-            text-align: justify;
-            width: 40%;
-            left: 55%;
-            top: 30%;
-            position: absolute;
-            text-indent: 1em;
-        }
-
-        * {
-            box-sizing: border-box
-        }
-
-        /* Slideshow container */
-        .slideshow-container {
-            max-width: 1000px;
-            position: absolute;
-            margin: auto;
-            width: 40%;
-            left: 7%;
-            top: 30%;
-        }
-
-        /* Hide the images by default */
-        .mySlides {
-            display: none;
-        }
-
-        /* Next & previous buttons */
-        .prev,
-        .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            margin-top: -22px;
-            padding: 16px;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.6s ease;
-            border-radius: 0 25px 25px 0;
-            user-select: none;
-            left: 0;
-        }
-
-        /* Position the "next button" to the right */
-        .next {
-            border-radius: 25px 0 0 25px;
-            transform: translateX(29vw);
-        }
-
-        /* On hover, add a black background color with a little bit see-through */
-        .prev:hover,
-        .next:hover {
-            background-color: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(3px);
-            -webkit-backdrop-filter: blur(3px);
-        }
-
-        /* Caption text */
-        .text {
-            color: #f2f2f2;
-            font-size: 15px;
-            padding: 8px 12px;
-            position: absolute;
-            bottom: 8px;
-            width: 100%;
-            text-align: center;
-        }
-
-        /* Number text (1/3 etc) */
-        .numbertext {
-            color: #f2f2f2;
-            font-size: 12px;
-            padding: 8px 12px;
-            position: absolute;
-            top: 0;
-        }
-
-        /* The dots/bullets/indicators */
-        .dot {
-            cursor: pointer;
-            height: 15px;
-            width: 15px;
-            margin: 0 2px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.6s ease;
-            transform: translateY(15px);
-        }
-
-        .active,
-        .dot:hover {
-            background-color: #717171;
-        }
-
-        /* Fading animation */
-        .fade {
-            animation-name: fade;
-            animation-duration: 1.5s;
-        }
-
-        @keyframes fade {
-            from {
-                opacity: .4
-            }
-
-            to {
-                opacity: 1
-            }
-        }
-
-        .img {
-            box-shadow: inset 0 1px 1px 0 hsla(0, 0%, 100%, .15);
-        }
-
-        .bg {
-            width: 100%;
-            height: 100vh;
-            background-size: 300% 300%;
-            background-image: linear-gradient(45deg, #30435a 0%, #30435a 25%, #30435a 51%, #332824 100%);
-            -webkit-animation: AnimateBG 20s ease infinite;
-            animation: AnimateBG 20s ease infinite;
+            padding: 1vw 0;
             display: flex;
         }
 
-        @-webkit-keyframes AnimateBG {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
+        .logo-container {
+            width: 10vw;
         }
 
-        @keyframes AnimateBG {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
+        .logo {
+            height: 50px;
+            width: auto;
         }
 
-        ul {
-            font-size: 1.3em;
-            color: white;
-            text-align: justify;
-            width: 40%;
-            left: 55%;
-            top: 50%;
+        .nav {
+            width: 90vw;
+            text-align: end;
+            margin: auto;
+        }
+
+        .nav a {
+            text-decoration: none;
+            font-family: var(--h3_font);
+            font-weight: var(--h3_weight);
+            font-size: var(--h3_size);
+            color: var(--text);
+            padding: 0 10px;
+        }
+
+        .hello {
+            margin-top: 5vw;
+            display: flex;
+        }
+
+        .left {
+            width: 50vw;
+        }
+
+        .images {
+            width: 40vw;
+            border-radius: 30px;
+            margin-left: 5vw;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 2.5vw;
+        }
+
+        .button-primary {
+            border-radius: 30px;
+            background-image: linear-gradient(45deg,
+                    var(--primary) 25%,
+                    var(--background-2) 25%,
+                    var(--background-2) 50%,
+                    var(--primary) 50%,
+                    var(--primary) 75%,
+                    var(--background-2) 75%,
+                    var(--background-2));
+            background-size: 8px 8px;
+            border: 2px solid var(--primary);
+            box-shadow: 0px 2px 0px 0px var(--secondary);
+            color: var(--text);
+            border: 2px solid var(--primary);
+            text-shadow: var(--text-shadow);
+            font-family: var(--h1_font);
+            font-size: var(--paragraph_size);
+            font-weight: var(--h1_weight);
+            padding: 10px 16px;
+            transition: all var(--transition);
+        }
+
+        .button-primary:hover {
+            cursor: pointer;
+            background-image: linear-gradient(45deg,
+                    var(--primary) 25%,
+                    var(--primary) 25%,
+                    var(--primary) 50%,
+                    var(--primary) 50%,
+                    var(--primary) 75%,
+                    var(--primary) 75%,
+                    var(--primary));
+        }
+
+        .button-secondary {
+            border-radius: 30px;
+            background-color: var(--background-2);
+            border: 2px solid var(--primary);
+            box-shadow: 0px 2px 0px 0px var(--secondary);
+            color: var(--text);
+            border: 2px solid var(--primary);
+            font-family: var(--h1_font);
+            font-size: var(--paragraph_size);
+            font-weight: var(--h1_weight);
+            padding: 10px 16px;
+            transition: all var(--transition);
+        }
+
+        .button-secondary:hover {
+            cursor: pointer;
+            background-color: var(--primary);
+            text-shadow: var(--text-shadow);
+        }
+
+        .slideshow {
+            margin-top: 100px;
+        }
+
+
+        .slideshow-container {
+            display: flex;
+            gap: 20px;
+            /* Space between image and text */
+            width: 100%;
+            height: 500px;
+            /* Adjust height as needed */
+            margin-top: 20px;
+        }
+
+        .image-slides {
+            width: 60vw;
+            height: auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bars {
+            width: 8px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            /* Space between progress bars */
+            margin: 0 20px;
+            /* Space between image and progress bars */
+            background-color: var(--background);
+            /* Background color for progress bars */
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 50px;
+            /* Default height for inactive progress bars */
+            background-color: var(--background-3);
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+            transition: height 0.3s ease;
+            /* Smooth transition for height changes */
+        }
+
+        .progress-bar.active {
+            height: 100px;
+            /* Height for the active progress bar */
+        }
+
+        .progress {
+            width: 100%;
+            height: 0;
+            background-color: var(--primary);
             position: absolute;
+            top: 0;
+            transition: height 5s linear;
+            border-radius: 30px;
         }
-        h3{
-            font-size: 1.5em;
-            left: 55%;
-            top: 45%;
+
+        .text-content {
+            width: 50%;
+            height: 100%;
+            /* Adjust width as needed */
+            /* display: flex;
+            flex-direction: column;
+            justify-content: center; */
+            margin-left: 24px;
+            /* Add margin to account for progress bar width */
+        }
+
+        .headers {
+            margin-bottom: 20px;
+            /* Add margin between headers and text slides */
+        }
+
+        .header-slide {
+            margin-bottom: 20px;
+            /* Add margin between header slides */
+        }
+
+        .text-slide {
+            display: none;
+            /* Hide all text slides by default */
+        }
+
+        .text-slide.active {
+            display: block;
+            /* Show active text slide */
+        }
+
+        .slide {
+            display: none;
+            /* Hide all slides by default */
             position: absolute;
+            /* Position slides absolutely to stack them */
+            width: 100%;
+            /* Ensure slides take up the full width */
+            height: 100%;
+            /* Ensure slides take up the full height */
+        }
+
+        .slide.active {
+            display: block;
+            /* Show the active slide */
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 30px;
         }
     </style>
 </head>
 
 <body>
-    <div class="bg">
+    <div class="header">
+        <div class="logo-container">
+            <img class="logo" src="logo.jpg" alt="Logo">
+        </div>
+        <div class="nav">
+            <a>Home</a>
+            <a>Gallery</a>
+        </div>
+    </div>
+    <div class="hello">
+        <div class="left">
+            <h1>Hi, I'm Austin Tallent</h1>
+            <p> I'm a
+                creative professional specializing in architectural visualization, ready to
+                bring your projects to life. My expertise extends beyond stunning visuals,
+                incorporating skills in art and design Let's connect and discuss how I can help!
+            </p>
+            <div class="button-container">
+                <button class="button-primary">Get in touch</button>
+                <button class="button-secondary">View resume</button>
+            </div>
+        </div>
+        <div class="right">
+            <img class="images" src="New_york.png" alt="Image 1">
+        </div>
+    </div>
+    <div class="slideshow">
+        <h1 style="text-align: center;">Let's collaborate!</h1>
+        <div class="slideshow-container">
+            <!-- Left Side: Image Slideshow -->
+            <div class="image-slides">
+                <div class="slide">
+                    <img src="mozart.jpg" alt="Slide 1">
+                </div>
+                <div class="slide">
+                    <img src="piano.jpg" alt="Slide 2">
+                </div>
+                <div class="slide">
+                    <img src="New_york.png" alt="Slide 3">
+                </div>
+            </div>
 
+            <!-- Progress Bars -->
+            <div class="progress-bars">
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                    <!-- <h2>Header 1</h2> -->
+                </div>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                    <!-- <h2>Header 2</h2> -->
+                </div>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                    <!-- <h2>Header 3</h2> -->
+                </div>
+            </div>
 
-        <div class="glass">
-            <div class="glass-bg"></div>
-            <div class="gradient-text">thank you</div>
-            <div class="gradient-text-2">for sending me to</div>
-            <div class="gradient-text-3">Sun Valley</div>
-            <div class="content">
-
-                <!-- Slideshow container -->
-                <div class="slideshow-container">
-
-                    <!-- Full-width images with number and caption text -->
-                    <div class="mySlides fade">
-                        <div class="numbertext">1 / 3</div>
-                        <img src="https://images.squarespace-cdn.com/content/v1/57472a58859fd08a23a38db7/1607368261278-XOXG6P7AHL2T7KFMIZTI/Summer-Season_Header_8VA.jpg"
-                            style="width:100%; ">
-                        <div class="text">The Sun Valley Symphony</div>
+            <!-- Right Side: Text Content -->
+            <div class="text-content">
+                <div class="headers">
+                    <div class="header-slide">
+                        <h2>Header 1</h2>
+                        <div class="text-slide">
+                            <p>This is the text for Slide 1. It will only show when Slide 1 is active.</p>
+                        </div>
                     </div>
-
-                    <div class="mySlides fade">
-                        <div class="numbertext">2 / 3</div>
-                        <img src="piano.jpg" style="width:100%">
-                        <div class="text">All the piano students</div>
+                    <div class="header-slide">
+                        <h2>Header 2</h2>
+                        <div class="text-slide">
+                            <p>This is the text for Slide 2. It will only show when Slide 2 is active.</p>
+                        </div>
                     </div>
-
-                    <div class="mySlides fade">
-                        <div class="numbertext">3 / 3</div>
-                        <img src="mozart.jpg" style="width:100%">
-                        <div class="text">My chamber music group</div>
-                    </div>
-
-                    <!-- Next and previous buttons -->
-                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-                    <!-- The dots/circles -->
-                    <div style="text-align:center">
-                        <span class="dot" onclick="currentSlide(1)"></span>
-                        <span class="dot" onclick="currentSlide(2)"></span>
-                        <span class="dot" onclick="currentSlide(3)"></span>
+                    <div class="header-slide">
+                        <h2>Header 3</h2>
+                        <div class="text-slide">
+                            <p>This is the text for Slide 3. It will only show when Slide 3 is active.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="gradient-text-4">Love</div>
-                <div class="gradient-text-5">Austin</div>
-                <p>My favorite parts of being at Sun Valley were working on
-                    chamber music, piano ensembles, going to the Sun Valley Symphony
-                    concerts, and talking with friends from last year. I also liked
-                    getting to know the new people this year.
-                </p>
-                <h3>I performed the following:</h3>
-                <ul>
-                    <li>Mozart Piano quartet in G minor</li>
-                    <li>Carmen Overture</li>
-                    <li>Luconia Malagonia</li>
-                    <li>Stars and Stripes Forever</li>
-                </ul>
-
-                </li>
             </div>
         </div>
     </div>
 </body>
 <script>
-    let slideIndex = 1;
-    showSlides(slideIndex);
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const textSlides = document.querySelectorAll('.text-slide');
+    const progressBars = document.querySelectorAll('.progress-bar');
 
-    // Next/previous controls
-    function plusSlides(n) {
-        showSlides(slideIndex += n);
+    function showSlide(index) {
+        // Hide all slides, text, and progress bars
+        slides.forEach((slide, i) => {
+            slide.classList.remove('active');
+            textSlides[i].classList.remove('active');
+            progressBars[i].classList.remove('active');
+        });
+
+        // Show the active slide, text, and progress bar
+        slides[index].classList.add('active');
+        textSlides[index].classList.add('active');
+        progressBars[index].classList.add('active');
+
+        // Reset the progress bar
+        const progress = progressBars[index].querySelector('.progress');
+        progress.style.transition = 'none'; // Disable transition for reset
+        progress.style.height = '0';
+
+        // Force a reflow to apply the reset
+        void progress.offsetHeight;
+
+        // Re-enable transition and animate the progress bar
+        progress.style.transition = 'height 5s linear';
+        progress.style.height = '100%';
+
+        // Add an event listener to reset the progress bar after the animation completes
+        const handleTransitionEnd = () => {
+            progress.style.transition = 'none'; // Disable transition for reset
+            progress.style.height = '0'; // Reset height to 0
+            progress.removeEventListener('transitionend', handleTransitionEnd); // Remove the listener
+        };
+
+        progress.addEventListener('transitionend', handleTransitionEnd, { once: true });
     }
 
-    // Thumbnail image controls
-    function currentSlide(n) {
-        showSlides(slideIndex = n);
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
     }
 
-    function showSlides(n) {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        let dots = document.getElementsByClassName("dot");
-        if (n > slides.length) { slideIndex = 1 }
-        if (n < 1) { slideIndex = slides.length }
-        for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex - 1].style.display = "block";
-        dots[slideIndex - 1].className += " active";
-    }
+    // Automatically change slides every 5 seconds
+    setInterval(nextSlide, 5000);
+
+    // Show the first slide initially
+    showSlide(currentSlide);
 </script>
-
-</html>
