@@ -109,9 +109,6 @@
             padding: 0 10px;
         }
 
-        .nav a:hover{
-            text-decoration: underline;
-        }
         .hello {
             margin-top: 5vw;
             display: flex;
@@ -339,43 +336,122 @@
             margin-bottom: 50px;
         }
 
-        /* Gallery Styles */
-        .gallery {
-            margin-top: 100px;
-            text-align: center;
+        /* Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
         }
 
-        .gallery h2 {
+        .filter-button {
+            background-color: var(--background-2);
+            border: 2px solid var(--primary);
+            color: var(--text);
+            font-family: var(--h3_font);
+            font-size: var(--h3_size);
+            font-weight: var(--h3_weight);
+            padding: 10px 20px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .filter-button:hover {
+            background-color: var(--primary);
+            color: var(--background);
+        }
+
+        .filter-button.active {
+            background-color: var(--primary);
+            color: var(--background);
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 0 5vw;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: transform var(--transition);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: var(--radius);
+            transition: transform var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Modal Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--background);
+            padding: 20px;
+            border-radius: var(--radius);
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius);
+            margin-bottom: 20px;
+        }
+
+        .modal-content h2 {
             font-family: var(--h2_font);
             font-size: var(--h2_size);
+            color: var(--text);
+            margin-bottom: 10px;
+        }
+
+        .modal-content p {
+            font-family: var(--paragraph_font);
+            font-size: var(--paragraph_size);
             color: var(--text);
             margin-bottom: 20px;
         }
 
-        .gallery-grid {
-            display: flex;
-            columns: 3;
-            /* grid-template-columns: repeat(3, 1fr); */
-            gap: 2.5vw;
-            margin-bottom: 50px;
-
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            color: var(--text);
+            cursor: pointer;
+            transition: color var(--transition);
         }
 
-        .gallery-column {
-            width: calc(90vw / 3);
-            margin-bottom: 2.5vw;
-        }
-
-        .gallery-grid img {
-            width: 100%;
-            height: auto;
-            border-radius: var(--radius);
-            transition: transform var(--transition);
-            margin-bottom: 2.5vw;
-        }
-
-        .gallery-grid img:hover {
-            transform: scale(1.05);
+        .close:hover {
+            color: var(--primary);
         }
 
         .footer {
@@ -449,106 +525,59 @@
             <a href="/About.html">About</a>
         </div>
     </div>
-    <div class="hello">
-        <div class="left">
-            <h1>Hi, I'm Austin Tallent</h1>
-            <p> I'm a
-                creative professional specializing in architectural visualization, ready to
-                bring your projects to life. My expertise extends beyond stunning visuals,
-                incorporating skills in art and design Let's connect and discuss how I can help!
-            </p>
-            <div class="button-container">
-                <button class="button-primary">Get in touch</button>
-                <button class="button-secondary">View resume</button>
-            </div>
-        </div>
-        <div class="right">
-            <img class="images" src="New_york.png" alt="Image 1">
-        </div>
-    </div>
-    <div class="collaborate">
-        <h1>Lets collaborate!</h1>
-        <p>Ready to bring your ideas to life? I'm excited to work with you!
-        </p>
-    </div>
-    <div class="slideshow-container">
-        <!-- Left Side: Image Slideshow -->
-        <div class="image-slides">
-            <div class="slide">
-                <img src="mozart.jpg" alt="Slide 1">
-            </div>
-            <div class="slide">
-                <img src="piano.jpg" alt="Slide 2">
-            </div>
-            <div class="slide">
-                <img src="New_york.png" alt="Slide 3">
-            </div>
-        </div>
 
-        <!-- Progress Bars and Headers -->
-        <div class="progress-bars">
-            <!-- Group 1: Progress Bar and Header -->
-            <div class="progress-group">
-                <div class="progress-bar">
-                    <div class="progress"></div>
-                </div>
-                <div class="header-slide">
-                    <h2>Header 1</h2>
-                    <div class="text-slide">
-                        <p>This is the text for Slide 1. It will only show when Slide 1 is active.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Group 2: Progress Bar and Header -->
-            <div class="progress-group">
-                <div class="progress-bar">
-                    <div class="progress"></div>
-                </div>
-                <div class="header-slide">
-                    <h2>Header 2</h2>
-                    <div class="text-slide">
-                        <p>This is the text for Slide 2. It will only show when Slide 2 is active.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Group 3: Progress Bar and Header -->
-            <div class="progress-group">
-                <div class="progress-bar">
-                    <div class="progress"></div>
-                </div>
-                <div class="header-slide">
-                    <h2>Header 3</h2>
-                    <div class="text-slide">
-                        <p>This is the text for Slide 3. It will only show when Slide 3 is active.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- Gallery Section -->
     <div class="gallery">
-        <h1>Sample gallery</h1>
-        <div class="gallery-grid">
-            <div class="gallery-column">
-                <img src="mozart.jpg" alt="Gallery Image 1">
-                <img src="piano.jpg" alt="Gallery Image 2">
-            </div>
-            <div class="gallery-column">
-                <img src="New_york.png" alt="Gallery Image 3">
-                <img src="mozart.jpg" alt="Gallery Image 4">
-            </div>
-            <div class="gallery-column">
-                <img src="piano.jpg" alt="Gallery Image 5">
-                <img src="New_york.png" alt="Gallery Image 6">
-            </div>
+        <h1>Gallery</h1>
+
+        <!-- Filter Buttons -->
+        <div class="filter-buttons">
+            <button class="filter-button active" data-filter="all">All</button>
+            <button class="filter-button" data-filter="architecture">Architectural Visualizations</button>
+            <button class="filter-button" data-filter="art">Art & Design</button>
+            <button class="filter-button" data-filter="personal">Personal Projects</button>
         </div>
-        <button class="button-primary">View Full Gallery</button>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid">
+            <!-- Architectural Visualizations -->
+            <div class="gallery-item architecture"
+                onclick="openModal('mozart.jpg', 'Architectural Visualization 1', 'This is a stunning visualization of a modern building.')">
+                <img src="mozart.jpg" alt="Architectural Visualization 1">
+            </div>
+            <div class="gallery-item architecture"
+                onclick="openModal('piano.jpg', 'Architectural Visualization 2', 'A futuristic design concept for urban spaces.')">
+                <img src="piano.jpg" alt="Architectural Visualization 2">
+            </div>
+
+            <!-- Art & Design -->
+            <div class="gallery-item art"
+                onclick="openModal('New_york.png', 'Artwork 1', 'A vibrant piece inspired by urban landscapes.')">
+                <img src="New_york.png" alt="Artwork 1">
+            </div>
+
+            <!-- Personal Projects -->
+            <div class="gallery-item personal"
+                onclick="openModal('mozart.jpg', 'Personal Project 1', 'A creative exploration of light and shadow.')">
+                <img src="mozart.jpg" alt="Personal Project 1">
+            </div>
+            <!-- Add more images as needed -->
+        </div>
     </div>
+
+    <!-- Modal for Image Information -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img id="modalImage" src="" alt="Modal Image">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
     <footer class="footer">
         <div class="footer-content">
-            <!-- Social Media Links -->
             <div class="social-links">
                 <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
                     <i class="fab fa-linkedin"></i>
@@ -563,65 +592,62 @@
                     <i class="fas fa-envelope"></i>
                 </a>
             </div>
-
-            <!-- Footer Text -->
             <div class="footer-text">
                 <span class="subtext">&copy; 2025 Austin Tallent. All rights reserved.</span>
             </div>
         </div>
     </footer>
-
-
 </body>
 <script>
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const textSlides = document.querySelectorAll('.text-slide');
-    const progressBars = document.querySelectorAll('.progress-bar');
+    // Filter Gallery Items
+const filterButtons = document.querySelectorAll(".filter-button");
+const galleryItems = document.querySelectorAll(".gallery-item");
 
-    function showSlide(index) {
-        // Hide all slides, text, and progress bars
-        slides.forEach((slide, i) => {
-            slide.classList.remove('active');
-            textSlides[i].classList.remove('active');
-            progressBars[i].classList.remove('active');
+filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+        // Remove active class from all buttons
+        filterButtons.forEach((btn) => btn.classList.remove("active"));
+        // Add active class to the clicked button
+        button.classList.add("active");
+
+        // Get the filter value from the button's data-filter attribute
+        const filter = button.getAttribute("data-filter");
+
+        // Show or hide gallery items based on the filter
+        galleryItems.forEach((item) => {
+            if (filter === "all" || item.classList.contains(filter)) {
+                item.style.display = "block";
+            } else {
+                item.style.display = "none";
+            }
         });
+    });
+});
 
-        // Show the active slide, text, and progress bar
-        slides[index].classList.add('active');
-        textSlides[index].classList.add('active');
-        progressBars[index].classList.add('active');
+// Modal Functionality
+function openModal(imageSrc, title, description) {
+    const modal = document.getElementById("imageModal");
+    const modalImage = document.getElementById("modalImage");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalDescription = document.getElementById("modalDescription");
 
-        // Reset the progress bar
-        const progress = progressBars[index].querySelector('.progress');
-        progress.style.transition = 'none'; // Disable transition for reset
-        progress.style.height = '0';
+    modalImage.src = imageSrc;
+    modalTitle.textContent = title;
+    modalDescription.textContent = description;
 
-        // Force a reflow to apply the reset
-        void progress.offsetHeight;
+    modal.style.display = "flex";
+}
 
-        // Re-enable transition and animate the progress bar
-        progress.style.transition = 'height 5s linear';
-        progress.style.height = '100%';
+function closeModal() {
+    const modal = document.getElementById("imageModal");
+    modal.style.display = "none";
+}
 
-        // Add an event listener to reset the progress bar after the animation completes
-        const handleTransitionEnd = () => {
-            progress.style.transition = 'none'; // Disable transition for reset
-            progress.style.height = '0'; // Reset height to 0
-            progress.removeEventListener('transitionend', handleTransitionEnd); // Remove the listener
-        };
-
-        progress.addEventListener('transitionend', handleTransitionEnd, { once: true });
+// Close modal when clicking outside the modal content
+window.onclick = function (event) {
+    const modal = document.getElementById("imageModal");
+    if (event.target === modal) {
+        modal.style.display = "none";
     }
-
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
-    }
-
-    // Automatically change slides every 5 seconds
-    setInterval(nextSlide, 5000);
-
-    // Show the first slide initially
-    showSlide(currentSlide);
+};
 </script>
