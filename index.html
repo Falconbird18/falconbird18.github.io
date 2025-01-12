@@ -21,10 +21,13 @@
             <a href="./Gallery.html">Gallery</a>
             <a href="./resume.html">Resume</a>
             <a href="./About.html">About</a>
-            <!-- Add the toggle switch here -->
+            <!-- Add the toggle switch with icons -->
             <label class="switch">
                 <input type="checkbox" id="theme-toggle">
-                <span class="slider round"></span>
+                <span class="slider round">
+                    <i class="fas fa-sun light-icon"></i>
+                    <i class="fas fa-moon dark-icon"></i>
+                </span>
             </label>
         </div>
     </div>
@@ -107,23 +110,23 @@
         </div>
     </div>
     <!-- Gallery Section -->
-    <div class="gallery">
+    <div class="small-gallery">
         <h1>Sample gallery</h1>
-        <div class="gallery-grid">
-            <div class="gallery-column">
+        <div class="small-gallery-grid">
+            <div class="small-gallery-column">
                 <img src="mozart.jpg" alt="Gallery Image 1">
                 <img src="piano.jpg" alt="Gallery Image 2">
             </div>
-            <div class="gallery-column">
+            <div class="small-gallery-column">
                 <img src="New_york.png" alt="Gallery Image 3">
                 <img src="mozart.jpg" alt="Gallery Image 4">
             </div>
-            <div class="gallery-column">
+            <div class="small-gallery-column">
                 <img src="piano.jpg" alt="Gallery Image 5">
                 <img src="New_york.png" alt="Gallery Image 6">
             </div>
         </div>
-        <button class="button-primary">View Full Gallery</button>
+        <button class="button-primary" onclick="window.location.href='./Gallery.html'">View Full Gallery</button>
     </div>
     <footer class="footer">
         <div class="footer-content">

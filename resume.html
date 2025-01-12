@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resume</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
         .resume-container {
@@ -33,6 +34,14 @@
             <a href="./Gallery.html">Gallery</a>
             <a href="./resume.html">Resume</a>
             <a href="./About.html">About</a>
+            <!-- Add the toggle switch with icons -->
+            <label class="switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider round">
+                    <i class="fas fa-sun light-icon"></i>
+                    <i class="fas fa-moon dark-icon"></i>
+                </span>
+            </label>
         </div>
     </div>
     <div class="resume-container">
@@ -65,4 +74,28 @@
         </div>
     </footer>
 </body>
+<script>
+
+    // Theme Toggle Script
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Check for saved theme in localStorage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        body.classList.add(savedTheme);
+        themeToggle.checked = savedTheme === 'dark-mode';
+    }
+
+    // Toggle theme on switch click
+    themeToggle.addEventListener('change', () => {
+        if (themeToggle.checked) {
+            body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark-mode');
+        } else {
+            body.classList.remove('dark-mode');
+            localStorage.setItem('theme', 'light-mode');
+        }
+    });
+</script>
 </html>
