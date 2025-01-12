@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Austin Tallent</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <style>
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <a href="index.html">
+                <img class="logo" src="logo.svg" alt="Logo">
+            </a>
+        </div>
+        <div class="nav">
+            <a href="./Gallery.html">Gallery</a>
+            <a href="./resume.html">Resume</a>
+            <a href="./About.html">About</a>
+        </div>
+    </div>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>About Me</h1>
+        <p>Hi, I'm Austin Tallent. I'm a creative professional specializing in architectural visualization, art, and
+            design. Here's a glimpse into my journey so far.</p>
+    </div>
+
+    <!-- Timeline Section -->
+    <div class="timeline">
+        <!-- Card 1 -->
+        <div class="card left fade-in">
+            <i class="fas fa-paint-brush"></i>
+            <h2>Early Beginnings</h2>
+            <p>My passion for art and design started at a young age. I spent countless hours sketching, painting, and
+                exploring creative mediums.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card right fade-in">
+            <i class="fas fa-graduation-cap"></i>
+            <h2>Education</h2>
+            <p>I pursued formal education in architecture and design, honing my skills in 3D modeling, rendering, and
+                visualization.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card left fade-in">
+            <i class="fas fa-building"></i>
+            <h2>Professional Career</h2>
+            <p>I've worked on numerous projects, bringing architectural visions to life through stunning visuals and
+                innovative designs.</p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card right fade-in">
+            <i class="fas fa-lightbulb"></i>
+            <h2>Creative Philosophy</h2>
+            <p>I believe in blending art and technology to create immersive experiences that inspire and captivate
+                audiences.</p>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="card left fade-in">
+            <i class="fas fa-globe"></i>
+            <h2>Future Goals</h2>
+            <p>I aim to push the boundaries of architectural visualization and explore new ways to integrate
+                storytelling into my work.</p>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="card right fade-in">
+            <i class="fas fa-music"></i>
+            <h2>Other Interests</h2>
+            <p>Outside of work, I enjoy playing music, exploring nature, and experimenting with new creative tools and
+                technologies.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Social Media Links -->
+            <div class="social-links">
+                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="mailto:your.email@example.com" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+
+            <!-- Footer Text -->
+            <div class="footer-text">
+                <span class="subtext">&copy; 2025 Austin Tallent. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+    <!-- JavaScript for Scroll Animations -->
+    <script>
+        // Scroll Animations for Timeline Cards
+        const cards = document.querySelectorAll('.card');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        cards.forEach((card) => {
+            observer.observe(card);
+        });
+
+        // Interactive Gallery
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        galleryItems.forEach((item) => {
+            item.addEventListener('click', () => {
+                const imageSrc = item.getAttribute('data-image');
+                openModal(imageSrc);
+            });
+        });
+
+        // Modal Functionality
+        function openModal(imageSrc) {
+            const modal = document.createElement('div');
+            modal.classList.add('modal');
+
+            const modalContent = document.createElement('div');
+            modalContent.classList.add('modal-content');
+
+            const modalImage = document.createElement('img');
+            modalImage.src = imageSrc;
+            modalImage.alt = 'Artwork';
+
+            const closeButton = document.createElement('span');
+            closeButton.classList.add('close');
+            closeButton.innerHTML = '&times;';
+
+            modalContent.appendChild(modalImage);
+            modalContent.appendChild(closeButton);
+            modal.appendChild(modalContent);
+            document.body.appendChild(modal);
+
+            // Close Modal
+            closeButton.addEventListener('click', () => {
+                modal.remove();
+            });
+
+            // Close Modal on Outside Click
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+        }
+
+        // Add Modal Styles Dynamically
+        const style = document.createElement('style');
+        style.innerHTML = `
+    .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .modal-content {
+        position: relative;
+        background-color: #2c2621;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 90%;
+        max-height: 90%;
+        overflow: auto;
+    }
+
+    .modal-content img {
+        max-width: 100%;
+        max-height: 80vh;
+        border-radius: 10px;
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 24px;
+        color: #e06f12;
+        cursor: pointer;
+    }
+
+    .close:hover {
+        color: #12de52;
+    }
+`;
+        document.head.appendChild(style);
+    </script>
+</body>
+
+</html>

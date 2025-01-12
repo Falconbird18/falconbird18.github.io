@@ -7,108 +7,8 @@
     <title>Austin Tallent's Portfolio</title>
     <link rel="icon" type="image/x-icon" href="logo.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
     <style>
-        body {
-            --background: #2C2621;
-            /* background: hsl(27, 15%, 15%)*/
-            --background-2: #202020;
-            /* background-2: hsl(0, 0%, 13%)*/
-            --background-3: #493F36;
-            /* background-3: hsl(0, 0%, 25%)*/
-            --primary: #E06F12;
-            /* primary: hsl(27, 85%, 47%)*/
-            --secondary: #12DE52;
-            /* secondary: hsl(139, 85%, 47%)*/
-            --text: #F5DECC;
-            /* text: hsl(27, 68%, 88%)*/
-            --subtext: #BFAEA1;
-            /* subtext: hsl(27, 19%, 69%)*/
-
-            /*Fonts*/
-            --h1_font: 'Monaspace Radon';
-            --h2_font: 'Monaspace Radon';
-            --h3_font: 'Monaspace Xenon';
-            --paragraph_font: 'Monaspace Xenon';
-            --subtext_font: 'Monaspace Xenon';
-            --h1_weight: normal;
-            --h2_weight: normal;
-            --h3_weight: bold;
-            --paragraph_weight: 300;
-            --subtext_weight: 100;
-            --h1_size: 58px;
-            --h2_size: 30px;
-            --h3_size: 28px;
-            --paragraph_size: 28px;
-            --subtext_size: 18px;
-
-            --transition: 0.2s cubic-bezier(0.85, 0, 0.15, 1);
-            --radius: 30px;
-            --text-shadow: 2px 2px 0 var(--background-2),
-                2px -2px 0 var(--background-2), -2px 2px 0 var(--background-2), -2px -2px 0 var(--background-2), 2px 0px 0 var(--background-2), 0px 2px 0 var(--background-2), -2px 0px 0 var(--background-2), 0px -2px 0 var(--background-2);
-
-
-            background-color: var(--background);
-            margin: 0 5vw;
-        }
-
-        h1 {
-            font-family: var(--h1_font);
-            font-size: var(--h1_size);
-            font-weight: var(--h1_weight);
-            color: var(--text);
-        }
-
-        h2 {
-            font-family: var(--h2_font);
-            font-size: var(--h2_size);
-            font-weight: var(--h2_weight);
-            color: var(--text);
-        }
-
-        p {
-            font-family: var(--paragraph_font);
-            font-size: var(--paragraph_size);
-            font-weight: var(--paragraph_weight);
-            color: var(--text);
-        }
-
-        .subtext {
-            font-family: var(--subtext_font);
-            font-size: var(--subtext_size);
-            font-weight: var(--subtext_weight);
-            color: var(--text);
-        }
-
-        .header {
-            width: 100%;
-            padding: 1vw 0;
-            display: flex;
-        }
-
-        .logo-container {
-            width: 10vw;
-        }
-
-        .logo {
-            height: 50px;
-            width: auto;
-        }
-
-        .nav {
-            width: 90vw;
-            text-align: end;
-            margin: auto;
-        }
-
-        .nav a {
-            text-decoration: none;
-            font-family: var(--h3_font);
-            font-weight: var(--h3_weight);
-            font-size: var(--h3_size);
-            color: var(--text);
-            padding: 0 10px;
-        }
-
         .hello {
             margin-top: 5vw;
             display: flex;
@@ -517,12 +417,14 @@
 <body>
     <div class="header">
         <div class="logo-container">
-            <img class="logo" src="logo.svg" alt="Logo">
+            <a href="index.html">
+                <img class="logo" src="logo.svg" alt="Logo">
+            </a>
         </div>
         <div class="nav">
             <a href="./Gallery.html">Gallery</a>
-            <a href="/.resume.html">Resume</a>
-            <a href="/About.html">About</a>
+            <a href="./resume.html">Resume</a>
+            <a href="./About.html">About</a>
         </div>
     </div>
 

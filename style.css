@@ -1,0 +1,712 @@
+        body.dark-mode {
+            --background: #2C2621;
+            /* background: hsl(27, 15%, 15%)*/
+            --background-2: #202020;
+            /* background-2: hsl(0, 0%, 13%)*/
+            --background-3: #493F36;
+            /* background-3: hsl(0, 0%, 25%)*/
+            --primary: #E06F12;
+            /* primary: hsl(27, 85%, 47%)*/
+            --secondary: #12de52;
+            /* secondary: hsl(139, 85%, 47%)*/
+            --text: #F5DECC;
+            /* text: hsl(27, 68%, 88%)*/
+            --subtext: #BFAEA1;
+            /* subtext: hsl(27, 19%, 69%)*/
+
+            /*Fonts*/
+            --h1_font: 'Monaspace Radon';
+            --h2_font: 'Monaspace Radon';
+            --h3_font: 'Monaspace Xenon';
+            --paragraph_font: 'Monaspace Xenon';
+            --subtext_font: 'Monaspace Xenon';
+            --h1_weight: normal;
+            --h2_weight: normal;
+            --h3_weight: bold;
+            --paragraph_weight: 300;
+            --subtext_weight: 100;
+            --h1_size: 58px;
+            --h2_size: 30px;
+            --h3_size: 28px;
+            --paragraph_size: 28px;
+            --subtext_size: 18px;
+
+            --transition: 0.2s cubic-bezier(0.85, 0, 0.15, 1);
+            --radius: 30px;
+            --text-shadow: 2px 2px 0 var(--background-2),
+                2px -2px 0 var(--background-2), -2px 2px 0 var(--background-2), -2px -2px 0 var(--background-2), 2px 0px 0 var(--background-2), 0px 2px 0 var(--background-2), -2px 0px 0 var(--background-2), 0px -2px 0 var(--background-2);
+            --shadow: 0px 2px 0px 0px var(--secondary);
+
+
+            background-color: var(--background);
+            margin: 0 5vw;
+        }
+
+
+        body {
+            --background: #FFF;
+            /* background: hsl(27, 15%, 15%)*/
+            --background-2: #202020;
+            /* background-2: hsl(0, 0%, 13%)*/
+            --background-3: #493F36;
+            /* background-3: hsl(0, 0%, 25%)*/
+            --primary: #E06F12;
+            /* primary: hsl(27, 85%, 47%)*/
+            --secondary: #12de52;
+            /* secondary: hsl(139, 85%, 47%)*/
+            --text: #F5DECC;
+            /* text: hsl(27, 68%, 88%)*/
+            --subtext: #BFAEA1;
+            /* subtext: hsl(27, 19%, 69%)*/
+
+            /*Fonts*/
+            --h1_font: 'Monaspace Radon';
+            --h2_font: 'Monaspace Radon';
+            --h3_font: 'Monaspace Xenon';
+            --paragraph_font: 'Monaspace Xenon';
+            --subtext_font: 'Monaspace Xenon';
+            --h1_weight: normal;
+            --h2_weight: normal;
+            --h3_weight: bold;
+            --paragraph_weight: 300;
+            --subtext_weight: 100;
+            --h1_size: 58px;
+            --h2_size: 30px;
+            --h3_size: 28px;
+            --paragraph_size: 28px;
+            --subtext_size: 18px;
+
+            --transition: 0.2s cubic-bezier(0.85, 0, 0.15, 1);
+            --radius: 30px;
+            --text-shadow: 2px 2px 0 var(--background-2),
+                2px -2px 0 var(--background-2), -2px 2px 0 var(--background-2), -2px -2px 0 var(--background-2), 2px 0px 0 var(--background-2), 0px 2px 0 var(--background-2), -2px 0px 0 var(--background-2), 0px -2px 0 var(--background-2);
+            --shadow: 0px 2px 0px 0px var(--secondary);
+
+
+            background-color: var(--background);
+            margin: 0 5vw;
+        }
+
+        h1 {
+            font-family: var(--h1_font);
+            font-size: var(--h1_size);
+            font-weight: var(--h1_weight);
+            color: var(--text);
+        }
+
+        h2 {
+            font-family: var(--h2_font);
+            font-size: var(--h2_size);
+            font-weight: var(--h2_weight);
+            color: var(--text);
+        }
+
+        p {
+            font-family: var(--paragraph_font);
+            font-size: var(--paragraph_size);
+            font-weight: var(--paragraph_weight);
+            color: var(--text);
+        }
+
+        .subtext {
+            font-family: var(--subtext_font);
+            font-size: var(--subtext_size);
+            font-weight: var(--subtext_weight);
+            color: var(--text);
+        }
+
+        .header {
+            width: 100%;
+            padding: 1vw 0;
+            display: flex;
+        }
+
+        .logo-container {
+            width: 10vw;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav {
+            width: 90vw;
+            text-align: end;
+            margin: auto;
+        }
+
+        .nav a {
+            text-decoration: none;
+            font-family: var(--h3_font);
+            font-weight: var(--h3_weight);
+            font-size: var(--h3_size);
+            color: var(--text);
+            padding: 0 10px;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Toggle Switch Styles */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #2196F3;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+        .hello {
+            margin-top: 5vw;
+            display: flex;
+        }
+
+        .left {
+            width: 50vw;
+        }
+
+        .images {
+            width: 40vw;
+            border-radius: 30px;
+            margin-left: 5vw;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 2.5vw;
+        }
+
+        .button-primary {
+            border-radius: 30px;
+            background-image: linear-gradient(45deg,
+                    var(--primary) 25%,
+                    var(--background-2) 25%,
+                    var(--background-2) 50%,
+                    var(--primary) 50%,
+                    var(--primary) 75%,
+                    var(--background-2) 75%,
+                    var(--background-2));
+            background-size: 8px 8px;
+            border: 2px solid var(--primary);
+            box-shadow: 0px 2px 0px 0px var(--secondary);
+            color: var(--text);
+            border: 2px solid var(--primary);
+            text-shadow: var(--text-shadow);
+            font-family: var(--h1_font);
+            font-size: var(--paragraph_size);
+            font-weight: var(--h1_weight);
+            padding: 10px 16px;
+            transition: all var(--transition);
+            outline: none;
+        }
+
+        .button-primary:hover {
+            cursor: pointer;
+            background-image: linear-gradient(45deg,
+                    var(--primary) 25%,
+                    var(--primary) 25%,
+                    var(--primary) 50%,
+                    var(--primary) 50%,
+                    var(--primary) 75%,
+                    var(--primary) 75%,
+                    var(--primary));
+        }
+
+        .button-secondary {
+            border-radius: 30px;
+            background-color: var(--background-2);
+            border: 2px solid var(--primary);
+            box-shadow: 0px 2px 0px 0px var(--secondary);
+            color: var(--text);
+            border: 2px solid var(--primary);
+            font-family: var(--h1_font);
+            font-size: var(--paragraph_size);
+            font-weight: var(--h1_weight);
+            padding: 10px 16px;
+            transition: all var(--transition);
+            outline: none;
+        }
+
+        .button-secondary:hover {
+            cursor: pointer;
+            background-color: var(--primary);
+            text-shadow: var(--text-shadow);
+        }
+
+        .slideshow {
+            margin-top: 100px;
+        }
+
+
+        .slideshow-container {
+            display: flex;
+            gap: 20px;
+            /* Space between image and text */
+            width: 100%;
+            height: 500px;
+            /* Adjust height as needed */
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+
+        .image-slides {
+            width: 50vw;
+            height: auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-bars {
+            width: 30vw;
+            /* Adjusted width to accommodate text */
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            /* Space between progress groups */
+            margin: 0 20px;
+            /* Space between image and progress bars */
+            background-color: var(--background);
+        }
+
+        .progress-group {
+            display: flex;
+            align-items: center;
+            /* Align progress bar and header vertically */
+            gap: 20px;
+            /* Space between progress bar and header */
+        }
+
+        .progress-bar {
+            width: 8px;
+            /* Width of the progress bar */
+            height: 100px;
+            /* Height of the progress bar */
+            background-color: var(--background-3);
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+            transition: height 0.3s ease;
+        }
+
+        .progress-bar.active {
+            height: 150px;
+            /* Adjusted height for active progress bar */
+        }
+
+        .progress {
+            width: 100%;
+            height: 0;
+            background-color: var(--primary);
+            position: absolute;
+            top: 0;
+            transition: height 5s linear;
+            border-radius: 30px;
+        }
+
+        .header-slide {
+            flex: 1;
+            /* Allow the header to take up remaining space */
+        }
+
+        .text-slide {
+            display: none;
+            /* Hide all text slides by default */
+            font-family: var(--paragraph_font);
+            font-size: var(--paragraph_size);
+            font-weight: var(--paragraph_weight);
+            color: var(--text);
+        }
+
+        .text-slide.active {
+            display: block;
+            /* Show active text slide */
+        }
+
+        .progress-bar.active {
+            height: 200px;
+            /* Height for the active progress bar */
+        }
+
+        .text-content {
+            width: 50%;
+            height: 100%;
+            /* Adjust width as needed */
+            /* display: flex;
+            flex-direction: column;
+            justify-content: center; */
+            margin-left: 24px;
+            /* Add margin to account for progress bar width */
+        }
+
+        .headers {
+            margin-bottom: 20px;
+            /* Add margin between headers and text slides */
+        }
+
+        .header-slide {
+            margin-bottom: 20px;
+            /* Add margin between header slides */
+        }
+
+        .text-slide.active {
+            display: block;
+            /* Show active text slide */
+        }
+
+        .slide {
+            display: none;
+            /* Hide all slides by default */
+            position: absolute;
+            /* Position slides absolutely to stack them */
+            width: 100%;
+            /* Ensure slides take up the full width */
+            height: 100%;
+            /* Ensure slides take up the full height */
+        }
+
+        .slide.active {
+            display: block;
+            /* Show the active slide */
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 30px;
+        }
+
+        .collaborate {
+            text-align: center;
+            margin-top: 100px;
+            margin-bottom: 50px;
+        }
+
+        /* Gallery Styles */
+        .gallery {
+            margin-top: 100px;
+            text-align: center;
+        }
+
+        .gallery h2 {
+            font-family: var(--h2_font);
+            font-size: var(--h2_size);
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .gallery-grid {
+            display: flex;
+            columns: 3;
+            /* grid-template-columns: repeat(3, 1fr); */
+            gap: 2.5vw;
+            margin-bottom: 50px;
+
+        }
+
+        .gallery-column {
+            width: calc(90vw / 3);
+            margin-bottom: 2.5vw;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: var(--radius);
+            transition: transform var(--transition);
+            margin-bottom: 2.5vw;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.05);
+        }
+
+        .footer {
+            background-color: var(--background);
+            padding: 40px 5vw;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: var(--text);
+            font-size: 24px;
+            transition: color var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-text {
+            font-family: var(--paragraph_font);
+            font-size: var(--subtext_size);
+            color: var(--subtext);
+            margin-bottom: 20px;
+        }
+
+        .footer-text p {
+            margin: 5px 0;
+        }
+
+        .footer-text i {
+            color: var(--primary);
+        }
+
+        .back-to-top {
+            margin-top: 20px;
+        }
+
+        .back-to-top a {
+            color: var(--text);
+            font-size: 24px;
+            transition: color var(--transition);
+        }
+
+        .back-to-top a:hover {
+            color: var(--primary);
+        }
+
+
+
+
+        /* About */
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: var(--background);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-icons {
+            margin-top: 20px;
+        }
+
+        .hero-icons i {
+            font-size: 32px;
+            margin: 0 10px;
+            color: #12de52;
+            animation: spin 5s linear infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Timeline Container */
+        .timeline {
+            position: relative;
+            width: 90vw;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: var(--background-2);
+            border-radius: 30px;
+            border: 2px solid var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        /* Timeline Line */
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #e06f12;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+
+        /* Timeline Cards */
+        .card {
+            padding: 20px 30px;
+            background-color: #2c2621;
+            position: relative;
+            border-radius: 20px;
+            width: 40%;
+            margin: 50px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .card.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card.left {
+            left: 0;
+        }
+
+        .card.right {
+            left: 50%;
+        }
+
+        /* Card Content */
+        .card h2 {
+            margin-top: 0;
+            font-size: 24px;
+        }
+
+        .card p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* Card Icons */
+        .card i {
+            font-size: 32px;
+            color: #12de52;
+            margin-bottom: 10px;
+        }
+
+        /* Timeline Dots */
+        .card::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: #e06f12;
+            border: 4px solid #1a1a1a;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .card.right::after {
+            left: -17px;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 20px;
+            }
+
+            .card {
+                width: 80%;
+                left: 5% !important;
+            }
+
+            .card::after {
+                left: -17px !important;
+                right: auto;
+            }
+        }
+
+        /* Interactive Gallery Section */
+        .gallery {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #2c2621;
+        }
+
+        .gallery h2 {
+            font-size: 36px;
+            margin-bottom: 30px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }

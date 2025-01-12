@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .resume-container {
+            width: 90vw;
+            max-width: 800px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        .resume-container h1 {
+            margin-bottom: 20px;
+        }
+        .resume-pdf {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo-container">
+            <a href="index.html">
+                <img class="logo" src="logo.svg" alt="Logo">
+            </a>
+        </div>
+        <div class="nav">
+            <a href="./Gallery.html">Gallery</a>
+            <a href="./resume.html">Resume</a>
+            <a href="./About.html">About</a>
+        </div>
+    </div>
+    <div class="resume-container">
+        <h1>My Resume</h1>
+        <!-- Embed the PDF using an iframe -->
+        <iframe class="resume-pdf" src="resume_new.pdf"></iframe>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Social Media Links -->
+            <div class="social-links">
+                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="mailto:your.email@example.com" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+
+            <!-- Footer Text -->
+            <div class="footer-text">
+                <span class="subtext">&copy; 2025 Austin Tallent. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
