@@ -343,7 +343,7 @@
 
         .image-slides {
             width: 50vw;
-            height: auto;
+            height: 35vw;
             position: relative;
             overflow: hidden;
         }
@@ -730,23 +730,39 @@
             background-color: var(--background-2);
             border: 2px solid var(--primary);
             color: var(--text);
-            font-family: var(--h3_font);
-            font-size: var(--h3_size);
-            font-weight: var(--h3_weight);
-            padding: 10px 20px;
+            padding: 10px 16px;
             border-radius: var(--radius);
             cursor: pointer;
             transition: all var(--transition);
+            font-family: var(--h1_font);
+            font-size: var(--paragraph_size);
+            font-weight: var(--h1_weight);
         }
 
         .filter-button:hover {
             background-color: var(--primary);
-            color: var(--background);
         }
 
         .filter-button.active {
-            background-color: var(--primary);
-            color: var(--background);
+            background-image: linear-gradient(45deg,
+                    var(--primary) 25%,
+                    var(--background-2) 25%,
+                    var(--background-2) 50%,
+                    var(--primary) 50%,
+                    var(--primary) 75%,
+                    var(--background-2) 75%,
+                    var(--background-2));
+            background-size: 8px 8px;
+            border: 2px solid var(--primary);
+            box-shadow:  var(--shadow);
+            color: var(--text);
+            text-shadow: var(--text-shadow);
+            font-family: var(--h1_font);
+            font-size: var(--paragraph_size);
+            font-weight: var(--h1_weight);
+            padding: 10px 16px;
+            transition: all var(--transition);
+            outline: none;
         }
 
         /* Gallery Grid */
@@ -768,7 +784,7 @@
         .gallery-item img {
             width: 100%;
             height: auto;
-            display: block;
+            display: block;ll
             border-radius: var(--radius);
             transition: transform var(--transition);
         }
