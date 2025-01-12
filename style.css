@@ -663,8 +663,8 @@
             width: 25px;
             height: 25px;
             right: -17px;
-            background-color: #e06f12;
-            border: 4px solid #1a1a1a;
+            background-color: var(--primary);
+            border: 4px solid var(--background-2);
             top: 50%;
             transform: translateY(-50%);
             border-radius: 50%;
