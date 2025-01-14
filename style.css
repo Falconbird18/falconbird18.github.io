@@ -871,7 +871,7 @@
             border-radius: 30px;
             border: 2px solid var(--primary);
             width: 90vw;
-            transform: translatey(100%);
+            transform: translatey(105%);
             transition: transform 0.5s;
             text-align: center;
             overflow-x: hidden;
