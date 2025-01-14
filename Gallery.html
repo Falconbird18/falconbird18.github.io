@@ -29,6 +29,7 @@
                 <span class="slider round">
                     <i class="fas fa-sun light-icon"></i>
                     <i class="fas fa-moon dark-icon"></i>
+
                 </span>
             </label>
         </div>
@@ -74,7 +75,7 @@
 
     <!-- Modal for Image Information -->
     <div id="imageModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content modal-slide-up">
             <span class="close" onclick="closeModal()">&times;</span>
             <img id="modalImage" src="" alt="Modal Image">
             <h2 id="modalTitle"></h2>
@@ -133,29 +134,43 @@ filterButtons.forEach((button) => {
 
 // Modal Functionality
 function openModal(imageSrc, title, description) {
-    const modal = document.getElementById("imageModal");
-    const modalImage = document.getElementById("modalImage");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalDescription = document.getElementById("modalDescription");
+  const modal = document.getElementById("imageModal");
+  const modalImage = document.getElementById("modalImage");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalDescription = document.getElementById("modalDescription");
+  const modalContent = document.querySelector(".modal-content");
 
-    modalImage.src = imageSrc;
-    modalTitle.textContent = title;
-    modalDescription.textContent = description;
+  modalImage.src = imageSrc;
+  modalTitle.textContent = title;
+  modalDescription.textContent = description;
 
-    modal.style.display = "flex";
+  modal.style.display = "flex";
+  setTimeout(() => {
+    modalContent.classList.add("show");
+  }, 10);
 }
 
 function closeModal() {
-    const modal = document.getElementById("imageModal");
+  const modal = document.getElementById("imageModal");
+  const modalContent = document.querySelector(".modal-content");
+
+  modalContent.classList.remove("show");
+  setTimeout(() => {
     modal.style.display = "none";
+  }, 500);
 }
 
 // Close modal when clicking outside the modal content
 window.onclick = function (event) {
-    const modal = document.getElementById("imageModal");
-    if (event.target === modal) {
-        modal.style.display = "none";
-    }
+  const modal = document.getElementById("imageModal");
+  const modalContent = document.querySelector(".modal-content");
+
+  if (event.target === modal) {
+    modalContent.classList.remove("show");
+    setTimeout(() => {
+      modal.style.display = "none";
+    }, 500);
+  }
 };
     // Theme Toggle Script
     const themeToggle = document.getElementById('theme-toggle');

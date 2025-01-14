@@ -1,25 +1,25 @@
         body.dark-mode {
-            --background: #2C2621;
+            --background: #2c2621;
             /* background: hsl(27, 15%, 15%)*/
             --background-2: #202020;
             /* background-2: hsl(0, 0%, 13%)*/
-            --background-3: #493F36;
+            --background-3: #493f36;
             /* background-3: hsl(0, 0%, 25%)*/
-            --primary: #E06F12;
+            --primary: #e06f12;
             /* primary: hsl(27, 85%, 47%)*/
             --secondary: #12de52;
             /* secondary: hsl(139, 85%, 47%)*/
-            --text: #F5DECC;
+            --text: #f5decc;
             /* text: hsl(27, 68%, 88%)*/
-            --subtext: #BFAEA1;
+            --subtext: #bfaea1;
             /* subtext: hsl(27, 19%, 69%)*/
 
-            /*Fonts*/
-            --h1_font: 'Monaspace Radon';
-            --h2_font: 'Monaspace Radon';
-            --h3_font: 'Monaspace Xenon';
-            --paragraph_font: 'Monaspace Xenon';
-            --subtext_font: 'Monaspace Xenon';
+            /*fonts*/
+            --h1_font: 'monaspace radon';
+            --h2_font: 'monaspace radon';
+            --h3_font: 'monaspace xenon';
+            --paragraph_font: 'monaspace xenon';
+            --subtext_font: 'monaspace xenon';
             --h1_weight: normal;
             --h2_weight: normal;
             --h3_weight: bold;
@@ -44,28 +44,28 @@
 
 
         body {
-            --background: #F0EDEA;
+            --background: #f0edea;
             /* background: hsl(27, 15%, 93%)*/
-            --background-2: #F2F2F2;
+            --background-2: #f2f2f2;
             /* card: hsl(0, 0%, 95%)*/
-            --background-3: #DAD3CD;
+            --background-3: #dad3cd;
             /* background-light: hsl(27, 15%, 83%)*/
             --primary: hsl(27, 85%, 47%);
             /* primary: hsl(27, 85%, 47%)*/
             --secondary: #12de52;
             /* secondary: hsl(139, 85%, 47%)*/
-            --text: #562F10;
+            --text: #562f10;
             /* text: hsl(27, 69%, 20%)*/
             --subtext: #766251;
             /* subtext: hsl(27, 19%, 39%)*/
 
 
-            /*Fonts*/
-            --h1_font: 'Monaspace Radon';
-            --h2_font: 'Monaspace Radon';
-            --h3_font: 'Monaspace Xenon';
-            --paragraph_font: 'Monaspace Xenon';
-            --subtext_font: 'Monaspace Xenon';
+            /*fonts*/
+            --h1_font: 'monaspace radon';
+            --h2_font: 'monaspace radon';
+            --h3_font: 'monaspace xenon';
+            --paragraph_font: 'monaspace xenon';
+            --subtext_font: 'monaspace xenon';
             --h1_weight: normal;
             --h2_weight: normal;
             --h3_weight: bold;
@@ -152,14 +152,14 @@
             text-decoration: underline;
         }
 
-        /* Toggle Switch Styles */
+        /* toggle switch styles */
         .switch {
             position: relative;
             display: inline-block;
             width: 60px;
             height: 34px;
             margin-left: 20px;
-            /* Center vertically with nav links */
+            /* center vertically with nav links */
         }
 
         .switch input {
@@ -199,10 +199,10 @@
         }
 
         input:checked+.slider:before {
-            transform: translateX(26px);
+            transform: translatex(26px);
         }
 
-        /* Rounded sliders */
+        /* rounded sliders */
         .slider.round {
             border-radius: 30px;
         }
@@ -211,12 +211,12 @@
             border-radius: 50%;
         }
 
-        /* Icon Styles */
+        /* icon styles */
         .slider .light-icon,
         .slider .dark-icon {
             position: absolute;
             top: 50%;
-            transform: translateY(-50%);
+            transform: translatey(-50%);
             font-size: 16px;
             transition: transform 0.4s;
             color: var(--text);
@@ -224,28 +224,28 @@
 
         .slider .light-icon {
             left: 5px;
-            transform: translateY(-50%) translateX(0);
-            /* Initial position for light icon */
+            transform: translatey(-50%) translatex(0);
+            /* initial position for light icon */
         }
 
         .slider .dark-icon {
             right: 5px;
-            transform: translateY(-50%) translateX(-26px);
+            transform: translatey(-50%) translatex(-26px);
             opacity: 0;
-            /* Initial position for dark icon */
+            /* initial position for dark icon */
         }
 
-        /* Dark mode icon sliding */
+        /* dark mode icon sliding */
         input:checked+.slider .light-icon {
-            transform: translateY(-50%) translateX(26px);
+            transform: translatey(-50%) translatex(26px);
             opacity: 0;
-            /* Slide light icon to the left */
+            /* slide light icon to the left */
         }
 
         input:checked+.slider .dark-icon {
-            transform: translateY(-50%) translateX(0);
+            transform: translatey(-50%) translatex(0);
             opacity: 1;
-            /* Slide dark icon to the center */
+            /* slide dark icon to the center */
         }
 
         .hello {
@@ -333,10 +333,10 @@
         .slideshow-container {
             display: flex;
             gap: 20px;
-            /* Space between image and text */
+            /* space between image and text */
             width: 90vw;
             height: 35vw;
-            /* Adjust height as needed */
+            /* adjust height as needed */
             margin-top: 20px;
             margin-bottom: 50px;
             overflow: hidden;
@@ -351,29 +351,29 @@
 
         .progress-bars {
             width: 30vw;
-            /* Adjusted width to accommodate text */
+            /* adjusted width to accommodate text */
             height: auto;
             display: flex;
             flex-direction: column;
-            /* Space between progress groups */
+            /* space between progress groups */
             margin: 0 20px;
-            /* Space between image and progress bars */
+            /* space between image and progress bars */
             background-color: var(--background);
         }
 
         .progress-group {
             display: flex;
             align-items: center;
-            /* Align progress bar and header vertically */
+            /* align progress bar and header vertically */
             gap: 20px;
-            /* Space between progress bar and header */
+            /* space between progress bar and header */
         }
 
         .progress-bar {
             width: 16px;
-            /* Width of the progress bar */
+            /* width of the progress bar */
             height: 75px;
-            /* Height of the progress bar */
+            /* height of the progress bar */
             background-color: var(--background-3);
             position: relative;
             overflow: hidden;
@@ -382,13 +382,13 @@
             border: none;
         }
 
-        .progress-bar.active .progress{
+        .progress-bar.active .progress {
             border: 2px solid var(--primary);
         }
 
         .progress-bar.active {
             height: 150px;
-            /* Adjusted height for active progress bar */
+            /* adjusted height for active progress bar */
         }
 
         .progress {
@@ -411,12 +411,12 @@
 
         .header-slide {
             flex: 1;
-            /* Allow the header to take up remaining space */
+            /* allow the header to take up remaining space */
         }
 
         .text-slide {
             display: none;
-            /* Hide all text slides by default */
+            /* hide all text slides by default */
             font-family: var(--paragraph_font);
             font-size: var(--paragraph_size);
             font-weight: var(--paragraph_weight);
@@ -425,54 +425,54 @@
 
         .text-slide.active {
             display: block;
-            /* Show active text slide */
+            /* show active text slide */
         }
 
         .progress-bar.active {
             height: 200px;
-            /* Height for the active progress bar */
+            /* height for the active progress bar */
         }
 
         .text-content {
             width: 50%;
             height: 100%;
-            /* Adjust width as needed */
+            /* adjust width as needed */
             /* display: flex;
             flex-direction: column;
             justify-content: center; */
             margin-left: 24px;
-            /* Add margin to account for progress bar width */
+            /* add margin to account for progress bar width */
         }
 
         .headers {
             margin-bottom: 20px;
-            /* Add margin between headers and text slides */
+            /* add margin between headers and text slides */
         }
 
         .header-slide {
             margin-bottom: 20px;
-            /* Add margin between header slides */
+            /* add margin between header slides */
         }
 
         .text-slide.active {
             display: block;
-            /* Show active text slide */
+            /* show active text slide */
         }
 
         .slide {
             display: none;
-            /* Hide all slides by default */
+            /* hide all slides by default */
             position: absolute;
-            /* Position slides absolutely to stack them */
+            /* position slides absolutely to stack them */
             width: 100%;
-            /* Ensure slides take up the full width */
+            /* ensure slides take up the full width */
             height: 100%;
-            /* Ensure slides take up the full height */
+            /* ensure slides take up the full height */
         }
 
         .slide.active {
             display: block;
-            /* Show the active slide */
+            /* show the active slide */
         }
 
         .slide img {
@@ -488,7 +488,7 @@
             margin-bottom: 50px;
         }
 
-        /* Gallery Styles */
+        /* gallery styles */
         .small-gallery {
             margin-top: 100px;
             text-align: center;
@@ -589,9 +589,9 @@
 
 
 
-        /* About */
+        /* about */
 
-        /* Hero Section */
+        /* hero section */
         .hero {
             text-align: center;
             padding: 100px 20px;
@@ -600,7 +600,7 @@
             overflow: hidden;
         }
 
-        /* Timeline Container */
+        /* timeline container */
         .timeline {
             position: relative;
             width: 90vw;
@@ -612,7 +612,7 @@
             box-shadow: var(--shadow);
         }
 
-        /* Timeline Line */
+        /* timeline line */
         .timeline::after {
             content: '';
             position: absolute;
@@ -624,7 +624,7 @@
             margin-left: -3px;
         }
 
-        /* Timeline Cards */
+        /* timeline cards */
         .card {
             padding: 20px 30px;
             background-color: var(--background-3);
@@ -633,7 +633,7 @@
             width: 40%;
             margin: 50px 0;
             opacity: 0;
-            transform: translateY(50px);
+            transform: translatey(50px);
             transition: opacity 0.8s ease, transform 0.8s ease;
             box-shadow: var(--shadow);
             border: 2px solid var(--primary);
@@ -641,7 +641,7 @@
 
         .card.active {
             opacity: 1;
-            transform: translateY(0);
+            transform: translatey(0);
         }
 
         .card.left {
@@ -652,7 +652,7 @@
             left: 50%;
         }
 
-        /* Card Content */
+        /* card content */
         .card h2 {
             margin-top: 0;
             font-size: 24px;
@@ -663,14 +663,14 @@
             line-height: 1.6;
         }
 
-        /* Card Icons */
+        /* card icons */
         .card i {
             font-size: 32px;
             color: #12de52;
             margin-bottom: 10px;
         }
 
-        /* Timeline Dots */
+        /* timeline dots */
         .card::after {
             content: '';
             position: absolute;
@@ -680,7 +680,7 @@
             background-color: var(--primary);
             border: 4px solid var(--background-2);
             top: 50%;
-            transform: translateY(-50%);
+            transform: translatey(-50%);
             border-radius: 50%;
             z-index: 1;
         }
@@ -689,7 +689,7 @@
             left: -17px;
         }
 
-        /* Responsive Design */
+        /* responsive design */
         @media screen and (max-width: 768px) {
             .timeline::after {
                 left: 20px;
@@ -706,7 +706,7 @@
             }
         }
 
-        /* Interactive Gallery Section */
+        /* interactive gallery section */
         .gallery {
             text-align: center;
             padding: 50px 20px;
@@ -732,7 +732,7 @@
             align-items: center;
         }
 
-        /* Filter Buttons */
+        /* filter buttons */
         .filter-buttons {
             display: flex;
             justify-content: center;
@@ -768,7 +768,7 @@
                     var(--background-2));
             background-size: 8px 8px;
             border: 2px solid var(--primary);
-            box-shadow:  var(--shadow);
+            box-shadow: var(--shadow);
             color: var(--text);
             text-shadow: var(--text-shadow);
             font-family: var(--h1_font);
@@ -779,7 +779,7 @@
             outline: none;
         }
 
-        /* Gallery Grid */
+        /* gallery grid */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -798,8 +798,8 @@
         .gallery-item img {
             width: 100%;
             height: auto;
-            display: block;ll
-            border-radius: var(--radius);
+            display: block;
+            ll border-radius: var(--radius);
             transition: transform var(--transition);
         }
 
@@ -807,32 +807,35 @@
             transform: scale(1.05);
         }
 
-        /* Modal Styling */
+        /* modal styling */
         .modal {
-            display: none;
             position: fixed;
-            z-index: 1000;
-            left: 0;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
             justify-content: center;
             align-items: center;
+            transition: opacity 0.5s;
         }
 
         .modal-content {
-            background-color: var(--background);
-            padding: 20px;
-            border-radius: var(--radius);
-            max-width: 600px;
-            width: 90%;
-            text-align: center;
-            position: relative;
+            background-color: var(--background-2);
+            border-radius: 30px;
+            border: 2px solid var(--primary);
+            width: 90vw;
+            transform: translatey(100%);
+            transition: transform 0.5s;
+        }
+
+        .modal-content.show {
+            transform: translatey(5vw);
         }
 
         .modal-content img {
-            width: 100%;
+            width: 60vw;
             height: auto;
             border-radius: var(--radius);
             margin-bottom: 20px;
