@@ -41,39 +41,46 @@
         <!-- Filter Buttons -->
         <div class="filter-buttons">
             <button class="filter-button active" data-filter="all">All</button>
-            <button class="filter-button" data-filter="architecture">Architectural Visualizations</button>
+            <button class="filter-button" data-filter="architecture">Blender</button>
             <button class="filter-button" data-filter="art">Art & Design</button>
             <button class="filter-button" data-filter="personal">Personal Projects</button>
         </div>
 
         <!-- Gallery Grid -->
-        <div class="gallery-grid">
-            <!-- Architectural Visualizations -->
-            <div class="gallery-item architecture"
-                onclick="openModal('mozart.jpg', 'Architectural Visualization 1', 'This is a stunning visualization of a modern building.')">
-                <img src="mozart.jpg" alt="Architectural Visualization 1">
+        <div class="small-gallery-grid">
+            <div class="small-gallery-column">
+                <div class="gallery-item architecture"
+                    onclick="openModal('interior_with_sofas_and_plants.png', 'Interior with Sofas and Plants', 'This is the first interior that I designed and created with Cycles in Blender. It took me six to ten hours of work and multiple renders to acquire the result I was after.')">
+                    <img src="interior_with_sofas_and_plants.png" alt="Interior with sofas and plants">
+                </div>
+                <div class="gallery-item architecture"
+                    onclick="openModal('New_york.png', 'Garden of Tranquility', 'A futuristic design concept for urban spaces.')">
+                    <img src="garden_of_tranquility.png" alt="Garden of Tranquility">
+                </div>
             </div>
-            <div class="gallery-item architecture"
-                onclick="openModal('piano.jpg', 'Architectural Visualization 2', 'A futuristic design concept for urban spaces.')">
-                <img src="piano.jpg" alt="Architectural Visualization 2">
+            <div class="small-gallery-column">
+                <div class="gallery-item architecture"
+                    onclick="openModal('apples.png', 'Apples, Quince, and Grapes', 'A futuristic design concept for urban spaces.')">
+                    <img src="apples.png" alt="Apples, Quince, and Grapes">
+                </div>
+                <div class="gallery-item art"
+                    onclick="openModal('New_york.png', 'Artwork 1', 'A vibrant piece inspired by urban landscapes.')">
+                    <img src="New_york.png" alt="Artwork 1">
+                </div>
             </div>
-
-            <!-- Art & Design -->
-            <div class="gallery-item art"
-                onclick="openModal('New_york.png', 'Artwork 1', 'A vibrant piece inspired by urban landscapes.')">
-                <img src="New_york.png" alt="Artwork 1">
+            <div class="small-gallery-column">
+                <div class="gallery-item architecture"
+                    onclick="openModal('New_york.png', 'Modern New York loft', 'A futuristic design concept for urban spaces.')">
+                    <img src="New_york.png" alt="Modern New York loft">
+                </div>
+                <div class="gallery-item personal"
+                    onclick="openModal('mozart.jpg', 'Personal Project 1', 'A creative exploration of light and shadow.')">
+                    <img src="mozart.jpg" alt="Personal Project 1">
+                </div>
             </div>
-
-            <!-- Personal Projects -->
-            <div class="gallery-item personal"
-                onclick="openModal('mozart.jpg', 'Personal Project 1', 'A creative exploration of light and shadow.')">
-                <img src="mozart.jpg" alt="Personal Project 1">
-            </div>
-            <!-- Add more images as needed -->
         </div>
     </div>
 
-    <!-- Modal for Image Information -->
     <!-- Modal for Image Information -->
     <div id="imageModal" class="modal">
         <div class="modal-content modal-slide-up">
