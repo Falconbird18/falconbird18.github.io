@@ -334,11 +334,12 @@
             display: flex;
             gap: 20px;
             /* Space between image and text */
-            width: 100%;
-            height: auto;
+            width: 90vw;
+            height: 35vw;
             /* Adjust height as needed */
             margin-top: 20px;
             margin-bottom: 50px;
+            overflow: hidden;
         }
 
         .image-slides {
