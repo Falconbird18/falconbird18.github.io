@@ -74,12 +74,15 @@
     </div>
 
     <!-- Modal for Image Information -->
+    <!-- Modal for Image Information -->
     <div id="imageModal" class="modal">
         <div class="modal-content modal-slide-up">
             <span class="close" onclick="closeModal()">&times;</span>
-            <img id="modalImage" src="" alt="Modal Image">
-            <h2 id="modalTitle"></h2>
-            <p id="modalDescription"></p>
+            <div class="modal-image-container">
+                <img id="modalImage" src="" alt="Modal Image">
+                <h2 id="modalTitle"></h2>
+                <p id="modalDescription"></p>
+            </div>
         </div>
     </div>
 
@@ -159,6 +162,9 @@
         modalTitle.textContent = title;
         modalDescription.textContent = description;
 
+        // Add modal-open class to body
+        document.body.classList.add("modal-open");
+
         modal.style.display = "flex";
         setTimeout(() => {
             modalContent.classList.add("show");
@@ -175,9 +181,12 @@
         modalBackground.classList.remove("show");
         setTimeout(() => {
             modal.style.display = "none";
-            // modalBackground.style.display = "none";
         }, 500);
+
+        // Remove modal-open class from body
+        document.body.classList.remove("modal-open");
     }
+
 
     // Close modal when clicking outside the modal content
     window.onclick = function (event) {
