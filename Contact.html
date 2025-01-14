@@ -12,57 +12,35 @@
 <style>
     .contact-container {
         text-align: center;
-        max-width: 800px;
-        padding: 20px;
-        background: rgba(255, 255, 255, 0.1);
+        width: 90vw;
+        background: transparent;
         border-radius: 15px;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    }
-
-    h1 {
-        font-size: 3rem;
-        margin-bottom: 10px;
-    }
-
-    p {
-        font-size: 1.2rem;
-        margin-bottom: 30px;
     }
 
     .contact-methods {
         display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
+        gap: 5vw;
+        margin-top: 100px;
     }
 
     .contact-card {
-        background: rgba(255, 255, 255, 0.1);
+        background-color: var(--background-2);
         padding: 20px;
-        border-radius: 10px;
-        width: 200px;
-        margin: 10px;
+        border-radius: 30px;
+        border: 2px solid var(--primary);
+        width: 30vw;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: var(--shadow);
     }
 
     .contact-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        transform: translateY(-5px);
+        box-shadow: 0 5px 0px 0px var(--secondary);
     }
 
     .icon {
         font-size: 2rem;
         margin-bottom: 10px;
-    }
-
-    h2 {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-    }
-
-    p {
-        font-size: 1rem;
-        margin: 0;
     }
 
     a {
@@ -86,7 +64,7 @@
 
     .circle {
         position: absolute;
-        background: rgba(255, 255, 255, 0.1);
+        background-color: var(--background-3);
         border-radius: 50%;
         animation: float 10s infinite ease-in-out;
     }
@@ -110,8 +88,8 @@
     .circle:nth-child(3) {
         width: 100px;
         height: 100px;
-        top: 80%;
-        left: 40%;
+        top: 60%;
+        left: 30%;
         animation-duration: 10s;
     }
 
@@ -159,17 +137,23 @@
 
         <div class="contact-methods">
             <div class="contact-card" id="email-card">
-                <div class="icon">✉️</div>
+                <div class="icon">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
                 <h2>Email</h2>
-                <p>hello@example.com</p>
+                <p>austintallent1@gmail.com</p>
             </div>
             <div class="contact-card" id="phone-card">
-                <div class="icon">📞</div>
+                <div class="icon">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
                 <h2>Phone</h2>
                 <p>+1 (123) 456-7890</p>
             </div>
             <div class="contact-card" id="social-card">
-                <div class="icon">🌐</div>
+                <div class="icon">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
                 <h2>Social Media</h2>
                 <p>Follow us on <a href="#">Twitter</a>, <a href="#">Instagram</a>, <a href="#">LinkedIn</a></p>
             </div>
@@ -181,8 +165,30 @@
             <div class="circle"></div>
         </div>
     </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Social Media Links -->
+            <div class="social-links">
+                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="mailto:your.email@example.com" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
 
-    <script src="script.js"></script>
+            <!-- Footer Text -->
+            <div class="footer-text">
+                <span class="subtext">&copy; 2025 Austin Tallent. All rights reserved.</span>
+            </div>
+        </div>
+    </footer>
 </body>
 <script>
     // Theme Toggle Script
@@ -207,4 +213,5 @@
         }
     });
 </script>
+
 </html>
