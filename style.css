@@ -223,13 +223,13 @@
         }
 
         .slider .light-icon {
-            left: 6px;
+            left: 5px;
             transform: translateY(-50%) translateX(0);
             /* Initial position for light icon */
         }
 
         .slider .dark-icon {
-            right: 6px;
+            right: 5px;
             transform: translateY(-50%) translateX(-26px);
             opacity: 0;
             /* Initial position for dark icon */
@@ -370,7 +370,7 @@
         }
 
         .progress-bar {
-            width: 8px;
+            width: 16px;
             /* Width of the progress bar */
             height: 75px;
             /* Height of the progress bar */
@@ -379,6 +379,11 @@
             overflow: hidden;
             border-radius: 30px;
             transition: height 0.3s ease;
+            border: none;
+        }
+
+        .progress-bar.active .progress{
+            border: 2px solid var(--primary);
         }
 
         .progress-bar.active {
@@ -387,12 +392,20 @@
         }
 
         .progress {
-            width: 100%;
+            width: calc(100% - 4px);
             height: 0;
-            background-color: var(--primary);
             position: absolute;
             top: 0;
             transition: height 5s linear;
+            background-image: linear-gradient(45deg,
+                    var(--primary) 25%,
+                    var(--background-2) 25%,
+                    var(--background-2) 50%,
+                    var(--primary) 50%,
+                    var(--primary) 75%,
+                    var(--background-2) 75%,
+                    var(--background-2));
+            background-size: 8px 8px;
             border-radius: 30px;
         }
 
