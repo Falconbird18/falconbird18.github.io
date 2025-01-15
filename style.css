@@ -1,3 +1,31 @@
+        @font-face {
+            font-family: 'Monaspace Radon';
+            src: url('./fonts/MonaspaceRadon-Regular.otf');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Monaspace Xenon';
+            src: url('./fonts/MonaspaceXenon-Bold.otf');
+            font-weight: bold;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Monaspace Xenon';
+            src: url('./fonts/MonaspaceXenon-Light.otf');
+            font-weight: 300;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'Monaspace Xenon';
+            src: url('./fonts/MonaspaceXenon-ExtraLight.otf');
+            font-weight: 100;
+            font-style: normal;
+            font-display: swap;
+        }
         body.dark-mode {
             --background: #2c2621;
             /* background: hsl(27, 15%, 15%)*/
@@ -15,11 +43,11 @@
             /* subtext: hsl(27, 19%, 69%)*/
 
             /*fonts*/
-            --h1_font: 'monaspace radon';
-            --h2_font: 'monaspace radon';
-            --h3_font: 'monaspace xenon';
-            --paragraph_font: 'monaspace xenon';
-            --subtext_font: 'monaspace xenon';
+            --h1_font: 'Monaspace Radon', monaspace;
+            --h2_font: 'Monaspace Radon', monaspace;
+            --h3_font: 'Monaspace Xenon', monaspace;
+            --paragraph_font: 'Monaspace Xenon', monaspace;
+            --subtext_font: 'Monaspace Xenon', monaspace;
             --h1_weight: normal;
             --h2_weight: normal;
             --h3_weight: bold;
