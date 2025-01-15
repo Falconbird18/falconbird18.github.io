@@ -28,23 +28,55 @@
     <div class="header">
         <div class="logo-container">
             <a href="index.html">
-                <img class="logo" src="logo.svg" alt="Logo">
+                <!-- <img class="logo" src="logo.svg" alt="Logo"> -->
+                <svg class="logo" width="50px" height="50px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path
+                        d="m 372.78675,403.18921 c 15.66147,5.26081 21.09346,-8.58404 23.79156,-23.79156 14.47168,-76.2829 12.62879,-216.82984 17.28917,-295.565575 l 77.99859,-5.395367 c 11.77358,-0.735848 20.60503,-10.302296 20.11445,-21.83058 -0.24528,-12.509415 -11.77356,-19.132045 -23.30184,-20.849024 -22.32072,-2.452826 -65.0016,-4.906079 -93.45438,-7.113622 -1.90095,-0.183962 -3.65987,-0.23022 -5.28679,-0.151173 -11.38838,0.553324 -16.29809,7.23456 -18.01507,15.60483 l -74.19176,5.640225 C 240.41073,53.882488 233.93205,45.346556 190.4238,36.523612 l -0.0149,0.07879 c -5.56029,-5.378108 -12.76678,-8.14628 -21.92854,-8.14628 l 4e-5,-5e-6 c -24.52827,0 -38.75635,18.885059 -59.11481,59.847262 C 93.176921,120.43539 64.480553,187.8894 40.933421,248.22892 c -5.150936,0.73585 -10.303148,1.71655 -15.2088,2.69769 -14.962241,2.6981 -24.0368459,11.283 -23.7915643,23.30184 0.4905674,11.28301 8.8293233,20.35804 21.3387363,19.86747 -11.283,30.41505 -19.376049,54.94331 -21.5835927,66.22632 -6.3773484,25.2641 6.1312143,41.20833 23.7915637,41.20833 14.96224,0 27.717788,-11.28258 27.717788,-29.67878 0,-6.37734 -1.473398,-13.73668 -5.152638,-19.13289 5.886783,-17.66035 14.228095,-40.96178 23.548832,-66.47117 31.396184,-4.66037 63.282504,-8.0956 94.678674,-10.30314 1.47169,33.849 4.17023,63.77348 8.34004,83.39609 8.91838,65.09383 91.12156,104.3173 106.1655,107.84844 50.04388,11.74636 65.3391,27.71067 72.2423,4.42703 5.94524,-20.05248 -26.92917,-27.61743 -59.03083,-38.77336 -71.79388,-24.94975 -65.47184,-52.60545 -71.23643,-73.3158 -5.09173,-18.29303 -10.85801,-61.0164 -12.32971,-86.03523 h 1.22642 c 15.69808,-0.73585 24.77397,-11.28172 24.28341,-22.81001 -0.49058,-12.01885 -10.79244,-20.60502 -26.9811,-20.11445 h -0.24698 c -1.96226,-51.50935 -2.69683,-103.99941 -3.1874,-137.603128 -0.10749,-9.347551 -0.79373,-17.510732 -1.92266,-24.847647 0,0 15.30996,16.255763 79.74666,18.736872 33.75865,1.299856 86.128,-0.813347 86.128,-0.813347 -5.3764,89.19938 -9.18701,204.69048 -12.79539,272.46315 -0.84186,15.81165 -10.13275,35.87002 16.11252,44.68601 z m -215.3441,-323.470732 7.84819,2.207969 c -0.98113,38.264093 -1.71612,96.150363 -0.48971,151.093683 -25.01883,1.71698 -50.77351,4.41636 -76.037616,7.85031 C 113.0465,177.83281 140.51815,111.35995 157.44265,79.718478 Z"
+                        fill="currentColor" />
+                </svg>
+
             </a>
         </div>
-        <div class="nav">
+        <!-- Burger Menu Icon -->
+        <div class="burger-menu" id="burger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <!-- Navigation Links -->
+        <div class="nav" id="nav">
             <a href="./Gallery.html">Gallery</a>
             <a href="./Resume.html">Resume</a>
             <a href="./About.html">About</a>
             <a href="./Contact.html">Contact</a>
             <a href="./index.html">Home</a>
-            <!-- Add the toggle switch with icons -->
+            <!-- Theme Toggle Switch -->
             <label class="switch">
                 <input type="checkbox" id="theme-toggle">
                 <span class="slider round">
-                    <i class="fas fa-sun light-icon"></i>
-                    <i class="fas fa-moon dark-icon"></i>
+                    <!-- <i class="fas fa-sun light-icon"></i> -->
+                    <svg class="light-icon" width="20" height="20" viewBox="0 0 24 24" fill="#000000"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 2C12.4142 2 12.75 2.33579 12.75 2.75V4.25C12.75 4.66421 12.4142 5 12 5C11.5858 5 11.25 4.66421 11.25 4.25V2.75C11.25 2.33579 11.5858 2 12 2ZM17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12ZM21.25 12.75C21.6642 12.75 22 12.4142 22 12C22 11.5858 21.6642 11.25 21.25 11.25H19.75C19.3358 11.25 19 11.5858 19 12C19 12.4142 19.3358 12.75 19.75 12.75H21.25ZM12 19C12.4142 19 12.75 19.3358 12.75 19.75V21.25C12.75 21.6642 12.4142 22 12 22C11.5858 22 11.25 21.6642 11.25 21.25V19.75C11.25 19.3358 11.5858 19 12 19ZM4.25 12.75C4.66421 12.75 5 12.4142 5 12C5 11.5858 4.66421 11.25 4.25 11.25H2.75C2.33579 11.25 2 11.5858 2 12C2 12.4142 2.33579 12.75 2.75 12.75H4.25ZM4.21967 4.22004C4.51256 3.92715 4.98744 3.92715 5.28033 4.22004L6.78033 5.72004C7.07322 6.01294 7.07322 6.48781 6.78033 6.7807C6.48744 7.0736 6.01256 7.0736 5.71967 6.7807L4.21967 5.2807C3.92678 4.98781 3.92678 4.51294 4.21967 4.22004ZM5.28033 19.7807C4.98744 20.0736 4.51256 20.0736 4.21967 19.7807C3.92678 19.4878 3.92678 19.0129 4.21967 18.72L5.71967 17.22C6.01256 16.9271 6.48744 16.9271 6.78033 17.22C7.07322 17.5129 7.07322 17.9878 6.78033 18.2807L5.28033 19.7807ZM19.7803 4.22004C19.4874 3.92715 19.0126 3.92715 18.7197 4.22004L17.2197 5.72004C16.9268 6.01294 16.9268 6.48781 17.2197 6.7807C17.5126 7.0736 17.9874 7.0736 18.2803 6.7807L19.7803 5.2807C20.0732 4.98781 20.0732 4.51294 19.7803 4.22004ZM18.7197 19.7807C19.0126 20.0736 19.4874 20.0736 19.7803 19.7807C20.0732 19.4878 20.0732 19.0129 19.7803 18.72L18.2803 17.22C17.9874 16.9271 17.5126 16.9271 17.2197 17.22C16.9268 17.5129 16.9268 17.9878 17.2197 18.2807L18.7197 19.7807Z"
+                            fill="currentColor" />
+                    </svg>
+                    <!-- <i class="fas fa-moon dark-icon"></i> -->
+                    <svg class="dark-icon" width="20" height="20" viewBox="0 0 24 24" fill="#000000"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M20.0258 17.0014C17.2639 21.7851 11.1471 23.4241 6.3634 20.6622C5.06068 19.9101 3.964 18.8926 3.12872 17.6797C2.84945 17.2741 3.0301 16.7141 3.49369 16.5482C7.26112 15.1997 9.27892 13.6372 10.4498 11.4021C11.6825 9.04908 12.001 6.47162 11.1387 2.93862C11.0195 2.45008 11.4053 1.98492 11.9075 2.01186C13.4645 2.09539 14.9856 2.54263 16.3649 3.33903C21.1486 6.10088 22.7876 12.2177 20.0258 17.0014Z"
+                            fill="currentColor" />
+                    </svg>
                 </span>
             </label>
+            <div class="close-icon" id="close-icon">
+                <svg width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
+                        fill="currentColor" />
+                </svg>
+            </div>
         </div>
     </div>
     <div class="resume-container">
@@ -95,6 +127,68 @@
         } else {
             body.classList.remove('dark-mode');
             localStorage.setItem('theme', 'light-mode');
+        }
+    });
+    // Burger Menu Toggle
+    const burgerMenu = document.getElementById('burger-menu');
+    const nav = document.getElementById('nav');
+    const closeIcon = document.getElementById('close-icon');
+
+    // Add event listener to the burger menu
+    burgerMenu.addEventListener('click', () => {
+        if (nav.classList.contains('active')) {
+            // Close the menu
+            nav.style.transition = 'all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1)';
+            nav.classList.remove('active');
+            closeIcon.classList.remove('active');
+
+            // Enable scrolling
+            body.classList.remove('no-scroll');
+
+            // Wait for the transition to complete before hiding the menu
+            setTimeout(() => {
+                nav.style.transition = 'none'; // Reset transition
+            }, 500); // Match the transition duration (300ms)
+        } else {
+            // Open the menu
+            nav.style.transition = 'all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1)';
+            nav.classList.add('active');
+            closeIcon.classList.add('active');
+
+            // Disable scrolling
+            body.classList.add('no-scroll');
+        }
+    });
+
+    // Add event listener to the close icon
+    closeIcon.addEventListener('click', () => {
+        // Close the menu
+        nav.style.transition = 'all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1)';
+        nav.classList.remove('active');
+
+        // Enable scrolling
+        body.classList.remove('no-scroll');
+
+        // Wait for the transition to complete before hiding the menu
+        setTimeout(() => {
+            nav.style.transition = 'none'; // Reset transition
+        }, 500); // Match the transition duration (300ms)
+    });
+
+    // Add event listener to the document to close the menu on click outside
+    document.addEventListener('click', (e) => {
+        if (nav.classList.contains('active') && !nav.contains(e.target) && !burgerMenu.contains(e.target)) {
+            // Close the menu
+            nav.style.transition = 'all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1)';
+            nav.classList.remove('active');
+
+            // Enable scrolling
+            body.classList.remove('no-scroll');
+
+            // Wait for the transition to complete before hiding the menu
+            setTimeout(() => {
+                nav.style.transition = 'none'; // Reset transition
+            }, 500); // Match the transition duration (300ms)
         }
     });
 </script>
