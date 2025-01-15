@@ -210,6 +210,8 @@
                 height: 90vh;
                 justify-content: center;
                 align-items: center;
+                z-index: 5;
+                gap: 2vw;
             }
 
             .nav.active {
@@ -1005,13 +1007,16 @@
                 --paragraph_size: 20px;
                 --subtext_size: 18px;
 
-                width: 100vw;
+                width: 95vw;
                 margin: 0 2.5vw;
             }
 
             body.dark-mode {
-                width: 100vw;
+                width: 95vw;
                 margin: 0 2.5vw;
+            }
+            .header{
+                width: 100%;
             }
 
             .hello {
@@ -1053,5 +1058,8 @@
 
             .collaborate {
                 margin-top: 50px;
+            }
+            .switch{
+                margin: 0;
             }
         }
