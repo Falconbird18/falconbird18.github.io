@@ -72,9 +72,9 @@
         <!-- Filter Buttons -->
         <div class="filter-buttons">
             <button class="filter-button active" data-filter="all">All</button>
-            <button class="filter-button" data-filter="architecture">Blender</button>
-            <button class="filter-button" data-filter="art">Art & Design</button>
-            <button class="filter-button" data-filter="personal">Personal Projects</button>
+            <button class="filter-button" data-filter="architecture">3D art</button>
+            <button class="filter-button" data-filter="art">Graphic design</button>
+            <button class="filter-button" data-filter="personal">Web design</button>
         </div>
 
         <!-- Gallery Grid -->
@@ -85,29 +85,33 @@
                     <img src="interior_with_sofas_and_plants.png" alt="Interior with sofas and plants">
                 </div>
                 <div class="gallery-item architecture"
-                    onclick="openModal('New_york.png', 'Garden of Tranquility', 'A futuristic design concept for urban spaces.')">
+                    onclick="openModal('garden_of_tranquility.png', 'Garden of Tranquility', 'Some description text.')">
                     <img src="garden_of_tranquility.png" alt="Garden of Tranquility">
                 </div>
             </div>
             <div class="small-gallery-column">
                 <div class="gallery-item architecture"
-                    onclick="openModal('apples.png', 'Apples, Quince, and Grapes', 'A futuristic design concept for urban spaces.')">
+                    onclick="openModal('apples.png', 'Apples, Quince, and Grapes', 'Some description text.')">
                     <img src="apples.png" alt="Apples, Quince, and Grapes">
                 </div>
                 <div class="gallery-item art"
-                    onclick="openModal('New_york.png', 'Artwork 1', 'A vibrant piece inspired by urban landscapes.')">
-                    <img src="New_york.png" alt="Artwork 1">
+                    onclick="openModal('Movie-poster.jpg', 'Artwork 1', 'Some description text.')">
+                    <img src="Movie-poster.jpg" alt="Artwork 1">
                 </div>
             </div>
             <div class="small-gallery-column">
                 <div class="gallery-item architecture"
-                    onclick="openModal('New_york.png', 'Modern New York loft', 'A futuristic design concept for urban spaces.')">
+                    onclick="openModal('New_york.png', 'Modern New York loft', 'Some description text.')">
                     <img src="New_york.png" alt="Modern New York loft">
                 </div>
                 <div class="gallery-item personal"
+                    onclick="openModal('Christ_church.png', 'Modern New York loft', 'Some description text.')">
+                    <img src="Christ_church.png" alt="Modern New York loft">
+                </div>
+                <!-- <div class="gallery-item personal"
                     onclick="openModal('mozart.jpg', 'Personal Project 1', 'A creative exploration of light and shadow.')">
                     <img src="mozart.jpg" alt="Personal Project 1">
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -140,14 +144,14 @@
         <div class="footer-content">
             <!-- Social Media Links -->
             <div class="social-links">
-                <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+                <a href="https://artstation.com/austin_tallent" target="_blank" aria-label="LinkedIn">
                     <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                         <path
                             d="M2 377.4l43 74.3A51.4 51.4 0 0 0 90.9 480h285.4l-59.2-102.6zM501.8 350L335.6 59.3A51.4 51.4 0 0 0 290.2 32h-88.4l257.3 447.6 40.7-70.5c1.9-3.2 21-29.7 2-59.1zM275 304.5l-115.5-200L44 304.5z"
                             fill="currentColor" />
                     </svg>
                 </a>
-                <a href="https://github.com" target="_blank" aria-label="GitHub">
+                <a href="https://github.com/Falconbird18" target="_blank" aria-label="GitHub">
                     <svg width="30px" height="30px" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 496 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
                         <path
@@ -232,10 +236,10 @@
         modalBackground.classList.remove("show");
         setTimeout(() => {
             modal.style.display = "none";
+            // Remove modal-open class from body
+            document.body.classList.remove("modal-open");
         }, 500);
 
-        // Remove modal-open class from body
-        document.body.classList.remove("modal-open");
     }
 
 
@@ -250,8 +254,10 @@
             modalBackground.classList.remove("show");
             setTimeout(() => {
                 modal.style.display = "none";
-                // modalBackground.style.display = "none";
+                // Remove modal-open class from body
+                document.body.classList.remove("modal-open");
             }, 500);
+
         }
     };
     // Theme Toggle Script
