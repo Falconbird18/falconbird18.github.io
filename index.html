@@ -110,57 +110,59 @@
 
         <!-- Progress Bars and Headers -->
         <div class="progress-bars">
-            <!-- Group 1: Progress Bar and Header -->
-            <div class="progress-group">
-                <div class="progress-bar">
-                    <div class="progress"></div>
-                </div>
-                <div class="header-slide">
-                    <h2>Graphic design</h2>
-                    <div class="text-slide">
-                        <p>
-                            Bold, vibrant designs that turn heads and tell your story in style.</p>
+            <div class="progress-group-container">
+                <!-- Group 1: Progress Bar and Header -->
+                <div class="progress-group">
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                    <div class="header-slide">
+                        <h2>Graphic design</h2>
+                        <div class="text-slide">
+                            <p>
+                                Bold, vibrant designs that turn heads and tell your story in style.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Group 2: Progress Bar and Header -->
-            <div class="progress-group">
-                <div class="progress-bar">
-                    <div class="progress"></div>
-                </div>
-                <div class="header-slide">
-                    <h2>Web design</h2>
-                    <div class="text-slide">
-                        <p>Sleek, user-friendly websites that are a joy to use.</p>
+                <!-- Group 2: Progress Bar and Header -->
+                <div class="progress-group">
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                    <div class="header-slide">
+                        <h2>Web design</h2>
+                        <div class="text-slide">
+                            <p>Sleek, user-friendly websites that are a joy to use.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Group 3: Progress Bar and Header -->
-            <div class="progress-group">
-                <div class="progress-bar">
-                    <div class="progress"></div>
-                </div>
-                <div class="header-slide">
-                    <h2>Architectural visualization</h2>
-                    <div class="text-slide">
-                        <p>
-                            Breathtaking, photorealistic renders that showcase architectural designs in their full
-                            glory. </p>
+                <!-- Group 3: Progress Bar and Header -->
+                <div class="progress-group">
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                    <div class="header-slide">
+                        <h2>Architectural visualization</h2>
+                        <div class="text-slide">
+                            <p>
+                                Breathtaking, photorealistic renders that showcase architectural designs in their full
+                                glory. </p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="progress-group">
-                <div class="progress-bar">
-                    <div class="progress"></div>
-                </div>
-                <div class="header-slide">
-                    <h2>Digital art</h2>
-                    <div class="text-slide">
-                        <p>Stunning digital creations that bring your wildest ideas to life with color, detail, and
-                            flair.</p>
+                <div class="progress-group">
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                    <div class="header-slide">
+                        <h2>Digital art</h2>
+                        <div class="text-slide">
+                            <p>Stunning digital creations that bring your wildest ideas to life with color, detail, and
+                                flair.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -228,9 +230,33 @@
     const slides = document.querySelectorAll('.slide');
     const textSlides = document.querySelectorAll('.text-slide');
     const progressBars = document.querySelectorAll('.progress-bar');
+    const progressGroupContainer = document.querySelector('.progress-group-container'); // Ensure this exists in your HTML
 
+    // Function to check if the screen is mobile
+    function isMobile() {
+        return window.matchMedia("(max-width: 768px)").matches;
+    }
+
+    let transform = isMobile() ? 'width' : 'height';
+
+    // Function to update the slide position (horizontal sliding on mobile)
+    function updateSlidePosition() {
+        if (isMobile()) { // Only apply transformation on mobile
+            const translateXValue = -currentSlide * 100; // Calculate the translateX value
+            const margin = (currentSlide + 1) * 16; // Margin
+            progressGroupContainer.style.transform = `translateX(calc(${translateXValue}%))`; // Apply the transformation
+        } else {
+            progressGroupContainer.style.transform = 'none'; // Reset transformation on desktop
+        }
+    }
+
+    // Function to show the active slide
     function showSlide(index) {
+        currentSlide = index; // Update the currentSlide variable
+        updateSlidePosition(); // Update the slide position (horizontal sliding on mobile)
+
         const progress = progressBars[index].querySelector('.progress');
+
         // Hide all slides, text, and progress bars
         slides.forEach((slide, i) => {
             slide.classList.remove('active');
@@ -247,7 +273,7 @@
 
         // Reset the progress bar
         progress.style.transition = 'none'; // Disable transition for reset
-        progress.style.height = '0';
+        progress.style[transform] = '0';
         progress.style.border = '0';
 
         // Force a reflow to apply the reset
@@ -255,13 +281,13 @@
 
         // Re-enable transition and animate the progress bar
         progress.style.transition = 'height 5s linear';
-        progress.style.height = '100%';
+        progress.style[transform] = '100%';
         progress.style.border = '2px solid var(--primary)';
 
         // Add an event listener to reset the progress bar after the animation completes
         const handleTransitionEnd = () => {
             progress.style.transition = 'none'; // Disable transition for reset
-            progress.style.height = '0'; // Reset height to 0
+            progress.style[transform] = '0'; // Reset height to 0
             progress.style.border = '0';
             progress.removeEventListener('transitionend', handleTransitionEnd); // Remove the listener
         };
@@ -269,6 +295,7 @@
         progress.addEventListener('transitionend', handleTransitionEnd, { once: true });
     }
 
+    // Function to move to the next slide
     function nextSlide() {
         currentSlide = (currentSlide + 1) % slides.length;
         showSlide(currentSlide);
@@ -280,6 +307,10 @@
     // Show the first slide initially
     showSlide(currentSlide);
 
+    // Update the transform variable when the window is resized
+    window.addEventListener('resize', () => {
+        transform = isMobile() ? 'width' : 'height'; // Update the transform variable
+    });
     // Theme Toggle Script
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;

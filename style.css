@@ -1223,6 +1223,57 @@
             .filter-buttons{
                 flex-direction: column;
             }
+            .slideshow-container{
+                flex-direction: column;
+                height: 160vw;
+            }
+            .image-slides{
+                width: 95vw;
+                height: 75vw;
+                position: absolute;
+                margin-bottom: 35vw;
+            }
+            .progress-bars{
+                display: flex;
+                overflow: hidden;
+                width: 95vw;
+                margin: 0;
+                margin-top: 75vw;
+            }
+            .progress-group-container{
+                display: flex;
+                width: 95vw;
+                margin: 0;
+                transition: transform var(--transition);
+            }
+            .progress-group{
+                flex-direction: column;
+                width: calc(95vw + 16px);
+                gap: 0;
+                justify-content: start;
+            }
+            .progress-bar{
+                opacity: 0;
+                width: 95vw;
+                height: 16px;
+                overflow: hidden;
+                margin: 0;
+                margin-top: 50px;
+                position: relative;
+            }
+            .progress{
+                width: 0 !important;
+                height: calc(100% - 4px);
+                transition: width 5s linear;
+            }
+            .progress-bar.active{
+                opacity: 1;
+                height: 16px;
+                width: 95vw;
+            }
+            .header-slide{
+                width: 95vw;
+            }
             .footer{
                 margin-top: 50px;
             }
