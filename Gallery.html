@@ -116,10 +116,21 @@
     <div id="imageModal" class="modal">
         <div class="modal-content modal-slide-up">
             <span class="close" onclick="closeModal()">&times;</span>
-            <div class="modal-image-container">
-                <img id="modalImage" src="" alt="Modal Image">
-                <h2 id="modalTitle"></h2>
-                <p id="modalDescription"></p>
+            <div class="modal-container">
+                <!-- Image on the left -->
+                <div class="modal-image-container">
+                    <img id="modalImage" src="" alt="Modal Image">
+                    <div class="view-image">
+                        <a id="modalButton" href="" target="_blank">
+                            <button class="view-button">View fullscreen</button>
+                        </a>
+                    </div>
+                </div>
+                <!-- Text on the right -->
+                <div class="modal-text-container">
+                    <h3 id="modalTitle"></h3>
+                    <p id="modalDescription"></p>
+                </div>
             </div>
         </div>
     </div>
@@ -192,11 +203,13 @@
         const modal = document.getElementById("imageModal");
         const modalBackground = document.querySelector(".modal");
         const modalImage = document.getElementById("modalImage");
+        const modalButton = document.getElementById("modalButton");
         const modalTitle = document.getElementById("modalTitle");
         const modalDescription = document.getElementById("modalDescription");
         const modalContent = document.querySelector(".modal-content");
 
         modalImage.src = imageSrc;
+        modalButton.href = imageSrc;
         modalTitle.textContent = title;
         modalDescription.textContent = description;
 
