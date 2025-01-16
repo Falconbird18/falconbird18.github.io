@@ -1225,7 +1225,7 @@
             }
             .slideshow-container{
                 flex-direction: column;
-                height: 160vw;
+                height: auto;
             }
             .image-slides{
                 width: 95vw;
