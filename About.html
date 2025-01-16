@@ -32,9 +32,10 @@
     }
 
     .about-content {
-        margin-top: 100px;
-        text-align: center;
-        justify-content: center;
+        text-align: left;
+        justify-content: left;
+        width: 90vw;
+        display: flex;
     }
 
     .labels {
@@ -43,6 +44,10 @@
         width: 40vw;
         margin: 0 auto;
         margin-top: 50px;
+    }
+
+    .about-text{
+        width: 50vw;
     }
 
     .row {
@@ -54,17 +59,42 @@
 
     .skill-card {
         background-color: var(--background-2);
-        width: 5vw;
         text-align: center;
         border-radius: 30px;
         border: 2px solid var(--primary);
         box-shadow: 0 2px 0 0 var(--secondary);
         transition: all var(--transition);
+        margin: 0;
+        padding: 10px 16px;
+    }
+
+    .subtext {
+        margin: 0;
     }
 
     .skill-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 5px 0px 0px var(--secondary);
+    }
+    @media (max-width: 768px) {
+        .about-hero{
+            flex-direction: column;
+        }
+        .about-hero-text{
+            width: 95vw;
+        }
+        .about-hero img{
+            width: 95vw;
+        }
+        .about-content{
+            flex-direction: column;
+        }
+        .about-text{
+            width: 95vw;
+        }
+        .labels{
+            display: none;
+        }
     }
 </style>
 
@@ -80,118 +110,137 @@
                 </svg>
 
             </a>
-        </div>
-        <!-- Burger Menu Icon -->
+        </div> <!-- Burger Menu Icon -->
         <div class="burger-menu" id="burger-menu">
             <div class="bar"></div>
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
         <!-- Navigation Links -->
-        <div class="nav" id="nav">
-            <a href="./Gallery.html">Gallery</a>
-            <a href="./Resume.html">Resume</a>
-            <a href="./About.html">About</a>
-            <a href="./Contact.html">Contact</a>
-            <a href="./index.html">Home</a>
-            <!-- Theme Toggle Switch -->
-            <label class="switch">
-                <input type="checkbox" id="theme-toggle">
-                <span class="slider round">
-                    <!-- <i class="fas fa-sun light-icon"></i> -->
-                    <svg class="light-icon" width="20" height="20" viewBox="0 0 24 24" fill="#000000"
+        <div class="nav" id="nav"> <a href="./Gallery.html">Gallery</a> <a href="./Resume.html">Resume</a> <a
+                href="./About.html">About</a> <a href="./Contact.html">Contact</a> <a href="./index.html">Home</a>
+            <!-- Theme Toggle Switch --> <label class="switch">
+                <input type="checkbox" id="theme-toggle"> <span class="slider round"> <!-- <i
+class="fas fa-sun light-icon"></i> --> <svg class="light-icon" width="20" height="20" viewBox="0 0 24 24"
+                        fill="#000000" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C12.4142 2 12.75 2.33579 12.75
+2.75V4.25C12.75 4.66421 12.4142 5 12 5C11.5858 5 11.25 4.66421 11.25
+4.25V2.75C11.25 2.33579 11.5858 2 12 2ZM17 12C17 14.7614 14.7614 17 12
+17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17
+12ZM21.25 12.75C21.6642 12.75 22 12.4142 22 12C22 11.5858 21.6642 11.25 21.25
+11.25H19.75C19.3358 11.25 19 11.5858 19 12C19 12.4142 19.3358 12.75 19.75
+12.75H21.25ZM12 19C12.4142 19 12.75 19.3358 12.75 19.75V21.25C12.75 21.6642
+12.4142 22 12 22C11.5858 22 11.25 21.6642 11.25 21.25V19.75C11.25 19.3358
+11.5858 19 12 19ZM4.25 12.75C4.66421 12.75 5 12.4142 5 12C5 11.5858 4.66421
+11.25 4.25 11.25H2.75C2.33579 11.25 2 11.5858 2 12C2 12.4142 2.33579 12.75 2.75
+12.75H4.25ZM4.21967 4.22004C4.51256 3.92715 4.98744 3.92715 5.28033
+4.22004L6.78033 5.72004C7.07322 6.01294 7.07322 6.48781 6.78033 6.7807C6.48744
+7.0736 6.01256 7.0736 5.71967 6.7807L4.21967 5.2807C3.92678 4.98781 3.92678
+4.51294 4.21967 4.22004ZM5.28033 19.7807C4.98744 20.0736 4.51256 20.0736 4.21967
+19.7807C3.92678 19.4878 3.92678 19.0129 4.21967 18.72L5.71967 17.22C6.01256
+16.9271 6.48744 16.9271 6.78033 17.22C7.07322 17.5129 7.07322 17.9878 6.78033
+18.2807L5.28033 19.7807ZM19.7803 4.22004C19.4874 3.92715 19.0126 3.92715 18.7197
+4.22004L17.2197 5.72004C16.9268 6.01294 16.9268 6.48781 17.2197 6.7807C17.5126
+7.0736 17.9874 7.0736 18.2803 6.7807L19.7803 5.2807C20.0732 4.98781 20.0732
+4.51294 19.7803 4.22004ZM18.7197 19.7807C19.0126 20.0736 19.4874 20.0736 19.7803
+19.7807C20.0732 19.4878 20.0732 19.0129 19.7803 18.72L18.2803 17.22C17.9874
+16.9271 17.5126 16.9271 17.2197 17.22C16.9268 17.5129 16.9268 17.9878 17.2197
+18.2807L18.7197 19.7807Z" fill="currentColor" />
+                    </svg> <!-- <i class="fas
+fa-moon dark-icon"></i> --> <svg class="dark-icon" width="20" height="20" viewBox="0 0 24 24" fill="#000000"
                         xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M12 2C12.4142 2 12.75 2.33579 12.75 2.75V4.25C12.75 4.66421 12.4142 5 12 5C11.5858 5 11.25 4.66421 11.25 4.25V2.75C11.25 2.33579 11.5858 2 12 2ZM17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12ZM21.25 12.75C21.6642 12.75 22 12.4142 22 12C22 11.5858 21.6642 11.25 21.25 11.25H19.75C19.3358 11.25 19 11.5858 19 12C19 12.4142 19.3358 12.75 19.75 12.75H21.25ZM12 19C12.4142 19 12.75 19.3358 12.75 19.75V21.25C12.75 21.6642 12.4142 22 12 22C11.5858 22 11.25 21.6642 11.25 21.25V19.75C11.25 19.3358 11.5858 19 12 19ZM4.25 12.75C4.66421 12.75 5 12.4142 5 12C5 11.5858 4.66421 11.25 4.25 11.25H2.75C2.33579 11.25 2 11.5858 2 12C2 12.4142 2.33579 12.75 2.75 12.75H4.25ZM4.21967 4.22004C4.51256 3.92715 4.98744 3.92715 5.28033 4.22004L6.78033 5.72004C7.07322 6.01294 7.07322 6.48781 6.78033 6.7807C6.48744 7.0736 6.01256 7.0736 5.71967 6.7807L4.21967 5.2807C3.92678 4.98781 3.92678 4.51294 4.21967 4.22004ZM5.28033 19.7807C4.98744 20.0736 4.51256 20.0736 4.21967 19.7807C3.92678 19.4878 3.92678 19.0129 4.21967 18.72L5.71967 17.22C6.01256 16.9271 6.48744 16.9271 6.78033 17.22C7.07322 17.5129 7.07322 17.9878 6.78033 18.2807L5.28033 19.7807ZM19.7803 4.22004C19.4874 3.92715 19.0126 3.92715 18.7197 4.22004L17.2197 5.72004C16.9268 6.01294 16.9268 6.48781 17.2197 6.7807C17.5126 7.0736 17.9874 7.0736 18.2803 6.7807L19.7803 5.2807C20.0732 4.98781 20.0732 4.51294 19.7803 4.22004ZM18.7197 19.7807C19.0126 20.0736 19.4874 20.0736 19.7803 19.7807C20.0732 19.4878 20.0732 19.0129 19.7803 18.72L18.2803 17.22C17.9874 16.9271 17.5126 16.9271 17.2197 17.22C16.9268 17.5129 16.9268 17.9878 17.2197 18.2807L18.7197 19.7807Z"
-                            fill="currentColor" />
-                    </svg>
-                    <!-- <i class="fas fa-moon dark-icon"></i> -->
-                    <svg class="dark-icon" width="20" height="20" viewBox="0 0 24 24" fill="#000000"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M20.0258 17.0014C17.2639 21.7851 11.1471 23.4241 6.3634 20.6622C5.06068 19.9101 3.964 18.8926 3.12872 17.6797C2.84945 17.2741 3.0301 16.7141 3.49369 16.5482C7.26112 15.1997 9.27892 13.6372 10.4498 11.4021C11.6825 9.04908 12.001 6.47162 11.1387 2.93862C11.0195 2.45008 11.4053 1.98492 11.9075 2.01186C13.4645 2.09539 14.9856 2.54263 16.3649 3.33903C21.1486 6.10088 22.7876 12.2177 20.0258 17.0014Z"
-                            fill="currentColor" />
-                    </svg>
-                </span>
-            </label>
-            <div class="close-icon" id="close-icon">
-                <svg width="50" height="50" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
-                        fill="currentColor" />
-                </svg>
-            </div>
+                        <path d="M20.0258 17.0014C17.2639 21.7851 11.1471 23.4241 6.3634 20.6622C5.06068
+19.9101 3.964 18.8926 3.12872 17.6797C2.84945 17.2741 3.0301 16.7141 3.49369
+16.5482C7.26112 15.1997 9.27892 13.6372 10.4498 11.4021C11.6825 9.04908 12.001
+6.47162 11.1387 2.93862C11.0195 2.45008 11.4053 1.98492 11.9075 2.01186C13.4645
+2.09539 14.9856 2.54263 16.3649 3.33903C21.1486 6.10088 22.7876 12.2177 20.0258
+17.0014Z" fill="currentColor" />
+                    </svg> </span> </label>
+            <div class="close-icon" id="close-icon"> <svg width="50" height="50" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5
+6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" fill="currentColor" />
+                </svg> </div>
         </div>
-    </div>
-    <!-- Hero Section -->
+    </div> <!-- Hero Section -->
     <div class="about-hero">
         <div class="about-hero-text">
-            <h1>About me</h1>
-            <p>
-            Hi, I'm Austin Tallent—a passionate student and creative professional diving into the world of architectural visualization, art, and design. My journey blends technical expertise with artistic expression, as I bring spaces, concepts, and ideas to life through vibrant visuals. Whether I’m designing a stunning 3D render, sketching a concept, or fine-tuning a project, I’m always learning, exploring, and pushing my creative boundaries. Thanks for stopping by, and I can’t wait to share my work with you!</p>
-        </div>
-        <img src="mozart.jpg" alt="Austin Tallent">
+            <h1>Meet the artist</h1>
+            <p>Hi, my name is Austin Tallent. I am a passionate student and creative professional specializing in web
+                and graphic design, as well as 3D art. My work blends technical precision with artistic realism,
+                resulting in visually striking and meaningful creations. Whether designing interfaces or crafting
+                virtual scenes, I strive to bring concepts to life with a focus on detail and storytelling.
+            </p>
+        </div> <img src="headshot.png" alt="Headshot image">
     </div>
 
     <div class="about-content">
-        <h1>My career so far</h1>
-        <p>This is some text.</p>
         <div class="labels">
             <div class="row">
                 <div class="skill-card">
-                    <p class="subtext">Art</p>
+                    <p class="subtext">Graphic design</p>
                 </div>
                 <div class="skill-card">
-                    <p class="subtext">Art</p>
+                    <p class="subtext">Web design</p>
                 </div>
                 <div class="skill-card">
-                    <p class="subtext">Art</p>
+                    <p class="subtext">3D art</p>
                 </div>
             </div>
             <div class="row">
                 <div class="skill-card">
-                    <p class="subtext">Art</p>
+                    <p class="subtext">Painting</p>
                 </div>
                 <div class="skill-card">
-                    <p class="subtext">Art</p>
+                    <p class="subtext">Architectural visualization</p>
                 </div>
                 <div class="skill-card">
-                    <p class="subtext">Art</p>
+                    <p class="subtext">3D modeling</p>
                 </div>
             </div>
             <div class="row">
                 <div class="skill-card">
-                    <p class="subtext">Art</p>
+                    <p class="subtext">Drawing</p>
                 </div>
                 <div class="skill-card">
-                    <p class="subtext">Art</p>
+                    <p class="subtext">Vector art</p>
                 </div>
                 <div class="skill-card">
-                    <p class="subtext">Art</p>
+                    <p class="subtext">Digital art</p>
                 </div>
             </div>
             <div class="row">
                 <div class="skill-card">
-                    <p class="subtext">Art</p>
+                    <p class="subtext">Color grading</p>
                 </div>
                 <div class="skill-card">
-                    <p class="subtext">Art</p>
+                    <p class="subtext">Composition</p>
                 </div>
                 <div class="skill-card">
-                    <p class="subtext">Art</p>
+                    <p class="subtext">Adobe suite</p>
                 </div>
             </div>
             <div class="row">
                 <div class="skill-card">
-                    <p class="subtext">Art</p>
+                    <p class="subtext">Blender</p>
                 </div>
                 <div class="skill-card">
-                    <p class="subtext">Art</p>
+                    <p class="subtext">3D materials</p>
                 </div>
                 <div class="skill-card">
-                    <p class="subtext">Art</p>
+                    <p class="subtext">Digital painting</p>
                 </div>
             </div>
+        </div>
+        <div class="about-text">
+            <h1>Personal life</h1>
+            <p>When I'm not working on creative projects, I enjoy playing violin
+                and piano, drawing inspiration from composers like Mendelssohn and
+                Rachmaninoff. As a high school student dual-enrolled in Running Start, I balance
+                academics with my love for soccer, supporting Manchester City and Tottenham
+                Hotspur. Whether exploring Blender techniques,
+                experimenting with web design, or learning something new, I'm always driven by
+                curiosity and a desire to grow. </p>
         </div>
     </div>
 
