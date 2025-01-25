@@ -1348,7 +1348,7 @@ a:hover {
         display: flex;
         position: absolute;
         top: 2.5vw;
-        right: 0;
+        right: 2.5vw;
         /* Show burger menu on mobile */
     }
 
@@ -1376,7 +1376,7 @@ a:hover {
         opacity: 1;
         visibility: visible;
         transform: translateX(-2.5vw);
-        width: 95vw;
+        width: 92.5vw;
     }
 
     .close-icon.active {
@@ -1433,7 +1433,7 @@ a:hover {
 
     .contact-methods {
         flex-direction: column;
-        width: 100%;
+        width: 92.5vw;
     }
 
     .contact-card {
@@ -1563,19 +1563,23 @@ a:hover {
     .about-hero {
         flex-direction: column;
         padding-top: 50px;
+        width: 92.5vw;
     }
     .about-hero-text {
         width: 92.5vw;
-        text-align: center;
+        text-align: justify;
     }
     .about-text {
         width: 92.5vw;
-        text-align: center;
+        text-align: justify;
     }
     .about-content {
         flex-direction: column-reverse;
     }
     .labels {
+        width: 92.5vw;
+    }
+    .filter-buttons {
         width: 92.5vw;
     }
 }
@@ -1654,7 +1658,7 @@ a:hover {
         opacity: 1;
         visibility: visible;
         transform: translateX(-2.5vw);
-        width: 95vw;
+        width: 92.5vw;
     }
 
     .close-icon.active {
