@@ -342,9 +342,9 @@
         function updateSlidePosition() {
             if (isMobile()) {
                 // Only apply transformation on mobile
-                const translateXValue = -currentSlide * 100; // Calculate the translateX value
-                const margin = (currentSlide + 1) * 16; // Margin
-                progressGroupContainer.style.transform = `translateX(calc(${translateXValue}%))`; // Apply the transformation
+                const translateXValue = -currentSlide * 92.5; // Calculate the translateX value
+                const margin = (currentSlide + 1) * 2.5; // Margin
+                progressGroupContainer.style.transform = `translateX(calc(${translateXValue}vw))`; // Apply the transformation
             } else {
                 progressGroupContainer.style.transform = "none"; // Reset transformation on desktop
             }

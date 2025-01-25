@@ -414,6 +414,7 @@ input:checked + .slider .dark-icon {
     padding-top: 20px;
     padding-bottom: 50px;
     overflow: hidden;
+    background: transparent;
 }
 
 #movie-poster,
@@ -1219,6 +1220,7 @@ a:hover {
 @media (min-width: 1350px) and (max-width: 1550px) {
     .slideshow-container {
         height: 45vw;
+        background: transparent;
     }
 }
 @media (min-width: 1024px) and (max-width: 1349px) {
@@ -1239,6 +1241,7 @@ a:hover {
     .slideshow-container {
         flex-direction: column;
         height: auto;
+        background: transparent;
     }
 
     .image-slides {
@@ -1449,6 +1452,7 @@ a:hover {
     .slideshow-container {
         flex-direction: column;
         height: auto;
+        background: transparent;
     }
 
     .image-slides {
@@ -1732,6 +1736,8 @@ a:hover {
     .slideshow-container {
         flex-direction: column;
         height: auto;
+        width: 95vw;
+        background: transparent;
     }
 
     .image-slides {
@@ -1758,9 +1764,8 @@ a:hover {
 
     .progress-group {
         flex-direction: column;
-        width: calc(92.5vw + 16px);
+        width: 92.5vw;
         gap: 0;
-        justify-content: start;
         background: transparent;
     }
 
