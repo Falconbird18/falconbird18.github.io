@@ -769,7 +769,6 @@ input:checked + .slider .dark-icon {
 .gallery {
     text-align: center;
     padding: 25px 0;
-    background-color: var(--background);
 }
 
 .gallery h2 {
@@ -802,10 +801,12 @@ input:checked + .slider .dark-icon {
     font-family: var(--h1_font);
     font-size: var(--paragraph_size);
     font-weight: var(--h1_weight);
+    box-shadow: var(--shadow);
 }
 
 .filter-button:hover {
     background-color: var(--primary);
+    text-shadow: var(--text-shadow);
 }
 
 .filter-button.active {
@@ -830,6 +831,18 @@ input:checked + .slider .dark-icon {
     padding: 10px 16px;
     transition: all var(--transition);
     outline: none;
+}
+.filter-button.active:hover {
+    background-image: linear-gradient(
+        45deg,
+        var(--primary) 25%,
+        var(--primary) 25%,
+        var(--primary) 50%,
+        var(--primary) 50%,
+        var(--primary) 75%,
+        var(--primary) 75%,
+        var(--primary)
+    );
 }
 
 /* gallery grid */
@@ -1064,6 +1077,10 @@ input:checked + .slider .dark-icon {
 .contact-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 0px 0px var(--secondary);
+}
+
+.contact-card a {
+    color: var(--secondary);
 }
 
 .icon {
