@@ -125,9 +125,9 @@ body {
 }
 
 /* Disable scrolling when the menu is open */
-body.modal-open {
+body.no-scroll {
     overflow: hidden;
-    padding-right: 16px;
+    padding: 0;
 }
 
 h1 {
