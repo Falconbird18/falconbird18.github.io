@@ -163,7 +163,7 @@ p {
     background-color: var(--background);
     position: relative;
     width: 100%;
-    padding-top: 10px;
+    padding-top: 2.5vw;
 }
 
 /* Burger Menu Styles */
@@ -224,7 +224,7 @@ p {
     .burger-menu {
         display: flex;
         position: absolute;
-        top: 5vw;
+        top: 2.5vw;
         right: 0;
         /* Show burger menu on mobile */
     }
