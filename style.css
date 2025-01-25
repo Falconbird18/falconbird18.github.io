@@ -74,6 +74,7 @@ body.dark-mode {
 
     background-color: var(--background);
     margin: 0 5vw;
+    transition: background-color var(--transition);
 }
 
 body {
@@ -120,6 +121,7 @@ body {
 
     background-color: var(--background);
     margin: 0 5vw;
+    transition: background-color var(--transition);
 }
 
 /* Disable scrolling when the menu is open */
@@ -160,7 +162,6 @@ p {
 .header {
     display: flex;
     align-items: center;
-    background-color: var(--background);
     position: relative;
     width: 100%;
     padding-top: 2.5vw;
@@ -435,7 +436,6 @@ input:checked + .slider .dark-icon {
     /* space between progress groups */
     margin: 0 20px;
     /* space between image and progress bars */
-    background-color: var(--background);
 }
 
 .progress-group {
@@ -607,7 +607,6 @@ input:checked + .slider .dark-icon {
 }
 
 .footer {
-    background-color: var(--background);
     padding: 40px 5vw;
     text-align: center;
     margin-top: 100px;
