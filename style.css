@@ -1634,7 +1634,7 @@ a:hover {
         display: flex;
         position: absolute;
         top: 2.5vw;
-        right: 0;
+        right: 2.5vw;
         /* Show burger menu on mobile */
     }
 
