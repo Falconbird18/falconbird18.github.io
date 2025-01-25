@@ -1196,8 +1196,8 @@ a:hover {
         transform: translateY(0) rotate(360deg);
     }
 }
-
-@media (max-width: 768px) {
+/*Tablets*/
+@media (min-width: 768px) and (max-width: 1023px) {
     body {
         --h1_font: "monaspace radon";
         --h2_font: "monaspace radon";
@@ -1235,10 +1235,9 @@ a:hover {
         --h3_size: 28px;
         --paragraph_size: 20px;
         --subtext_size: 18px;
-        width: 95vw;
+        width: 92.5vw;
         margin: 0 2.5vw;
     }
-
     .header {
         width: 100%;
     }
@@ -1248,28 +1247,27 @@ a:hover {
     }
 
     .left {
-        width: 95vw;
+        width: 92.5vw;
     }
 
     .right {
-        width: 95vw;
+        width: 92.5vw;
     }
 
     .images {
-        width: 95vw;
+        width: 92.5vw;
         margin-left: 0;
         margin-top: 25px;
     }
 
     .button-container {
-        flex-direction: column;
-        width: 95vw;
+        width: 92.5vw;
         text-align: center;
     }
 
     .button-primary,
     .button-secondary {
-        width: 95vw;
+        width: calc(90vw / 2);
     }
 
     .small-gallery-grid {
@@ -1277,7 +1275,7 @@ a:hover {
     }
 
     .small-gallery-column {
-        width: 95vw;
+        width: 92.5vw;
     }
 
     .collaborate {
@@ -1308,7 +1306,228 @@ a:hover {
     }
 
     .image-slides {
+        width: 92.5vw;
+        height: 75vw;
+        position: absolute;
+        margin-bottom: 35vw;
+    }
+
+    .progress-bars {
+        display: flex;
+        width: 92.5vw;
+        margin: 0;
+        margin-top: 75vw;
+    }
+
+    .progress-group-container {
+        display: flex;
+        width: 92.5vw;
+        margin: 0;
+        transition: transform var(--transition);
+    }
+
+    .progress-group {
+        flex-direction: column;
+        /* width: calc(92.5vw + 16px); */
+        width: 100%;
+        gap: 5vw;
+        margin: 0;
+        padding: 0;
+        justify-content: start;
+        background: transparent;
+    }
+
+    .progress-bar {
+        opacity: 0;
+        width: 92.5vw;
+        height: 16px;
+        overflow: hidden;
+        margin: 0;
+        margin-top: 50px;
+        position: relative;
+        border-radius: var(--radius);
+    }
+
+    .progress {
+        height: calc(100% - 4px);
+        transition: width 5s linear;
+    }
+
+    .progress-bar.active {
+        opacity: 1;
+        height: 16px;
+        width: 92.5vw;
+    }
+
+    .header-slide {
+        width: 100%;
+        background: transparent;
+    }
+
+    .modal-container {
+        flex-direction: column;
+        padding: 0;
+        margin: 0;
+    }
+
+    .modal-content {
+        border-radius: var(--radius);
+    }
+
+    .modal-image-container {
+        width: 85vw;
+        padding: 0;
+        margin-top: 2.5vw;
+        margin-left: 2.5vw;
+    }
+
+    .modal-text-container {
+        width: 85vw;
+        margin-left: 2.5vw;
+        padding: 0;
+    }
+
+    #modalDescription {
+        width: 85vw;
+        text-align: center;
+    }
+
+    .close {
+        border: 2px solid var(--primary);
+    }
+
+    .small-gallery {
+        margin: 0;
+    }
+
+    .view-image {
+        width: 85vw;
+    }
+
+    .view-button {
+        opacity: 1;
+        width: 70vw;
+        transform: none;
+    }
+
+    .footer {
+        margin-top: 50px;
+    }
+}
+
+/*Phones*/
+@media (max-width: 767px) {
+    body {
+        --h1_font: "monaspace radon";
+        --h2_font: "monaspace radon";
+        --h3_font: "monaspace xenon";
+        --paragraph_font: "monaspace xenon";
+        --subtext_font: "monaspace xenon";
+        --h1_weight: normal;
+        --h2_weight: normal;
+        --h3_weight: bold;
+        --paragraph_weight: 300;
+        --subtext_weight: 100;
+        --h1_size: 40px;
+        --h2_size: 30px;
+        --h3_size: 28px;
+        --paragraph_size: 20px;
+        --subtext_size: 18px;
+
         width: 95vw;
+        margin: 0 2.5vw;
+    }
+
+    body.dark-mode {
+        --h1_font: "monaspace radon";
+        --h2_font: "monaspace radon";
+        --h3_font: "monaspace xenon";
+        --paragraph_font: "monaspace xenon";
+        --subtext_font: "monaspace xenon";
+        --h1_weight: normal;
+        --h2_weight: normal;
+        --h3_weight: bold;
+        --paragraph_weight: 300;
+        --subtext_weight: 100;
+        --h1_size: 40px;
+        --h2_size: 30px;
+        --h3_size: 28px;
+        --paragraph_size: 20px;
+        --subtext_size: 18px;
+        width: 92.5vw;
+        margin: 0 2.5vw;
+    }
+
+    .header {
+        width: 100%;
+    }
+
+    .hello {
+        flex-direction: column-reverse;
+    }
+
+    .left {
+        width: 92.5vw;
+    }
+
+    .right {
+        width: 92.5vw;
+    }
+
+    .images {
+        width: 92.5vw;
+        margin-left: 0;
+        margin-top: 25px;
+    }
+
+    .button-container {
+        flex-direction: column;
+        width: 92.5vw;
+        text-align: center;
+    }
+
+    .button-primary,
+    .button-secondary {
+        width: 92.5vw;
+    }
+
+    .small-gallery-grid {
+        flex-direction: column;
+    }
+
+    .small-gallery-column {
+        width: 92.5vw;
+    }
+
+    .collaborate {
+        margin-top: 50px;
+    }
+
+    .switch {
+        margin: 0;
+    }
+
+    .contact-methods {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .contact-card {
+        width: 100%;
+        padding: 20px 0;
+    }
+
+    .filter-buttons {
+        flex-direction: column;
+    }
+
+    .slideshow-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .image-slides {
+        width: 92.5vw;
         height: 75vw;
         position: absolute;
         margin-bottom: 35vw;
@@ -1317,37 +1536,38 @@ a:hover {
     .progress-bars {
         display: flex;
         overflow: hidden;
-        width: 95vw;
+        width: 92.5vw;
         margin: 0;
         margin-top: 75vw;
     }
 
     .progress-group-container {
         display: flex;
-        width: 95vw;
+        width: 92.5vw;
         margin: 0;
         transition: transform var(--transition);
     }
 
     .progress-group {
         flex-direction: column;
-        width: calc(95vw + 16px);
+        width: calc(92.5vw + 16px);
         gap: 0;
         justify-content: start;
+        background: transparent;
     }
 
     .progress-bar {
         opacity: 0;
-        width: 95vw;
+        width: 92.5vw;
         height: 16px;
         overflow: hidden;
         margin: 0;
         margin-top: 50px;
         position: relative;
+        border-radius: var(--radius);
     }
 
     .progress {
-        width: 0 !important;
         height: calc(100% - 4px);
         transition: width 5s linear;
     }
@@ -1355,11 +1575,12 @@ a:hover {
     .progress-bar.active {
         opacity: 1;
         height: 16px;
-        width: 95vw;
+        width: 92.5vw;
     }
 
     .header-slide {
-        width: 95vw;
+        width: 92.5vw;
+        background: transparent;
     }
 
     .modal-container {

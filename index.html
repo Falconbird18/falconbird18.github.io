@@ -332,10 +332,11 @@
 
         // Function to check if the screen is mobile
         function isMobile() {
-            return window.matchMedia("(max-width: 768px)").matches;
+            return window.matchMedia("(max-width: 1023px)").matches;
         }
 
         let transform = isMobile() ? "width" : "height";
+        let inverseTransform = isMobile() ? "height" : "width";
 
         // Function to update the slide position (horizontal sliding on mobile)
         function updateSlidePosition() {
@@ -373,20 +374,23 @@
             // Reset the progress bar
             progress.style.transition = "none"; // Disable transition for reset
             progress.style[transform] = "0";
+            progress.style[inverseTransform] = "0";
             progress.style.border = "0";
 
             // Force a reflow to apply the reset
             void progress.offsetHeight;
 
             // Re-enable transition and animate the progress bar
-            progress.style.transition = "height 5s linear";
+            progress.style.transition = `${transform} 5s linear`;
             progress.style[transform] = "100%";
+            progress.style[inverseTransform] = "12px";
             progress.style.border = "2px solid var(--primary)";
 
             // Add an event listener to reset the progress bar after the animation completes
             const handleTransitionEnd = () => {
                 progress.style.transition = "none"; // Disable transition for reset
                 progress.style[transform] = "0"; // Reset height to 0
+                progress.style[inverseTransform] = "0";
                 progress.style.border = "0";
                 progress.removeEventListener(
                     "transitionend",
