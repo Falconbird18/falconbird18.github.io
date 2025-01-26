@@ -1241,6 +1241,7 @@ a:hover {
     .slideshow-container {
         flex-direction: column;
         height: auto;
+        width: 92.5vw;
         background: transparent;
     }
 
@@ -1254,7 +1255,7 @@ a:hover {
 
     .progress-bars {
         display: flex;
-        width: 92.5vw;
+        width: 90vw;
         margin: 0;
         margin-top: 40vw;
     }
@@ -1452,6 +1453,7 @@ a:hover {
     .slideshow-container {
         flex-direction: column;
         height: auto;
+        width: 95vw;
         background: transparent;
     }
 
