@@ -128,6 +128,7 @@ body {
 body.no-scroll {
     overflow: hidden;
     padding: 0;
+    padding-right: 16px;
 }
 
 h1 {
@@ -213,11 +214,13 @@ p {
 }
 
 .close-icon {
-    position: absolute;
+    position: fixed;
     top: 2.5vw;
     left: 2.5vw;
     cursor: pointer;
     opacity: 0;
+    transition: opacity var(--transition);
+    z-index: 10;
 }
 
 /* toggle switch styles */
@@ -885,8 +888,7 @@ input:checked + .slider .dark-icon {
     display: none;
     justify-content: center;
     align-items: center;
-    transition: all 0.5s;
-    overflow: hidden;
+    transition: all var(--transition);
 }
 
 .modal-container {
@@ -895,8 +897,7 @@ input:checked + .slider .dark-icon {
 
 .modal-image-container {
     width: 60vw;
-    height: 85vh;
-    /* adjust this value to your desired max height */
+    height: calc(90vh - 40px);
     padding: 20px;
 }
 
@@ -910,7 +911,7 @@ input:checked + .slider .dark-icon {
 .modal-text-container {
     flex: 1;
     width: 20vw;
-    height: 85vh;
+    height: calc(90vh - 40px);
     padding: 20px;
     background-color: var(--background-2);
     border-radius: var(--radius);
@@ -1009,10 +1010,12 @@ input:checked + .slider .dark-icon {
     transition: transform 0.5s;
     text-align: center;
     overflow-x: hidden;
+    position: absolute;
+    bottom: 0;
 }
 
 .modal-content.show {
-    transform: translatey(2.5vw);
+    transform: translatey(2px);
     overflow-x: hidden;
 }
 
@@ -1030,26 +1033,36 @@ input:checked + .slider .dark-icon {
     font-weight: var(--paragraph_weight);
     color: var(--text);
     width: 60vw;
+    height: 100%;
     margin: 0 auto;
     margin-bottom: 20px;
 }
 
 .close {
-    position: absolute;
-    top: 1vh;
-    right: 1vw;
+    position: fixed;
+    top: 3.5vh;
+    right: calc(3.5vw + 16px);
     font-size: 30px;
     width: 32px;
     height: 32px;
     color: var(--text);
     cursor: pointer;
-    transition: color var(--transition);
+    transition: all 0.5s;
     background-color: var(--background);
     border-radius: 50%;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(96.5vh);
+    text-align: center;
 }
 
 .close:hover {
     color: var(--primary);
+}
+
+.close.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .contact-container {
@@ -1524,6 +1537,8 @@ a:hover {
 
     .modal-content {
         border-radius: var(--radius);
+        overflow: auto;
+        margin-bottom: 5vh;
     }
 
     .modal-image-container {
@@ -1546,6 +1561,12 @@ a:hover {
 
     .close {
         border: 2px solid var(--primary);
+    }
+
+    .close.show {
+        opacity: 1;
+        transform: translateY(0);
+        transition: all var(--transition);
     }
 
     .small-gallery {
@@ -1802,10 +1823,6 @@ a:hover {
         flex-direction: column;
     }
 
-    .modal-content {
-        border-radius: var(--radius);
-    }
-
     .modal-image-container {
         width: 85vw;
         padding: 0;
@@ -1874,9 +1891,10 @@ a:hover {
         right: auto;
     }
     .modal-content {
+        border-radius: var(--radius);
         width: 95vw;
         height: 95vh;
-        margin-bottom: 5vh;
+        margin-bottom: 2.5vh;
         overflow-x: hidden;
     }
     .modal-image-container {

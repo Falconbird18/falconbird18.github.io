@@ -118,7 +118,7 @@
                 <div class="small-gallery-column">
                     <div
                         class="gallery-item architecture"
-                        onclick="openModal('interior_with_sofas_and_plants.png', 'Interior with Sofas and Plants', 'This is the first interior that I designed and created with Cycles in Blender. It took me six to ten hours of work and multiple renders to acquire the result I was after.')"
+                        onclick="openModal('interior_with_sofas_and_plants.png', 'Interior with Sofas and Plants', 'This living room scene is the result of countless hours of work, and work with lighting, materials, and composition. I refined the image using multiple render passes, and enhanced the image with blur, lens distortion, and color correction.')"
                     >
                         <img
                             src="interior_with_sofas_and_plants.png"
@@ -138,7 +138,7 @@
                 <div class="small-gallery-column">
                     <div
                         class="gallery-item architecture"
-                        onclick="openModal('apples.png', 'Apples, Quince, and Grapes', 'Some description text.')"
+                        onclick="openModal('apples.png', 'Apples, Quince, and Grapes', 'For this project, I meticulously emulated both studio lighting and the nuances of real-world camera behavior using Blenders Cycles rendering engine. I incorporated imperfections like noise, lens flares, and subtle chromatic aberration to enhance the realism, while post-production techniques were employed to refine the final look and achieve a cohesive aesthetic.')"
                     >
                         <img
                             src="apples.png"
@@ -181,8 +181,8 @@
 
         <!-- Modal for Image Information -->
         <div id="imageModal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
             <div class="modal-content modal-slide-up">
-                <span class="close" onclick="closeModal()">&times;</span>
                 <div class="modal-container">
                     <!-- Image on the left -->
                     <div class="modal-image-container">
@@ -305,6 +305,7 @@
             const modalImage = document.getElementById("modalImage");
             const modalButton = document.getElementById("modalButton");
             const modalTitle = document.getElementById("modalTitle");
+            const close = document.querySelector(".close");
             const modalDescription =
                 document.getElementById("modalDescription");
             const modalContent = document.querySelector(".modal-content");
@@ -314,13 +315,13 @@
             modalTitle.textContent = title;
             modalDescription.textContent = description;
 
-            // Add modal-open class to body
-            document.body.classList.add("modal-open");
+            document.body.classList.add("no-scroll");
 
             modal.style.display = "flex";
             setTimeout(() => {
                 modalContent.classList.add("show");
                 modalBackground.classList.add("show");
+                close.classList.add("show");
             }, 10);
         }
 
@@ -328,13 +329,15 @@
             const modal = document.getElementById("imageModal");
             const modalContent = document.querySelector(".modal-content");
             const modalBackground = document.querySelector(".modal");
+            const close = document.querySelector(".close");
 
             modalContent.classList.remove("show");
             modalBackground.classList.remove("show");
+            close.classList.remove("show");
             setTimeout(() => {
                 modal.style.display = "none";
                 // Remove modal-open class from body
-                document.body.classList.remove("modal-open");
+                document.body.classList.remove("no-scroll");
             }, 500);
         }
 
@@ -343,14 +346,16 @@
             const modal = document.getElementById("imageModal");
             const modalContent = document.querySelector(".modal-content");
             const modalBackground = document.querySelector(".modal");
+            const close = document.querySelector(".close");
 
             if (event.target === modal) {
                 modalContent.classList.remove("show");
                 modalBackground.classList.remove("show");
+                close.classList.remove("show");
                 setTimeout(() => {
                     modal.style.display = "none";
                     // Remove modal-open class from body
-                    document.body.classList.remove("modal-open");
+                    document.body.classList.remove("no-scroll");
                 }, 500);
             }
         };
