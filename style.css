@@ -1040,8 +1040,8 @@ input:checked + .slider .dark-icon {
 
 .close {
     position: fixed;
-    top: 3.5vh;
-    right: calc(3.5vw + 16px);
+    top: 11vh;
+    right: calc(6vw + 16px);
     font-size: 30px;
     width: 32px;
     height: 32px;
@@ -1561,6 +1561,8 @@ a:hover {
 
     .close {
         border: 2px solid var(--primary);
+        top: 3.5vh;
+        right: calc(3.5vw + 16px);
     }
 
     .close.show {
@@ -1844,6 +1846,8 @@ a:hover {
 
     .close {
         border: 2px solid var(--primary);
+        top: 3.5vh;
+        right: calc(3.5vw + 16px);
     }
 
     .view-image {
