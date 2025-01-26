@@ -1149,12 +1149,12 @@ a:hover {
     width: 60vw;
 }
 
-.about-hero img {
-    border-radius: 50%;
+.about-hero svg {
     width: 20vw;
     height: 20vw;
     object-fit: cover;
     margin-top: 50px;
+    color: var(--text);
 }
 
 .about-content {
@@ -1848,7 +1848,7 @@ a:hover {
     .about-hero-text {
         width: 95vw;
     }
-    .about-hero img {
+    .about-hero svg {
         width: 95vw;
     }
     .about-content {
