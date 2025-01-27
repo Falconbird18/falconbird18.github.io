@@ -932,6 +932,7 @@ input:checked + .slider .dark-icon {
 #modalDescription {
     width: 20vw;
     text-align: left;
+    height: auto;
 }
 
 .view-image {
