@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Monaspace Radon";
-    src: url("./fonts/MonaspaceRadon-Regular.otf");
+    src: url("../fonts/MonaspaceRadon-Regular.otf");
     font-weight: normal;
     font-style: normal;
     font-display: block;
@@ -8,7 +8,7 @@
 
 @font-face {
     font-family: "Monaspace Xenon";
-    src: url("./fonts/MonaspaceXenon-Bold.otf");
+    src: url("../fonts/MonaspaceXenon-Bold.otf");
     font-weight: bold;
     font-style: normal;
     font-display: block;
@@ -16,7 +16,7 @@
 
 @font-face {
     font-family: "Monaspace Xenon";
-    src: url("./fonts/MonaspaceXenon-Light.otf");
+    src: url("../fonts/MonaspaceXenon-Light.otf");
     font-weight: 300;
     font-style: normal;
     font-display: block;
@@ -24,7 +24,7 @@
 
 @font-face {
     font-family: "Monaspace Xenon";
-    src: url("./fonts/MonaspaceXenon-ExtraLight.otf");
+    src: url("../fonts/MonaspaceXenon-ExtraLight.otf");
     font-weight: 100;
     font-style: normal;
     font-display: block;
