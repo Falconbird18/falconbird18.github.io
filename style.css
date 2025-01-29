@@ -3,7 +3,7 @@
     src: url("./fonts/MonaspaceRadon-Regular.otf");
     font-weight: normal;
     font-style: normal;
-    font-display: swap;
+    font-display: block;
 }
 
 @font-face {
@@ -11,7 +11,7 @@
     src: url("./fonts/MonaspaceXenon-Bold.otf");
     font-weight: bold;
     font-style: normal;
-    font-display: swap;
+    font-display: block;
 }
 
 @font-face {
@@ -19,7 +19,7 @@
     src: url("./fonts/MonaspaceXenon-Light.otf");
     font-weight: 300;
     font-style: normal;
-    font-display: swap;
+    font-display: block;
 }
 
 @font-face {
@@ -27,7 +27,7 @@
     src: url("./fonts/MonaspaceXenon-ExtraLight.otf");
     font-weight: 100;
     font-style: normal;
-    font-display: swap;
+    font-display: block;
 }
 
 body.dark-mode {
@@ -445,9 +445,8 @@ input:checked + .slider .dark-icon {
 .progress-group {
     display: flex;
     align-items: center;
-    /* align progress bar and header vertically */
     gap: 20px;
-    /* space between progress bar and header */
+    z-index: 5;
 }
 
 .progress-bar {
