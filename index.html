@@ -459,8 +459,20 @@
 
         // Update the transform variable when the window is resized
         window.addEventListener("resize", () => {
-            transform = isMobile() ? "width" : "height"; // Update the transform variable
-        });
+          const wasMobile = transform === "width"; // Check the state *before* updating
+          transform = isMobile() ? "width" : "height"; // Update the transform variable
+          inverseTransform = isMobile() ? "height" : "width"; // Update the inverse
+          const isNowMobile = transform === "width";
+
+          // Only restart the animation if the layout type (mobile/desktop) actually changed
+          if (wasMobile !== isNowMobile) {
+             // Re-run showSlide for the current slide to apply new dimensions and restart animation
+             showSlide(currentSlide);
+          }
+          // Also update the horizontal position if needed (relevant for mobile view)
+          updateSlidePosition();
+      });
+
         // Theme Toggle Script
         const themeToggle = document.getElementById("theme-toggle");
         const body = document.body;
