@@ -1,4 +1,3 @@
-
 body.dark-mode {
     --background: #2c2621;
     /* background: hsl(27, 15%, 15%)*/
@@ -34,11 +33,11 @@ body.dark-mode {
 
     --transition: 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
     --radius: 30px;
-    --text-shadow: 2px 2px 0 var(--background-2),
-        2px -2px 0 var(--background-2), -2px 2px 0 var(--background-2),
-        -2px -2px 0 var(--background-2), 2px 0px 0 var(--background-2),
-        0px 2px 0 var(--background-2), -2px 0px 0 var(--background-2),
-        0px -2px 0 var(--background-2);
+    --text-shadow:
+        2px 2px 0 var(--background-2), 2px -2px 0 var(--background-2),
+        -2px 2px 0 var(--background-2), -2px -2px 0 var(--background-2),
+        2px 0px 0 var(--background-2), 0px 2px 0 var(--background-2),
+        -2px 0px 0 var(--background-2), 0px -2px 0 var(--background-2);
     --shadow: 0px 2px 0px 0px var(--secondary);
 
     background-color: var(--background);
@@ -81,16 +80,22 @@ body {
 
     --transition: 0.2s cubic-bezier(0.85, 0, 0.15, 1);
     --radius: 30px;
-    --text-shadow: 2px 2px 0 var(--background-2),
-        2px -2px 0 var(--background-2), -2px 2px 0 var(--background-2),
-        -2px -2px 0 var(--background-2), 2px 0px 0 var(--background-2),
-        0px 2px 0 var(--background-2), -2px 0px 0 var(--background-2),
-        0px -2px 0 var(--background-2);
+    --text-shadow:
+        2px 2px 0 var(--background-2), 2px -2px 0 var(--background-2),
+        -2px 2px 0 var(--background-2), -2px -2px 0 var(--background-2),
+        2px 0px 0 var(--background-2), 0px 2px 0 var(--background-2),
+        -2px 0px 0 var(--background-2), 0px -2px 0 var(--background-2);
     --shadow: 0px 2px 0px 0px var(--secondary);
 
     background-color: var(--background);
     margin: 0 5vw;
     transition: background-color var(--transition);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 /* Disable scrolling when the menu is open */
@@ -219,15 +224,16 @@ p {
     transition: var(--transition);
     border-radius: 30px;
     border: 2px solid var(--primary);
+    height: 36px;
 }
 
 .slider:before {
     position: absolute;
     content: "";
-    height: 24px;
-    width: 24px;
-    left: 1px;
-    bottom: 1px;
+    height: 28px;
+    width: 28px;
+    left: 2px;
+    bottom: 2px;
     background-color: var(--background);
     border: 2px solid var(--primary);
     transition: var(--transition);
@@ -379,10 +385,10 @@ input:checked + .slider .dark-icon {
 
 .slideshow-container {
     display: flex;
-    gap: 20px;
+    gap: 1.5rem;
     /* space between image and text */
     width: 90vw;
-    height: 35vw;
+    height: 35vw + 70px;
     padding-top: 20px;
     padding-bottom: 50px;
     overflow: hidden;
@@ -407,14 +413,14 @@ input:checked + .slider .dark-icon {
     display: flex;
     flex-direction: column;
     /* space between progress groups */
-    margin: 0 20px;
+    margin: 0 1.5rem;
     /* space between image and progress bars */
 }
 
 .progress-group {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 1.5rem;
     z-index: 5;
 }
 
@@ -441,7 +447,7 @@ input:checked + .slider .dark-icon {
 }
 
 .progress {
-    width: calc(100% - 4px);
+    width: 100%;
     height: 0;
     position: absolute;
     top: 0;
@@ -487,11 +493,7 @@ input:checked + .slider .dark-icon {
 .text-content {
     width: 50%;
     height: 100%;
-    /* adjust width as needed */
-    /* display: flex;
-            flex-direction: column;
-            justify-content: center; */
-    margin-left: 24px;
+    margin-left: 1.5rem;
     /* add margin to account for progress bar width */
 }
 
@@ -1227,7 +1229,7 @@ a:hover {
     .slideshow-container {
         flex-direction: column;
         height: auto;
-        width: 92.5vw;
+        width: 90vw;
         background: transparent;
     }
 
@@ -1248,16 +1250,14 @@ a:hover {
 
     .progress-group-container {
         display: flex;
-        width: 92.5vw;
+        width: 90;
         margin: 0;
         transition: transform var(--transition);
     }
 
     .progress-group {
         flex-direction: column;
-        /* width: calc(92.5vw + 16px); */
-        width: 100%;
-        gap: 5vw;
+        width: 90vw;
         margin: 0;
         padding: 0;
         justify-content: start;
@@ -1266,7 +1266,7 @@ a:hover {
 
     .progress-bar {
         opacity: 0;
-        width: 92.5vw;
+        width: 90vw;
         height: 16px;
         overflow: hidden;
         margin: 0;
@@ -1283,7 +1283,7 @@ a:hover {
     .progress-bar.active {
         opacity: 1;
         height: 16px;
-        width: 92.5vw;
+        width: 90vw;
     }
 
     .header-slide {
@@ -1466,8 +1466,8 @@ a:hover {
 
     .progress-group {
         flex-direction: column;
-        /* width: calc(92.5vw + 16px); */
-        width: 100%;
+        width: calc(92.5vw + 16px);
+        /*width: 100%;*/
         gap: 5vw;
         margin: 0;
         padding: 0;

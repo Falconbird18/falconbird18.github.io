@@ -370,7 +370,7 @@
         const progressBars = document.querySelectorAll(".progress-bar");
         const progressGroupContainer = document.querySelector(
             ".progress-group-container",
-        ); // Ensure this exists in your HTML
+        );
 
         // Function to check if the screen is mobile
         function isMobile() {
@@ -383,65 +383,48 @@
         // Function to update the slide position (horizontal sliding on mobile)
         function updateSlidePosition() {
             if (isMobile()) {
-                // Only apply transformation on mobile
-                const translateXValue = -currentSlide * 92.5; // Calculate the translateX value
-                const margin = (currentSlide + 1) * 2.5; // Margin
-                progressGroupContainer.style.transform = `translateX(calc(${translateXValue}vw))`; // Apply the transformation
+                const translateXValue = -currentSlide * 90;
+                progressGroupContainer.style.transition = "transform 0.5s ease";
+                progressGroupContainer.style.transform = `translateX(${translateXValue}vw)`;
             } else {
-                progressGroupContainer.style.transform = "none"; // Reset transformation on desktop
+                progressGroupContainer.style.transition = "none";
+                progressGroupContainer.style.transform = "none";
             }
         }
 
         // Function to show the active slide
         function showSlide(index) {
-            currentSlide = index; // Update the currentSlide variable
-            updateSlidePosition(); // Update the slide position (horizontal sliding on mobile)
+            currentSlide = index;
+            updateSlidePosition();
 
-            const progress = progressBars[index].querySelector(".progress");
-
-            // Hide all slides, text, and progress bars
             slides.forEach((slide, i) => {
-                slide.classList.remove("active");
-                textSlides[i].classList.remove("active");
-                progressBars[i].classList.remove("active");
-                progress.style.border = "0";
-            });
+                const isActive = i === index;
+                slide.classList.toggle("active", isActive);
+                textSlides[i].classList.toggle("active", isActive);
+                progressBars[i].classList.toggle("active", isActive);
 
-            // Show the active slide, text, and progress bar
-            slides[index].classList.add("active");
-            textSlides[index].classList.add("active");
-            progressBars[index].classList.add("active");
-            progress.style.border = "0";
+                const progress = progressBars[i].querySelector(".progress");
 
-            // Reset the progress bar
-            progress.style.transition = "none"; // Disable transition for reset
-            progress.style[transform] = "0";
-            progress.style[inverseTransform] = "0";
-            progress.style.border = "0";
+                if (isActive) {
+                    // Reset and animate active progress bar
+                    progress.style.transition = "none";
+                    progress.style[transform] = "0%";
+                    progress.style[inverseTransform] = "0";
+                    progress.style.border = "0";
 
-            // Force a reflow to apply the reset
-            void progress.offsetHeight;
+                    void progress.offsetHeight; // Force reflow
 
-            // Re-enable transition and animate the progress bar
-            progress.style.transition = `${transform} 5s linear`;
-            progress.style[transform] = "100%";
-            progress.style[inverseTransform] = "12px";
-            progress.style.border = "2px solid var(--primary)";
-
-            // Add an event listener to reset the progress bar after the animation completes
-            const handleTransitionEnd = () => {
-                progress.style.transition = "none"; // Disable transition for reset
-                progress.style[transform] = "0"; // Reset height to 0
-                progress.style[inverseTransform] = "0";
-                progress.style.border = "0";
-                progress.removeEventListener(
-                    "transitionend",
-                    handleTransitionEnd,
-                ); // Remove the listener
-            };
-
-            progress.addEventListener("transitionend", handleTransitionEnd, {
-                once: true,
+                    progress.style.transition = `${transform} 5s linear`;
+                    progress.style[transform] = "100%";
+                    progress.style[inverseTransform] = "100%";
+                    progress.style.border = "2px solid var(--primary)";
+                } else {
+                    // Smoothly reset non-active progress bars to 0
+                    progress.style.transition = `${transform} 0.5s linear`;
+                    progress.style[transform] = "0%";
+                    progress.style[inverseTransform] = "0";
+                    progress.style.border = "0";
+                }
             });
         }
 
@@ -459,19 +442,17 @@
 
         // Update the transform variable when the window is resized
         window.addEventListener("resize", () => {
-          const wasMobile = transform === "width"; // Check the state *before* updating
-          transform = isMobile() ? "width" : "height"; // Update the transform variable
-          inverseTransform = isMobile() ? "height" : "width"; // Update the inverse
-          const isNowMobile = transform === "width";
+            const wasMobile = transform === "width";
+            transform = isMobile() ? "width" : "height";
+            inverseTransform = isMobile() ? "height" : "width";
+            const isNowMobile = transform === "width";
 
-          // Only restart the animation if the layout type (mobile/desktop) actually changed
-          if (wasMobile !== isNowMobile) {
-             // Re-run showSlide for the current slide to apply new dimensions and restart animation
-             showSlide(currentSlide);
-          }
-          // Also update the horizontal position if needed (relevant for mobile view)
-          updateSlidePosition();
-      });
+            // Restart the current slide and update position if layout changed
+            if (wasMobile !== isNowMobile) {
+                showSlide(currentSlide);
+            }
+            updateSlidePosition();
+        });
 
         // Theme Toggle Script
         const themeToggle = document.getElementById("theme-toggle");
