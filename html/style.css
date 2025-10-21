@@ -1642,7 +1642,7 @@ a:hover {
         flex-direction: column;
         position: fixed;
         top: 7.5vh;
-        left: 5vw;
+        left: 2.5vw;
         background-color: var(--background-2);
         border: 2px solid var(--primary);
         border-radius: 30px;
@@ -1660,7 +1660,7 @@ a:hover {
         opacity: 1;
         visibility: visible;
         transform: translateX(-2.5vw);
-        width: 92.5vw;
+        width: 95vw;
     }
 
     .close-icon.active {
@@ -1677,28 +1677,28 @@ a:hover {
     }
 
     .left {
-        width: 92.5vw;
+        width: 95vw;
     }
 
     .right {
-        width: 92.5vw;
+        width: 95vw;
     }
 
     .images {
-        width: 92.5vw;
+        width: 95vw;
         margin-left: 0;
         margin-top: 25px;
     }
 
     .button-container {
         flex-direction: column;
-        width: 92.5vw;
+        width: 95vw;
         text-align: center;
     }
 
     .button-primary,
     .button-secondary {
-        width: 92.5vw;
+        width: 95vw;
     }
 
     .small-gallery-grid {
@@ -1706,7 +1706,7 @@ a:hover {
     }
 
     .small-gallery-column {
-        width: 92.5vw;
+        width: 95vw;
     }
 
     .collaborate {
@@ -1739,7 +1739,7 @@ a:hover {
     }
 
     .image-slides {
-        width: 92.5vw;
+        width: 95vw;
         height: 75vw;
         position: absolute;
         margin-bottom: 35vw;
@@ -1748,28 +1748,28 @@ a:hover {
     .progress-bars {
         display: flex;
         overflow: hidden;
-        width: 92.5vw;
+        width: 95vw;
         margin: 0;
         margin-top: 75vw;
     }
 
     .progress-group-container {
         display: flex;
-        width: 92.5vw;
+        width: 95vw;
         margin: 0;
         transition: transform var(--transition);
     }
 
     .progress-group {
         flex-direction: column;
-        width: 92.5vw;
+        width: 95vw;
         gap: 0;
         background: transparent;
     }
 
     .progress-bar {
         opacity: 0;
-        width: 92.5vw;
+        width: 95vw;
         height: 16px;
         overflow: hidden;
         margin: 0;
@@ -1786,11 +1786,11 @@ a:hover {
     .progress-bar.active {
         opacity: 1;
         height: 16px;
-        width: 92.5vw;
+        width: 95vw;
     }
 
     .header-slide {
-        width: 92.5vw;
+        width: 95vw;
         background: transparent;
     }
 
