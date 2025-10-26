@@ -147,13 +147,71 @@
                 </div>
             </div>
             <div class="right">
-                <img
-                    class="images"
-                    src="images/new_york.png"
-                    alt="Modern New York loft"
-                />
+                <div class="logo-circle">
+                    <div class="logo-positioner" style="--angle: 0deg">
+                        <img src="images/logos/blender.svg" class="logo-item" />
+                    </div>
+                    <div class="logo-positioner" style="--angle: 45deg">
+                        <img src="images/logos/css.svg" class="logo-item" />
+                    </div>
+                    <div class="logo-positioner" style="--angle: 90deg">
+                        <img src="images/logos/gimp.svg" class="logo-item" />
+                    </div>
+                    <div class="logo-positioner" style="--angle: 135deg">
+                        <img src="images/logos/html.svg" class="logo-item" />
+                    </div>
+                    <div class="logo-positioner" style="--angle: 180deg">
+                        <img
+                            src="images/logos/illustrator.svg"
+                            class="logo-item"
+                        />
+                    </div>
+                    <div class="logo-positioner" style="--angle: 225deg">
+                        <img
+                            src="images/logos/inkscape.svg"
+                            class="logo-item"
+                        />
+                    </div>
+                    <div class="logo-positioner" style="--angle: 270deg">
+                        <img
+                            src="images/logos/javascript.svg"
+                            class="logo-item"
+                        />
+                    </div>
+                    <div class="logo-positioner" style="--angle: 315deg">
+                        <img
+                            src="images/logos/photoshop.svg"
+                            class="logo-item"
+                        />
+                    </div>
+                    <!-- Add more positioners if needed -->
+                </div>
+                <img class="images" src="images/me.png" alt="Austin Tallent" />
+                <!--<span
+                    class="blurred-circle"
+                    style="
+                        --size: 25vw;
+                        --color: var(--primary);
+                        --position: 15vw, 40vh;
+                        --blur: 50px;
+                        --opacity: 1;
+                        --index: 2;
+                    "
+                ></span>-->
+                <span
+                    class="blurred-circle"
+                    style="
+                        --size: 30vw;
+                        --color: var(--text);
+                        --position: 10vw, 5vh;
+                        --blur: 100px;
+                        --opacity: 0.5;
+                        --index: 0;
+                    "
+                ></span>
             </div>
         </div>
+        <canvas id="canvas" class="wave"></canvas>
         <div class="collaborate">
             <h1>What I do best</h1>
             <!-- <p>Ready to bring your ideas to life? I'm excited to work with you! -->
@@ -168,6 +226,12 @@
                         alt="The Last Keeper of Vareth"
                         id="movie-poster"
                     />
+                    <img
+                        src="images/movie-poster.jpg"
+                        alt="The Last Keeper of Vareth"
+                        id="movie-poster"
+                        class="blurred-image"
+                    />
                 </div>
                 <div class="slide">
                     <img
@@ -175,15 +239,31 @@
                         alt="Christ Church Tri-Cities website"
                         id="christ-church"
                     />
+                    <img
+                        src="images/christ_church.png"
+                        alt="Christ Church Tri-Cities website Blurred"
+                        id="christ-church"
+                        class="blurred-image"
+                    />
                 </div>
                 <div class="slide">
                     <img
                         src="images/interior_with_sofas_and_plants.png"
                         alt="Interior with Sofas and Plants"
                     />
+                    <img
+                        src="images/interior_with_sofas_and_plants.png"
+                        alt="Interior with Sofas and Plants Blurred"
+                        class="blurred-image"
+                    />
                 </div>
                 <div class="slide">
                     <img src="images/free_bft.png" alt="Free Ride" />
+                    <img
+                        src="images/free_bft.png"
+                        alt="Free Ride Blurred"
+                        class="blurred-image"
+                    />
                 </div>
             </div>
 
@@ -262,31 +342,77 @@
             <h1>Sample gallery</h1>
             <div class="small-gallery-grid">
                 <div class="small-gallery-column">
-                    <img
-                        src="images/apples.png"
-                        alt="Apples, Quince, and Grapes"
-                    />
-                    <img
-                        src="images/movie-poster.jpg"
-                        alt="The Last Keeper of Vareth"
-                    />
+                    <div class="image-wrapper">
+                        <img
+                            src="images/apples.png"
+                            alt="Apples, Quince, and Grapes"
+                        />
+                        <img
+                            src="images/apples.png"
+                            alt="Apples, Quince, and Grapes Blurred"
+                            class="blurred-image"
+                        />
+                    </div>
+
+                    <div class="image-wrapper">
+                        <img
+                            src="images/movie-poster.jpg"
+                            alt="the last keeper of vareth"
+                        />
+                        <img
+                            src="images/movie-poster.jpg"
+                            alt="The Last Keeper of Vareth Blurred"
+                            class="blurred-image"
+                        />
+                    </div>
                 </div>
                 <div class="small-gallery-column">
-                    <img
-                        src="images/christ_church.png"
-                        alt="Christ Church Tri-Cities Website"
-                    />
-                    <img
-                        src="images/garden_of_tranquility.png"
-                        alt="Garden of Tranquility"
-                    />
+                    <div class="image-wrapper">
+                        <img
+                            src="images/christ_church.png"
+                            alt="Christ Church Tri-Cities Website"
+                        />
+                        <img
+                            src="images/christ_church.png"
+                            alt="Christ Church Tri-Cities Website"
+                            class="blurred-image"
+                        />
+                    </div>
+                    <div class="image-wrapper">
+                        <img
+                            src="images/garden_of_tranquility.png"
+                            alt="Garden of Tranquility"
+                        />
+                        <img
+                            src="images/garden_of_tranquility.png"
+                            alt="Garden of Tranquility"
+                            class="blurred-image"
+                        />
+                    </div>
                 </div>
                 <div class="small-gallery-column">
-                    <img src="images/style_guide.png" alt="Basic style guide" />
-                    <img
-                        src="images/movie-brocure-render.png"
-                        alt="3 fold brochure"
-                    />
+                    <div class="image-wrapper">
+                        <img
+                            src="images/style_guide.png"
+                            alt="Basic style guide"
+                        />
+                        <img
+                            src="images/style_guide.png"
+                            alt="Basic style guide"
+                            class="blurred-image"
+                        />
+                    </div>
+                    <div class="image-wrapper">
+                        <img
+                            src="images/movie-brocure-render.png"
+                            alt="3 fold brochure"
+                        />
+                        <img
+                            src="images/movie-brocure-render.png"
+                            alt="3 fold brochure"
+                            class="blurred-image"
+                        />
+                    </div>
                 </div>
             </div>
             <button
@@ -546,5 +672,62 @@
                 }, 500); // Match the transition duration (300ms)
             }
         });
+
+        function drawWave() {
+            var canvas = document.getElementById("canvas");
+            if (canvas == null || !canvas.getContext) {
+                return;
+            }
+            // Set canvas internal dimensions to match visual size (full viewport width)
+            canvas.width = window.innerWidth;
+            canvas.height = 100;
+
+            var ctx = canvas.getContext("2d");
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear previous drawing
+
+            // Draw the filled rectangle with wavy top
+            ctx.beginPath();
+            ctx.moveTo(0, canvas.height); // Bottom left
+
+            // Calculate first y for left side
+            var firstY = Math.sin(0.01 * 0 + 1) * 24 + 25;
+            ctx.lineTo(0, firstY); // Up to start of wave
+
+            // Draw wave across
+            for (var i = 1; i <= canvas.width; i++) {
+                var x = i;
+                var y = Math.sin(0.02 * x + 1) * 15 + 25;
+                ctx.lineTo(x, y);
+            }
+
+            // Down to bottom right and close
+            ctx.lineTo(canvas.width, canvas.height); // Bottom right
+            ctx.closePath();
+
+            ctx.fillStyle = getComputedStyle(document.body)
+                .getPropertyValue("--background")
+                .trim();
+            ctx.fill();
+
+            // Draw the wave line on top
+            ctx.beginPath();
+            ctx.moveTo(0, firstY); // Start at first point
+
+            for (var i = 1; i <= canvas.width; i++) {
+                var x = i;
+                var y = Math.sin(0.02 * x + 1) * 15 + 25;
+                ctx.lineTo(x, y);
+            }
+
+            ctx.lineWidth = 2;
+            ctx.strokeStyle = getComputedStyle(document.body)
+                .getPropertyValue("--text")
+                .trim(); // Matches theme
+            ctx.stroke();
+        }
+        drawWave();
+
+        // Redraw on resize to handle width changes
+        window.addEventListener("resize", drawWave);
     </script>
 </html>

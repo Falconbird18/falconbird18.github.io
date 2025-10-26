@@ -39,6 +39,7 @@ body.dark-mode {
         2px 0px 0 var(--background-2), 0px 2px 0 var(--background-2),
         -2px 0px 0 var(--background-2), 0px -2px 0 var(--background-2);
     --shadow: 0px 2px 0px 0px var(--secondary);
+    --blur: 50px;
 
     background-color: var(--background);
     margin: 0 5vw;
@@ -86,10 +87,34 @@ body {
         2px 0px 0 var(--background-2), 0px 2px 0 var(--background-2),
         -2px 0px 0 var(--background-2), 0px -2px 0 var(--background-2);
     --shadow: 0px 2px 0px 0px var(--secondary);
+    --blur: 50px;
+
+    --circle-radius: 12vw; /* Responsive radius; adjusts with viewport */
+    --logo-size: 3.5vw; /* Responsive logo size */
+    --rotation-speed: 60s; /* Animation duration; increase for slower rotation */
+    --circle-top: 20vh; /* Adjust % to center over head; test 15-25% */
 
     background-color: var(--background);
     margin: 0 5vw;
     transition: background-color var(--transition);
+    overflow-x: hidden;
+}
+
+/* For smaller screens, override variables for better fit */
+@media (max-width: 1349px) {
+    :root {
+        --circle-radius: 25vw;
+        --logo-size: 6vw;
+        --circle-top: 25%; /* Slight adjustment for tablet proportions */
+    }
+}
+
+@media (max-width: 767px) {
+    :root {
+        --circle-radius: 40vw; /* Larger relative size on mobile */
+        --logo-size: 10vw;
+        --circle-top: 30%; /* Adjust based on mobile image scaling */
+    }
 }
 
 *,
@@ -301,14 +326,92 @@ input:checked + .slider .dark-icon {
 
 .left {
     width: 50vw;
-}
-
-.right {
     align-self: center;
 }
 
+.right {
+    position: relative;
+}
+
+.logo-circle {
+    position: absolute;
+    top: var(--circle-top);
+    left: 50%;
+    width: calc(2 * var(--circle-radius));
+    height: calc(2 * var(--circle-radius));
+    transform: translate(-50%, -50%);
+    animation: rotate var(--rotation-speed) linear infinite;
+    z-index: 1;
+}
+
+.blurred-circle {
+    height: var(--size);
+    width: var(--size);
+    border-radius: 50%;
+    background-color: var(--color);
+    display: inline-block;
+    position: absolute;
+    filter: blur(var(--blur));
+    transform: translate(var(--position));
+    z-index: var(--index);
+    opacity: var(--opacity);
+    top: 0;
+    left: 0;
+}
+
+.logo-positioner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: var(--logo-size);
+    height: var(--logo-size);
+    transform: translate(-50%, -50%) rotate(var(--angle))
+        translate(var(--circle-radius)) rotate(calc(-1 * var(--angle)));
+}
+
+.logo-item {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    animation: counter-rotate var(--rotation-speed) linear infinite;
+}
+
 .images {
+    z-index: 2;
+    position: relative;
     width: 40vw;
+    border-radius: 30px;
+    margin-left: 5vw;
+    /*mask-image: linear-gradient(to bottom, black 60%, transparent 100%);*/
+}
+
+.wave {
+    position: relative;
+    left: -5vw;
+    bottom: 5vh;
+    z-index: 3;
+}
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes counter-rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.images {
+    width: 45vw;
     border-radius: 30px;
     margin-left: 5vw;
 }
@@ -391,7 +494,7 @@ input:checked + .slider .dark-icon {
     height: 35vw + 70px;
     padding-top: 20px;
     padding-bottom: 50px;
-    overflow: hidden;
+    /*overflow: hidden;*/
     background: transparent;
 }
 
@@ -403,7 +506,7 @@ input:checked + .slider .dark-icon {
     width: 50vw;
     height: 35vw;
     position: relative;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .progress-bars {
@@ -527,6 +630,17 @@ input:checked + .slider .dark-icon {
     height: 100%;
     object-fit: cover;
     border-radius: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.blurred-image {
+    z-index: 1 !important;
+    filter: blur(var(--blur)) saturate(5);
+    opacity: 0.5;
+    transform: scale(1.1);
 }
 
 .collaborate {
@@ -564,15 +678,30 @@ input:checked + .slider .dark-icon {
     gap: 2.5vw;
 }
 
-.small-gallery-grid img {
+.image-wrapper {
+    position: relative;
+    overflow: visible; /* Allow blurred image to overflow for shadow effect */
+}
+
+.image-wrapper img {
     width: 100%;
     height: auto;
     border-radius: var(--radius);
     transition: transform var(--transition);
+    position: relative;
+    z-index: 2;
 }
 
-.gallery-grid img:hover {
-    transform: scale(1.05);
+.image-wrapper .blurred-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    filter: blur(var(--blur)) saturate(4);
+    opacity: 0.5;
+    transform: scale(1);
 }
 
 .gallery-item {
@@ -1379,6 +1508,7 @@ a:hover {
 
     .hello {
         flex-direction: column-reverse;
+        overflow: hidden;
     }
 
     .left {
