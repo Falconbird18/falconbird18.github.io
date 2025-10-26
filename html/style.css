@@ -39,7 +39,10 @@ body.dark-mode {
         2px 0px 0 var(--background-2), 0px 2px 0 var(--background-2),
         -2px 0px 0 var(--background-2), 0px -2px 0 var(--background-2);
     --shadow: 0px 2px 0px 0px var(--secondary);
+    --border: 2px solid var(--primary);
     --blur: 50px;
+
+    --medium-padding: 1.5em;
 
     background-color: var(--background);
     margin: 0 5vw;
@@ -87,7 +90,10 @@ body {
         2px 0px 0 var(--background-2), 0px 2px 0 var(--background-2),
         -2px 0px 0 var(--background-2), 0px -2px 0 var(--background-2);
     --shadow: 0px 2px 0px 0px var(--secondary);
+    --border: 2px solid var(--primary);
     --blur: 50px;
+
+    --medium-padding: 1.5em;
 
     --circle-radius: 12vw; /* Responsive radius; adjusts with viewport */
     --logo-size: 3.5vw; /* Responsive logo size */
@@ -248,7 +254,7 @@ p {
     background-color: var(--background-3);
     transition: var(--transition);
     border-radius: 30px;
-    border: 2px solid var(--primary);
+    border: var(--border);
     height: 36px;
 }
 
@@ -260,7 +266,7 @@ p {
     left: 2px;
     bottom: 2px;
     background-color: var(--background);
-    border: 2px solid var(--primary);
+    border: var(--border);
     transition: var(--transition);
     border-radius: 50%;
 }
@@ -434,10 +440,10 @@ input:checked + .slider .dark-icon {
         var(--background-2)
     );
     background-size: 8px 8px;
-    border: 2px solid var(--primary);
+    border: var(--border);
     box-shadow: 0px 2px 0px 0px var(--secondary);
     color: var(--text);
-    border: 2px solid var(--primary);
+    border: var(--border);
     text-shadow: var(--text-shadow);
     font-family: var(--h1_font);
     font-size: var(--paragraph_size);
@@ -464,10 +470,10 @@ input:checked + .slider .dark-icon {
 .button-secondary {
     border-radius: 30px;
     background-color: var(--background-2);
-    border: 2px solid var(--primary);
+    border: var(--border);
     box-shadow: 0px 2px 0px 0px var(--secondary);
     color: var(--text);
-    border: 2px solid var(--primary);
+    border: var(--border);
     font-family: var(--h1_font);
     font-size: var(--paragraph_size);
     font-weight: var(--h1_weight);
@@ -541,7 +547,7 @@ input:checked + .slider .dark-icon {
 }
 
 .progress-bar.active .progress {
-    border: 2px solid var(--primary);
+    border: var(--border);
 }
 
 .progress-bar.active {
@@ -629,18 +635,10 @@ input:checked + .slider .dark-icon {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 30px;
+    border-radius: var(--radius);
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 2;
-}
-
-.blurred-image {
-    z-index: 1 !important;
-    filter: blur(var(--blur)) saturate(5);
-    opacity: 0.5;
-    transform: scale(1.1);
 }
 
 .collaborate {
@@ -680,28 +678,38 @@ input:checked + .slider .dark-icon {
 
 .image-wrapper {
     position: relative;
-    overflow: visible; /* Allow blurred image to overflow for shadow effect */
+    overflow: visible;
 }
 
 .image-wrapper img {
-    width: 100%;
-    height: auto;
+    max-width: 100%;
+    max-height: 100%;
     border-radius: var(--radius);
     transition: transform var(--transition);
     position: relative;
-    z-index: 2;
+    z-index: var(--index);
 }
 
-.image-wrapper .blurred-image {
+.image-above-blur {
+    z-index: var(--index) !important;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    filter: blur(var(--blur)) saturate(4);
-    opacity: 0.5;
-    transform: scale(1);
+    max-width: 100%;
+    max-height: 100%;
+    opacity: 1;
+}
+.image-wrapper .blurred-image,
+.blurred-image-alone {
+    z-index: var(--index) !important;
+    filter: blur(var(--blur)) saturate(10) brightness(2);
+    transform: scale(var(--scale));
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 100%;
+    max-height: 100%;
+    opacity: 0.33;
 }
 
 .gallery-item {
@@ -785,7 +793,7 @@ input:checked + .slider .dark-icon {
     padding: 40px 20px;
     background-color: var(--background-2);
     border-radius: 30px;
-    border: 2px solid var(--primary);
+    border: var(--border);
     box-shadow: var(--shadow);
 }
 
@@ -815,7 +823,7 @@ input:checked + .slider .dark-icon {
         opacity 0.8s ease,
         transform 0.8s ease;
     box-shadow: var(--shadow);
-    border: 2px solid var(--primary);
+    border: var(--border);
 }
 
 .card.active {
@@ -895,7 +903,7 @@ input:checked + .slider .dark-icon {
 
 .filter-button {
     background-color: var(--background-2);
-    border: 2px solid var(--primary);
+    border: var(--border);
     color: var(--text);
     padding: 10px 16px;
     border-radius: var(--radius);
@@ -924,7 +932,7 @@ input:checked + .slider .dark-icon {
         var(--background-2)
     );
     background-size: 8px 8px;
-    border: 2px solid var(--primary);
+    border: var(--border);
     box-shadow: var(--shadow);
     color: var(--text);
     text-shadow: var(--text-shadow);
@@ -958,7 +966,6 @@ input:checked + .slider .dark-icon {
 
 .gallery-item {
     position: relative;
-    overflow: hidden;
     border-radius: var(--radius);
     cursor: pointer;
     transition: transform var(--transition);
@@ -988,6 +995,7 @@ input:checked + .slider .dark-icon {
     justify-content: center;
     align-items: center;
     transition: all var(--transition);
+    z-index: 3;
 }
 
 .modal-container {
@@ -996,10 +1004,10 @@ input:checked + .slider .dark-icon {
 
 .modal-image-container {
     width: 60vw;
-    height: calc(90vh - 40px);
-    margin: 20px;
+    height: calc(90vh - (2 * var(--medium-padding)));
     align-self: center;
-    display: flex;
+    position: relative;
+    margin: var(--medium-padding);
 }
 
 #modalImage {
@@ -1014,7 +1022,7 @@ input:checked + .slider .dark-icon {
 .modal-text-container {
     flex: 1;
     width: 20vw;
-    height: calc(90vh - 40px);
+    height: calc(90vh - (2 * var(--medium-padding)));
     padding: 20px;
     background-color: var(--background-2);
     border-radius: var(--radius);
@@ -1042,13 +1050,13 @@ input:checked + .slider .dark-icon {
 
 .view-button {
     background-color: var(--background-3);
-    border: 2px solid var(--primary);
+    border: var(--border);
     color: var(--text);
     font-family: var(--subtext_font);
     font-size: var(--subtext_size);
     font-weight: var(--subtext_weight);
     padding: 10px 16px;
-    border-radius: 30px;
+    border-radius: 50%;
     margin: 0;
     opacity: 0;
     transition: all var(--transition);
@@ -1094,7 +1102,7 @@ input:checked + .slider .dark-icon {
         var(--background-2)
     );
     background-size: 8px 8px;
-    border: 2px solid var(--primary);
+    border: var(--border);
     border-radius: 30px;
 }
 
@@ -1106,8 +1114,9 @@ input:checked + .slider .dark-icon {
 
 .modal-content {
     background-color: var(--background-2);
-    border-radius: var(--radius) var(--radius) 0 0;
-    border: 2px solid var(--primary);
+    border-radius: calc(var(--radius) + var(--medium-padding))
+        calc(var(--radius) + var(--medium-padding)) 0 0;
+    border: var(--border);
     width: 90vw;
     height: 90vh;
     transform: translatey(105%);
@@ -1186,7 +1195,7 @@ input:checked + .slider .dark-icon {
     background-color: var(--background-2);
     padding: 20px;
     border-radius: 30px;
-    border: 2px solid var(--primary);
+    border: var(--border);
     width: 30vw;
     transition: all var(--transition);
     box-shadow: var(--shadow);
@@ -1304,7 +1313,7 @@ a:hover {
     background-color: var(--background-2);
     text-align: center;
     border-radius: 30px;
-    border: 2px solid var(--primary);
+    border: var(--border);
     box-shadow: 0 2px 0 0 var(--secondary);
     transition: all var(--transition);
     margin: 0;
@@ -1479,7 +1488,7 @@ a:hover {
         top: 7.5vh;
         left: 5vw;
         background-color: var(--background-2);
-        border: 2px solid var(--primary);
+        border: var(--border);
         border-radius: 30px;
         opacity: 0;
         visibility: hidden;
@@ -1663,7 +1672,7 @@ a:hover {
     }
 
     .close {
-        border: 2px solid var(--primary);
+        border: var(--border);
         top: 3.5vh;
         right: calc(3.5vw + 16px);
     }
@@ -1774,7 +1783,7 @@ a:hover {
         top: 7.5vh;
         left: 2.5vw;
         background-color: var(--background-2);
-        border: 2px solid var(--primary);
+        border: var(--border);
         border-radius: 30px;
         opacity: 0;
         visibility: hidden;
@@ -1948,7 +1957,7 @@ a:hover {
     }
 
     .close {
-        border: 2px solid var(--primary);
+        border: var(--border);
         top: 3.5vh;
         right: calc(3.5vw + 16px);
     }
