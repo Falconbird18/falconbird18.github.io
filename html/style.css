@@ -42,6 +42,8 @@ body.dark-mode {
     --shadow: 0px 2px 0px 0px var(--secondary);
     --border: 2px solid var(--primary);
     --blur: 3rem;
+    --saturation: 3;
+    --brightness: 0.75;
 
     --medium-padding: 1.5rem;
 
@@ -94,6 +96,8 @@ body {
     --shadow: 0px 2px 0px 0px var(--secondary);
     --border: 2px solid var(--primary);
     --blur: 50px;
+    --saturation: 10;
+    --brightness: 2;
 
     --medium-padding: 1.5em;
 
@@ -704,7 +708,8 @@ input:checked + .slider .dark-icon {
 .image-wrapper .blurred-image,
 .blurred-image-alone {
     z-index: var(--index) !important;
-    filter: blur(var(--blur)) saturate(10) brightness(2);
+    filter: blur(var(--blur)) saturate(var(--saturation))
+        brightness(var(--brightness));
     transform: scale(var(--scale));
     position: absolute;
     top: 0;

@@ -656,9 +656,17 @@
         themeToggle.addEventListener("change", () => {
             if (themeToggle.checked) {
                 body.classList.add("dark-mode");
+                var background = getComputedStyle(document.body)
+                    .getPropertyValue("--background")
+                    .trim();
+                drawWave();
                 localStorage.setItem("theme", "dark-mode");
             } else {
                 body.classList.remove("dark-mode");
+                var background = getComputedStyle(document.body)
+                    .getPropertyValue("--background")
+                    .trim();
+                drawWave();
                 localStorage.setItem("theme", "light-mode");
             }
         });
