@@ -104,7 +104,6 @@ body {
     --circle-radius: 12vw; /* Responsive radius; adjusts with viewport */
     --logo-size: 3.5vw; /* Responsive logo size */
     --rotation-speed: 60s; /* Animation duration; increase for slower rotation */
-    --circle-top: 20vh; /* Adjust % to center over head; test 15-25% */
 
     background-color: var(--background);
     margin: 0 5vw;
@@ -343,15 +342,15 @@ input:checked + .slider .dark-icon {
 
 .right {
     position: relative;
+    display: inline-block;
 }
 
 .logo-circle {
     position: absolute;
-    top: var(--circle-top);
+    top: 28%;
     left: 50%;
     width: calc(2 * var(--circle-radius));
     height: calc(2 * var(--circle-radius));
-    transform: translate(-50%, -50%);
     animation: rotate var(--rotation-speed) linear infinite;
     z-index: 1;
 }
@@ -392,9 +391,6 @@ input:checked + .slider .dark-icon {
     z-index: 2;
     position: relative;
     width: 40vw;
-    border-radius: 30px;
-    margin-left: 5vw;
-    /*mask-image: linear-gradient(to bottom, black 60%, transparent 100%);*/
 }
 
 .wave {
