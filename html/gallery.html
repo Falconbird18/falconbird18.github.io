@@ -133,14 +133,15 @@
                 <button class="filter-button active" data-filter="all">
                     All
                 </button>
-                <button class="filter-button" data-filter="architecture">
-                    3D art
-                </button>
-                <button class="filter-button" data-filter="art">
+                <button class="filter-button" data-filter="3d">3D art</button>
+                <button class="filter-button" data-filter="graphicDesign">
                     Graphic design
                 </button>
-                <button class="filter-button" data-filter="personal">
+                <button class="filter-button" data-filter="webDesign">
                     Web design
+                </button>
+                <button class="filter-button" data-filter="paintings">
+                    Paintings
                 </button>
             </div>
 
@@ -148,25 +149,25 @@
             <div class="small-gallery-grid">
                 <div class="small-gallery-column">
                     <div
-                        class="gallery-item architecture"
+                        class="gallery-item 3d"
                         onclick="openModal('../images/interior_with_sofas_and_plants.png', 'Interior with Sofas and Plants', 'This living room scene is the result of countless hours of work, and work with lighting, materials, and composition. I refined the image using multiple render passes, and enhanced the image with blur, lens distortion, and color correction.')"
                     >
                         <div class="image-wrapper">
                             <img
                                 src="../images/interior_with_sofas_and_plants.png"
-                                alt="Interior with sofas and plants"
+                                alt="Interior with sofas and plants blurred"
                                 style="--index: 2"
                             />
                             <img
                                 src="../images/interior_with_sofas_and_plants.png"
-                                alt="Interior with sofas and plants"
+                                alt="Interior with sofas and plants blurred"
                                 class="blurred-image"
                                 style="--index: 1"
                             />
                         </div>
                     </div>
                     <div
-                        class="gallery-item architecture"
+                        class="gallery-item 3d"
                         onclick="openModal('../images/garden_of_tranquility.png', 'Garden of Tranquility', 'This project fully utilized Blender\'s powerful tools to craft an immersive environment. To evoke a sense of atmosphere and depth, I used volume to soften edges and create a sense of distance. Furthermore, I carefully balanced cool and warm light sources. Cool blues and greens receded the scene, while warm oranges and yellows bring certain elements forward, creating a dynamic interplay of light and shadow.')"
                     >
                         <div class="image-wrapper">
@@ -177,7 +178,25 @@
                             />
                             <img
                                 src="../images/garden_of_tranquility.png"
-                                alt="Garden of Tranquility"
+                                alt="Garden of Tranquility blurred"
+                                class="blurred-image"
+                                style="--index: 1"
+                            />
+                        </div>
+                    </div>
+                    <div
+                        class="gallery-item paintings"
+                        onclick="openModal('../images/cephas.jpg', 'Portrait of Cephas', 'This project fully utilized Blender\'s powerful tools to craft an immersive environment. To evoke a sense of atmosphere and depth, I used volume to soften edges and create a sense of distance. Furthermore, I carefully balanced cool and warm light sources. Cool blues and greens receded the scene, while warm oranges and yellows bring certain elements forward, creating a dynamic interplay of light and shadow.')"
+                    >
+                        <div class="image-wrapper">
+                            <img
+                                src="../images/cephas.jpg"
+                                alt="Portrait of Cephas"
+                                style="--index: 2"
+                            />
+                            <img
+                                src="../images/cephas.jpg"
+                                alt="Portrait of Cephas blurred"
                                 class="blurred-image"
                                 style="--index: 1"
                             />
@@ -186,7 +205,7 @@
                 </div>
                 <div class="small-gallery-column">
                     <div
-                        class="gallery-item architecture"
+                        class="gallery-item 3d"
                         onclick="openModal('../images/apples.png', 'Apples, Quince, and Grapes', 'For this project, I meticulously emulated both studio lighting and the nuances of real-world camera behavior using Blender\'s Cycles rendering engine. I incorporated imperfections like noise, lens flares, and subtle chromatic aberration to enhance the realism, while post-production techniques were employed to refine the final look and achieve a cohesive aesthetic.')"
                     >
                         <div class="image-wrapper">
@@ -197,14 +216,32 @@
                             />
                             <img
                                 src="../images/apples.png"
-                                alt="Apples, Quince, and Grapes"
+                                alt="Apples, Quince, and Grapes blurred"
                                 class="blurred-image"
                                 style="--index: 1"
                             />
                         </div>
                     </div>
                     <div
-                        class="gallery-item art"
+                        class="gallery-item graphicDesign"
+                        onclick="openModal('../images/cat.jpg', 'Portrait of a Black Cat', 'The Last Keeper of Vareth is a movie poster I meticulously crafted using a combination of Photoshop and Illustrator. This project served as a valuable learning experience, pushing my understanding of adjustment layers and layer effects to new depths. Every element of the poster, from the unique character designs to the intricate environments, was created entirely by me. The creation process was both challenging and rewarding. I experimented extensively with lighting techniques, striving to achieve a dramatic and cinematic atmosphere. I incorporated subtle imperfections like film grain and subtle chromatic aberration to enhance the poster\'s realism and give it a more authentic, vintage feel.')"
+                    >
+                        <div class="image-wrapper">
+                            <img
+                                src="../images/cat.jpg"
+                                alt="Portrait of a Black Cat"
+                                style="--index: 2"
+                            />
+                            <img
+                                src="../images/cat.jpg"
+                                alt="Portrait of a Black Cat blurred"
+                                class="blurred-image"
+                                style="--index: 1"
+                            />
+                        </div>
+                    </div>
+                    <div
+                        class="gallery-item graphicDesign"
                         onclick="openModal('../images/movie-poster.jpg', 'The Last Keeper of Vareth', 'The Last Keeper of Vareth is a movie poster I meticulously crafted using a combination of Photoshop and Illustrator. This project served as a valuable learning experience, pushing my understanding of adjustment layers and layer effects to new depths. Every element of the poster, from the unique character designs to the intricate environments, was created entirely by me. The creation process was both challenging and rewarding. I experimented extensively with lighting techniques, striving to achieve a dramatic and cinematic atmosphere. I incorporated subtle imperfections like film grain and subtle chromatic aberration to enhance the poster\'s realism and give it a more authentic, vintage feel.')"
                     >
                         <div class="image-wrapper">
@@ -215,7 +252,7 @@
                             />
                             <img
                                 src="../images/movie-poster.jpg"
-                                alt="The Last Keeper of Vareth"
+                                alt="The Last Keeper of Vareth blurred"
                                 class="blurred-image"
                                 style="--index: 1"
                             />
@@ -224,7 +261,7 @@
                 </div>
                 <div class="small-gallery-column">
                     <div
-                        class="gallery-item architecture"
+                        class="gallery-item 3d"
                         onclick="openModal('../images/new_york.png', 'Modern New York loft', 'For this project, I delved into the intricacies of lighting and compositing within the Blender environment. This involved extensive experimentation with various lighting setups to achieve the desired mood and atmosphere. I also incorporated advanced techniques, such as physically simulating a lens within Blender to accurately replicate lens distortion and create a more realistic depth of field. This meticulous approach allowed me to achieve a level of visual fidelity that surpassed previous projects.')"
                     >
                         <div class="image-wrapper">
@@ -235,34 +272,66 @@
                             />
                             <img
                                 src="../images/new_york.png"
-                                alt="Modern New York loft"
+                                alt="Modern New York loft blurred"
                                 class="blurred-image"
                                 style="--index: 1"
                             />
                         </div>
                     </div>
                     <div
-                        class="gallery-item personal"
-                        onclick="openModal('../images/christ_church.png', 'Christ Church Tri-Cities website', 'For this project, I undertook a complete redesign of the Christ Church Tri-Cities website utilizing the Wix platform. While Wix offers a user-friendly interface and a vast library of templates, I encountered several limitations, particularly in achieving the desired fullscreen layouts and implementing more advanced design features. These constraints necessitated a high degree of ingenuity and innovative workarounds. I diligently explored and implemented creative solutions to overcome these challenges and ultimately achieve the desired aesthetic and functionality for the website.')"
+                        class="gallery-item webDesign"
+                        onclick="openModal('../images/christ_church.png', 'Christ Church Tri-Cities website', 'For this project, I undertook a complete redesign of the Christ Church Tri-Cities website utilizing the Wix platform. While Wix offers a user-friendly interface and a vast library of templates, I encountered several limitations, pgraphicDesignicularly in achieving the desired fullscreen layouts and implementing more advanced design features. These constraints necessitated a high degree of ingenuity and innovative workarounds. I diligently explored and implemented creative solutions to overcome these challenges and ultimately achieve the desired aesthetic and functionality for the website.')"
                     >
                         <div class="image-wrapper">
                             <img
                                 src="../images/christ_church.png"
-                                alt="Modern New York loft"
+                                alt="Christ Church Tri-Cities website"
                                 style="--index: 2"
                             />
                             <img
                                 src="../images/christ_church.png"
-                                alt="Modern New York loft"
+                                alt="Christ Church Tri-Cities website blurred"
                                 class="blurred-image"
                                 style="--index: 1; --scale: 1.1"
                             />
                         </div>
                     </div>
-                    <!-- <div class="gallery-item personal"
-                    onclick="openModal('mozart.jpg', 'Personal Project 1', 'A creative exploration of light and shadow.')">
-                    <img src="mozart.jpg" alt="Personal Project 1">
-                </div> -->
+                    <div
+                        class="gallery-item webDesign"
+                        onclick="openModal('../images/lilly.jpg', 'White Lilly in a Dark Room', 'For this project, I undertook a complete redesign of the Christ Church Tri-Cities website utilizing the Wix platform. While Wix offers a user-friendly interface and a vast library of templates, I encountered several limitations, pgraphicDesignicularly in achieving the desired fullscreen layouts and implementing more advanced design features. These constraints necessitated a high degree of ingenuity and innovative workarounds. I diligently explored and implemented creative solutions to overcome these challenges and ultimately achieve the desired aesthetic and functionality for the website.')"
+                    >
+                        <div class="image-wrapper">
+                            <img
+                                src="../images/lilly.jpg"
+                                alt="White Lilly"
+                                style="--index: 2"
+                            />
+                            <img
+                                src="../images/lilly.jpg"
+                                alt="Whit Lilly blurred"
+                                class="blurred-image"
+                                style="--index: 1; --scale: 1.1"
+                            />
+                        </div>
+                    </div>
+                    <div
+                        class="gallery-item graphicDesign"
+                        onclick="openModal('../images/free_bft.png', 'BFT Free Ride', 'For this project, I undertook a complete redesign of the Christ Church Tri-Cities website utilizing the Wix platform. While Wix offers a user-friendly interface and a vast library of templates, I encountered several limitations, pgraphicDesignicularly in achieving the desired fullscreen layouts and implementing more advanced design features. These constraints necessitated a high degree of ingenuity and innovative workarounds. I diligently explored and implemented creative solutions to overcome these challenges and ultimately achieve the desired aesthetic and functionality for the website.')"
+                    >
+                        <div class="image-wrapper">
+                            <img
+                                src="../images/free_bft.png"
+                                alt="BFT Free Ride"
+                                style="--index: 2"
+                            />
+                            <img
+                                src="../images/free_bft.png"
+                                alt="BFT Free Ride blurred"
+                                class="blurred-image"
+                                style="--index: 1; --scale: 1.1"
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
