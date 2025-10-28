@@ -168,19 +168,9 @@ fa-moon dark-icon"></i> -->
                     concepts to life with a focus on detail and storytelling.
                 </p>
             </div>
-            <svg
-                class="logo"
-                width="50px"
-                height="50px"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-            >
-                <path
-                    d="m 372.78675,403.18921 c 15.66147,5.26081 21.09346,-8.58404 23.79156,-23.79156 14.47168,-76.2829 12.62879,-216.82984 17.28917,-295.565575 l 77.99859,-5.395367 c 11.77358,-0.735848 20.60503,-10.302296 20.11445,-21.83058 -0.24528,-12.509415 -11.77356,-19.132045 -23.30184,-20.849024 -22.32072,-2.452826 -65.0016,-4.906079 -93.45438,-7.113622 -1.90095,-0.183962 -3.65987,-0.23022 -5.28679,-0.151173 -11.38838,0.553324 -16.29809,7.23456 -18.01507,15.60483 l -74.19176,5.640225 C 240.41073,53.882488 233.93205,45.346556 190.4238,36.523612 l -0.0149,0.07879 c -5.56029,-5.378108 -12.76678,-8.14628 -21.92854,-8.14628 l 4e-5,-5e-6 c -24.52827,0 -38.75635,18.885059 -59.11481,59.847262 C 93.176921,120.43539 64.480553,187.8894 40.933421,248.22892 c -5.150936,0.73585 -10.303148,1.71655 -15.2088,2.69769 -14.962241,2.6981 -24.0368459,11.283 -23.7915643,23.30184 0.4905674,11.28301 8.8293233,20.35804 21.3387363,19.86747 -11.283,30.41505 -19.376049,54.94331 -21.5835927,66.22632 -6.3773484,25.2641 6.1312143,41.20833 23.7915637,41.20833 14.96224,0 27.717788,-11.28258 27.717788,-29.67878 0,-6.37734 -1.473398,-13.73668 -5.152638,-19.13289 5.886783,-17.66035 14.228095,-40.96178 23.548832,-66.47117 31.396184,-4.66037 63.282504,-8.0956 94.678674,-10.30314 1.47169,33.849 4.17023,63.77348 8.34004,83.39609 8.91838,65.09383 91.12156,104.3173 106.1655,107.84844 50.04388,11.74636 65.3391,27.71067 72.2423,4.42703 5.94524,-20.05248 -26.92917,-27.61743 -59.03083,-38.77336 -71.79388,-24.94975 -65.47184,-52.60545 -71.23643,-73.3158 -5.09173,-18.29303 -10.85801,-61.0164 -12.32971,-86.03523 h 1.22642 c 15.69808,-0.73585 24.77397,-11.28172 24.28341,-22.81001 -0.49058,-12.01885 -10.79244,-20.60502 -26.9811,-20.11445 h -0.24698 c -1.96226,-51.50935 -2.69683,-103.99941 -3.1874,-137.603128 -0.10749,-9.347551 -0.79373,-17.510732 -1.92266,-24.847647 0,0 15.30996,16.255763 79.74666,18.736872 33.75865,1.299856 86.128,-0.813347 86.128,-0.813347 -5.3764,89.19938 -9.18701,204.69048 -12.79539,272.46315 -0.84186,15.81165 -10.13275,35.87002 16.11252,44.68601 z m -215.3441,-323.470732 7.84819,2.207969 c -0.98113,38.264093 -1.71612,96.150363 -0.48971,151.093683 -25.01883,1.71698 -50.77351,4.41636 -76.037616,7.85031 C 113.0465,177.83281 140.51815,111.35995 157.44265,79.718478 Z"
-                    fill="currentColor"
-                />
-            </svg>
+            <img src="../images/me-suite.png" class="about-image"></img>
         </div>
+        <canvas id="canvas" class="wave"></canvas>
 
         <div class="about-content">
             <div class="labels">
@@ -338,12 +328,21 @@ fa-moon dark-icon"></i> -->
             themeToggle.addEventListener("change", () => {
                 if (themeToggle.checked) {
                     body.classList.add("dark-mode");
+                    var background = getComputedStyle(document.body)
+                        .getPropertyValue("--background")
+                        .trim();
+                    drawWave();
                     localStorage.setItem("theme", "dark-mode");
                 } else {
                     body.classList.remove("dark-mode");
+                    var background = getComputedStyle(document.body)
+                        .getPropertyValue("--background")
+                        .trim();
+                    drawWave();
                     localStorage.setItem("theme", "light-mode");
                 }
             });
+
             // Burger Menu Toggle
             const burgerMenu = document.getElementById("burger-menu");
             const nav = document.getElementById("nav");
@@ -414,6 +413,63 @@ fa-moon dark-icon"></i> -->
                     }, 500); // Match the transition duration (300ms)
                 }
             });
+
+            function drawWave() {
+                var canvas = document.getElementById("canvas");
+                if (canvas == null || !canvas.getContext) {
+                    return;
+                }
+                // Set canvas internal dimensions to match visual size (full viewport width)
+                canvas.width = window.innerWidth;
+                canvas.height = 100;
+
+                var ctx = canvas.getContext("2d");
+                ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear previous drawing
+
+                // Draw the filled rectangle with wavy top
+                ctx.beginPath();
+                ctx.moveTo(0, canvas.height); // Bottom left
+
+                // Calculate first y for left side
+                var firstY = Math.sin(0.01 * 0 + 1) * 24 + 25;
+                ctx.lineTo(0, firstY); // Up to start of wave
+
+                // Draw wave across
+                for (var i = 1; i <= canvas.width; i++) {
+                    var x = i;
+                    var y = Math.sin(0.02 * x + 1) * 15 + 25;
+                    ctx.lineTo(x, y);
+                }
+
+                // Down to bottom right and close
+                ctx.lineTo(canvas.width, canvas.height); // Bottom right
+                ctx.closePath();
+
+                ctx.fillStyle = getComputedStyle(document.body)
+                    .getPropertyValue("--background")
+                    .trim();
+                ctx.fill();
+
+                // Draw the wave line on top
+                ctx.moveTo(0, firstY); // Start at first point
+                ctx.beginPath();
+
+                for (var i = 1; i <= canvas.width; i++) {
+                    var x = i;
+                    var y = Math.sin(0.02 * x + 1) * 15 + 25;
+                    ctx.lineTo(x, y);
+                }
+
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = getComputedStyle(document.body)
+                    .getPropertyValue("--text")
+                    .trim(); // Matches theme
+                ctx.stroke();
+            }
+            drawWave();
+
+            // Redraw on resize to handle width changes
+            window.addEventListener("resize", drawWave);
         </script>
     </body>
 </html>
