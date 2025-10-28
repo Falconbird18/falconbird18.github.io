@@ -130,8 +130,8 @@
         </div>
         <div class="hello">
             <div class="left">
-                <h1>Hi, I'm Austin Tallent</h1>
-                <p>
+                <h1 style="z-index: 1; position: relative;">Hi, I'm Austin Tallent</h1>
+                <p style="z-index: 1; position: relative;">
                     I'm an academic and aspiring creative professional
                     specializing in graphic design, web design, and 3D art. My
                     projects reflect my dedication to learning, creating, and
@@ -145,6 +145,17 @@
                         <button class="button-secondary">View resume</button>
                     </a>
                 </div>
+                <span
+                    class="blurred-circle"
+                    style="
+                        --size: 20vw;
+                        --color: var(--primary);
+                        --position: 0, 90%;
+                        --blur: 100px;
+                        --opacity: 0.9;
+                        --index: 0;
+                    "
+                ></span>
             </div>
             <div class="right">
                 <img class="images" src="images/me.png" alt="Austin Tallent" />

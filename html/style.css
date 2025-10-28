@@ -433,6 +433,8 @@ input:checked + .slider .dark-icon {
 .button-container {
     display: flex;
     gap: 2.5vw;
+    z-index: 1;
+    position: relative;
 }
 
 .button-primary {
