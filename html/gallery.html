@@ -537,8 +537,6 @@
         filterButtons.forEach((button) => {
             button.addEventListener("click", () => {
                 // Remove active class from all buttons
-                // FIX 1: 'foreach' changed to 'forEach'
-                // FIX 2: 'classlist' changed to 'classList'
                 filterButtons.forEach((btn) =>
                     btn.classList.remove("primary-button"),
                 );
