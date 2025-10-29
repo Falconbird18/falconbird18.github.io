@@ -130,17 +130,31 @@
 
             <!-- Filter Buttons -->
             <div class="filter-buttons">
-                <button class="filter-button active" data-filter="all">
+                <button id="filter" class="secondary-button" data-filter="all">
                     All
                 </button>
-                <button class="filter-button" data-filter="3d">3D art</button>
-                <button class="filter-button" data-filter="graphicDesign">
+                <button id="filter" class="secondary-button" data-filter="3d">
+                    3D art
+                </button>
+                <button
+                    id="filter"
+                    class="secondary-button"
+                    data-filter="graphicDesign"
+                >
                     Graphic design
                 </button>
-                <button class="filter-button" data-filter="webDesign">
+                <button
+                    id="filter"
+                    class="secondary-button"
+                    data-filter="webDesign"
+                >
                     Web design
                 </button>
-                <button class="filter-button" data-filter="paintings">
+                <button
+                    id="filter"
+                    class="secondary-button"
+                    data-filter="paintings"
+                >
                     Paintings
                 </button>
             </div>
@@ -516,15 +530,21 @@
     </body>
     <script>
         // Filter Gallery Items
-        const filterButtons = document.querySelectorAll(".filter-button");
+        const filterContainer = document.querySelector(".filter-buttons");
+        const filterButtons = filterContainer.querySelectorAll("button");
         const galleryItems = document.querySelectorAll(".gallery-item");
 
         filterButtons.forEach((button) => {
             button.addEventListener("click", () => {
                 // Remove active class from all buttons
-                filterButtons.forEach((btn) => btn.classList.remove("active"));
+                // FIX 1: 'foreach' changed to 'forEach'
+                // FIX 2: 'classlist' changed to 'classList'
+                filterButtons.forEach((btn) =>
+                    btn.classList.remove("primary-button"),
+                );
+
                 // Add active class to the clicked button
-                button.classList.add("active");
+                button.classList.add("primary-button");
 
                 // Get the filter value from the button's data-filter attribute
                 const filter = button.getAttribute("data-filter");
