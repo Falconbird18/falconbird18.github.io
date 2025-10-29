@@ -46,10 +46,12 @@ body.dark-mode {
     --brightness: 0.75;
 
     --medium-padding: 1.5rem;
+    --large-padding: 3rem;
 
     background-color: var(--background);
-    margin: 0 5vw;
     transition: background-color var(--transition);
+    overflow-x: hidden;
+    margin: 0;
 }
 
 body {
@@ -100,32 +102,16 @@ body {
     --brightness: 2;
 
     --medium-padding: 1.5em;
+    --large-padding: 3rem;
 
     --circle-radius: 12vw; /* Responsive radius; adjusts with viewport */
     --logo-size: 3.5vw; /* Responsive logo size */
     --rotation-speed: 60s; /* Animation duration; increase for slower rotation */
 
     background-color: var(--background);
-    margin: 0 5vw;
     transition: background-color var(--transition);
     overflow-x: hidden;
-}
-
-/* For smaller screens, override variables for better fit */
-@media (max-width: 1349px) {
-    :root {
-        --circle-radius: 25vw;
-        --logo-size: 6vw;
-        --circle-top: 25%; /* Slight adjustment for tablet proportions */
-    }
-}
-
-@media (max-width: 767px) {
-    :root {
-        --circle-radius: 40vw; /* Larger relative size on mobile */
-        --logo-size: 10vw;
-        --circle-top: 30%; /* Adjust based on mobile image scaling */
-    }
+    margin: 0;
 }
 
 *,
@@ -174,7 +160,8 @@ p {
     display: flex;
     align-items: center;
     position: relative;
-    width: 100%;
+    width: 100vw;
+    margin: 0 5vw;
     padding-top: 2.5vw;
 }
 
@@ -333,6 +320,8 @@ input:checked + .slider .dark-icon {
 .hello {
     margin-top: 5vw;
     display: flex;
+    width: 100vw;
+    margin-left: 5vw;
 }
 
 .left {
@@ -395,7 +384,7 @@ input:checked + .slider .dark-icon {
 
 .wave {
     position: relative;
-    left: -5vw;
+    left: 0;
     bottom: 5vh;
     z-index: 3;
 }
@@ -505,12 +494,11 @@ input:checked + .slider .dark-icon {
 .slideshow-container {
     display: flex;
     gap: 1.5rem;
-    /* space between image and text */
-    width: 90vw;
+    width: 100vw;
+    margin: 0 5vw;
     height: 35vw + 70px;
-    padding-top: 20px;
-    padding-bottom: 50px;
-    /*overflow: hidden;*/
+    padding-top: var(--medium-padding);
+    padding-bottom: var(calc(--medium-padding * 2));
     background: transparent;
 }
 
@@ -654,7 +642,7 @@ input:checked + .slider .dark-icon {
 .collaborate {
     text-align: center;
     margin-top: 100px;
-    margin-bottom: 50px;
+    margin-bottom: var(--large-padding);
 }
 
 /* gallery styles */
@@ -672,10 +660,11 @@ input:checked + .slider .dark-icon {
 }
 
 .small-gallery-grid {
+    margin: 0 5vw;
     display: flex;
     /* columns: 3; */
     gap: 2.5vw;
-    margin-bottom: 50px;
+    margin-bottom: calc(var(--medium-padding) * 2);
 }
 
 .small-gallery-column {
@@ -783,108 +772,6 @@ input:checked + .slider .dark-icon {
 
 .back-to-top a:hover {
     color: var(--primary);
-}
-
-/* about */
-
-/* hero section */
-.hero {
-    text-align: center;
-    padding: 100px 20px;
-    background: var(--background);
-    position: relative;
-    overflow: hidden;
-}
-
-/* timeline container */
-.timeline {
-    position: relative;
-    width: 90vw;
-    margin: 0 auto;
-    padding: 40px 20px;
-    background-color: var(--background-2);
-    border-radius: 30px;
-    border: var(--border);
-    box-shadow: var(--shadow);
-}
-
-/* timeline line */
-.timeline::after {
-    content: "";
-    position: absolute;
-    width: 6px;
-    background-color: var(--primary);
-    top: 0;
-    bottom: 0;
-    left: 50%;
-    margin-left: -3px;
-}
-
-/* timeline cards */
-.card {
-    padding: 20px 30px;
-    background-color: var(--background-3);
-    position: relative;
-    border-radius: 30px;
-    width: 40%;
-    margin: 50px 0;
-    opacity: 0;
-    transform: translatey(50px);
-    transition:
-        opacity 0.8s ease,
-        transform 0.8s ease;
-    box-shadow: var(--shadow);
-    border: var(--border);
-}
-
-.card.active {
-    opacity: 1;
-    transform: translatey(0);
-}
-
-.card.left {
-    left: 0;
-}
-
-.card.right {
-    left: 50%;
-}
-
-/* card content */
-.card h2 {
-    margin-top: 0;
-    font-size: 24px;
-}
-
-.card p {
-    font-size: 18px;
-    line-height: 1.6;
-}
-
-/* card icons */
-.card i {
-    font-size: 32px;
-    color: #12de52;
-    margin-bottom: 10px;
-}
-
-/* timeline dots */
-.card::after {
-    content: "";
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    right: -17px;
-    background-color: var(--primary);
-    border: 4px solid var(--background-2);
-    top: 50%;
-    transform: translatey(-50%);
-    border-radius: 50%;
-    z-index: 1;
-}
-
-.card.right::after {
-    left: -17px;
 }
 
 /* interactive gallery section */
@@ -1197,17 +1084,19 @@ input:checked + .slider .dark-icon {
 }
 
 .contact-methods {
+    width: 95vw;
+    margin-left: 5vw;
     display: flex;
     gap: 5vw;
-    margin-top: 100px;
+    margin-top: var(--large-padding);
 }
 
 .contact-card {
     background-color: var(--background-2);
-    padding: 20px;
-    border-radius: 30px;
+    padding: var(--medium-padding);
+    border-radius: var(--radius);
     border: var(--border);
-    width: 30vw;
+    width: 100%;
     transition: all var(--transition);
     box-shadow: var(--shadow);
 }
@@ -1280,6 +1169,8 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100vw;
+    margin: 0 5vw;
 }
 
 .about-hero-text {
@@ -1297,9 +1188,10 @@ a:hover {
 .about-content {
     text-align: left;
     justify-content: left;
-    width: 90vw;
+    width: 100vw;
     display: flex;
     flex-direction: column-reverse;
+    margin: 0 5vw;
 }
 
 .labels {
@@ -1357,13 +1249,11 @@ a:hover {
     }
 }
 /*Smaller computers*/
-@media (min-width: 1350px) and (max-width: 1550px) {
-    .slideshow-container {
-        height: 45vw;
-        background: transparent;
-    }
-}
 @media (min-width: 1024px) and (max-width: 1349px) {
+    .hello {
+        overflow-y: hidden;
+        /*overflow-x: visible;*/
+    }
     .left {
         width: 90vw;
     }
@@ -1371,13 +1261,10 @@ a:hover {
         width: 45vw;
     }
     .right {
-        position: absolute;
         right: 5vw;
         margin-top: 10vw;
     }
-    .images {
-        width: 37.5vw;
-    }
+
     .slideshow-container {
         flex-direction: column;
         height: auto;
@@ -1443,6 +1330,11 @@ a:hover {
         background: transparent;
         text-align: center;
     }
+
+    .contact-container {
+        width: 95vw;
+        margin: 0 5vw;
+    }
 }
 /*Tablets*/
 @media (min-width: 768px) and (max-width: 1023px) {
@@ -1462,9 +1354,6 @@ a:hover {
         --h3_size: 28px;
         --paragraph_size: 20px;
         --subtext_size: 18px;
-
-        width: 95vw;
-        margin: 0 2.5vw;
     }
 
     body.dark-mode {
@@ -1483,14 +1372,15 @@ a:hover {
         --h3_size: 28px;
         --paragraph_size: 20px;
         --subtext_size: 18px;
-        width: 92.5vw;
+    }
+    .header {
         margin: 0 2.5vw;
     }
     .burger-menu {
         display: flex;
         position: absolute;
-        top: 2.5vw;
-        right: 2.5vw;
+        top: 2.5vh;
+        right: 5vw;
         /* Show burger menu on mobile */
     }
 
@@ -1499,11 +1389,11 @@ a:hover {
         display: flex;
         flex-direction: column;
         position: fixed;
-        top: 7.5vh;
-        left: 5vw;
+        bottom: 2.5vh;
+        left: 2.5vw;
         background-color: var(--background-2);
         border: var(--border);
-        border-radius: 30px;
+        border-radius: var(--radius);
         opacity: 0;
         visibility: hidden;
         transform: translateX(105%);
@@ -1517,8 +1407,8 @@ a:hover {
     .nav.active {
         opacity: 1;
         visibility: visible;
-        transform: translateX(-2.5vw);
-        width: 92.5vw;
+        transform: translateX(0);
+        width: 95vw;
     }
 
     .close-icon.active {
@@ -1531,25 +1421,26 @@ a:hover {
 
     .hello {
         flex-direction: column-reverse;
-        overflow: hidden;
+        overflow-y: hidden;
+        overflow-x: visible;
     }
 
     .left {
-        width: 92.5vw;
+        width: 95vw;
     }
 
     .right {
-        width: 92.5vw;
+        width: 95vw;
     }
 
     .images {
-        width: 92.5vw;
+        width: 95vw;
         margin-left: 0;
         margin-top: 25px;
     }
 
     .button-container {
-        width: 92.5vw;
+        width: 95vw;
         text-align: center;
     }
 
@@ -1563,7 +1454,7 @@ a:hover {
     }
 
     .small-gallery-column {
-        width: 92.5vw;
+        width: 95vw;
     }
 
     .collaborate {
@@ -1574,9 +1465,14 @@ a:hover {
         margin: 0;
     }
 
+    .contact-container {
+        width: 95vw;
+        margin: 0 5vw;
+    }
+
     .contact-methods {
         flex-direction: column;
-        width: 92.5vw;
+        width: 95vw;
     }
 
     .contact-card {
@@ -1718,7 +1614,8 @@ a:hover {
     .about-hero {
         flex-direction: column;
         padding-top: 50px;
-        width: 92.5vw;
+        width: 100vw;
+        margin: 0 5vw;
     }
     .about-hero-text {
         width: 92.5vw;
