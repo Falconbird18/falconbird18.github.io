@@ -401,8 +401,8 @@ input:checked + .slider .dark-icon {
 
 .logo-circle {
     position: absolute;
-    top: 28%;
-    left: 50%;
+    top: 21%;
+    left: 60%;
     width: calc(2 * var(--circle-radius));
     height: calc(2 * var(--circle-radius));
     animation: rotate var(--rotation-speed) linear infinite;
@@ -441,12 +441,6 @@ input:checked + .slider .dark-icon {
     animation: counter-rotate var(--rotation-speed) linear infinite;
 }
 
-.images {
-    z-index: 2;
-    position: relative;
-    width: 40vw;
-}
-
 .wave {
     position: relative;
     left: 0;
@@ -479,9 +473,10 @@ input:checked + .slider .dark-icon {
 }
 
 .images {
-    width: 45vw;
-    border-radius: 30px;
+    width: 30vw;
     margin-left: 5vw;
+    position: relative;
+    z-index: 2;
 }
 
 .button-container {
