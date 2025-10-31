@@ -268,7 +268,7 @@
                     <div class="music-modal-text-container">
                         <h3 id="modalTitle"></h3>
                         <p id="modalDate"></p>
-                        <p id="modalDescription"></p>
+                        <p id="musicModalDescription"></p>
                     </div>
                 </div>
             </div>
@@ -439,15 +439,16 @@
                 const modalVideo = document.getElementById("modalVideo");
                 const modalTitle = document.getElementById("modalTitle");
                 const modalDate = document.getElementById("modalDate");
-                const modalDescription =
-                    document.getElementById("modalDescription");
+                const musicModalDescription = document.getElementById(
+                    "musicModalDescription",
+                );
                 const close = document.querySelector(".close");
                 const modalContent = document.querySelector(".modal-content");
 
                 modalVideo.src = `https://www.youtube-nocookie.com/embed/${videoID}`;
                 modalTitle.textContent = title;
                 modalDate.textContent = `Date: ${date}`;
-                modalDescription.innerHTML = description;
+                musicModalDescription.innerHTML = description;
 
                 document.body.classList.add("no-scroll");
 
