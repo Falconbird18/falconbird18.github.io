@@ -185,6 +185,7 @@ p {
 .secondary-button:hover {
     background-color: var(--primary);
     text-shadow: var(--text-shadow);
+    text-decoration: none;
 }
 
 .primary-button {
@@ -225,6 +226,7 @@ p {
         var(--primary) 75%,
         var(--primary)
     );
+    text-decoration: none;
 }
 
 /* Header Styles */
@@ -959,6 +961,20 @@ input:checked + .slider .dark-icon {
 .close.show {
     opacity: 1;
     transform: translateY(0);
+}
+
+.info-line {
+    display: flex;
+    width: 20vw;
+    margin: 0 auto;
+    gap: var(--smallest-padding);
+    margin-bottom: var(--small-padding);
+}
+
+.info-item {
+    display: flex;
+    gap: calc(var(--smallest-padding) / 2);
+    align-items: center;
 }
 
 .contact-container {
