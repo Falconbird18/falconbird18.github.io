@@ -907,14 +907,14 @@ input:checked + .slider .dark-icon {
     transform: translatey(105%);
     transition: transform 0.5s;
     text-align: center;
-    overflow-x: hidden;
+    overflow: hidden;
     position: absolute;
     bottom: 0;
 }
 
 .modal-content.show {
     transform: translatey(2px);
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .modal-content h2 {
@@ -1271,7 +1271,6 @@ a:hover {
         width: 90vw;
         margin: 0;
         transition: transform var(--transition);
-        gap: 5vw;
     }
 
     .progress-group {
