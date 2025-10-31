@@ -127,7 +127,7 @@
                 <div class="music-items">
                     <div
                         class="music-item"
-                        onclick="openModal('PAgb6iSA4TU?si=JHIqwAQJ0tr34eXA', 'Rowley - Piano Trio', '', 'Summer 2025')"
+                        onclick="openModal('PAgb6iSA4TU?si=JHIqwAQJ0tr34eXA', 'Rowley - Piano Trio', 'Pianist', 'Summer 2025')"
                     >
                         <img
                             class="music-thumbnail"
@@ -141,7 +141,7 @@
                     </div>
                     <div
                         class="music-item"
-                        onclick="openModal('-q9fP8OrgaM?si=iKg7lpspNV9rd9Pz', 'Shotakovitch - 5 Pieces for 2 Violins and Piano', '', 'Summer 2025')"
+                        onclick="openModal('-q9fP8OrgaM?si=iKg7lpspNV9rd9Pz', 'Shotakovitch - 5 Pieces for 2 Violins and Piano', 'Sun Valley Music Festival Advanced Chamber Program for Piano <br/> Pianist', 'Summer 2025')"
                     >
                         <img
                             class="music-thumbnail"
@@ -243,7 +243,7 @@
         <div id="musicModal" class="modal">
             <span class="close" onclick="closeModal()">&times;</span>
             <div class="modal-content modal-slide-up">
-                <div class="modal-container">
+                <div class="music-modal-container">
                     <!-- Video on the left -->
                     <div class="modal-video-container">
                         <iframe
@@ -257,7 +257,7 @@
                         ></iframe>
                     </div>
                     <!-- Text on the right -->
-                    <div class="modal-text-container">
+                    <div class="music-modal-text-container">
                         <h3 id="modalTitle"></h3>
                         <p id="modalDate"></p>
                         <p id="modalDescription"></p>
@@ -439,7 +439,7 @@
                 modalVideo.src = `https://www.youtube-nocookie.com/embed/${videoID}`;
                 modalTitle.textContent = title;
                 modalDate.textContent = `Date: ${date}`;
-                modalDescription.textContent = description;
+                modalDescription.innerHTML = description;
 
                 document.body.classList.add("no-scroll");
 

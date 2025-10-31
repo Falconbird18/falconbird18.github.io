@@ -1185,22 +1185,24 @@ a:hover {
 .music-info {
     padding: var(--small-padding);
 }
-.modal-container {
+.music-modal-container {
     flex-direction: column;
     align-items: center;
+    width: calc(100% - (2 * var(--medium-padding)));
+    margin: 0 calc(2 * var(--medium-padding));
 }
 .modal-video-container {
-    width: calc(100% - 10vw);
+    width: calc(100% - (2 * var(--medium-padding)));
     aspect-ratio: 16/9;
-    margin-top: 5vw;
+    margin-top: calc(2 * var(--medium-padding));
 }
 .modal-video-container iframe {
     width: 100%;
     height: 100%;
     border-radius: var(--radius);
 }
-.modal-text-container {
-    width: calc(100% - 10vw);
+.music-modal-text-container {
+    width: calc(100% - (2 * var(--medium-padding)));
     margin-top: var(--medium-padding);
     text-align: center;
 }
