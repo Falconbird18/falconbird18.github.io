@@ -1133,6 +1133,78 @@ a:hover {
         transform: translateY(0) rotate(360deg);
     }
 }
+
+.music-container {
+    margin: 0 5vw;
+}
+.year-divider {
+    margin: var(--large-padding) 0;
+}
+.year-divider h2 {
+    text-align: center;
+    position: relative;
+}
+.year-divider h2::before,
+.year-divider h2::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 2px;
+    background: var(--text);
+}
+.year-divider h2::before {
+    left: 0;
+}
+.year-divider h2::after {
+    right: 0;
+}
+.music-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5vw;
+    justify-content: center;
+}
+.music-item {
+    cursor: pointer;
+    width: calc(90vw / 3 - 2.5vw);
+    background-color: var(--background-2);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform var(--transition);
+    border: var(--border);
+}
+.music-item:hover {
+    transform: translateY(-5px);
+}
+.music-thumbnail {
+    width: 100%;
+    height: auto;
+}
+.music-info {
+    padding: var(--small-padding);
+}
+.modal-container {
+    flex-direction: column;
+    align-items: center;
+}
+.modal-video-container {
+    width: calc(100% - 10vw);
+    aspect-ratio: 16/9;
+    margin-top: 5vw;
+}
+.modal-video-container iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius);
+}
+.modal-text-container {
+    width: calc(100% - 10vw);
+    margin-top: var(--medium-padding);
+    text-align: center;
+}
+
 /*Smaller computers*/
 @media (min-width: 1024px) and (max-width: 1349px) {
     .hello {
@@ -1224,6 +1296,13 @@ a:hover {
     .contact-container {
         width: 95vw;
         margin: 0 5vw;
+    }
+
+    .music-container {
+        margin: 0 2.5vw;
+    }
+    .music-item {
+        width: 95vw;
     }
 }
 /*Tablets*/
@@ -1818,5 +1897,18 @@ a:hover {
     }
     .view-image {
         bottom: 10vh;
+    }
+
+    .music-container {
+        margin: 0 2.5vw;
+    }
+    .music-item {
+        width: 95vw;
+    }
+    .modal-video-container {
+        width: 85vw;
+    }
+    .modal-text-container {
+        width: 85vw;
     }
 }

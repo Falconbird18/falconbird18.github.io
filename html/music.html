@@ -44,93 +44,6 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         />
         <link rel="stylesheet" href="style.css" />
-        <style>
-            .music-container {
-                margin: 0 5vw;
-            }
-            .year-divider {
-                margin: var(--large-padding) 0;
-            }
-            .year-divider h2 {
-                text-align: center;
-                position: relative;
-            }
-            .year-divider h2::before,
-            .year-divider h2::after {
-                content: "";
-                position: absolute;
-                top: 50%;
-                width: 40%;
-                height: 2px;
-                background: var(--text);
-            }
-            .year-divider h2::before {
-                left: 0;
-            }
-            .year-divider h2::after {
-                right: 0;
-            }
-            .music-items {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 2.5vw;
-                justify-content: center;
-            }
-            .music-item {
-                cursor: pointer;
-                width: calc(90vw / 3 - 2.5vw);
-                background-color: var(--background-2);
-                border-radius: var(--radius);
-                overflow: hidden;
-                box-shadow: var(--shadow);
-                transition: transform var(--transition);
-                border: var(--border);
-            }
-            .music-item:hover {
-                transform: translateY(-5px);
-            }
-            .music-thumbnail {
-                width: 100%;
-                height: auto;
-            }
-            .music-info {
-                padding: var(--small-padding);
-            }
-            .modal-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            .modal-video-container {
-                width: 90%;
-                aspect-ratio: 16/9;
-            }
-            .modal-video-container iframe {
-                width: 100%;
-                height: 100%;
-                border-radius: var(--radius);
-            }
-            .modal-text-container {
-                width: 90%;
-                margin-top: var(--medium-padding);
-                text-align: center;
-            }
-            @media (max-width: 1023px) {
-                .music-item {
-                    width: calc(92.5vw / 2 - 2.5vw);
-                }
-            }
-            @media (max-width: 767px) {
-                .music-item {
-                    width: 92.5vw;
-                }
-                .modal-video-container {
-                    width: 85vw;
-                }
-                .modal-text-container {
-                    width: 85vw;
-                }
-            }
-        </style>
     </head>
     <body>
         <div class="header">
@@ -211,54 +124,46 @@
                 </div>
             </div>
         </div>
-        <h1>Music</h1>
-        <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/PAgb6iSA4TU?si=JHIqwAQJ0tr34eXA"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen
-        ></iframe>
+        <h1 style="text-align: center">Music</h1>
         <div class="music-container">
             <div class="year-divider">
                 <h2>2025</h2>
                 <div class="music-items">
                     <div
                         class="music-item"
-                        onclick="openModal('PAgb6iSA4TU?si=JHIqwAQJ0tr34eXA', 'Beethoven - Moonlight Sonata (3rd Movement)', 'Performed by Valentina Lisitsa as placeholder. Actual performance by Austin Tallent at Local Recital Hall.', 'October 15, 2025')"
+                        onclick="openModal('PAgb6iSA4TU?si=JHIqwAQJ0tr34eXA', 'Rowley - Piano Trio', '', 'Summer 2025')"
                     >
                         <img
                             class="music-thumbnail"
-                            src="https://img.youtube.com/vi/nT7_IZPHHb0/hqdefault.jpg"
+                            src="../images/rowley.jpg"
                             alt="Thumbnail"
                         />
                         <div class="music-info">
-                            <h3>Beethoven - Moonlight Sonata (3rd Movement)</h3>
-                            <p>October 15, 2025</p>
+                            <h3>Rowley Piano Trio</h3>
+                            <p>Summer 2025</p>
                         </div>
                     </div>
                     <div
                         class="music-item"
-                        onclick="openModal('1RjQbXMT8YE', 'Beethoven - Appassionata Sonata', 'Performed by Lang Lang as placeholder. Actual performance by Austin Tallent at Concert Venue.', 'September 5, 2025')"
+                        onclick="openModal('-q9fP8OrgaM?si=iKg7lpspNV9rd9Pz', 'Shotakovitch - 5 Pieces for 2 Violins and Piano', '', 'Summer 2025')"
                     >
                         <img
                             class="music-thumbnail"
-                            src="https://img.youtube.com/vi/1RjQbXMT8YE/hqdefault.jpg"
+                            src="../images/shostakovich.jpg"
                             alt="Thumbnail"
                         />
                         <div class="music-info">
-                            <h3>Beethoven - Appassionata Sonata</h3>
-                            <p>Date: September 5, 2025</p>
+                            <h3>
+                                Shostakovich - 5 Pieces for 2 Violins and Piano
+                            </h3>
+                            <p>Summer 2025</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="year-divider">
                 <h2>2024</h2>
-                <div class="music-items">
+                <!--<div class="music-items">
                     <div
                         class="music-item"
                         onclick="openModal('4Tr0otuiQuU', 'Chopin - Nocturne Op.9 No.2', 'Performed as placeholder. Actual performance by Austin Tallent at Music Festival.', 'June 20, 2024')"
@@ -287,11 +192,11 @@
                             <p>Date: March 10, 2024</p>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </div>
             <div class="year-divider">
                 <h2>2023</h2>
-                <div class="music-items">
+                <!--<div class="music-items">
                     <div
                         class="music-item"
                         onclick="openModal('LhRtAdrn0Rg', 'Original Composition - Echoes', 'Performed by Austin Tallent at Local Theater.', 'December 5, 2023')"
@@ -306,7 +211,7 @@
                             <p>Date: December 5, 2023</p>
                         </div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
 
