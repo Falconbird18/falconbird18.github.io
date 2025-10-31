@@ -147,6 +147,13 @@ h2 {
     color: var(--text);
 }
 
+h3 {
+    font-family: var(--h3_font);
+    font-size: var(--h3_size);
+    font-weight: var(--h3_weight);
+    color: var(--text);
+}
+
 p {
     font-family: var(--paragraph_font);
     font-size: var(--paragraph_size);

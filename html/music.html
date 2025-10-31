@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Resume - Austin Tallent</title>
+        <title>Music - Austin Tallent</title>
 
         <style blocking="render">
             @font-face {
@@ -45,23 +45,90 @@
         />
         <link rel="stylesheet" href="style.css" />
         <style>
-            .resume-container {
-                width: 90vw;
-                margin: 50px auto;
+            .music-container {
+                margin: 0 5vw;
+            }
+            .year-divider {
+                margin: var(--large-padding) 0;
+            }
+            .year-divider h2 {
+                text-align: center;
+                position: relative;
+            }
+            .year-divider h2::before,
+            .year-divider h2::after {
+                content: "";
+                position: absolute;
+                top: 50%;
+                width: 40%;
+                height: 2px;
+                background: var(--text);
+            }
+            .year-divider h2::before {
+                left: 0;
+            }
+            .year-divider h2::after {
+                right: 0;
+            }
+            .music-items {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 2.5vw;
+                justify-content: center;
+            }
+            .music-item {
+                cursor: pointer;
+                width: calc(90vw / 3 - 2.5vw);
+                background-color: var(--background-2);
+                border-radius: var(--radius);
+                overflow: hidden;
+                box-shadow: var(--shadow);
+                transition: transform var(--transition);
+                border: var(--border);
+            }
+            .music-item:hover {
+                transform: translateY(-5px);
+            }
+            .music-thumbnail {
+                width: 100%;
+                height: auto;
+            }
+            .music-info {
+                padding: var(--small-padding);
+            }
+            .modal-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .modal-video-container {
+                width: 90%;
+                aspect-ratio: 16/9;
+            }
+            .modal-video-container iframe {
+                width: 100%;
+                height: 100%;
+                border-radius: var(--radius);
+            }
+            .modal-text-container {
+                width: 90%;
+                margin-top: var(--medium-padding);
                 text-align: center;
             }
-            .resume-container h1 {
-                margin-bottom: 20px;
+            @media (max-width: 1023px) {
+                .music-item {
+                    width: calc(92.5vw / 2 - 2.5vw);
+                }
             }
-            .resume-pdf {
-                margin: 0 auto;
-                border: none;
-            }
-            .resume-container a {
-                color: var(--secondary);
-                font-size: var(--paragraph_size);
-                font-family: var(--paragraph_font);
-                font-weight: var(--paragraph_weight);
+            @media (max-width: 767px) {
+                .music-item {
+                    width: 92.5vw;
+                }
+                .modal-video-container {
+                    width: 85vw;
+                }
+                .modal-text-container {
+                    width: 85vw;
+                }
             }
         </style>
     </head>
@@ -69,7 +136,6 @@
         <div class="header">
             <div class="logo-container">
                 <a href="../index.html">
-                    <!-- <img class="logo" src="logo.svg" alt="Logo"> -->
                     <svg
                         class="logo"
                         width="50px"
@@ -102,7 +168,6 @@
                 <label class="switch">
                     <input type="checkbox" id="theme-toggle" />
                     <span class="slider round">
-                        <!-- <i class="fas fa-sun light-icon"></i> -->
                         <svg
                             class="light-icon"
                             width="20"
@@ -116,7 +181,6 @@
                                 fill="currentColor"
                             />
                         </svg>
-                        <!-- <i class="fas fa-moon dark-icon"></i> -->
                         <svg
                             class="dark-icon"
                             width="20"
@@ -148,6 +212,129 @@
             </div>
         </div>
         <h1>Music</h1>
+        <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/PAgb6iSA4TU?si=JHIqwAQJ0tr34eXA"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+        ></iframe>
+        <div class="music-container">
+            <div class="year-divider">
+                <h2>2025</h2>
+                <div class="music-items">
+                    <div
+                        class="music-item"
+                        onclick="openModal('PAgb6iSA4TU?si=JHIqwAQJ0tr34eXA', 'Beethoven - Moonlight Sonata (3rd Movement)', 'Performed by Valentina Lisitsa as placeholder. Actual performance by Austin Tallent at Local Recital Hall.', 'October 15, 2025')"
+                    >
+                        <img
+                            class="music-thumbnail"
+                            src="https://img.youtube.com/vi/nT7_IZPHHb0/hqdefault.jpg"
+                            alt="Thumbnail"
+                        />
+                        <div class="music-info">
+                            <h3>Beethoven - Moonlight Sonata (3rd Movement)</h3>
+                            <p>October 15, 2025</p>
+                        </div>
+                    </div>
+                    <div
+                        class="music-item"
+                        onclick="openModal('1RjQbXMT8YE', 'Beethoven - Appassionata Sonata', 'Performed by Lang Lang as placeholder. Actual performance by Austin Tallent at Concert Venue.', 'September 5, 2025')"
+                    >
+                        <img
+                            class="music-thumbnail"
+                            src="https://img.youtube.com/vi/1RjQbXMT8YE/hqdefault.jpg"
+                            alt="Thumbnail"
+                        />
+                        <div class="music-info">
+                            <h3>Beethoven - Appassionata Sonata</h3>
+                            <p>Date: September 5, 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="year-divider">
+                <h2>2024</h2>
+                <div class="music-items">
+                    <div
+                        class="music-item"
+                        onclick="openModal('4Tr0otuiQuU', 'Chopin - Nocturne Op.9 No.2', 'Performed as placeholder. Actual performance by Austin Tallent at Music Festival.', 'June 20, 2024')"
+                    >
+                        <img
+                            class="music-thumbnail"
+                            src="https://img.youtube.com/vi/4Tr0otuiQuU/hqdefault.jpg"
+                            alt="Thumbnail"
+                        />
+                        <div class="music-info">
+                            <h3>Chopin - Nocturne Op.9 No.2</h3>
+                            <p>Date: June 20, 2024</p>
+                        </div>
+                    </div>
+                    <div
+                        class="music-item"
+                        onclick="openModal('R0kl9xFVQXM', 'Beethoven - Sonata Op.2 No.3', 'Performed as placeholder. Actual performance by Austin Tallent at University Auditorium.', 'March 10, 2024')"
+                    >
+                        <img
+                            class="music-thumbnail"
+                            src="https://img.youtube.com/vi/R0kl9xFVQXM/hqdefault.jpg"
+                            alt="Thumbnail"
+                        />
+                        <div class="music-info">
+                            <h3>Beethoven - Sonata Op.2 No.3</h3>
+                            <p>Date: March 10, 2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="year-divider">
+                <h2>2023</h2>
+                <div class="music-items">
+                    <div
+                        class="music-item"
+                        onclick="openModal('LhRtAdrn0Rg', 'Original Composition - Echoes', 'Performed by Austin Tallent at Local Theater.', 'December 5, 2023')"
+                    >
+                        <img
+                            class="music-thumbnail"
+                            src="https://img.youtube.com/vi/LhRtAdrn0Rg/hqdefault.jpg"
+                            alt="Thumbnail"
+                        />
+                        <div class="music-info">
+                            <h3>Original Composition - Echoes</h3>
+                            <p>Date: December 5, 2023</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal for Video -->
+        <div id="musicModal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-content modal-slide-up">
+                <div class="modal-container">
+                    <!-- Video on the left -->
+                    <div class="modal-video-container">
+                        <iframe
+                            id="modalVideo"
+                            src=""
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                        ></iframe>
+                    </div>
+                    <!-- Text on the right -->
+                    <div class="modal-text-container">
+                        <h3 id="modalTitle"></h3>
+                        <p id="modalDate"></p>
+                        <p id="modalDescription"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <footer class="footer">
             <div class="footer-content">
                 <!-- Social Media Links -->
@@ -155,7 +342,7 @@
                     <a
                         href="https://artstation.com/austin_tallent"
                         target="_blank"
-                        aria-label="LinkedIn"
+                        aria-label="ArtStation"
                     >
                         <svg
                             width="30px"
@@ -180,7 +367,6 @@
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 496 512"
                         >
-                            <!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
                             <path
                                 d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"
                                 fill="currentColor"
@@ -214,98 +400,151 @@
                 </div>
             </div>
         </footer>
+        <script>
+            // Theme Toggle Script
+            const themeToggle = document.getElementById("theme-toggle");
+            const body = document.body;
+
+            // Check for saved theme in localStorage
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme) {
+                body.classList.add(savedTheme);
+                themeToggle.checked = savedTheme === "dark-mode";
+            }
+
+            // Toggle theme on switch click
+            themeToggle.addEventListener("change", () => {
+                if (themeToggle.checked) {
+                    body.classList.add("dark-mode");
+                    localStorage.setItem("theme", "dark-mode");
+                } else {
+                    body.classList.remove("dark-mode");
+                    localStorage.setItem("theme", "light-mode");
+                }
+            });
+            // Burger Menu Toggle
+            const burgerMenu = document.getElementById("burger-menu");
+            const nav = document.getElementById("nav");
+            const closeIcon = document.getElementById("close-icon");
+
+            // Add event listener to the burger menu
+            burgerMenu.addEventListener("click", () => {
+                if (nav.classList.contains("active")) {
+                    // Close the menu
+                    nav.style.transition =
+                        "all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1)";
+                    nav.classList.remove("active");
+                    closeIcon.classList.remove("active");
+
+                    // Enable scrolling
+                    body.classList.remove("no-scroll");
+
+                    // Wait for the transition to complete before hiding the menu
+                    setTimeout(() => {
+                        nav.style.transition = "none"; // Reset transition
+                    }, 500); // Match the transition duration (300ms)
+                } else {
+                    // Open the menu
+                    nav.style.transition =
+                        "all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1)";
+                    nav.classList.add("active");
+                    closeIcon.classList.add("active");
+
+                    // Disable scrolling
+                    body.classList.add("no-scroll");
+                }
+            });
+
+            // Add event listener to the close icon
+            closeIcon.addEventListener("click", () => {
+                // Close the menu
+                nav.style.transition =
+                    "all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1)";
+                nav.classList.remove("active");
+
+                // Enable scrolling
+                body.classList.remove("no-scroll");
+
+                // Wait for the transition to complete before hiding the menu
+                setTimeout(() => {
+                    nav.style.transition = "none"; // Reset transition
+                }, 500); // Match the transition duration (300ms)
+            });
+
+            // Add event listener to the document to close the menu on click outside
+            document.addEventListener("click", (e) => {
+                if (
+                    nav.classList.contains("active") &&
+                    !nav.contains(e.target) &&
+                    !burgerMenu.contains(e.target)
+                ) {
+                    // Close the menu
+                    nav.style.transition =
+                        "all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1)";
+                    nav.classList.remove("active");
+
+                    // Enable scrolling
+                    body.classList.remove("no-scroll");
+
+                    // Wait for the transition to complete before hiding the menu
+                    setTimeout(() => {
+                        nav.style.transition = "none"; // Reset transition
+                    }, 500); // Match the transition duration (300ms)
+                }
+            });
+
+            // Modal Functionality
+            function openModal(videoID, title, description, date) {
+                const modal = document.getElementById("musicModal");
+                const modalBackground = document.querySelector(".modal");
+                const modalVideo = document.getElementById("modalVideo");
+                const modalTitle = document.getElementById("modalTitle");
+                const modalDate = document.getElementById("modalDate");
+                const modalDescription =
+                    document.getElementById("modalDescription");
+                const close = document.querySelector(".close");
+                const modalContent = document.querySelector(".modal-content");
+
+                modalVideo.src = `https://www.youtube-nocookie.com/embed/${videoID}`;
+                modalTitle.textContent = title;
+                modalDate.textContent = `Date: ${date}`;
+                modalDescription.textContent = description;
+
+                document.body.classList.add("no-scroll");
+
+                modal.style.display = "flex";
+                setTimeout(() => {
+                    modalContent.classList.add("show");
+                    modalBackground.classList.add("show");
+                    close.classList.add("show");
+                }, 10);
+            }
+
+            function closeModal() {
+                const modal = document.getElementById("musicModal");
+                const modalContent = document.querySelector(".modal-content");
+                const modalBackground = document.querySelector(".modal");
+                const close = document.querySelector(".close");
+                const modalVideo = document.getElementById("modalVideo");
+
+                modalVideo.src = ""; // Stop the video
+
+                modalContent.classList.remove("show");
+                modalBackground.classList.remove("show");
+                close.classList.remove("show");
+                setTimeout(() => {
+                    modal.style.display = "none";
+                    document.body.classList.remove("no-scroll");
+                }, 500);
+            }
+
+            // Close modal when clicking outside the modal content
+            window.onclick = function (event) {
+                const modal = document.getElementById("musicModal");
+                if (event.target === modal) {
+                    closeModal();
+                }
+            };
+        </script>
     </body>
-    <script>
-        // Theme Toggle Script
-        const themeToggle = document.getElementById("theme-toggle");
-        const body = document.body;
-
-        // Check for saved theme in localStorage
-        const savedTheme = localStorage.getItem("theme");
-        if (savedTheme) {
-            body.classList.add(savedTheme);
-            themeToggle.checked = savedTheme === "dark-mode";
-        }
-
-        // Toggle theme on switch click
-        themeToggle.addEventListener("change", () => {
-            if (themeToggle.checked) {
-                body.classList.add("dark-mode");
-                localStorage.setItem("theme", "dark-mode");
-            } else {
-                body.classList.remove("dark-mode");
-                localStorage.setItem("theme", "light-mode");
-            }
-        });
-        // Burger Menu Toggle
-        const burgerMenu = document.getElementById("burger-menu");
-        const nav = document.getElementById("nav");
-        const closeIcon = document.getElementById("close-icon");
-
-        // Add event listener to the burger menu
-        burgerMenu.addEventListener("click", () => {
-            if (nav.classList.contains("active")) {
-                // Close the menu
-                nav.style.transition =
-                    "all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1)";
-                nav.classList.remove("active");
-                closeIcon.classList.remove("active");
-
-                // Enable scrolling
-                body.classList.remove("no-scroll");
-
-                // Wait for the transition to complete before hiding the menu
-                setTimeout(() => {
-                    nav.style.transition = "none"; // Reset transition
-                }, 500); // Match the transition duration (300ms)
-            } else {
-                // Open the menu
-                nav.style.transition =
-                    "all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1)";
-                nav.classList.add("active");
-                closeIcon.classList.add("active");
-
-                // Disable scrolling
-                body.classList.add("no-scroll");
-            }
-        });
-
-        // Add event listener to the close icon
-        closeIcon.addEventListener("click", () => {
-            // Close the menu
-            nav.style.transition =
-                "all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1)";
-            nav.classList.remove("active");
-
-            // Enable scrolling
-            body.classList.remove("no-scroll");
-
-            // Wait for the transition to complete before hiding the menu
-            setTimeout(() => {
-                nav.style.transition = "none"; // Reset transition
-            }, 500); // Match the transition duration (300ms)
-        });
-
-        // Add event listener to the document to close the menu on click outside
-        document.addEventListener("click", (e) => {
-            if (
-                nav.classList.contains("active") &&
-                !nav.contains(e.target) &&
-                !burgerMenu.contains(e.target)
-            ) {
-                // Close the menu
-                nav.style.transition =
-                    "all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1)";
-                nav.classList.remove("active");
-
-                // Enable scrolling
-                body.classList.remove("no-scroll");
-
-                // Wait for the transition to complete before hiding the menu
-                setTimeout(() => {
-                    nav.style.transition = "none"; // Reset transition
-                }, 500); // Match the transition duration (300ms)
-            }
-        });
-    </script>
 </html>
