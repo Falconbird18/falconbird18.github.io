@@ -10,33 +10,79 @@ Date: January 19 2026-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Portfolio - Austin Tallent</title>
         <link rel="icon" type="image/x-icon" href="images/logo.svg" />
-    </head<
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Baskervville:ital,wght@0,400..700;1,400..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+            rel="stylesheet"
+        />
+    </head>
     <body>
         <!--Page header-->
         <header>
-            <img src="images/profile.webp" alt="A profile headshot" width="128" height="128">
+            <img
+                class="logo"
+                src="images/profile.webp"
+                alt="A profile headshot"
+            />
             <nav>
-                <a href="html/about.html">About</a>
-                <a href="html/gallery.html">Gallery</a>
-                <a href="html/music.html">Music</a>
-                <a href="html/contact.html">Contact</a>
+                <ul>
+                    <li><a href="html/about.html">About</a></li>
+                    <li><a href="html/gallery.html">Gallery</a></li>
+                    <li><a href="html/music.html">Music</a></li>
+                    <li><a href="html/contact.html">Contact</a></li>
+                </ul>
             </nav>
         </header>
         <!--Main page content-->
         <main>
-            <section>
-                <div>
-                    <h1>Austin</h1>
+            <section id="welcome">
+                <div class="nameContainer">
+                    <h1 id="firstName">Austin</h1>
+                    <img
+                        id="rightImage"
+                        class="nameImage"
+                        src="images/interior_with_sofas_and_plants.webp"
+                        alt="A render of a modern living room"
+                    />
                 </div>
-                <div>
-                    <h1>Tallent</h1>
+                <div class="nameContainer">
+                    <img
+                        id="leftImage"
+                        class="nameImage"
+                        src="images/austin.webp"
+                        alt="Tallent image"
+                    />
+                    <h1 id="lastName">Tallent</h1>
+                </div>
+            </section>
+            <section id="gallery">
+                <img
+                    class="fullSizeImage"
+                    src="images/interior_with_sofas_and_plants.webp"
+                    alt="A render of a modern living room"
+                />
+                <div class="imageContainer">
+                    <img
+                        class="halfSizeImage"
+                        src="images/garden_of_tranquility.webp"
+                        alt="Garden of Tranquility"
+                    />
+                    <img
+                        class="halfSizeImage"
+                        src="images/garden_of_tranquility.webp"
+                        alt="Garden of Tranquility"
+                    />
                 </div>
             </section>
         </main>
         <!--Footer-->
         <footer>
-            <a href="mailto:atallent2@students.columbiabasin.edu">atallent2@students.columbiabasin.edu</a>
-            <p>&copy; Austin Tallent 2025</p>
+            <a href="mailto:atallent2@students.columbiabasin.edu"
+                >atallent2@students.columbiabasin.edu</a
+            >
+            <p>&copy; Austin Tallent 2026</p>
         </footer>
     </body>
 </html>
