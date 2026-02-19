@@ -53,6 +53,7 @@ body {
 
     /*Units*/
     --contentWidth: calc(100vw - (2 * var(--largePadding)));
+    --goldenRatio: calc(61.8vw - var(--largePadding));
     --halfContentWidth: calc(var(--contentWidth) / 2);
 
     /*Decoration*/
@@ -193,11 +194,14 @@ a {
 .nameContainer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
-#lastName {
-    text-align: right;
+.nameContainerRight {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /*position: absolute;
+    right: var(--largePadding);*/
 }
 
 .nameImage {
@@ -209,13 +213,11 @@ a {
 }
 
 #rightImage {
-    position: relative;
-    right: calc(51.8vw - 30rem);
+    margin-left: 5vw;
 }
 
 #leftImage {
-    position: relative;
-    left: calc(51.8vw - 30rem);
+    margin-right: 5vw;
 }
 
 /*Gallery*/
@@ -236,9 +238,28 @@ a {
     justify-content: space-between;
 }
 
-.halfSizeImage {
-    width: calc(var(--halfContentWidth) - (0.5 * var(--largePadding)));
-    border-radius: var(--primaryBorderRadius);
+.halfSizeImageLeft {
+    width: calc(var(--goldenRatio) - (0.5 * var(--largePadding)));
+    border-radius: calc((var(--goldenRatio) - (0.5 * var(--largePadding))) / 2)
+        calc((var(--goldenRatio) - (0.5 * var(--largePadding))) / 2)
+        var(--primaryBorderRadius) var(--primaryBorderRadius);
+}
+
+.halfSizeImageRight {
+    width: calc(
+        (var(--contentWidth) - var(--goldenRatio)) - (0.5 * var(--largePadding))
+    );
+    /*Width - (golden ratio / 2)*/
+    border-radius: calc((var(--goldenRatio) - (0.5 * var(--largePadding))) / 2)
+        calc(
+            (
+                    (var(--contentWidth) - var(--goldenRatio)) -
+                        (0.5 * var(--largePadding))
+                ) -
+                (var(--goldenRatio) - (0.5 * var(--largePadding)) / 2)
+        )
+        var(--primaryBorderRadius) var(--primaryBorderRadius);
+    object-fit: cover;
 }
 
 /*Footer*/
