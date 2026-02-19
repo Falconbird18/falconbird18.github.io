@@ -125,7 +125,7 @@ p {
 }
 
 body {
-    background-image: url("../images/graph_paper.jpg");
+    /*background-image: url("../images/graph_paper.jpg");*/
 }
 
 /*Header*/
@@ -185,10 +185,21 @@ a {
 }
 
 .nameImage {
-    height: 25rem;
+    height: 30rem;
     width: auto;
     object-fit: cover;
     border-radius: var(--primaryBorderRadius);
+    margin: var(--mediumPadding);
+}
+
+#rightImage {
+    position: relative;
+    right: calc(51.8vw - 30rem);
+}
+
+#leftImage {
+    position: relative;
+    left: calc(51.8vw - 30rem);
 }
 
 /*Gallery*/
