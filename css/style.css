@@ -57,10 +57,10 @@ body {
 
     /*Decoration*/
     --primaryBorderRadius: 30px;
-    --primaryBlurRadius: 50px;
+    --primaryBlurRadius: 15px;
     --secondaryBlurRadius: 10px;
 
-    --background: #f0edea;
+    --background: hsl(27, 25%, 80%);
     /* background: hsl(27, 15%, 93%)*/
     --background-2: #f2f2f2;
     /* card: hsl(0, 0%, 95%)*/
@@ -125,7 +125,15 @@ p {
 }
 
 body {
-    /*background-image: url("../images/graph_paper.jpg");*/
+    background-color: var(--background);
+}
+
+.backgroundImage {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0.1;
 }
 
 /*Header*/
@@ -140,7 +148,14 @@ header {
     top: var(--largePadding);
     backdrop-filter: blur(var(--primaryBlurRadius));
     border-radius: var(--primaryBorderRadius);
-    margin: var(--largePadding);
+    margin-left: var(--largePadding);
+    margin-bottom: var(--largePadding);
+    z-index: 1;
+    box-shadow:
+        3px 3px 5px rgba(0, 0, 0, 0.2),
+        inset 3px 3px 5px rgba(255, 255, 255, 0.8),
+        inset -3px -3px 5px rgba(0, 0, 0, 0.2);
+    border: 0.5px solid rgba(0, 0, 0, 0.25);
 }
 
 ul {
@@ -172,6 +187,7 @@ a {
     width: 100%;
     padding: 0 var(--largePadding);
     color: var(--textColor);
+    z-index: 1;
 }
 
 .nameContainer {
