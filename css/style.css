@@ -146,7 +146,7 @@ header {
     align-items: center;
     position: sticky;
     top: var(--largePadding);
-    backdrop-filter: blur(var(--primaryBlurRadius));
+    backdrop-filter: saturate(150%) blur(var(--primaryBlurRadius));
     border-radius: var(--primaryBorderRadius);
     margin-left: var(--largePadding);
     margin-bottom: var(--largePadding);

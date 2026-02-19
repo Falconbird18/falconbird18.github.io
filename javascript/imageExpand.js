@@ -127,9 +127,12 @@ const SCROLL_EXPAND_CONFIG = {
   function onResize() {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
-      // Temporarily reset everything so measurements are clean
+      // Temporarily reset ALL inline styles so measurements are clean
       rightImage.style.opacity = "";
       fullSizeImage.style.opacity = "";
+      fullSizeImage.style.height = "";
+      fullSizeImage.style.margin = "";
+      fullSizeImage.style.overflow = "";
       clone.style.display = "none";
       lastProgress = -1;
       measure();
