@@ -60,10 +60,12 @@ const SCROLL_EXPAND_CONFIG = {
   let ticking = false;
   let lastProgress = -1;
   let resizeTimer;
+  let bottomImage = [];
 
   function init() {
     rightImage = document.getElementById("rightImage");
     fullSizeImage = document.querySelector(".fullSizeImage");
+    bottomImage = document.querySelector(".imageContainer");
 
     if (!rightImage || !fullSizeImage) return;
 
@@ -170,7 +172,12 @@ const SCROLL_EXPAND_CONFIG = {
       fullSizeImage.style.margin = "0";
       fullSizeImage.style.overflow = "hidden";
       clone.style.display = "none";
+      bottomImage.style.opacity = "0";
       return;
+    }
+
+    if (progress < 1) {
+      bottomImage.style.opacity = "0";
     }
 
     if (progress >= 1) {
@@ -181,6 +188,7 @@ const SCROLL_EXPAND_CONFIG = {
       fullSizeImage.style.margin = "";
       fullSizeImage.style.overflow = "";
       clone.style.display = "none";
+      bottomImage.style.opacity = "1";
       return;
     }
 
