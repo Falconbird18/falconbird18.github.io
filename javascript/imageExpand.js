@@ -10,7 +10,7 @@ const SCROLL_EXPAND_CONFIG = {
   /* Peak lateral (horizontal) curve offset in pixels.
        Positive = curves right, negative = curves left.
        0 = straight-line path.                                  */
-  curvePeak: 80,
+  curvePeak: 60,
 
   /* Easing functions (t goes from 0 → 1).
        These shape the path the image takes.
@@ -37,11 +37,6 @@ const SCROLL_EXPAND_CONFIG = {
   // Border-radius easing
   easingRadius: (t) => t * (2 - t), // easeOut
 };
-
-/* ==========================================================
-   Implementation — you shouldn't need to touch this unless
-   you want to change the core behaviour.
-   ========================================================== */
 
 (function () {
   "use strict";
