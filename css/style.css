@@ -61,19 +61,18 @@ body {
     --primaryBlurRadius: 15px;
     --secondaryBlurRadius: 10px;
 
-    --background: hsl(27, 25%, 80%);
-    --background-2: #f2f2f2;
-    /* card: hsl(0, 0%, 95%)*/
-    --background-3: #dad3cd;
-    /* background-light: hsl(27, 15%, 83%)*/
-    --primary: hsl(27, 85%, 47%);
-    /* primary: hsl(27, 85%, 47%)*/
-    --secondary: #12de52;
-    /* secondary: hsl(139, 85%, 47%)*/
+    /*Colors*/
+    --primaryBackgroundColor: hsl(27, 25%, 80%);
+    --secondaryBackgroundColor: hsl(27, 25%, 80%);
+    --tertiaryBackgroundColor: hsl(27, 40%, 60%);
+    --primaryColor: hsl(27, 85%, 47%);
+    --secondaryColor: hsl(139, 85%, 47%);
     --textColor: #562f10;
-    /* text: hsl(27, 69%, 20%)*/
-    --subtext: #766251;
-    /* subtext: hsl(27, 19%, 39%)*/
+    --subTextColor: #766251;
+
+    /*Transitions*/
+    --primaryTransition: 0.2s ease;
+
     z-index: 0;
     position: relative;
     background: hsla(27, 25%, 80%, 25%);
@@ -127,7 +126,8 @@ h6 {
     font-size: var(--h6Size);
 }
 
-p {
+p,
+a {
     font-family: var(--p1FontFamily);
     font-weight: var(--p1Weight);
     font-size: var(--p1Size);
@@ -137,6 +137,15 @@ p {
 *::before,
 *::after {
     box-sizing: border-box;
+}
+
+.glass {
+    box-shadow:
+        3px 3px 5px rgba(0, 0, 0, 0.2),
+        inset 3px 3px 5px rgba(255, 255, 255, 0.8),
+        inset -3px -3px 5px rgba(0, 0, 0, 0.2);
+    border: 0.5px solid rgba(0, 0, 0, 0.25);
+    backdrop-filter: saturate(150%) blur(var(--primaryBlurRadius));
 }
 
 /*Header*/
@@ -149,16 +158,10 @@ header {
     align-items: center;
     position: sticky;
     top: var(--largePadding);
-    backdrop-filter: saturate(150%) blur(var(--primaryBlurRadius));
     border-radius: var(--primaryBorderRadius);
     margin-left: var(--largePadding);
     margin-bottom: var(--largePadding);
     z-index: 1;
-    box-shadow:
-        3px 3px 5px rgba(0, 0, 0, 0.2),
-        inset 3px 3px 5px rgba(255, 255, 255, 0.8),
-        inset -3px -3px 5px rgba(0, 0, 0, 0.2);
-    border: 0.5px solid rgba(0, 0, 0, 0.25);
 }
 
 ul {
@@ -183,6 +186,46 @@ a {
     width: auto;
     height: 7vh;
     border-radius: 50%;
+}
+
+/* Hamburger Menu */
+#menuToggle {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: var(--smallPadding);
+    padding: var(--smallPadding);
+    border-radius: var(--primaryBorderRadius);
+    transition: all var(--primaryTransition);
+}
+
+#menuToggle:checked ~ .hamburger {
+    background-color: var(--primaryBackgroundColor);
+    background: linear-gradient(
+        var(--primaryBackgroundColor),
+        var(--tertiaryBackgroundColor)
+    );
+}
+
+.hamburger span {
+    width: var(--largePadding);
+    height: var(--smallestPadding);
+    background: var(--textColor);
+    border-radius: 0.1rem;
+    transition: all var(--primaryTransition);
+}
+
+#menuToggle:checked ~ nav {
+    display: flex;
+}
+
+nav,
+nav ul {
+    transition: all var(--primaryTransition);
 }
 
 /*Front page*/
@@ -305,6 +348,50 @@ footer {
 /* Mobile */
 @media (max-width: 768px) {
     header {
+        flex-direction: row;
+        gap: var(--largePadding);
+    }
+
+    .hamburger {
+        display: flex;
+        order: 2;
+    }
+
+    nav {
+        position: absolute;
+        top: 100%;
+        left: var(--mediumPadding);
+        right: var(--largePadding);
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: var(--primaryBorderRadius);
+        padding: var(--mediumPadding);
+        margin-top: var(--mediumPadding);
+        display: none;
         flex-direction: column;
+        z-index: 3;
+        backdrop-filter: blur(var(--primaryBlurRadius));
+        box-shadow:
+            3px 3px 5px rgba(0, 0, 0, 0.2),
+            inset 3px 3px 5px rgba(255, 255, 255, 0.8),
+            inset -3px -3px 5px rgba(0, 0, 0, 0.2);
+        border: 0.5px solid rgba(0, 0, 0, 0.25);
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: var(--mediumPadding);
+    }
+
+    li {
+        padding: 0;
+        text-align: center;
+    }
+
+    a {
+        transition: color var(--primaryTransition);
+    }
+
+    a:hover {
+        color: var(--primaryColor);
     }
 }
