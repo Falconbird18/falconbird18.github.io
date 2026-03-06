@@ -1,20 +1,3 @@
-/*Austin Tallent
-style.css
-February 5*/
-
-body,
-header,
-main,
-nav,
-footer,
-h1,
-div,
-img {
-    margin: 0;
-    padding: 0;
-    border: 0;
-}
-
 body {
     /*Fonts*/
     --h1FontFamily: "Baskervville", serif;
@@ -62,13 +45,14 @@ body {
     --secondaryBlurRadius: 3px;
 
     /*Colors*/
-    --primaryBackgroundColor: hsl(27, 25%, 80%);
-    --secondaryBackgroundColor: hsl(27, 25%, 80%);
-    --tertiaryBackgroundColor: hsl(27, 40%, 60%);
-    --primaryColor: hsl(27, 85%, 47%);
-    --secondaryColor: hsl(139, 85%, 47%);
-    --textColor: #562f10;
-    --subTextColor: #766251;
+    --primaryBackgroundColor: hsl(326, 25%, 80%);
+    --secondaryBackgroundColor: hsl(326, 25%, 80%);
+    --tertiaryBackgroundColor: hsl(326, 40%, 60%);
+    --primaryColor: hsl(326, 95%, 43%);
+    --secondaryColor: hsl(215, 95%, 43%);
+    --tertiaryColor: hsl(17, 95%, 43%);
+    --textColor: hsl(326, 50%, 10%);
+    --subTextColor: hsl(326, 50%, 25%);
 
     /*Transitions*/
     --primaryTransition: 0.2s ease;
@@ -76,6 +60,19 @@ body {
     z-index: 0;
     position: relative;
     background: hsla(27, 25%, 80%, 25%);
+}
+
+body,
+header,
+main,
+nav,
+footer,
+h1,
+div,
+img {
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 
 body::before {
@@ -94,36 +91,42 @@ h1 {
     font-family: var(--h1FontFamily);
     font-weight: var(--h1Weight);
     font-size: var(--h1Size);
+    color: var(--textColor);
 }
 
 h2 {
     font-family: var(--h2FontFamily);
     font-weight: var(--h2Weight);
     font-size: var(--h2Size);
+    color: var(--textColor);
 }
 
 h3 {
     font-family: var(--h3FontFamily);
     font-weight: var(--h3Weight);
     font-size: var(--h3Size);
+    color: var(--textColor);
 }
 
 h4 {
     font-family: var(--h4FontFamily);
     font-weight: var(--h4Weight);
     font-size: var(--h4Size);
+    color: var(--textColor);
 }
 
 h5 {
     font-family: var(--h5FontFamily);
     font-weight: var(--h5Weight);
     font-size: var(--h5Size);
+    color: var(--textColor);
 }
 
 h6 {
     font-family: var(--h6FontFamily);
     font-weight: var(--h6Weight);
     font-size: var(--h6Size);
+    color: var(--textColor);
 }
 
 p,
@@ -131,6 +134,7 @@ a {
     font-family: var(--p1FontFamily);
     font-weight: var(--p1Weight);
     font-size: var(--p1Size);
+    color: var(--textColor);
 }
 
 *,
@@ -173,26 +177,25 @@ header {
     margin-bottom: var(--largePadding);
     z-index: 1;
     overflow: visible;
+    transition: transform var(--primaryTransition);
 }
 
-ul {
+header ul {
     display: flex;
     list-style-type: none;
     text-align: right;
 }
 
-li {
+header li {
     padding: 0 var(--largePadding);
 }
 
-a {
+header a {
     text-decoration: none;
-    color: var(--textColor);
-    font-family: var(--p1FontFamily);
-    font-weight: var(--p1Weight);
-    font-size: var(--p1Size);
 }
-
+.hidden {
+    transform: translateY(calc(-100% - var(--largePadding)));
+}
 .logo {
     width: auto;
     height: 7vh;
@@ -235,115 +238,6 @@ a {
 
 .menu {
     display: none;
-}
-
-/*Front page*/
-#welcome {
-    width: 100%;
-    padding: 0 var(--largePadding);
-    color: var(--textColor);
-    z-index: 1;
-}
-
-.nameContainer {
-    display: flex;
-    align-items: center;
-}
-
-.nameContainerRight {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    /*position: absolute;
-    right: var(--largePadding);*/
-}
-
-.nameImage {
-    height: 30rem;
-    width: auto;
-    object-fit: cover;
-    border-radius: var(--primaryBorderRadius);
-    margin: var(--mediumPadding);
-}
-
-#rightImage {
-    margin-left: 5vw;
-}
-
-#leftImage {
-    margin-right: 5vw;
-}
-
-/*Gallery*/
-.fullSizeImage {
-    width: var(--contentWidth);
-    height: auto;
-    margin-left: var(--largePadding);
-    margin-top: var(--largePadding);
-    border-radius: var(--primaryBorderRadius);
-}
-
-.imageContainer {
-    display: flex;
-    width: var(--contentWidth);
-    height: auto;
-    margin-left: var(--largePadding);
-    margin-top: var(--largePadding);
-    justify-content: space-between;
-}
-
-.halfSizeImageLeft {
-    width: calc(var(--goldenRatio) - (0.5 * var(--largePadding)));
-    border-radius: calc((var(--goldenRatio) - (0.5 * var(--largePadding))) / 2)
-        calc((var(--goldenRatio) - (0.5 * var(--largePadding))) / 2)
-        var(--primaryBorderRadius) var(--primaryBorderRadius);
-}
-
-.halfSizeImageRight {
-    width: calc(
-        (var(--contentWidth) - var(--goldenRatio)) - (0.5 * var(--largePadding))
-    );
-    border-radius: calc((var(--goldenRatio) - (0.5 * var(--largePadding))) / 2)
-        calc(
-            (var(--contentWidth) - var(--goldenRatio)) -
-                (0.5 * var(--largePadding)) -
-                (var(--goldenRatio) - (0.5 * var(--largePadding))) / 2
-        )
-        var(--primaryBorderRadius) var(--primaryBorderRadius);
-    object-fit: cover;
-}
-
-/*Scroll Cards*/
-.scrollContainer {
-    display: flex;
-    /*overflow-x: auto;
-    overflow-y: visible;*/
-    margin: var(--largePadding);
-    scrollbar-width: none;
-    gap: var(--mediumPadding);
-    flex-shrink: 0;
-}
-
-.scrollContainer::-webkit-scrollbar {
-    display: none;
-}
-
-.scrollCard {
-    width: calc((var(--contentWidth) / 3) - var(--mediumPadding));
-    height: auto;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-.scrollCard img {
-    width: 100%;
-    height: 35vw;
-    border-radius: calc((var(--contentWidth) / 3) - var(--mediumPadding))
-        calc((var(--contentWidth) / 3) - var(--mediumPadding))
-        var(--primaryBorderRadius) var(--primaryBorderRadius);
-    object-fit: cover;
-    flex-shrink: 0;
 }
 
 /*Footer*/

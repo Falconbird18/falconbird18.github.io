@@ -1,16 +1,12 @@
 <!doctype html>
-<!--
-Name: Austin Tallent
-File: index.html
-Date: January 19 2026-->
-
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Portfolio - Austin Tallent</title>
         <link rel="icon" type="image/x-icon" href="images/logo.svg" />
-        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/global.css" />
+        <link rel="stylesheet" href="css/index.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -22,11 +18,13 @@ Date: January 19 2026-->
         <!--Page header-->
         <input type="checkbox" id="menuToggle" />
         <header class="primaryGlass">
-            <img
-                class="logo"
-                src="images/profile.webp"
-                alt="A profile headshot"
-            />
+            <a href="index.html">
+                <img
+                    class="logo"
+                    src="images/profile.webp"
+                    alt="A profile headshot"
+                />
+            </a>
             <label for="menuToggle" class="hamburger">
                 <span></span>
                 <span></span>
@@ -54,7 +52,7 @@ Date: January 19 2026-->
         <main>
             <section id="welcome">
                 <div class="nameContainer">
-                    <h1 id="firstName">Austin</h1>
+                    <h1 id="firstName">AUSTIN</h1>
                     <img
                         id="rightImage"
                         class="nameImage"
@@ -63,13 +61,13 @@ Date: January 19 2026-->
                     />
                 </div>
                 <div class="nameContainerRight">
-                    <img
+                    <!--<img
                         id="leftImage"
                         class="nameImage"
                         src="images/austin.webp"
                         alt="Tallent image"
-                    />
-                    <h1 id="lastName">Tallent</h1>
+                    />-->
+                    <h1 id="lastName">TALLENT</h1>
                 </div>
             </section>
             <section id="gallery">
@@ -135,5 +133,6 @@ Date: January 19 2026-->
             <p>&copy; Austin Tallent 2026</p>
         </footer>
         <script src="javascript/imageExpand.js"></script>
+        <script src="javascript/headerHide.js"></script>
     </body>
 </html>

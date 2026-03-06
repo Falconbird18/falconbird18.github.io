@@ -1,0 +1,112 @@
+/*Front page*/
+#welcome {
+    width: 100%;
+    padding: 0 var(--largePadding);
+    color: var(--textColor);
+    z-index: 1;
+}
+
+.nameContainer {
+    display: flex;
+    align-items: center;
+}
+
+.nameContainerRight {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    /*position: absolute;
+    right: var(--largePadding);*/
+}
+
+.nameImage {
+    height: 30rem;
+    width: auto;
+    object-fit: cover;
+    border-radius: var(--primaryBorderRadius);
+    margin: var(--mediumPadding);
+}
+
+#rightImage {
+    margin-left: 5vw;
+}
+
+#leftImage {
+    margin-right: 5vw;
+}
+
+/*Gallery*/
+.fullSizeImage {
+    width: var(--contentWidth);
+    height: auto;
+    margin-left: var(--largePadding);
+    margin-top: var(--largePadding);
+    border-radius: var(--primaryBorderRadius);
+}
+
+.imageContainer {
+    display: flex;
+    width: var(--contentWidth);
+    height: auto;
+    margin-left: var(--largePadding);
+    margin-top: var(--largePadding);
+    justify-content: space-between;
+}
+
+.halfSizeImageLeft {
+    width: calc(var(--goldenRatio) - (0.5 * var(--largePadding)));
+    border-radius: calc((var(--goldenRatio) - (0.5 * var(--largePadding))) / 2)
+        calc((var(--goldenRatio) - (0.5 * var(--largePadding))) / 2)
+        var(--primaryBorderRadius) var(--primaryBorderRadius);
+}
+
+.halfSizeImageRight {
+    width: calc(
+        (var(--contentWidth) - var(--goldenRatio)) - (0.5 * var(--largePadding))
+    );
+    border-radius: calc((var(--goldenRatio) - (0.5 * var(--largePadding))) / 2)
+        calc(
+            (var(--contentWidth) - var(--goldenRatio)) -
+                (0.5 * var(--largePadding)) -
+                (var(--goldenRatio) - (0.5 * var(--largePadding))) / 2
+        )
+        var(--primaryBorderRadius) var(--primaryBorderRadius);
+    object-fit: cover;
+}
+
+/*Scroll Cards*/
+.scrollContainer {
+    display: flex;
+    /*overflow-x: auto;
+    overflow-y: visible;*/
+    margin: var(--largePadding);
+    scrollbar-width: none;
+    gap: var(--mediumPadding);
+    flex-shrink: 0;
+}
+
+.scrollContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollCard {
+    width: calc((var(--contentWidth) / 3) - var(--mediumPadding));
+    height: auto;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.scrollCard img {
+    width: 100%;
+    height: 35vw;
+    border-radius: calc((var(--contentWidth) / 3) - var(--mediumPadding))
+        calc((var(--contentWidth) / 3) - var(--mediumPadding))
+        var(--primaryBorderRadius) var(--primaryBorderRadius);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+}
