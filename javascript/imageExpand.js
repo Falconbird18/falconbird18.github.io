@@ -1,41 +1,25 @@
 const SCROLL_EXPAND_CONFIG = {
-  /* How many pixels of scrolling the full animation spans.
-       Lower = faster expansion, higher = slower.               */
-  scrollDuration: 600,
+  // Lower = faster expansion, higher = slower.
+  scrollDuration: 700,
 
-  /* Extra scroll offset (px) after #rightImage leaves the
-       viewport center before animation begins.                 */
-  scrollOffset: 100,
+  scrollOffset: 0,
 
   /* Peak lateral (horizontal) curve offset in pixels.
        Positive = curves right, negative = curves left.
-       0 = straight-line path.                                  */
-  curvePeak: 60,
+       0 = straight-line path. */
+  curvePeak: 20,
 
-  /* Easing functions (t goes from 0 → 1).
-       These shape the path the image takes.
-       ------------------------------------------------
-       Presets you can swap in:
-         linear:      t => t
-         easeIn:      t => t * t
-         easeOut:     t => t * (2 - t)
-         easeInOut:   t => t < 0.5 ? 2*t*t : -1+(4-2*t)*t
-         easeInCubic: t => t * t * t
-         easeOutCubic:t => (--t)*t*t+1
-         snap:        t => { const s = 1.70158; return t*t*((s+1)*t - s); }
-       ------------------------------------------------        */
-
-  // Horizontal position easing (controls the curve shape)
-  easingX: (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t), // easeInOut
+  // Horizontal position easing
+  easingX: (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t),
 
   // Vertical position easing
-  easingY: (t) => t * (2 - t), // easeOut
+  easingY: (t) => t * (2 - t),
 
   // Size / scale easing
-  easingSize: (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t), // easeInOut
+  easingSize: (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t),
 
   // Border-radius easing
-  easingRadius: (t) => t * (2 - t), // easeOut
+  easingRadius: (t) => t * (2 - t),
 };
 
 (function () {
@@ -43,70 +27,138 @@ const SCROLL_EXPAND_CONFIG = {
 
   const CFG = SCROLL_EXPAND_CONFIG;
 
-  // Clamp helper
   const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
-
-  // Lerp helper
   const lerp = (a, b, t) => a + (b - a) * t;
 
-  let rightImage, fullSizeImage, clone;
-  let startRect, endRect;
-  let animStart, animEnd;
+  let welcomeImage;
+  let fullSizeImage;
+  let bottomImage;
+  let firstName;
+  let lastName;
+  let clone;
+
+  let startRect;
+  let endRect;
+  let animStart = 0;
+  let animEnd = 1;
   let ticking = false;
   let lastProgress = -1;
-  let resizeTimer;
-  let bottomImage = [];
+  let resizeTimer = null;
+  let measured = false;
 
   function init() {
-    rightImage = document.getElementById("rightImage");
+    welcomeImage = document.getElementById("welcomeImage");
     fullSizeImage = document.querySelector(".fullSizeImage");
     bottomImage = document.querySelector(".imageContainer");
+    firstName = document.getElementById("firstName");
+    lastName = document.getElementById("lastName");
 
-    if (!rightImage || !fullSizeImage) return;
+    if (!welcomeImage || !fullSizeImage || !bottomImage) return;
 
-    // Create fixed-position clone for the animation
-    clone = rightImage.cloneNode(true);
-    clone.removeAttribute("id");
-    clone.style.cssText = `
-            position: fixed;
-            pointer-events: none;
-            will-change: transform, width, height, border-radius;
-            display: none;
-            object-fit: cover;
-            margin: 0;
-        `;
-    document.body.appendChild(clone);
+    createClone();
+    prepareElements();
+    waitForImages()
+      .then(() => {
+        measured = true;
+        measure();
+        onScroll();
+      })
+      .catch(() => {
+        measured = true;
+        measure();
+        onScroll();
+      });
 
-    measure();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onResize);
-    // Run once on load in case already scrolled
-    onScroll();
+    window.addEventListener("load", () => {
+      measured = true;
+      measure();
+      onScroll();
+    });
   }
 
-  /* Measure source & target positions relative to the document */
+  function createClone() {
+    if (clone) clone.remove();
+
+    clone = welcomeImage.cloneNode(true);
+    clone.removeAttribute("id");
+    clone.setAttribute("aria-hidden", "true");
+    clone.style.cssText = `
+      position: fixed;
+      pointer-events: none;
+      display: none;
+      object-fit: cover;
+      margin: 0;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      z-index: 2;
+      will-change: top, left, width, height, border-radius, opacity;
+    `;
+    document.body.appendChild(clone);
+  }
+
+  function prepareElements() {
+    fullSizeImage.style.opacity = "0";
+    fullSizeImage.style.visibility = "hidden";
+    bottomImage.style.opacity = "0";
+    bottomImage.style.transition = "opacity 180ms ease";
+    welcomeImage.style.willChange = "opacity";
+    fullSizeImage.style.willChange = "opacity";
+  }
+
+  function waitForImages() {
+    const images = [welcomeImage, fullSizeImage];
+
+    return Promise.all(
+      images.map((img) => {
+        if (img.complete && img.naturalWidth > 0) {
+          return Promise.resolve();
+        }
+
+        return new Promise((resolve) => {
+          const done = () => {
+            img.removeEventListener("load", done);
+            img.removeEventListener("error", done);
+            resolve();
+          };
+
+          img.addEventListener("load", done, { once: true });
+          img.addEventListener("error", done, { once: true });
+        });
+      }),
+    );
+  }
+
+  function getRectInDocument(element) {
+    const rect = element.getBoundingClientRect();
+    return {
+      top: rect.top + window.scrollY,
+      left: rect.left + window.scrollX,
+      width: rect.width,
+      height: rect.height,
+    };
+  }
+
   function measure() {
-    const scrollY = window.scrollY;
+    if (!welcomeImage || !fullSizeImage) return;
 
-    const rRect = rightImage.getBoundingClientRect();
-    startRect = {
-      top: rRect.top + scrollY,
-      left: rRect.left,
-      width: rRect.width,
-      height: rRect.height,
-    };
+    resetMeasuredStyles();
 
-    const fRect = fullSizeImage.getBoundingClientRect();
-    endRect = {
-      top: fRect.top + scrollY,
-      left: fRect.left,
-      width: fRect.width,
-      height: fRect.height,
-    };
+    startRect = getRectInDocument(welcomeImage);
+    endRect = getRectInDocument(fullSizeImage);
 
-    // Animation scroll zone
-    // Start when the bottom of #rightImage reaches the viewport center
-    // Math.max ensures the animation never starts before scroll = 0
+    if (
+      !startRect.width ||
+      !startRect.height ||
+      !endRect.width ||
+      !endRect.height
+    ) {
+      return;
+    }
+
     animStart = Math.max(
       0,
       startRect.top +
@@ -115,29 +167,34 @@ const SCROLL_EXPAND_CONFIG = {
         CFG.scrollOffset,
     );
 
-    animEnd = animStart + CFG.scrollDuration;
+    animEnd = animStart + Math.max(CFG.scrollDuration, 1);
 
-    // Re-apply current state
-    applyProgress(lastProgress >= 0 ? lastProgress : -1);
+    applyProgress(lastProgress >= 0 ? lastProgress : 0);
+  }
+
+  function resetMeasuredStyles() {
+    welcomeImage.style.opacity = "";
+    fullSizeImage.style.opacity = "";
+    fullSizeImage.style.visibility = "";
+    fullSizeImage.style.height = "";
+    fullSizeImage.style.marginTop = "";
+    fullSizeImage.style.marginBottom = "";
+    fullSizeImage.style.overflow = "";
+    bottomImage.style.opacity = "";
+    clone.style.display = "none";
   }
 
   function onResize() {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
-      // Temporarily reset ALL inline styles so measurements are clean
-      rightImage.style.opacity = "";
-      fullSizeImage.style.opacity = "";
-      fullSizeImage.style.height = "";
-      fullSizeImage.style.margin = "";
-      fullSizeImage.style.overflow = "";
-      clone.style.display = "none";
-      lastProgress = -1;
       measure();
       onScroll();
     }, 100);
   }
 
   function onScroll() {
+    if (!measured || !startRect || !endRect) return;
+
     if (!ticking) {
       ticking = true;
       requestAnimationFrame(update);
@@ -151,87 +208,108 @@ const SCROLL_EXPAND_CONFIG = {
     const raw = (scrollY - animStart) / (animEnd - animStart);
     const progress = clamp(raw, 0, 1);
 
-    // Skip if nothing changed
     if (progress === lastProgress) return;
     lastProgress = progress;
 
     applyProgress(progress);
   }
 
-  function applyProgress(progress) {
-    if (progress <= 0) {
-      // Before animation — show original, hide clone & target
-      rightImage.style.opacity = "1";
-      fullSizeImage.style.opacity = "0";
-      fullSizeImage.style.height = "0";
-      fullSizeImage.style.margin = "0";
-      fullSizeImage.style.overflow = "hidden";
-      clone.style.display = "none";
-      bottomImage.style.opacity = "0";
-      return;
-    }
+  function hideTargetArea() {
+    fullSizeImage.style.opacity = "0";
+    fullSizeImage.style.visibility = "hidden";
+    bottomImage.style.opacity = "0";
+  }
 
-    if (progress < 1) {
-      bottomImage.style.opacity = "0";
+  function showTargetArea() {
+    fullSizeImage.style.opacity = "1";
+    fullSizeImage.style.visibility = "visible";
+    bottomImage.style.opacity = "1";
+  }
+
+  function getTextCoverOpacity(progress) {
+    if (progress <= 0.08) return 0;
+    if (progress >= 0.22) return 1;
+    return (progress - 0.08) / 0.14;
+  }
+
+  function applyProgress(progress) {
+    if (!clone || !startRect || !endRect) return;
+
+    if (progress <= 0) {
+      welcomeImage.style.opacity = "1";
+      showWelcomeText();
+      hideTargetArea();
+      clone.style.display = "none";
+      return;
     }
 
     if (progress >= 1) {
-      // After animation — show fullSizeImage, hide original & clone
-      rightImage.style.opacity = "0";
-      fullSizeImage.style.opacity = "1";
-      fullSizeImage.style.height = "";
-      fullSizeImage.style.margin = "";
-      fullSizeImage.style.overflow = "";
+      welcomeImage.style.opacity = "0";
+      hideWelcomeTextCover();
+      showTargetArea();
       clone.style.display = "none";
-      bottomImage.style.opacity = "1";
       return;
     }
 
-    // Mid-animation — hide original & target, show clone
-    rightImage.style.opacity = "0";
-    fullSizeImage.style.opacity = "0";
-    fullSizeImage.style.height = "0";
-    fullSizeImage.style.margin = "0";
-    fullSizeImage.style.overflow = "hidden";
+    welcomeImage.style.opacity = "0";
+    hideTargetArea();
     clone.style.display = "block";
 
-    // Apply individual easings
     const tX = CFG.easingX(progress);
     const tY = CFG.easingY(progress);
     const tSize = CFG.easingSize(progress);
     const tRadius = CFG.easingRadius(progress);
 
-    // Calculate current viewport-relative positions
     const scrollY = window.scrollY;
-    const fromTop = startRect.top - scrollY;
-    const fromLeft = startRect.left;
-    const toTop = endRect.top - scrollY;
-    const toLeft = endRect.left;
+    const scrollX = window.scrollX;
 
-    // Interpolate
+    const fromTop = startRect.top - scrollY;
+    const fromLeft = startRect.left - scrollX;
+    const toTop = endRect.top - scrollY;
+    const toLeft = endRect.left - scrollX;
+
     const currentTop = lerp(fromTop, toTop, tY);
     const currentLeft = lerp(fromLeft, toLeft, tX);
     const currentWidth = lerp(startRect.width, endRect.width, tSize);
     const currentHeight = lerp(startRect.height, endRect.height, tSize);
-
-    // Curved path offset — sine wave peaks at progress=0.5
     const curveOffset = CFG.curvePeak * Math.sin(progress * Math.PI);
 
-    // Border radius: nameImage starts at 30px, fullSizeImage also 30px
-    // but we can interpolate if they differ
-    const startRadius = 30; // from --primaryBorderRadius
+    const startRadius = 30;
     const endRadius = 30;
     const currentRadius = lerp(startRadius, endRadius, tRadius);
 
-    // Apply styles to clone
-    clone.style.top = currentTop + "px";
-    clone.style.left = currentLeft + curveOffset + "px";
-    clone.style.width = currentWidth + "px";
-    clone.style.height = currentHeight + "px";
-    clone.style.borderRadius = currentRadius + "px";
+    clone.style.top = `${currentTop}px`;
+    clone.style.left = `${currentLeft + curveOffset}px`;
+    clone.style.width = `${currentWidth}px`;
+    clone.style.height = `${currentHeight}px`;
+    clone.style.borderRadius = `${currentRadius}px`;
+    clone.style.opacity = "1";
+
+    updateWelcomeTextCover(progress);
   }
 
-  // Boot
+  function showWelcomeText() {
+    if (firstName) firstName.style.opacity = "1";
+    if (lastName) lastName.style.opacity = "1";
+  }
+
+  function hideWelcomeTextCover() {
+    if (firstName) firstName.style.opacity = "1";
+    if (lastName) lastName.style.opacity = "1";
+  }
+
+  function updateWelcomeTextCover(progress) {
+    const fade = getTextCoverOpacity(progress);
+
+    if (firstName) {
+      firstName.style.opacity = `${1 - fade}`;
+    }
+
+    if (lastName) {
+      lastName.style.opacity = `${1 - fade}`;
+    }
+  }
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
   } else {

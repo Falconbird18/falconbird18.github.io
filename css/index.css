@@ -1,38 +1,35 @@
 /*Front page*/
 #welcome {
     width: 100%;
-    padding: 0 var(--largePadding);
+    height: calc(100vh - var(--largePadding));
     color: var(--textColor);
     z-index: 1;
+    position: relative;
 }
 
-.nameContainer {
-    display: flex;
-    align-items: center;
+#firstName {
+    position: absolute;
+    top: 0;
+    left: var(--largePadding);
+    z-index: 3;
 }
 
-.nameContainerRight {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    /*position: absolute;
-    right: var(--largePadding);*/
+#lastName {
+    position: absolute;
+    bottom: 0;
+    right: var(--largePadding);
+    z-index: 3;
 }
 
-.nameImage {
-    height: 30rem;
+#welcomeImage {
+    height: calc(100vh - var(--largePadding) - var(--h1Size));
     width: auto;
     object-fit: cover;
     border-radius: var(--primaryBorderRadius);
-    margin: var(--mediumPadding);
-}
-
-#rightImage {
-    margin-left: 5vw;
-}
-
-#leftImage {
-    margin-right: 5vw;
+    position: absolute;
+    top: calc(50% - (100vh - var(--largePadding) - var(--h1Size)) / 2);
+    left: calc(50% - (100vh - var(--largePadding) - var(--h1Size)) / 2);
+    z-index: 2;
 }
 
 /*Gallery*/

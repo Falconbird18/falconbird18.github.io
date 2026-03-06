@@ -62,6 +62,10 @@ body {
     background: hsla(27, 25%, 80%, 25%);
 }
 
+html {
+    font-size: 100%;
+}
+
 body,
 header,
 main,
@@ -165,12 +169,12 @@ a {
 /*Header*/
 header {
     display: flex;
+    position: fixed;
     width: var(--contentWidth);
     height: 10vh;
     padding: var(--largePadding);
     justify-content: space-between;
     align-items: center;
-    position: sticky;
     top: var(--largePadding);
     border-radius: var(--primaryBorderRadius);
     margin-left: var(--largePadding);
@@ -249,6 +253,9 @@ footer {
 
 /* Mobile */
 @media (max-width: 768px) {
+    html {
+        font-size: 50%;
+    }
     header {
         flex-direction: row;
         gap: var(--largePadding);
