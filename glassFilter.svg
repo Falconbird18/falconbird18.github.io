@@ -1,0 +1,28 @@
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="0"
+    height="0"
+    aria-hidden="true"
+    focusable="false"
+>
+    <filter id="glass" color-interpolation-filters="sRGB">
+        <feTurbulence
+            type="turbulence"
+            baseFrequency="0.01 0.001"
+            numOctaves="1"
+            result="NOISE"
+        />
+        <feGaussianBlur in="NOISE" stdDeviation="0" result="BLURRED_NOISE" />
+        <feDisplacementMap
+            in="SourceGraphic"
+            in2="BLURRED_NOISE"
+            scale="25"
+            result="DISPLACEMENT"
+        />
+        <feGaussianBlur
+            in="DISPLACEMENT"
+            stdDeviation="5"
+            result="BLURRED_DISPLACEMENT"
+        />
+      </filter>
+</svg>
