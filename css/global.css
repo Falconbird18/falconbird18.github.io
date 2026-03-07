@@ -179,7 +179,7 @@ header {
     border-radius: var(--primaryBorderRadius);
     margin-left: var(--largePadding);
     margin-bottom: var(--largePadding);
-    z-index: 1;
+    z-index: 10;
     overflow: visible;
     transition: transform var(--primaryTransition);
 }

@@ -96,6 +96,7 @@ const SCROLL_EXPAND_CONFIG = {
       height: 0;
       z-index: 2;
       will-change: top, left, width, height, border-radius, opacity;
+      border-radius: 30px;
     `;
     document.body.appendChild(clone);
   }
@@ -274,15 +275,45 @@ const SCROLL_EXPAND_CONFIG = {
     const currentHeight = lerp(startRect.height, endRect.height, tSize);
     const curveOffset = CFG.curvePeak * Math.sin(progress * Math.PI);
 
-    const startRadius = 30;
-    const endRadius = 30;
-    const currentRadius = lerp(startRadius, endRadius, tRadius);
+    const startTopLeftRadius = 30;
+    const startTopRightRadius = 30;
+    const startBottomRightRadius = 30;
+    const startBottomLeftRadius = 30;
+
+    const endTopLeftRadius = endRect.height / 2;
+    const endTopRightRadius = endRect.height / 2;
+    const endBottomRightRadius = 30;
+    const endBottomLeftRadius = 30;
+
+    const currentTopLeftRadius = lerp(
+      startTopLeftRadius,
+      endTopLeftRadius,
+      tRadius,
+    );
+    const currentTopRightRadius = lerp(
+      startTopRightRadius,
+      endTopRightRadius,
+      tRadius,
+    );
+    const currentBottomRightRadius = lerp(
+      startBottomRightRadius,
+      endBottomRightRadius,
+      tRadius,
+    );
+    const currentBottomLeftRadius = lerp(
+      startBottomLeftRadius,
+      endBottomLeftRadius,
+      tRadius,
+    );
 
     clone.style.top = `${currentTop}px`;
     clone.style.left = `${currentLeft + curveOffset}px`;
     clone.style.width = `${currentWidth}px`;
     clone.style.height = `${currentHeight}px`;
-    clone.style.borderRadius = `${currentRadius}px`;
+    clone.style.borderTopLeftRadius = `${currentTopLeftRadius}px`;
+    clone.style.borderTopRightRadius = `${currentTopRightRadius}px`;
+    clone.style.borderBottomRightRadius = `${currentBottomRightRadius}px`;
+    clone.style.borderBottomLeftRadius = `${currentBottomLeftRadius}px`;
     clone.style.opacity = "1";
 
     updateWelcomeTextCover(progress);

@@ -34,11 +34,14 @@
 
 /*Gallery*/
 .fullSizeImage {
-    width: var(--contentWidth);
-    height: auto;
-    margin-left: var(--largePadding);
+    display: block;
+    width: auto;
+    height: calc(100vh - (2 * var(--largePadding)));
+    margin: 0 auto;
     margin-top: var(--largePadding);
-    border-radius: var(--primaryBorderRadius);
+    border-radius: calc((100vh - (2 * var(--largePadding))) / 2)
+        calc((100vh - (2 * var(--largePadding))) / 2) var(--primaryBorderRadius)
+        var(--primaryBorderRadius);
 }
 
 .imageContainer {
@@ -74,6 +77,9 @@
 /*Scroll Cards*/
 .scrollContainer {
     display: flex;
+    width: 100%;
+    overflow: scroll;
+
     /*overflow-x: auto;
     overflow-y: visible;*/
     margin: var(--largePadding);
