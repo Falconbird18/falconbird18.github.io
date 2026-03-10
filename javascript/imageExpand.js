@@ -1,13 +1,13 @@
 /*
   falconbird18.github.io/javascript/imageExpand.js
 
-  Simplified hero intro sequence:
+  Hero intro sequence with smooth bidirectional playback:
   - Locks native scrolling while the intro is active
   - Wheel / touch / keyboard drive a virtual progress value from 0..1
   - Hero image scales up while the title text slides toward center
   - Completing the intro reveals page content
-  - Returning to the actual top of the page re-activates the hero cleanly
-  - Reverse playback is intentionally removed to avoid glitchy state conflicts
+  - Scrolling back to the top restores the intro without glitchy state jumps
+  - Reverse playback is supported while the intro is active
 */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -31,9 +31,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const easeInOutCubic = (t) =>
     t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
-  const START_SCALE = 0.36;
+  const START_SCALE = 0.4;
   const END_SCALE = 1;
-  const START_RADIUS = 28;
+  const START_RADIUS = 30;
   const END_RADIUS = 0;
   const LERP = 0.14;
   const WHEEL_SENSITIVITY = 1 / 900;
@@ -49,6 +49,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let touchStartY = null;
   let firstDeltaX = 0;
   let lastDeltaX = 0;
+  let scrollRestorePending = false;
+  let ignoreScrollEvents = false;
 
   function lockScroll() {
     root.style.overflow = "hidden";
@@ -85,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
       top: "50%",
       left: "50%",
       width: "100vw",
-      height: "100vh",
+      height: "100vw",
       objectFit: "cover",
       transformOrigin: "center center",
       zIndex: "20",
@@ -111,52 +113,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function clearHeroInlineStyles() {
-    [
-      "position",
-      "top",
-      "left",
-      "width",
-      "height",
-      "objectFit",
-      "transformOrigin",
-      "zIndex",
-      "transition",
-      "willChange",
-      "backfaceVisibility",
-      "pointerEvents",
-      "display",
-      "transform",
-      "opacity",
-      "borderRadius",
-      "filter",
-      "boxShadow",
-      "letterSpacing",
-    ].forEach((prop) => {
-      image.style[prop] = "";
-    });
-
-    if (hasText) {
-      [firstName, lastName].forEach((el) => {
-        [
-          "position",
-          "zIndex",
-          "transition",
-          "willChange",
-          "backfaceVisibility",
-          "pointerEvents",
-          "display",
-          "transform",
-          "opacity",
-          "filter",
-          "letterSpacing",
-        ].forEach((prop) => {
-          el.style[prop] = "";
-        });
-      });
-    }
-  }
-
   function applyVisualState(rawProgress) {
     const p = clamp(rawProgress, 0, 1);
     const imageEase = easeOutCubic(p);
@@ -164,39 +120,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const scale = mix(START_SCALE, END_SCALE, imageEase);
     const radius = mix(START_RADIUS, END_RADIUS, imageEase);
-    const imageOpacity = mix(0.8, 1, imageEase);
-    const imageBlur = mix(8, 0, imageEase);
-    const imageBrightness = mix(0.9, 1, imageEase);
-    const imageSaturate = mix(0.94, 1, imageEase);
-    const imageShadow = mix(34, 8, imageEase);
 
     image.style.transform = `translate(-50%, -50%) scale(${scale.toFixed(4)})`;
     image.style.borderRadius = `${radius.toFixed(2)}px`;
-    image.style.opacity = imageOpacity.toFixed(3);
-    image.style.filter = `blur(${imageBlur.toFixed(2)}px) brightness(${imageBrightness.toFixed(3)}) saturate(${imageSaturate.toFixed(3)})`;
-    image.style.boxShadow = `0 24px ${imageShadow.toFixed(2)}px rgba(0, 0, 0, 0.24)`;
 
     if (!hasText) return;
 
     const firstX = firstDeltaX * textEase;
     const lastX = lastDeltaX * textEase;
-    const textOpacity = mix(1, 0.86, p);
-    const textBlur = mix(0, 1.2, p);
-    const spacing = mix(0, 2, p);
     const firstY = mix(0, 6, p);
     const lastY = mix(0, -6, p);
 
     firstName.style.transform = `translate3d(${firstX.toFixed(2)}px, ${firstY.toFixed(2)}px, 0)`;
     lastName.style.transform = `translate3d(${lastX.toFixed(2)}px, ${lastY.toFixed(2)}px, 0)`;
-
-    firstName.style.opacity = textOpacity.toFixed(3);
-    lastName.style.opacity = textOpacity.toFixed(3);
-
-    firstName.style.filter = `blur(${textBlur.toFixed(2)}px)`;
-    lastName.style.filter = `blur(${textBlur.toFixed(2)}px)`;
-
-    firstName.style.letterSpacing = `${spacing.toFixed(2)}px`;
-    lastName.style.letterSpacing = `${spacing.toFixed(2)}px`;
   }
 
   function startLoop() {
@@ -237,8 +173,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const radius = Math.sqrt((vw / 2) ** 2 + (vh / 2) ** 2);
     const diameter = Math.ceil(radius * 2);
     const overlay = document.createElement("div");
-    const background =
-      window.getComputedStyle(body).backgroundColor || "#ffffff";
 
     overlay.id = "heroCircleCover";
     Object.assign(overlay.style, {
@@ -250,10 +184,10 @@ document.addEventListener("DOMContentLoaded", () => {
       marginLeft: `${-diameter / 2}px`,
       marginTop: `${-diameter / 2}px`,
       borderRadius: "50%",
-      background,
-      zIndex: "40",
+      background: "hsl(326, 25%, 80%)",
+      zIndex: "2",
       pointerEvents: "none",
-      willChange: "transform, opacity",
+      willChange: "transform",
       backfaceVisibility: "hidden",
       transform: "scale(0.001)",
       transition: "transform 650ms cubic-bezier(.22,.86,.24,1)",
@@ -262,9 +196,17 @@ document.addEventListener("DOMContentLoaded", () => {
     return overlay;
   }
 
+  function beginInteractiveIntroState() {
+    lockScroll();
+    setInteractiveStyles();
+    computeTextDeltas();
+    applyVisualState(progress);
+  }
+
   function completeIntro() {
     transitionRunning = true;
     introActive = false;
+    scrollRestorePending = true;
 
     const overlay = createCircleOverlay();
     body.appendChild(overlay);
@@ -288,17 +230,11 @@ document.addEventListener("DOMContentLoaded", () => {
         transitionRunning = false;
 
         const targetY = getRevealScrollTarget();
+        ignoreScrollEvents = true;
         window.scrollTo({ top: targetY, behavior: "smooth" });
-
-        overlay.style.transition = "opacity 380ms ease";
-        overlay.style.opacity = "1";
-
         setTimeout(() => {
-          overlay.style.opacity = "0";
-          setTimeout(() => {
-            overlay.remove();
-          }, 400);
-        }, 120);
+          ignoreScrollEvents = false;
+        }, 700);
       },
       { once: true },
     );
@@ -309,14 +245,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if ((window.scrollY || window.pageYOffset || 0) > REACTIVATE_AT_TOP) return;
 
     transitionRunning = true;
-    lockScroll();
-
     progress = 0;
     progressTarget = 0;
+    scrollRestorePending = false;
 
-    setInteractiveStyles();
-    computeTextDeltas();
-    applyVisualState(0);
+    beginInteractiveIntroState();
 
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
@@ -326,17 +259,56 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function restoreIntroForReverse() {
+    if (introActive || transitionRunning || !scrollRestorePending) return;
+
+    transitionRunning = true;
+    scrollRestorePending = false;
+
+    progress = 1;
+    progressTarget = clamp(progressTarget, 0, 1);
+
+    beginInteractiveIntroState();
+
+    ignoreScrollEvents = true;
+    window.scrollTo({ top: 0, behavior: "auto" });
+    requestAnimationFrame(() => {
+      ignoreScrollEvents = false;
+      introActive = true;
+      transitionRunning = false;
+      startLoop();
+    });
+  }
+
   function adjustProgress(delta) {
-    if (!introActive || transitionRunning) return;
+    if (transitionRunning) return;
+
+    if (!introActive) {
+      if (delta < 0) {
+        restoreIntroForReverse();
+        if (!introActive) return;
+      } else {
+        return;
+      }
+    }
 
     progressTarget = clamp(progressTarget + delta, 0, 1);
     startLoop();
   }
 
   function onWheel(event) {
-    if (!introActive) return;
-    event.preventDefault();
-    adjustProgress(event.deltaY * WHEEL_SENSITIVITY);
+    if (transitionRunning) return;
+
+    if (introActive) {
+      event.preventDefault();
+      adjustProgress(event.deltaY * WHEEL_SENSITIVITY);
+      return;
+    }
+
+    if (scrollRestorePending && event.deltaY < 0) {
+      event.preventDefault();
+      adjustProgress(event.deltaY * WHEEL_SENSITIVITY);
+    }
   }
 
   function onTouchStart(event) {
@@ -345,7 +317,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function onTouchMove(event) {
-    if (!introActive) return;
     if (!event.touches || !event.touches.length) return;
     if (touchStartY === null) {
       touchStartY = event.touches[0].clientY;
@@ -355,8 +326,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentY = event.touches[0].clientY;
     const delta = touchStartY - currentY;
 
-    event.preventDefault();
-    adjustProgress(delta * TOUCH_SENSITIVITY);
+    if (introActive) {
+      event.preventDefault();
+      adjustProgress(delta * TOUCH_SENSITIVITY);
+      touchStartY = currentY;
+      return;
+    }
+
+    if (scrollRestorePending && delta < 0) {
+      event.preventDefault();
+      adjustProgress(delta * TOUCH_SENSITIVITY);
+    }
 
     touchStartY = currentY;
   }
@@ -366,20 +346,31 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function onKeyDown(event) {
-    if (!introActive || transitionRunning) return;
+    if (transitionRunning) return;
 
-    if (
+    const isForwardKey =
       event.key === "ArrowDown" ||
       event.key === "PageDown" ||
-      event.key === " "
-    ) {
-      event.preventDefault();
-      progressTarget = 1;
-      startLoop();
+      event.key === " ";
+    const isReverseKey = event.key === "ArrowUp" || event.key === "PageUp";
+
+    if (introActive) {
+      if (isForwardKey) {
+        event.preventDefault();
+        progressTarget = 1;
+        startLoop();
+        return;
+      }
+
+      if (isReverseKey) {
+        event.preventDefault();
+        adjustProgress(-0.16);
+      }
+
       return;
     }
 
-    if (event.key === "ArrowUp" || event.key === "PageUp") {
+    if (scrollRestorePending && isReverseKey) {
       event.preventDefault();
       adjustProgress(-0.16);
     }
@@ -392,15 +383,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function onScroll() {
-    if ((window.scrollY || window.pageYOffset || 0) <= REACTIVATE_AT_TOP) {
+    if (ignoreScrollEvents) return;
+
+    const scrollY = window.scrollY || window.pageYOffset || 0;
+
+    if (scrollY <= REACTIVATE_AT_TOP) {
       reactivateIntroFromTop();
     }
   }
 
-  setInteractiveStyles();
-  computeTextDeltas();
-  applyVisualState(0);
-  lockScroll();
+  beginInteractiveIntroState();
 
   window.addEventListener("wheel", onWheel, { passive: false });
   window.addEventListener("touchstart", onTouchStart, { passive: false });
