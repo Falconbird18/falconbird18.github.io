@@ -19,15 +19,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const START_SCALE = 0.4;
   const END_SCALE = 1;
-  // 75 * 0.4 = 30; looks like 30px of border radius
+  // 0.4 * 75 = 30; looks like 30px of border radius
   const START_RADIUS = 75;
   const END_RADIUS = 0;
   const LERP = 0.16;
   const WHEEL_SENSITIVITY = 1 / 520;
   const TOUCH_SENSITIVITY = 1 / 380;
   const COMPLETE_EPSILON = 0.001;
-  const REACTIVATE_AT_TOP = 40;
-  const OVERLAY_HIDE_OFFSET = 50;
+  const REACTIVATE_AT_TOP = 0;
+  const OVERLAY_HIDE_OFFSET = 0;
 
   let rafId = null;
   let progress = 0;
@@ -40,6 +40,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let revealScrollDistance = window.innerHeight;
   let firstDeltaX = 0;
   let lastDeltaX = 0;
+
+  function updateHeroMetrics() {
+    revealScrollDistance = window.innerHeight;
+    hero.style.height = `${revealScrollDistance}px`;
+  }
 
   // ── SCROLL LOCKING ──
   function lockScroll() {
@@ -81,19 +86,11 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
     const scrollY = window.scrollY || 0;
-    if (scrollY > getRevealScrollTarget() + OVERLAY_HIDE_OFFSET) {
+    if (scrollY > revealScrollDistance + OVERLAY_HIDE_OFFSET) {
       hideCircleOverlay();
     } else {
       showCircleOverlay();
     }
-  }
-
-  function updateHeroMetrics() {
-    const vh = window.innerHeight;
-    const vw = window.innerWidth;
-    const maxSize = Math.max(vw, vh);
-    revealScrollDistance = Math.max(vh, Math.ceil(maxSize * END_SCALE));
-    hero.style.minHeight = `${revealScrollDistance}px`;
   }
 
   function getRevealScrollTarget() {
@@ -120,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
       height: squareSize,
       objectFit: "cover",
       transformOrigin: "center center",
-      zIndex: "2",
+      zIndex: "20",
       transition: "none",
       willChange: "transform, opacity, border-radius",
       pointerEvents: "none",
@@ -131,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
       [firstName, lastName].forEach((el) => {
         Object.assign(el.style, {
           position: "fixed",
-          zIndex: "3",
+          zIndex: "30",
           transition: "none",
           willChange: "transform",
           pointerEvents: "none",
@@ -265,7 +262,6 @@ document.addEventListener("DOMContentLoaded", () => {
     introActive = false;
 
     const overlay = ensureCircleOverlay();
-
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         overlay.style.transform = "scale(1)";
@@ -275,13 +271,11 @@ document.addEventListener("DOMContentLoaded", () => {
     overlay.addEventListener(
       "transitionend",
       () => {
-        hideIntroElements(); // hides image, text, AND background
-        hero.style.minHeight = "100vh";
-
+        hideIntroElements();
         unlockScroll();
         transitionRunning = false;
 
-        window.scrollTo({ top: getRevealScrollTarget(), behavior: "instant" });
+        window.scrollTo({ top: revealScrollDistance, behavior: "instant" });
         setTimeout(syncCircleOverlayVisibility, 80);
       },
       { once: true },
@@ -326,7 +320,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function onTouchMove(e) {
     if (!e.touches?.length || touchStartY === null) return;
     const delta = touchStartY - e.touches[0].clientY;
-
     if (introActive) {
       e.preventDefault();
       adjustProgress(delta * TOUCH_SENSITIVITY);
@@ -347,7 +340,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function onResize() {
-    updateHeroMetrics();
+    updateHeroMetrics(); // keeps it exactly 100vh even after resize
     if (circleOverlay) {
       const newOverlay = createCircleOverlay();
       const oldTransform = circleOverlay.style.transform;
