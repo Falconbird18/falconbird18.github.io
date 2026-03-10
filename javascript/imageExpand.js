@@ -1,29 +1,15 @@
-/*
-  falconbird18.github.io/javascript/imageExpand.js
-
-  Hero intro sequence with smooth bidirectional playback:
-  - Locks native scrolling while the intro is active
-  - Wheel / touch / keyboard drive a virtual progress value from 0..1
-  - Hero image scales up while the title text slides toward center
-  - Completing the intro reveals page content
-  - Scrolling back to the top restores the intro without glitchy state jumps
-  - Reverse playback is supported while the intro is active
-*/
-
 document.addEventListener("DOMContentLoaded", () => {
   const hero = document.getElementById("welcome");
   const image = document.getElementById("welcomeImage");
   const firstName = document.getElementById("firstName");
   const lastName = document.getElementById("lastName");
+  const backgroundImg = document.getElementById("welcomeBackground");
 
   if (!hero || !image) return;
 
   const hasText = !!(firstName && lastName);
   const root = document.documentElement;
   const body = document.body;
-
-  const previousHtmlOverflow = root.style.overflow || "";
-  const previousBodyOverflow = body.style.overflow || "";
 
   const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
   const mix = (start, end, amount) => start + (end - start) * amount;
@@ -33,13 +19,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const START_SCALE = 0.4;
   const END_SCALE = 1;
-  const START_RADIUS = 30;
+  // 75 * 0.4 = 30; looks like 30px of border radius
+  const START_RADIUS = 75;
   const END_RADIUS = 0;
-  const LERP = 0.14;
-  const WHEEL_SENSITIVITY = 1 / 900;
-  const TOUCH_SENSITIVITY = 1 / 420;
+  const LERP = 0.16;
+  const WHEEL_SENSITIVITY = 1 / 520;
+  const TOUCH_SENSITIVITY = 1 / 380;
   const COMPLETE_EPSILON = 0.001;
-  const REACTIVATE_AT_TOP = 2;
+  const REACTIVATE_AT_TOP = 40;
+  const OVERLAY_HIDE_OFFSET = 50;
 
   let rafId = null;
   let progress = 0;
@@ -47,67 +35,107 @@ document.addEventListener("DOMContentLoaded", () => {
   let introActive = true;
   let transitionRunning = false;
   let touchStartY = null;
+  let savedScrollY = 0;
+  let circleOverlay = null;
+  let revealScrollDistance = window.innerHeight;
   let firstDeltaX = 0;
   let lastDeltaX = 0;
-  let scrollRestorePending = false;
-  let ignoreScrollEvents = false;
 
+  // ── SCROLL LOCKING ──
   function lockScroll() {
-    root.style.overflow = "hidden";
+    savedScrollY = window.pageYOffset || 0;
+    body.style.position = "fixed";
+    body.style.top = `-${savedScrollY}px`;
+    body.style.width = "100%";
     body.style.overflow = "hidden";
+    root.style.overflow = "hidden";
   }
 
   function unlockScroll() {
-    root.style.overflow = previousHtmlOverflow;
-    body.style.overflow = previousBodyOverflow;
+    body.style.position = "";
+    body.style.top = "";
+    body.style.width = "";
+    body.style.overflow = "";
+    root.style.overflow = "";
+    window.scrollTo(0, savedScrollY);
+  }
+
+  function hideCircleOverlay() {
+    if (!circleOverlay) return;
+    circleOverlay.style.opacity = "0";
+    setTimeout(() => {
+      circleOverlay.style.visibility = "hidden";
+    }, 350);
+  }
+
+  function showCircleOverlay() {
+    if (!circleOverlay) return;
+    circleOverlay.style.opacity = "1";
+    circleOverlay.style.visibility = "visible";
+  }
+
+  function syncCircleOverlayVisibility() {
+    if (!circleOverlay) return;
+    if (introActive || transitionRunning) {
+      showCircleOverlay();
+      return;
+    }
+    const scrollY = window.scrollY || 0;
+    if (scrollY > getRevealScrollTarget() + OVERLAY_HIDE_OFFSET) {
+      hideCircleOverlay();
+    } else {
+      showCircleOverlay();
+    }
+  }
+
+  function updateHeroMetrics() {
+    const vh = window.innerHeight;
+    const vw = window.innerWidth;
+    const maxSize = Math.max(vw, vh);
+    revealScrollDistance = Math.max(vh, Math.ceil(maxSize * END_SCALE));
+    hero.style.minHeight = `${revealScrollDistance}px`;
   }
 
   function getRevealScrollTarget() {
-    return hero.offsetHeight || window.innerHeight;
+    return revealScrollDistance;
   }
 
   function computeTextDeltas() {
-    if (!hasText) {
-      firstDeltaX = 0;
-      lastDeltaX = 0;
-      return;
-    }
-
+    if (!hasText) return;
     const centerX = window.innerWidth / 2;
     const firstRect = firstName.getBoundingClientRect();
     const lastRect = lastName.getBoundingClientRect();
-
     firstDeltaX = centerX - (firstRect.left + firstRect.width / 2);
     lastDeltaX = centerX - (lastRect.left + lastRect.width / 2);
   }
 
   function setInteractiveStyles() {
+    const squareSize = `${Math.max(window.innerWidth, window.innerHeight)}px`;
+
     Object.assign(image.style, {
       position: "fixed",
       top: "50%",
       left: "50%",
-      width: "100vw",
-      height: "100vw",
+      width: squareSize,
+      height: squareSize,
       objectFit: "cover",
       transformOrigin: "center center",
-      zIndex: "20",
+      zIndex: "2",
       transition: "none",
-      willChange: "transform, opacity, border-radius, filter, box-shadow",
-      backfaceVisibility: "hidden",
+      willChange: "transform, opacity, border-radius",
       pointerEvents: "none",
-      display: "",
+      display: "block",
     });
 
     if (hasText) {
       [firstName, lastName].forEach((el) => {
         Object.assign(el.style, {
           position: "fixed",
-          zIndex: "30",
+          zIndex: "3",
           transition: "none",
-          willChange: "transform, opacity, filter, letter-spacing",
-          backfaceVisibility: "hidden",
-          display: "",
+          willChange: "transform",
           pointerEvents: "none",
+          display: "block",
         });
       });
     }
@@ -135,20 +163,32 @@ document.addEventListener("DOMContentLoaded", () => {
     lastName.style.transform = `translate3d(${lastX.toFixed(2)}px, ${lastY.toFixed(2)}px, 0)`;
   }
 
-  function startLoop() {
-    if (rafId === null) {
-      rafId = requestAnimationFrame(tick);
+  function showIntroElements() {
+    image.style.display = "block";
+    if (hasText) {
+      firstName.style.display = "block";
+      lastName.style.display = "block";
     }
+    if (backgroundImg) backgroundImg.style.opacity = "0.3";
+  }
+
+  function hideIntroElements() {
+    image.style.display = "none";
+    if (hasText) {
+      firstName.style.display = "none";
+      lastName.style.display = "none";
+    }
+    if (backgroundImg) backgroundImg.style.opacity = "0";
+  }
+
+  function startLoop() {
+    if (rafId === null) rafId = requestAnimationFrame(tick);
   }
 
   function tick() {
     rafId = null;
-
     progress += (progressTarget - progress) * LERP;
-
-    if (Math.abs(progressTarget - progress) < 0.0008) {
-      progress = progressTarget;
-    }
+    if (Math.abs(progressTarget - progress) < 0.0008) progress = progressTarget;
 
     applyVisualState(progress);
 
@@ -172,8 +212,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const vh = window.innerHeight;
     const radius = Math.sqrt((vw / 2) ** 2 + (vh / 2) ** 2);
     const diameter = Math.ceil(radius * 2);
-    const overlay = document.createElement("div");
 
+    const overlay = document.createElement("div");
     overlay.id = "heroCircleCover";
     Object.assign(overlay.style, {
       position: "fixed",
@@ -181,35 +221,50 @@ document.addEventListener("DOMContentLoaded", () => {
       left: "50%",
       width: `${diameter}px`,
       height: `${diameter}px`,
-      marginLeft: `${-diameter / 2}px`,
-      marginTop: `${-diameter / 2}px`,
+      marginLeft: `-${diameter / 2}px`,
+      marginTop: `-${diameter / 2}px`,
       borderRadius: "50%",
       background: "hsl(326, 25%, 80%)",
       zIndex: "2",
       pointerEvents: "none",
-      willChange: "transform",
-      backfaceVisibility: "hidden",
       transform: "scale(0.001)",
-      transition: "transform 650ms cubic-bezier(.22,.86,.24,1)",
+      opacity: "1",
+      visibility: "visible",
+      transition:
+        "transform 650ms cubic-bezier(.22,.86,.24,1), opacity 300ms ease",
     });
-
     return overlay;
+  }
+
+  function ensureCircleOverlay() {
+    if (circleOverlay?.isConnected) return circleOverlay;
+    circleOverlay = createCircleOverlay();
+    body.appendChild(circleOverlay);
+    return circleOverlay;
   }
 
   function beginInteractiveIntroState() {
     lockScroll();
+    updateHeroMetrics();
+    showIntroElements();
     setInteractiveStyles();
     computeTextDeltas();
-    applyVisualState(progress);
+    progress = 0;
+    progressTarget = 0;
+    applyVisualState(0);
+
+    const overlay = ensureCircleOverlay();
+    overlay.style.transform = "scale(0.001)";
+    overlay.style.opacity = "1";
+    overlay.style.visibility = "visible";
   }
 
   function completeIntro() {
+    if (transitionRunning) return;
     transitionRunning = true;
     introActive = false;
-    scrollRestorePending = true;
 
-    const overlay = createCircleOverlay();
-    body.appendChild(overlay);
+    const overlay = ensureCircleOverlay();
 
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
@@ -220,21 +275,14 @@ document.addEventListener("DOMContentLoaded", () => {
     overlay.addEventListener(
       "transitionend",
       () => {
-        image.style.display = "none";
-        if (hasText) {
-          firstName.style.display = "none";
-          lastName.style.display = "none";
-        }
+        hideIntroElements(); // hides image, text, AND background
+        hero.style.minHeight = "100vh";
 
         unlockScroll();
         transitionRunning = false;
 
-        const targetY = getRevealScrollTarget();
-        ignoreScrollEvents = true;
-        window.scrollTo({ top: targetY, behavior: "smooth" });
-        setTimeout(() => {
-          ignoreScrollEvents = false;
-        }, 700);
+        window.scrollTo({ top: getRevealScrollTarget(), behavior: "instant" });
+        setTimeout(syncCircleOverlayVisibility, 80);
       },
       { once: true },
     );
@@ -242,165 +290,98 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function reactivateIntroFromTop() {
     if (introActive || transitionRunning) return;
-    if ((window.scrollY || window.pageYOffset || 0) > REACTIVATE_AT_TOP) return;
+    if ((window.scrollY || 0) > REACTIVATE_AT_TOP) return;
 
     transitionRunning = true;
-    progress = 0;
-    progressTarget = 0;
-    scrollRestorePending = false;
-
     beginInteractiveIntroState();
 
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         introActive = true;
         transitionRunning = false;
+        syncCircleOverlayVisibility();
+        startLoop();
       });
     });
   }
 
-  function restoreIntroForReverse() {
-    if (introActive || transitionRunning || !scrollRestorePending) return;
-
-    transitionRunning = true;
-    scrollRestorePending = false;
-
-    progress = 1;
-    progressTarget = clamp(progressTarget, 0, 1);
-
-    beginInteractiveIntroState();
-
-    ignoreScrollEvents = true;
-    window.scrollTo({ top: 0, behavior: "auto" });
-    requestAnimationFrame(() => {
-      ignoreScrollEvents = false;
-      introActive = true;
-      transitionRunning = false;
-      startLoop();
-    });
-  }
-
   function adjustProgress(delta) {
-    if (transitionRunning) return;
-
-    if (!introActive) {
-      if (delta < 0) {
-        restoreIntroForReverse();
-        if (!introActive) return;
-      } else {
-        return;
-      }
-    }
-
+    if (transitionRunning || !introActive) return;
     progressTarget = clamp(progressTarget + delta, 0, 1);
     startLoop();
   }
 
-  function onWheel(event) {
-    if (transitionRunning) return;
-
+  // ── EVENTS ──
+  function onWheel(e) {
     if (introActive) {
-      event.preventDefault();
-      adjustProgress(event.deltaY * WHEEL_SENSITIVITY);
-      return;
-    }
-
-    if (scrollRestorePending && event.deltaY < 0) {
-      event.preventDefault();
-      adjustProgress(event.deltaY * WHEEL_SENSITIVITY);
+      e.preventDefault();
+      adjustProgress(e.deltaY * WHEEL_SENSITIVITY);
     }
   }
 
-  function onTouchStart(event) {
-    if (!event.touches || !event.touches.length) return;
-    touchStartY = event.touches[0].clientY;
+  function onTouchStart(e) {
+    if (e.touches?.length) touchStartY = e.touches[0].clientY;
   }
 
-  function onTouchMove(event) {
-    if (!event.touches || !event.touches.length) return;
-    if (touchStartY === null) {
-      touchStartY = event.touches[0].clientY;
-      return;
-    }
-
-    const currentY = event.touches[0].clientY;
-    const delta = touchStartY - currentY;
+  function onTouchMove(e) {
+    if (!e.touches?.length || touchStartY === null) return;
+    const delta = touchStartY - e.touches[0].clientY;
 
     if (introActive) {
-      event.preventDefault();
-      adjustProgress(delta * TOUCH_SENSITIVITY);
-      touchStartY = currentY;
-      return;
-    }
-
-    if (scrollRestorePending && delta < 0) {
-      event.preventDefault();
+      e.preventDefault();
       adjustProgress(delta * TOUCH_SENSITIVITY);
     }
-
-    touchStartY = currentY;
+    touchStartY = e.touches[0].clientY;
   }
 
-  function onTouchEnd() {
-    touchStartY = null;
-  }
-
-  function onKeyDown(event) {
-    if (transitionRunning) return;
-
-    const isForwardKey =
-      event.key === "ArrowDown" ||
-      event.key === "PageDown" ||
-      event.key === " ";
-    const isReverseKey = event.key === "ArrowUp" || event.key === "PageUp";
-
-    if (introActive) {
-      if (isForwardKey) {
-        event.preventDefault();
-        progressTarget = 1;
-        startLoop();
-        return;
-      }
-
-      if (isReverseKey) {
-        event.preventDefault();
-        adjustProgress(-0.16);
-      }
-
-      return;
-    }
-
-    if (scrollRestorePending && isReverseKey) {
-      event.preventDefault();
-      adjustProgress(-0.16);
+  function onKeyDown(e) {
+    if (transitionRunning || !introActive) return;
+    if (["ArrowDown", "PageDown", " "].includes(e.key)) {
+      e.preventDefault();
+      progressTarget = 1;
+      startLoop();
+    } else if (["ArrowUp", "PageUp"].includes(e.key)) {
+      e.preventDefault();
+      adjustProgress(-0.22);
     }
   }
 
   function onResize() {
-    if (!introActive) return;
-    computeTextDeltas();
-    applyVisualState(progress);
+    updateHeroMetrics();
+    if (circleOverlay) {
+      const newOverlay = createCircleOverlay();
+      const oldTransform = circleOverlay.style.transform;
+      circleOverlay.replaceWith(newOverlay);
+      circleOverlay = newOverlay;
+      circleOverlay.style.transform = oldTransform || "scale(0.001)";
+    }
+    if (introActive) {
+      setInteractiveStyles();
+      computeTextDeltas();
+      applyVisualState(progress);
+    }
+    syncCircleOverlayVisibility();
   }
 
   function onScroll() {
-    if (ignoreScrollEvents) return;
-
-    const scrollY = window.scrollY || window.pageYOffset || 0;
-
-    if (scrollY <= REACTIVATE_AT_TOP) {
+    syncCircleOverlayVisibility();
+    if ((window.scrollY || 0) <= REACTIVATE_AT_TOP) {
       reactivateIntroFromTop();
     }
   }
 
+  // ── INIT ──
+  updateHeroMetrics();
   beginInteractiveIntroState();
+  startLoop();
 
   window.addEventListener("wheel", onWheel, { passive: false });
   window.addEventListener("touchstart", onTouchStart, { passive: false });
   window.addEventListener("touchmove", onTouchMove, { passive: false });
-  window.addEventListener("touchend", onTouchEnd, { passive: false });
+  window.addEventListener("touchend", () => {
+    touchStartY = null;
+  });
   window.addEventListener("keydown", onKeyDown);
   window.addEventListener("resize", onResize);
   window.addEventListener("scroll", onScroll, { passive: true });
-
-  startLoop();
 });
