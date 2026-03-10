@@ -1,7 +1,7 @@
 /*Front page*/
 #welcome {
     width: 100%;
-    height: 300vh;
+    min-height: 100vh;
     color: var(--textColor);
     z-index: 1;
     position: relative;
@@ -46,6 +46,10 @@
 }
 
 /*Gallery*/
+#gallery {
+    padding-top: 33vh;
+}
+
 .fullSizeImageStage {
     position: relative;
     width: fit-content;
