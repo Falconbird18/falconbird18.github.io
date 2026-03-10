@@ -1,349 +1,74 @@
-const SCROLL_EXPAND_CONFIG = {
-  // Lower = faster expansion, higher = slower.
-  scrollDuration: 700,
+window.addEventListener("DOMContentLoaded", () => {
+  const image = document.getElementById("welcomeImage");
+  const scrollContainer = document.getElementById("welcome");
 
-  scrollOffset: 0,
+  if (!image || !scrollContainer) return;
 
-  /* Peak lateral (horizontal) curve offset in pixels.
-       Positive = curves right, negative = curves left.
-       0 = straight-line path. */
-  curvePeak: 20,
+  // Force the image to be centered in the viewport and cover it.
+  // These inline styles override any absolute positioning so the image
+  // stays centered even while scrolling.
+  image.style.position = "fixed";
+  image.style.top = "50%";
+  image.style.left = "50%";
+  image.style.transformOrigin = "center center";
+  image.style.width = "100vw";
+  image.style.height = "100vw";
+  image.style.objectFit = "cover";
+  image.style.zIndex = "2";
+  image.style.willChange = "transform, border-radius";
 
-  // Horizontal position easing
-  easingX: (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t),
-
-  // Vertical position easing
-  easingY: (t) => t * (2 - t),
-
-  // Size / scale easing
-  easingSize: (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t),
-
-  // Border-radius easing
-  easingRadius: (t) => t * (2 - t),
-};
-
-(function () {
-  "use strict";
-
-  const CFG = SCROLL_EXPAND_CONFIG;
-
-  const clamp = (v, min, max) => Math.min(Math.max(v, min), max);
-  const lerp = (a, b, t) => a + (b - a) * t;
-
-  let welcomeImage;
-  let fullSizeImage;
-  let bottomImage;
-  let firstName;
-  let lastName;
-  let clone;
-
-  let startRect;
-  let endRect;
-  let animStart = 0;
-  let animEnd = 1;
+  // Animation state for smooth interpolation
+  let targetScale = 0.5;
+  let currentScale = targetScale;
+  let targetRadius = 30;
+  let currentRadius = targetRadius;
   let ticking = false;
-  let lastProgress = -1;
-  let resizeTimer = null;
-  let measured = false;
 
-  function init() {
-    welcomeImage = document.getElementById("welcomeImage");
-    fullSizeImage = document.querySelector(".fullSizeImage");
-    bottomImage = document.querySelector(".imageContainer");
-    firstName = document.getElementById("firstName");
-    lastName = document.getElementById("lastName");
+  function updateTargetsFromScroll() {
+    const rect = scrollContainer.getBoundingClientRect();
+    const scrollPercent = Math.min(Math.max(-rect.top / rect.height, 0), 1);
 
-    if (!welcomeImage || !fullSizeImage || !bottomImage) return;
+    // Scale interpolates from 0.5 -> 1.0
+    targetScale = 0.3 + scrollPercent * 0.7;
 
-    createClone();
-    prepareElements();
-    waitForImages()
-      .then(() => {
-        measured = true;
-        measure();
-        onScroll();
-      })
-      .catch(() => {
-        measured = true;
-        measure();
-        onScroll();
-      });
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onResize);
-    window.addEventListener("load", () => {
-      measured = true;
-      measure();
-      onScroll();
-    });
-  }
-
-  function createClone() {
-    if (clone) clone.remove();
-
-    clone = welcomeImage.cloneNode(true);
-    clone.removeAttribute("id");
-    clone.setAttribute("aria-hidden", "true");
-    clone.style.cssText = `
-      position: fixed;
-      pointer-events: none;
-      display: none;
-      object-fit: cover;
-      margin: 0;
-      top: 0;
-      left: 0;
-      width: 0;
-      height: 0;
-      z-index: 2;
-      will-change: top, left, width, height, border-radius, opacity;
-      border-radius: 30px;
-    `;
-    document.body.appendChild(clone);
-  }
-
-  function prepareElements() {
-    fullSizeImage.style.opacity = "0";
-    fullSizeImage.style.visibility = "hidden";
-    bottomImage.style.opacity = "0";
-    bottomImage.style.transition = "opacity 180ms ease";
-    welcomeImage.style.willChange = "opacity";
-    fullSizeImage.style.willChange = "opacity";
-  }
-
-  function waitForImages() {
-    const images = [welcomeImage, fullSizeImage];
-
-    return Promise.all(
-      images.map((img) => {
-        if (img.complete && img.naturalWidth > 0) {
-          return Promise.resolve();
-        }
-
-        return new Promise((resolve) => {
-          const done = () => {
-            img.removeEventListener("load", done);
-            img.removeEventListener("error", done);
-            resolve();
-          };
-
-          img.addEventListener("load", done, { once: true });
-          img.addEventListener("error", done, { once: true });
-        });
-      }),
-    );
-  }
-
-  function getRectInDocument(element) {
-    const rect = element.getBoundingClientRect();
-    return {
-      top: rect.top + window.scrollY,
-      left: rect.left + window.scrollX,
-      width: rect.width,
-      height: rect.height,
-    };
-  }
-
-  function measure() {
-    if (!welcomeImage || !fullSizeImage) return;
-
-    resetMeasuredStyles();
-
-    startRect = getRectInDocument(welcomeImage);
-    endRect = getRectInDocument(fullSizeImage);
-
-    if (
-      !startRect.width ||
-      !startRect.height ||
-      !endRect.width ||
-      !endRect.height
-    ) {
-      return;
-    }
-
-    animStart = Math.max(
-      0,
-      startRect.top +
-        startRect.height -
-        window.innerHeight / 2 +
-        CFG.scrollOffset,
-    );
-
-    animEnd = animStart + Math.max(CFG.scrollDuration, 1);
-
-    applyProgress(lastProgress >= 0 ? lastProgress : 0);
-  }
-
-  function resetMeasuredStyles() {
-    welcomeImage.style.opacity = "";
-    fullSizeImage.style.opacity = "";
-    fullSizeImage.style.visibility = "";
-    fullSizeImage.style.height = "";
-    fullSizeImage.style.marginTop = "";
-    fullSizeImage.style.marginBottom = "";
-    fullSizeImage.style.overflow = "";
-    bottomImage.style.opacity = "";
-    clone.style.display = "none";
-  }
-
-  function onResize() {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      measure();
-      onScroll();
-    }, 100);
-  }
-
-  function onScroll() {
-    if (!measured || !startRect || !endRect) return;
+    // Border radius interpolates from 30px -> 0px
+    targetRadius = 30 - scrollPercent * 30;
 
     if (!ticking) {
+      requestAnimationFrame(animate);
       ticking = true;
-      requestAnimationFrame(update);
     }
   }
 
-  function update() {
-    ticking = false;
+  // Smoothly lerp current values toward targets for a polished effect
+  function animate() {
+    const ease = 0.12; // smaller = smoother/slower
+    currentScale += (targetScale - currentScale) * ease;
+    currentRadius += (targetRadius - currentRadius) * ease;
 
-    const scrollY = window.scrollY;
-    const raw = (scrollY - animStart) / (animEnd - animStart);
-    const progress = clamp(raw, 0, 1);
+    // Apply centered transform so it expands from the center
+    image.style.transform = `translate(-50%, -50%) scale(${currentScale})`;
+    image.style.borderRadius = `${currentRadius}px`;
 
-    if (progress === lastProgress) return;
-    lastProgress = progress;
-
-    applyProgress(progress);
-  }
-
-  function hideTargetArea() {
-    fullSizeImage.style.opacity = "0";
-    fullSizeImage.style.visibility = "hidden";
-    bottomImage.style.opacity = "0";
-  }
-
-  function showTargetArea() {
-    fullSizeImage.style.opacity = "1";
-    fullSizeImage.style.visibility = "visible";
-    bottomImage.style.opacity = "1";
-  }
-
-  function getTextCoverOpacity(progress) {
-    if (progress <= 0.08) return 0;
-    if (progress >= 0.22) return 1;
-    return (progress - 0.08) / 0.14;
-  }
-
-  function applyProgress(progress) {
-    if (!clone || !startRect || !endRect) return;
-
-    if (progress <= 0) {
-      welcomeImage.style.opacity = "1";
-      showWelcomeText();
-      hideTargetArea();
-      clone.style.display = "none";
-      return;
-    }
-
-    if (progress >= 1) {
-      welcomeImage.style.opacity = "0";
-      hideWelcomeTextCover();
-      showTargetArea();
-      clone.style.display = "none";
-      return;
-    }
-
-    welcomeImage.style.opacity = "0";
-    hideTargetArea();
-    clone.style.display = "block";
-
-    const tX = CFG.easingX(progress);
-    const tY = CFG.easingY(progress);
-    const tSize = CFG.easingSize(progress);
-    const tRadius = CFG.easingRadius(progress);
-
-    const scrollY = window.scrollY;
-    const scrollX = window.scrollX;
-
-    const fromTop = startRect.top - scrollY;
-    const fromLeft = startRect.left - scrollX;
-    const toTop = endRect.top - scrollY;
-    const toLeft = endRect.left - scrollX;
-
-    const currentTop = lerp(fromTop, toTop, tY);
-    const currentLeft = lerp(fromLeft, toLeft, tX);
-    const currentWidth = lerp(startRect.width, endRect.width, tSize);
-    const currentHeight = lerp(startRect.height, endRect.height, tSize);
-    const curveOffset = CFG.curvePeak * Math.sin(progress * Math.PI);
-
-    const startTopLeftRadius = 30;
-    const startTopRightRadius = 30;
-    const startBottomRightRadius = 30;
-    const startBottomLeftRadius = 30;
-
-    const endTopLeftRadius = endRect.height / 2;
-    const endTopRightRadius = endRect.height / 2;
-    const endBottomRightRadius = 30;
-    const endBottomLeftRadius = 30;
-
-    const currentTopLeftRadius = lerp(
-      startTopLeftRadius,
-      endTopLeftRadius,
-      tRadius,
-    );
-    const currentTopRightRadius = lerp(
-      startTopRightRadius,
-      endTopRightRadius,
-      tRadius,
-    );
-    const currentBottomRightRadius = lerp(
-      startBottomRightRadius,
-      endBottomRightRadius,
-      tRadius,
-    );
-    const currentBottomLeftRadius = lerp(
-      startBottomLeftRadius,
-      endBottomLeftRadius,
-      tRadius,
-    );
-
-    clone.style.top = `${currentTop}px`;
-    clone.style.left = `${currentLeft + curveOffset}px`;
-    clone.style.width = `${currentWidth}px`;
-    clone.style.height = `${currentHeight}px`;
-    clone.style.borderTopLeftRadius = `${currentTopLeftRadius}px`;
-    clone.style.borderTopRightRadius = `${currentTopRightRadius}px`;
-    clone.style.borderBottomRightRadius = `${currentBottomRightRadius}px`;
-    clone.style.borderBottomLeftRadius = `${currentBottomLeftRadius}px`;
-    clone.style.opacity = "1";
-
-    updateWelcomeTextCover(progress);
-  }
-
-  function showWelcomeText() {
-    if (firstName) firstName.style.opacity = "1";
-    if (lastName) lastName.style.opacity = "1";
-  }
-
-  function hideWelcomeTextCover() {
-    if (firstName) firstName.style.opacity = "1";
-    if (lastName) lastName.style.opacity = "1";
-  }
-
-  function updateWelcomeTextCover(progress) {
-    const fade = getTextCoverOpacity(progress);
-
-    if (firstName) {
-      firstName.style.opacity = `${1 - fade}`;
-    }
-
-    if (lastName) {
-      lastName.style.opacity = `${1 - fade}`;
+    // If not yet near the target, keep animating
+    if (
+      Math.abs(currentScale - targetScale) > 0.001 ||
+      Math.abs(currentRadius - targetRadius) > 0.5
+    ) {
+      requestAnimationFrame(animate);
+    } else {
+      // Snap to target to avoid tiny residual differences
+      currentScale = targetScale;
+      currentRadius = targetRadius;
+      image.style.transform = `translate(-50%, -50%) scale(${currentScale})`;
+      image.style.borderRadius = `${Math.round(currentRadius)}px`;
+      ticking = false;
     }
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
-  } else {
-    init();
-  }
-})();
+  // Use passive scroll listener for performance and update targets on scroll
+  window.addEventListener("scroll", updateTargetsFromScroll, { passive: true });
+
+  // Initialize on load
+  updateTargetsFromScroll();
+});

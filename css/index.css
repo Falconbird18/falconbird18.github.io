@@ -1,29 +1,42 @@
 /*Front page*/
 #welcome {
     width: 100%;
-    height: calc(100vh - var(--largePadding));
+    height: 300vh;
     color: var(--textColor);
     z-index: 1;
     position: relative;
 }
 
+#welcomeBackground {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-image: url("../images/background.webp");
+    background-size: cover;
+    background-size: 100%;
+    background-repeat: repeat;
+    opacity: 0.3;
+    pointer-events: none; /* clicks pass through */
+    z-index: -1;
+}
+
 #firstName {
-    position: absolute;
-    top: 0;
+    position: fixed;
+    top: var(--largePadding);
     left: var(--largePadding);
     z-index: 3;
 }
 
 #lastName {
-    position: absolute;
-    bottom: 0;
+    position: fixed;
+    bottom: var(--largePadding);
     right: var(--largePadding);
     z-index: 3;
 }
 
 #welcomeImage {
     height: calc(100vh - var(--largePadding) - var(--h1Size));
-    width: auto;
+    width: calc(100vh - var(--largePadding) - var(--h1Size));
     object-fit: cover;
     border-radius: var(--primaryBorderRadius);
     position: absolute;
@@ -33,15 +46,45 @@
 }
 
 /*Gallery*/
-.fullSizeImage {
-    display: block;
-    width: auto;
+.fullSizeImageStage {
+    position: relative;
+    width: fit-content;
     height: calc(100vh - (2 * var(--largePadding)));
     margin: 0 auto;
     margin-top: var(--largePadding);
     border-radius: calc((100vh - (2 * var(--largePadding))) / 2)
         calc((100vh - (2 * var(--largePadding))) / 2) var(--primaryBorderRadius)
         var(--primaryBorderRadius);
+}
+
+.fullSizeImage {
+    display: block;
+    width: auto;
+    height: calc(100vh - (2 * var(--largePadding)));
+    border-radius: inherit;
+}
+
+.fullSizeImageOverlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 140%;
+    height: 140%;
+    object-fit: contain;
+    border-radius: inherit;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.18);
+    transform-origin: center center;
+    will-change: opacity, transform;
+    pointer-events: none;
+}
+
+.fullSizeImageOverlayOne {
+    z-index: 1;
+}
+
+.fullSizeImageOverlayTwo {
+    z-index: 2;
 }
 
 .imageContainer {

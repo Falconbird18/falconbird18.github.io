@@ -9,3 +9,7 @@ ideas from painting:
 
 
 - use depth and layers to create realism. Combine texture and depth with modern glassmorphism and minimalism.
+
+
+
+Maybe center image should expand instead of moving down.

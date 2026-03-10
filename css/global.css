@@ -79,7 +79,7 @@ img {
     border: 0;
 }
 
-body::before {
+/*body::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -87,9 +87,9 @@ body::before {
     background-size: 100%;
     background-repeat: repeat;
     opacity: 0.3;
-    pointer-events: none; /* clicks pass through */
+    pointer-events: none;
     z-index: -1;
-}
+}*/
 
 h1 {
     font-family: var(--h1FontFamily);
