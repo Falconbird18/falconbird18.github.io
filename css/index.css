@@ -21,6 +21,7 @@
 }
 
 #firstName {
+    font-size: 17.942rem;
     position: fixed;
     top: var(--largePadding);
     left: var(--largePadding);
@@ -28,6 +29,7 @@
 }
 
 #lastName {
+    font-size: 17.942rem;
     position: fixed;
     bottom: var(--largePadding);
     right: var(--largePadding);
@@ -49,6 +51,8 @@
 .fullSizeImage {
     display: block;
     margin: 0 auto;
+    margin-top: 25rem;
+    margin-bottom: var(--largestPadding);
     width: auto;
     height: calc(100vh - (2 * var(--largePadding)));
     border-radius: 50% 50% var(--primaryBorderRadius) var(--primaryBorderRadius);

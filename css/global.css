@@ -1,6 +1,6 @@
 body {
     /*Fonts*/
-    --h1FontFamily: "Baskervville", serif;
+    /*--h1FontFamily: "Baskervville", serif;
     --h1Weight: 500;
     --h1Size: 17.942rem;
     --h2FontFamily: "Baskervville", serif;
@@ -26,9 +26,38 @@ body {
     --p2Size: 17.942rem;
     --p3FontFamily: "Rubik", sans-serif;
     --p3Weight: light;
-    --p3Size: 17.942rem;
+    --p3Size: 17.942rem;*/
+
+    --h1FontFamily: "Baskervville", serif;
+    --h1Weight: 500;
+    --h1Size: 4.236rem;
+
+    --h2FontFamily: "Baskervville", serif;
+    --h2Weight: 300;
+    --h2Size: 2.618rem;
+
+    --h3FontFamily: "Rubik", sans-serif;
+    --h3Weight: 300;
+    --h3Size: 1.618rem;
+
+    --h4FontFamily: "Rubik", sans-serif;
+    --h4Weight: 300;
+    --h4Size: 1.25rem;
+
+    --h5FontFamily: "Rubik", sans-serif;
+    --h5Weight: 300;
+    --h5Size: 1.1rem;
+
+    --h6FontFamily: "Rubik", sans-serif;
+    --h6Weight: 300;
+    --h6Size: 1rem;
+
+    --p1FontFamily: "Rubik", sans-serif;
+    --p1Weight: normal;
+    --p1Size: 1rem;
 
     /*Padding*/
+    --largestPadding: 5rem;
     --largePadding: 2.5rem;
     --mediumPadding: 1.25rem;
     --smallPadding: 0.75rem;
@@ -38,10 +67,12 @@ body {
     --contentWidth: calc(100vw - (2 * var(--largePadding)));
     --goldenRatio: calc(61.8vw - var(--largePadding));
     --halfContentWidth: calc(var(--contentWidth) / 2);
+    --headerHeight: calc(10vh + (2 * var(--largePadding)));
 
     /*Decoration*/
     --primaryBorderRadius: 30px;
-    --primaryBlurRadius: 15px;
+    --secondaryBorderRadius: 15px;
+    --primaryBlurRadius: 5px;
     --secondaryBlurRadius: 3px;
 
     /*Colors*/
@@ -79,7 +110,7 @@ img {
     border: 0;
 }
 
-/*body::before {
+body::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -89,7 +120,7 @@ img {
     opacity: 0.3;
     pointer-events: none;
     z-index: -1;
-}*/
+}
 
 h1 {
     font-family: var(--h1FontFamily);
@@ -164,6 +195,111 @@ a {
         inset -2px -2px 3px rgba(0, 0, 0, 0.7);
     border: 0.5px solid rgba(0, 0, 0, 0.25);
     backdrop-filter: saturate(200%) blur(var(--secondaryBlurRadius));
+}
+
+@-moz-document url-prefix() {
+    .primaryGlass {
+        backdrop-filter: blur(var(--primaryBlurRadius)) saturate(185%);
+    }
+}
+
+label {
+    display: block;
+    margin-top: var(--smallPadding);
+    margin-bottom: var(--smallestPadding);
+    font-weight: 500;
+}
+
+textarea,
+input {
+    width: 100%;
+    padding: var(--smallPadding);
+    background: var(--secondaryBackgroundColor);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--secondaryBorderRadius);
+    color: var(--textColorDark);
+    font-family: var(--p1FontFamily);
+    font-size: var(--p1Size);
+    font-weight: var(--p1Weight);
+    box-shadow: inset 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+    transition: border-color var(--primaryTransition);
+}
+textarea:focus,
+input:focus {
+    outline: none;
+    border-color: var(--primaryColor);
+}
+
+button,
+.primaryButton,
+.secondaryButton {
+    align-items: center;
+    padding: var(--smallPadding) var(--mediumPadding);
+    font-family: var(--p1FontFamily);
+    font-size: var(--p1Size);
+    font-weight: var(--p1Weight);
+    border-radius: var(--primaryBorderRadius);
+    cursor: pointer;
+    transition:
+        transform 0.1s ease,
+        box-shadow 0.1s ease;
+    text-align: center;
+    border: none;
+    margin-top: var(--smallestPadding);
+    margin-bottom: var(--smallestPadding);
+}
+
+.primaryButton,
+button[type="submit"] {
+    background: linear-gradient(
+        to top,
+        var(--primaryColor),
+        hsl(326, 85%, 58%)
+    );
+    box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.1),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+    color: white !important;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.primaryButton:active,
+button[type="submit"]:active {
+    transform: translateY(2px);
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.1),
+        inset 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.secondaryButton {
+    background: linear-gradient(to top, hsl(326, 10%, 80%), hsl(326, 10%, 95%));
+    box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.05),
+        inset 0 2px 4px rgba(255, 255, 255, 0.8),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.1);
+    color: var(--textColorDark) !important;
+}
+
+.secondaryButton:active {
+    transform: translateY(2px);
+    box-shadow:
+        0 1px 2px rgba(0, 0, 0, 0.05),
+        inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button:disabled {
+    background: #cbd5e1 !important;
+    box-shadow: none !important;
+    color: #64748b !important;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.action-buttons {
+    display: flex;
+    gap: var(--smallPadding);
+    flex-wrap: wrap;
 }
 
 /*Header*/

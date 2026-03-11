@@ -1,11 +1,12 @@
 #contact {
     width: var(--contentWidth);
+    padding-top: calc(var(--headerHeight) + 10vh);
     margin: 0 auto;
 }
 
 /*Contact Form*/
 .contactFormContainer {
-    max-width: 700px;
+    width: 50vw;
     margin: 0 auto calc(var(--largePadding) * 3);
     padding: calc(var(--largePadding) * 1.5);
     border-radius: var(--primaryBorderRadius);
@@ -13,8 +14,6 @@
 
 .contactFormContainer h3 {
     text-align: center;
-    font-size: var(--h5Size);
-    color: var(--textColor);
     margin-bottom: var(--largePadding);
 }
 
@@ -31,77 +30,10 @@
 }
 
 .formGroup label {
+    font-weight: var(--p1Weight);
     font-size: var(--p1Size);
-    font-weight: 500;
-    color: var(--textColor);
-}
-
-.formGroup input,
-.formGroup textarea {
-    width: 100%;
-    padding: var(--mediumPadding);
-    border: 2px solid rgba(0, 0, 0, 0.1);
-    border-radius: calc(var(--primaryBorderRadius) / 2);
-    background: rgba(255, 255, 255, 0.5);
-    font-family: "Rubik", sans-serif;
     font-size: var(--p1Size);
     color: var(--textColor);
-    transition: all var(--primaryTransition);
-    box-sizing: border-box;
-}
-
-.formGroup input:focus,
-.formGroup textarea:focus {
-    outline: none;
-    border-color: var(--primaryColor);
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 0 0 3px rgba(234, 179, 191, 0.2);
-}
-
-.formGroup textarea {
-    resize: vertical;
-    min-height: 120px;
-}
-
-.submitButton {
-    margin-top: var(--mediumPadding);
-    padding: var(--mediumPadding) var(--largePadding);
-    background: linear-gradient(
-        135deg,
-        var(--primaryColor),
-        var(--secondaryColor)
-    );
-    color: white;
-    border: none;
-    border-radius: calc(var(--primaryBorderRadius) / 2);
-    font-family: "Rubik", sans-serif;
-    font-size: var(--p1Size);
-    font-weight: 600;
-    cursor: pointer;
-    transition: all var(--primaryTransition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--smallPadding);
-    align-self: center;
-    min-width: 200px;
-}
-
-.submitButton:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.submitButton:active {
-    transform: translateY(0);
-}
-
-.submitButton svg {
-    transition: transform var(--primaryTransition);
-}
-
-.submitButton:hover svg {
-    transform: translateX(5px);
 }
 
 .formStatus {
@@ -158,16 +90,21 @@
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: linear-gradient(
-        135deg,
-        var(--primaryColor),
-        var(--secondaryColor)
-    );
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: var(--mediumPadding);
-    color: white;
+    background: linear-gradient(
+        to top,
+        var(--primaryColor),
+        hsl(326, 85%, 58%)
+    );
+    box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.1),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+    color: white !important;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .contactCard h5 {
