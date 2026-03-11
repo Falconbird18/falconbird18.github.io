@@ -107,14 +107,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function setInteractiveStyles() {
-    const squareSize = `${Math.max(window.innerWidth, window.innerHeight)}px`;
-
     Object.assign(image.style, {
       position: "fixed",
       top: "50%",
       left: "50%",
-      width: squareSize,
-      height: squareSize,
+      width: "100vw",
+      height: "auto",
       objectFit: "cover",
       transformOrigin: "center center",
       zIndex: "20",

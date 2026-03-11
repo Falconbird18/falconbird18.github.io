@@ -48,9 +48,10 @@
 /*Gallery*/
 .fullSizeImage {
     display: block;
+    margin: 0 auto;
     width: auto;
     height: calc(100vh - (2 * var(--largePadding)));
-    border-radius: inherit;
+    border-radius: 50% 50% var(--primaryBorderRadius) var(--primaryBorderRadius);
 }
 
 /*Scroll Cards*/
