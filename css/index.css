@@ -46,21 +46,6 @@
 }
 
 /*Gallery*/
-#gallery {
-    padding-top: 33vh;
-}
-
-.fullSizeImageStage {
-    position: relative;
-    width: fit-content;
-    height: calc(100vh - (2 * var(--largePadding)));
-    margin: 0 auto;
-    margin-top: var(--largePadding);
-    border-radius: calc((100vh - (2 * var(--largePadding))) / 2)
-        calc((100vh - (2 * var(--largePadding))) / 2) var(--primaryBorderRadius)
-        var(--primaryBorderRadius);
-}
-
 .fullSizeImage {
     display: block;
     width: auto;
@@ -68,68 +53,12 @@
     border-radius: inherit;
 }
 
-.fullSizeImageOverlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 140%;
-    height: 140%;
-    object-fit: contain;
-    border-radius: inherit;
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(1.18);
-    transform-origin: center center;
-    will-change: opacity, transform;
-    pointer-events: none;
-}
-
-.fullSizeImageOverlayOne {
-    z-index: 1;
-}
-
-.fullSizeImageOverlayTwo {
-    z-index: 2;
-}
-
-.imageContainer {
-    display: flex;
-    width: var(--contentWidth);
-    height: auto;
-    margin-left: var(--largePadding);
-    margin-top: var(--largePadding);
-    justify-content: space-between;
-}
-
-.halfSizeImageLeft {
-    width: calc(var(--goldenRatio) - (0.5 * var(--largePadding)));
-    border-radius: calc((var(--goldenRatio) - (0.5 * var(--largePadding))) / 2)
-        calc((var(--goldenRatio) - (0.5 * var(--largePadding))) / 2)
-        var(--primaryBorderRadius) var(--primaryBorderRadius);
-}
-
-.halfSizeImageRight {
-    width: calc(
-        (var(--contentWidth) - var(--goldenRatio)) - (0.5 * var(--largePadding))
-    );
-    border-radius: calc((var(--goldenRatio) - (0.5 * var(--largePadding))) / 2)
-        calc(
-            (var(--contentWidth) - var(--goldenRatio)) -
-                (0.5 * var(--largePadding)) -
-                (var(--goldenRatio) - (0.5 * var(--largePadding))) / 2
-        )
-        var(--primaryBorderRadius) var(--primaryBorderRadius);
-    object-fit: cover;
-}
-
 /*Scroll Cards*/
 .scrollContainer {
     display: flex;
     width: 100%;
     overflow: scroll;
-
-    /*overflow-x: auto;
-    overflow-y: visible;*/
-    margin: var(--largePadding);
+    padding: var(--largePadding);
     scrollbar-width: none;
     gap: var(--mediumPadding);
     flex-shrink: 0;
