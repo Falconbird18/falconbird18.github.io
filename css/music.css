@@ -1,0 +1,15 @@
+#compositions {
+    width: min(1100px, var(--contentWidth));
+    margin: 0 auto;
+    padding: calc(var(--headerHeight) + 6vh) 0 var(--largestPadding);
+    display: flex;
+    flex-direction: column;
+    gap: var(--largestPadding);
+}
+
+.composition {
+    display: flex;
+    flex-direction: column;
+    padding: var(--largePadding);
+    border-radius: var(--primaryBorderRadius);
+}
