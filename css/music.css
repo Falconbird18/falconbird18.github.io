@@ -1,5 +1,5 @@
 #compositions {
-    width: min(1100px, var(--contentWidth));
+    width: 50vw;
     margin: 0 auto;
     padding: calc(var(--headerHeight) + 6vh) 0 var(--largestPadding);
     display: flex;
